@@ -1,0 +1,1 @@
+<?php$username = $_SERVER['username'];if (preg_match('/^[\x{4e00}-\x{9fa5}a-zA-Z0-9_]+$/u', $username) !== 0) {    echo "ok";} else {    echo "error";}

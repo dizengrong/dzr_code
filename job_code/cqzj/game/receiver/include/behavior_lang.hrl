@@ -1,0 +1,1 @@
+-define(_LANG_SERVER_ANOTHER_LOGIN, <<"本游戏服发起了另外一个socket连接">>).

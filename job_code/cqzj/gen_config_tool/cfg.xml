@@ -1,0 +1,51 @@
+<!-- 所有需要生成配置文件的配置 -->
+<!-- 注意dict元素的name属性值不能一样 -->
+<root>
+<file tpl='cfg_pet.tpl'>
+	<dict name='attr_func' excle_file='宠物.xlsx' sheet='宠物二级属性计算公式' col_start='1' col_end='3'></dict>
+	<dict name='pets' excle_file='宠物.xlsx' sheet='宠物基本信息' col_start='1' col_end='18'></dict>
+	<dict name='max_hidden' excle_file='宠物.xlsx' sheet='角色可附身宠物个数' col_start='1' col_end='3' sort_col='1'></dict>
+	<dict name='misc' excle_file='宠物.xlsx' sheet='杂项数据' col_start='1' col_end='3'></dict>
+	<dict name='pet_back' excle_file='宠物.xlsx' sheet='宠物归元' col_start='1' col_end='2'></dict>
+</file>
+
+<file tpl='cfg_hero_fb.tpl'>
+	<dict name='hero_misc' excle_file='境界副本.xlsx' sheet='零散数据' col_start='1' col_end='3'></dict>
+	<dict name='select_money' excle_file='境界副本.xlsx' sheet='翻牌奖励' col_start='1' col_end='8'></dict>
+	<dict name='basic_reward' excle_file='境界副本.xlsx' sheet='基础奖励配置' col_start='1' col_end='4'></dict>
+	<dict name='barrier_info' excle_file='境界副本.xlsx' sheet='各关卡配置' col_start='1' col_end='19'></dict>
+	<dict name='assist_monster' excle_file='境界副本.xlsx' sheet='境界副本辅助怪物' col_start='1' col_end='2'></dict>
+	<dict name='do_mission' excle_file='境界副本.xlsx' sheet='做任务时进入不算次数' col_start='1' col_end='3'></dict>
+</file>
+
+<file tpl='cfg_examine_fb.tpl'>
+	<dict name='examine_fb_open_barriers' excle_file='战役副本.xls' sheet='关卡开启' col_start='1' col_end='2'></dict>
+	<dict name='examine_fb_selected_gold' excle_file='战役副本.xls' sheet='翻牌的元宝' col_start='1' col_end='2'></dict>
+	<dict name='examine_fb_selected_gold' excle_file='战役副本.xls' sheet='翻牌的元宝' col_start='1' col_end='2'></dict>
+	<dict name='examine_fb_selected_item' excle_file='战役副本.xls' sheet='翻牌奖励的物品' col_start='1' col_end='5'></dict>
+	<dict name='examine_fb_selected_rule' excle_file='战役副本.xls' sheet='翻牌奖励规则' col_start='1' col_end='3'></dict>
+	<dict name='examine_fb_barrier_conf' excle_file='战役副本.xls' sheet='关卡数据' col_start='1' col_end='12'></dict>
+	<dict name='examine_fb_misc' excle_file='战役副本.xls' sheet='杂项数据' col_start='1' col_end='3'></dict>
+	<dict name='examine_fb_reset' excle_file='战役副本.xls' sheet='重置' col_start='1' col_end='2'></dict>
+	<dict name='examine_fb_hidden_open' excle_file='战役副本.xls' sheet='隐藏关卡开启规则' col_start='1' col_end='2'></dict>
+	<dict name='examine_fb_hidden_barries' excle_file='战役副本.xls' sheet='隐藏关卡数据' col_start='1' col_end='3'></dict>
+	<dict name='examine_fb_add_attr' excle_file='战役副本.xls' sheet='增加人物属性类奖励配置' col_start='1' col_end='3'></dict>
+	<dict name='examine_fb_call_monster1' excle_file='战役副本.xls' sheet='挑战关卡召唤怪物1' col_start='1' col_end='3'></dict>
+	<dict name='examine_fb_call_monster2' excle_file='战役副本.xls' sheet='挑战关卡召唤怪物2' col_start='1' col_end='2'></dict>
+	<dict name='all_barrier_ids' excle_file='战役副本.xls' sheet='章节id' col_start='1' col_end='2'></dict>
+	<dict name='full_star_awards' excle_file='战役副本.xls' sheet='章节满星奖励' col_start='1' col_end='4'></dict>
+</file>
+
+<!-- <file tpl='cfg_qianghua.tpl'>
+	<dict name='free' excle_file='强化.xls' sheet='装备赠送等级' col_start='1' col_end='2'></dict>
+	<dict name='add_property' excle_file='强化.xls' sheet='强化属性加点' col_start='1' col_end='8'></dict>
+	<dict name='equip_upgrade' excle_file='强化.xls' sheet='进阶' col_start='1' col_end='8'></dict>
+	<dict name='color_upgrade' excle_file='强化.xls' sheet='提色' col_start='1' col_end='8'></dict>
+	<dict name='cannot_qianghua' excle_file='强化.xls' sheet='不能强化的装备' col_start='1' col_end='1'></dict>
+	<dict name='rate' excle_file='强化.xls' sheet='强化成功率' col_start='1' col_end='3'></dict>
+	<dict name='vip_add_rate' excle_file='各种vip配置.xlsx' sheet='强化VIP成功率加成' col_start='1' col_end='2'></dict>
+</file> -->
+
+</root>
+
+

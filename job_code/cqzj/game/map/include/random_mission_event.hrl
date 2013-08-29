@@ -1,0 +1,20 @@
+-define(RAMDOM_MISSION_EVENT_1,			    1). %% 1.	通关战迹副本
+-define(RAMDOM_MISSION_EVENT_2,			    2). %% 2.	通关神兽副本
+-define(RAMDOM_MISSION_EVENT_3,			    3). %% 3.	月光宝盒   
+-define(RAMDOM_MISSION_EVENT_4,		    	4). %% 4.	进行异兽提悟。     
+-define(RAMDOM_MISSION_EVENT_5,				5). %% 5.	进行异兽洗灵 
+-define(RAMDOM_MISSION_EVENT_6,				6). %% 6.	进行任意消耗异兽突飞
+-define(RAMDOM_MISSION_EVENT_7,				7). %% 7.	强化任意装备
+-define(RAMDOM_MISSION_EVENT_8,				8). %% 8.	灵兽吞噬灵兽卡
+-define(RAMDOM_MISSION_EVENT_9,				9). %% 9.	灵兽互动
+-define(RAMDOM_MISSION_EVENT_10,			10). %% 10.	经验修炼
+-define(RAMDOM_MISSION_EVENT_11,			11). %% 11.	招财进宝
+-define(RAMDOM_MISSION_EVENT_12,			12). %% 12.	拉镖
+-define(RAMDOM_MISSION_EVENT_13,			13). %% 13.	钦点美人
+-define(RAMDOM_MISSION_EVENT_14,			14). %% 14.	商贸
+-define(RAMDOM_MISSION_EVENT_15,			15). %% 15.	竞技场
+-define(RAMDOM_MISSION_EVENT_16,			16). %% 16. 天赐灵宠
+-define(RAMDOM_MISSION_EVENT_17,			17). %% 17. 法宝升级
+-define(RAMDOM_MISSION_EVENT_18,			18). %% 18. 珍宝阁寻宝
+-define(RAMDOM_MISSION_EVENT_19,			19). %% 19. 通辑令
+

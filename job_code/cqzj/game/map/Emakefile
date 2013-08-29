@@ -1,0 +1,11 @@
+{ 
+	["unittest/*"], 
+	[	
+		{i, "include" }, 
+		{i, "../../../hrl" }, 
+		{outdir, "/data/cqzj/server/ebin/map/"},
+		report,
+		warnings_as_errors,
+		verbose
+	  ]
+}.

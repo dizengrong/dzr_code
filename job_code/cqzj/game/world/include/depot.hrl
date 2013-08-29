@@ -1,0 +1,1 @@
+-define(DICT_DEPOT_LIST, dict_key_depot_list).
