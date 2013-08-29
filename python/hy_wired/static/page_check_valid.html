@@ -1,0 +1,115 @@
+<script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="/static/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/js/actions.js"></script>
+<script type="text/javascript">
+    (function($) {
+        $(document).ready(function($) {
+            $("tr input.action-select").actions();
+        });
+    })(django.jQuery);
+</script>
+
+<form action="/valid_dev/?dev_type={{action}}" method="POST">
+{% csrf_token %} 
+
+{% if action == 'check_onu_valid' %}
+<div class="results">
+<p>ONU设备验收请求：</p>
+<table id="result_list">
+    <thead>
+        <tr>
+            <th scope="col"  class="action-checkbox-column">
+               <div class="text"><span><input type="checkbox" id="action-toggle" /></span></div>
+               <div class="clear"></div>
+            </th>
+            <th scope="col" ><div class="text"><span>提交者</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>提交日期</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>一级点名称</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>二级点名称</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>安装详细地址</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>设备名称</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>MAC地址</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>端口备注</span></div><div class="clear"></div></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for report_detail in onu_check_list %}
+            <tr class="row{{forloop.counter|divisibleby:"2"}}">
+                <td class="action-checkbox"><input type="checkbox" class="action-select" value="{{report_detail.dev_id}}" name="_selected_action" /></td>
+                <th align="center">{{report_detail.user}}</th>
+                <th align="center">{{report_detail.date}}</th>
+                <th align="center">{{report_detail.addr_1}}</th>
+                <th align="center">{{report_detail.addr_2}}</th>
+                <th align="center">{{report_detail.addr_detail}}</th>
+                <th align="center">{{report_detail.dev_name}}</th>
+                <th align="center">{{report_detail.mac_addr}}</th>
+                <th align="center">{{report_detail.port_remark}}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+
+{% if action == 'check_eoc_valid' %}
+<div>
+<p>EOC设备验收请求：</p>
+<table id="result_list">
+    <thead>
+        <tr>
+            <th scope="col"  class="action-checkbox-column">
+               <div class="text"><span><input type="checkbox" id="action-toggle" /></span></div>
+               <div class="clear"></div>
+            </th>
+            <th scope="col" ><div class="text"><span>提交者</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>提交日期</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>一级点名称</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>二级点名称</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>安装详细地址</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>配线箱类型</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>设备箱类型</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>设备类型</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>覆盖用户数</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>型号</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>管理地址</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>子网掩码</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>默认网关</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>管理VLAN</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>端口开始VLAN</span></div><div class="clear"></div></th>
+            <th scope="col" ><div class="text"><span>端口结束VLAN</span></div><div class="clear"></div></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for report_detail in eoc_check_list %}
+            <tr class="alttr1">
+                <td class="action-checkbox"><input type="checkbox" class="action-select" value="{{report_detail.dev_id}}" name="_selected_action" /></td>
+                <th align="center">{{report_detail.user}}</th>
+                <th align="center">{{report_detail.date}}</th>
+                <th align="center">{{report_detail.addr_1}}</th>
+                <th align="center">{{report_detail.addr_2}}</th>
+                <th align="center">{{report_detail.addr_detail}}</th>
+                <th align="center">{{report_detail.line_box_type}}</th>
+                <th align="center">{{report_detail.dev_box_type}}</th>
+                <th align="center">{{report_detail.dev_type}}</th>
+                <th align="center">{{report_detail.cover_users}}</th>
+                <th align="center">{{report_detail.model}}</th>
+                <th align="center">{{report_detail.manager_ip}}</th>
+                <th align="center">{{report_detail.ip_mask}}</th>
+                <th align="center">{{report_detail.gateway}}</th>
+                <th align="center">{{report_detail.manager_vlan}}</th>
+                <th align="center">{{report_detail.port_begin_valn}}</th>
+                <th align="center">{{report_detail.port_end_valn}}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+
+
+         
+    <input type="submit" value="提交验证">
+</form>
+

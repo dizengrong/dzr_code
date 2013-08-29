@@ -1,0 +1,1709 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"try",
+				"try	Try/Except"
+			],
+			[
+				"msg",
+				"msg_dic"
+			],
+			[
+				"el",
+				"else"
+			],
+			[
+				"m",
+				"manager_ip  (variable)"
+			],
+			[
+				"e",
+				"else"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"da",
+				"datetime  (class)"
+			],
+			[
+				"key",
+				"iterkeys  (function)"
+			],
+			[
+				"de",
+				"dev_id  (variable)"
+			],
+			[
+				"dev",
+				"dev_id"
+			],
+			[
+				"fil",
+				"filter_date"
+			],
+			[
+				"rep",
+				"report_date"
+			],
+			[
+				"ms",
+				"msg"
+			],
+			[
+				"my",
+				"msg_type"
+			],
+			[
+				"is",
+				"is_read"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"che",
+				"checked_list"
+			],
+			[
+				"F",
+				"False"
+			],
+			[
+				"up",
+				"upload_onu_dev"
+			],
+			[
+				"show",
+				"show_req_valid_view"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"sho",
+				"show_msg_view"
+			],
+			[
+				"sh",
+				"show_msg_view"
+			],
+			[
+				"GET",
+				"get"
+			],
+			[
+				"g",
+				"get"
+			],
+			[
+				"dir",
+				"dirname"
+			],
+			[
+				"dat",
+				"DateTimeField  (class)"
+			],
+			[
+				"Lin",
+				"Lines"
+			],
+			[
+				"sel",
+				"sel_text"
+			],
+			[
+				"gets",
+				"getSelectedText"
+			],
+			[
+				"wst",
+				"wxStyledTextCtrl"
+			],
+			[
+				"Te",
+				"Text"
+			],
+			[
+				"or",
+				"orelse"
+			],
+			[
+				"te",
+				"textCtrl"
+			],
+			[
+				"and",
+				"andalso"
+			],
+			[
+				"B",
+				"BuildMenu"
+			],
+			[
+				"Ch",
+				"Char"
+			],
+			[
+				"be",
+				"begin_with_tab_help"
+			],
+			[
+				"end",
+				"end_with"
+			],
+			[
+				"string",
+				"string2"
+			],
+			[
+				"Str",
+				"Str11"
+			],
+			[
+				"ST",
+				"Str2"
+			],
+			[
+				"find",
+				"find_document"
+			],
+			[
+				"wx",
+				"wxAuiNotebook"
+			],
+			[
+				"Page",
+				"Pages"
+			],
+			[
+				"PAge",
+				"Pages"
+			],
+			[
+				"doc",
+				"document"
+			],
+			[
+				"do",
+				"document"
+			],
+			[
+				"D",
+				"Documents"
+			],
+			[
+				"Pro",
+				"ProjectRec"
+			],
+			[
+				"erl",
+				"erledit_project"
+			],
+			[
+				"pr",
+				"projects"
+			],
+			[
+				"cr",
+				"create_normal_file"
+			],
+			[
+				"cre",
+				"create_erl_file"
+			],
+			[
+				"pro",
+				"project"
+			],
+			[
+				"Di",
+				"Dialog"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"Dir",
+				"Dirname"
+			],
+			[
+				"get",
+				"get_project_dirTree"
+			],
+			[
+				"src",
+				"src_folder"
+			],
+			[
+				"wxd",
+				"wxDialog"
+			],
+			[
+				"Proj",
+				"ProjectName"
+			],
+			[
+				"STa",
+				"State1"
+			],
+			[
+				"Sta",
+				"State"
+			],
+			[
+				"St",
+				"State"
+			],
+			[
+				"sav",
+				"save_file"
+			],
+			[
+				"en",
+				"ENCODING_UTF8"
+			],
+			[
+				"Tex",
+				"TextCtrl"
+			],
+			[
+				"A",
+				"AllText2"
+			],
+			[
+				"All",
+				"AllText2"
+			],
+			[
+				"op",
+				"open_files_item"
+			],
+			[
+				"sta",
+				"state"
+			],
+			[
+				"Re",
+				"Reply"
+			],
+			[
+				"New",
+				"NewPath"
+			],
+			[
+				"fv",
+				"fv_data"
+			],
+			[
+				"fine",
+				"filename"
+			],
+			[
+				"fv_",
+				"FV_FILE"
+			],
+			[
+				"wxtr",
+				"wxTreeCtrl"
+			],
+			[
+				"add_",
+				"add_project"
+			],
+			[
+				"ge",
+				"generator_unique_name_help"
+			],
+			[
+				"C",
+				"Cookie"
+			],
+			[
+				"Pa",
+				"ParentItem"
+			],
+			[
+				"un",
+				"untitled"
+			],
+			[
+				"Par",
+				"ParentItem"
+			],
+			[
+				"G",
+				"GenericDirCtrl"
+			],
+			[
+				"wxF",
+				"wxFileDialog"
+			],
+			[
+				"wxt",
+				"wxTreeCtrl"
+			],
+			[
+				"def",
+				"define"
+			],
+			[
+				"Roo",
+				"RootDir"
+			],
+			[
+				"erld",
+				"erledit_fileView"
+			],
+			[
+				"Sat",
+				"State1"
+			],
+			[
+				"mod",
+				"MODULE"
+			],
+			[
+				"wxid",
+				"wxID_CANCEL"
+			],
+			[
+				"Pr",
+				"ProjectDir"
+			],
+			[
+				"wxaui",
+				"wxAuiPaneInfo"
+			],
+			[
+				"S",
+				"Str1"
+			],
+			[
+				"str",
+				"strip_help"
+			],
+			[
+				"RE",
+				"RecordName"
+			],
+			[
+				"star",
+				"start_link"
+			],
+			[
+				"er",
+				"erledit"
+			],
+			[
+				"Record",
+				"RecordNames"
+			],
+			[
+				"rec",
+				"records"
+			],
+			[
+				"par",
+				"parse_file_help"
+			],
+			[
+				"fi",
+				"field_map"
+			],
+			[
+				"st",
+				"State"
+			],
+			[
+				"mO",
+				"MODULE"
+			],
+			[
+				"char",
+				"Char"
+			],
+			[
+				"P",
+				"Pos"
+			],
+			[
+				"log",
+				"LOG"
+			],
+			[
+				"wxsty",
+				"wxStyledTextCtrl"
+			],
+			[
+				"wxst",
+				"wxStyledTextCtrl"
+			],
+			[
+				"T",
+				"TextCtrl"
+			],
+			[
+				"erle",
+				"erledit_notebook"
+			],
+			[
+				"fileinf",
+				"file_info"
+			],
+			[
+				"und",
+				"undefined"
+			],
+			[
+				"save",
+				"save_time"
+			],
+			[
+				"M",
+				"MODULE"
+			],
+			[
+				"d",
+				"documents"
+			],
+			[
+				"wxS",
+				"wxStyledTextCtrl"
+			],
+			[
+				"not",
+				"note_book"
+			],
+			[
+				"Pan",
+				"Panel"
+			],
+			[
+				"serv",
+				"servers"
+			],
+			[
+				"for",
+				"for	For Loop"
+			],
+			[
+				"app",
+				"app_name"
+			],
+			[
+				"hos",
+				"host_data"
+			],
+			[
+				"dep",
+				"deploy_path"
+			],
+			[
+				"host",
+				"host_name"
+			],
+			[
+				"gen",
+				"gen_server"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "static/index.html",
+			"settings":
+			{
+				"buffer_size": 2032,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "hy_wired/urls.py",
+			"settings":
+			{
+				"buffer_size": 912,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/table.html",
+			"settings":
+			{
+				"buffer_size": 5520,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "install_valid/views.py",
+			"settings":
+			{
+				"buffer_size": 13467,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/upload_succ.html",
+			"settings":
+			{
+				"buffer_size": 3674,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/page_check_valid.html",
+			"settings":
+			{
+				"buffer_size": 6028,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/page_msg.html",
+			"settings":
+			{
+				"buffer_size": 1217,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/page_req_valid.html",
+			"settings":
+			{
+				"buffer_size": 439,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/valid_succ.html",
+			"settings":
+			{
+				"buffer_size": 647,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Erlang/Erlang.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"sse",
+				"Set Syntax: Erlang"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"packe",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"cre",
+				"Create file from Template"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/gitCode/hy_wired/static/style.css",
+		"/E/gitCode/hy_wired/install_valid/models.py",
+		"/E/gitCode/hy_wired/static/login.html",
+		"/E/gitCode/hy_wired/static/page_msg.html",
+		"/C/Users/dzr/Desktop/index.html",
+		"/E/gitCode/hy_wired/static/blog.html",
+		"/E/gitCode/hy_wired/hy_wired/wsgi.py",
+		"/E/gitCode/hy_wired/hy_wired/settings.py",
+		"/E/gitCode/hy_wired/static/css/bass.css",
+		"/E/gitCode/hy_wired/wired.sublime-workspace",
+		"/E/gitCode/my_code/hy_wired/hy_wired/urls.py",
+		"/E/gitCode/my_code/hy_wired/hy_wired/wsgi.py",
+		"/D/Apache2_2/logs/access.log",
+		"/D/Apache2_2/logs/error.log",
+		"/E/gitCode/my_code/hy_wired/hy_wired/settings.py",
+		"/E/gitCode/my_code/hy_wired/static/page_check_valid.html",
+		"/D/Apache2_2/conf/httpd.conf",
+		"/E/gitCode/my_code/hy_wired/static/page_msg.html",
+		"/E/gitCode/my_code/hy_wired/static/page_req_valid.html",
+		"/E/gitCode/my_code/hy_wired/static/valid_succ.html",
+		"/E/gitCode/my_code/hy_wired/install_valid/views.py",
+		"/E/gitCode/my_code/hy_wired/install_valid/models.py",
+		"/D/hy_wired/Apache2_2/CHANGES.txt",
+		"/E/gitCode/my_code/hy_wired/static/index.html",
+		"/E/gitCode/my_code/hy_wired/django.wsgi",
+		"/E/gitCode/my_code/hy_wired/install_valid/admin.py",
+		"/E/gitCode/my_code/hy_wired/static/js/actions.js",
+		"/C/Users/dzr/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/login.html                E%3A%5CgitCode%5Cmy_code%5Chy_wired%5Cinstall_valid%5Clogin.html",
+		"/C/Users/dzr/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/index.html                E%3A%5CgitCode%5Cmy_code%5Chy_wired%5Cinstall_valid%5Cindex.html",
+		"/E/gitCode/my_code/hy_wired/install_valid/login.html",
+		"/E/gitCode/my_code/hy_wired/static/css/changelists.css",
+		"/E/gitCode/my_code/hy_wired/static/js/jquery.js",
+		"/E/gitCode/my_code/hy_wired/static/css/bass.css",
+		"/E/gitCode/my_code/hy_wired/static/css/changlist.css",
+		"/E/gitCode/my_code/hy_wired/static/js/jquery.init.js",
+		"/E/gitCode/my_code/hy_wired/dzr_tmp.xlsx",
+		"/E/gitCode/my_code/hy_wired/static/login.html",
+		"/E/gitCode/my_code/hy_wired/static/upload_succ.html",
+		"/E/gitCode/my_code/hy_wired/static/page_query.html",
+		"/C/Users/dzr/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/login.html                E%3A%5CgitCode%5Cmy_code%5Chy_wired%5Cstatic%5Clogin.html",
+		"/D/xampp/mysql/bin/my.ini",
+		"/D/A_TOOL/Python27/Lib/site-packages/MySQLdb/__init__.py",
+		"/D/A_TOOL/Python27/Lib/site-packages/MySQLdb/converters.py",
+		"/D/xampp/mysql/data/mysql.err",
+		"/C/Users/dzr/Desktop/BitLocker 恢复密钥 1D3E93D8-39B2-42DD-BB18-75A76D2D480E.txt",
+		"/E/gitCode/my_code/erledit/src/test.erl",
+		"/E/gitCode/my_code/erledit/src/erledit_codeIntel.erl",
+		"/E/gitCode/my_code/erledit/src/erledit_codeIntel_utils.erl",
+		"/E/gitCode/my_code/erledit/src/directoryTree.erl",
+		"/E/gitCode/my_code/erledit/src/erledit_project.erl",
+		"/E/gitCode/my_code/erledit/src/erledit_outputView.erl",
+		"/C/Users/dzr/Desktop/接下来的计划（重要）.txt",
+		"/E/Dragon2Work/project/Dragon2Server/src/sd_reader.erl",
+		"/E/my-program/erlang/ErleditProject/src/test.erl",
+		"/E/gitCode/my_code/erledit/src/erledit_document.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/src/gen/wxStyledTextCtrl.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/include/wx.hrl",
+		"/E/gitCode/my_code/erledit/src/erledit_bottomPanel.erl",
+		"/E/gitCode/my_code/erledit/src/erledit_notebook.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_pickers.erl",
+		"/E/gitCode/my_code/erledit/src/erledit_cmds.erl",
+		"/E/gitCode/my_code/erledit/include/erledit.hrl",
+		"/E/gitCode/my_code/erledit/src/erledit_projectView.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/demo.erl",
+		"/E/gitCode/my_code/erledit/src/main.erl",
+		"/E/opensource/wings-1.4.1/src/array.erl",
+		"/E/opensource/wings-1.4.1/src/wings_light.erl",
+		"/E/opensource/wings-1.4.1/src/wings_fi.lang",
+		"/C/Users/dzr/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/%E5%BC%B9%E8%B7%B3%E5%8A%9B%E8%AE%AD%E7%BB%83.txt                C%3A%5CUsers%5Cdzr%5CDesktop%5C%E5%BC%B9%E8%B7%B3%E5%8A%9B%E8%AE%AD%E7%BB%83.txt",
+		"/C/Users/dzr/Desktop/弹跳力训练.txt",
+		"/D/S_TOOL/erl5.8.4/lib/edoc-0.7.8/priv/edoc.dtd",
+		"/D/S_TOOL/erl5.8.4/lib/xmerl-1.2.9/src/xmerl_lib.erl",
+		"/E/my-program/erlang/ErleditProject/src/TAGS",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_aui.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_sizers.erl",
+		"/E/gitCode/my_code/erledit/src/newFileDialog2.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_dialogs.erl",
+		"/E/gitCode/my_code/erledit/ebin/data.txt",
+		"/E/gitCode/my_code/erledit/src/string2.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_notebook.erl",
+		"/E/gitCode/my_code/erledit/src/newFileDialog.erl",
+		"/E/gitCode/my_code/erledit/src/newProjectDialog.erl",
+		"/E/gitCode/my_code/erledit/erledit.sublime-workspace",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/simple/hello.erl",
+		"/E/gitCode/my_code/erledit/file.erl",
+		"/C/Users/dzr/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/file3.erl                E%3A%5CgitCode%5Cmy_code%5Cerledit%5Cfile3.erl",
+		"/E/gitCode/my_code/erledit/file3.erl",
+		"/E/gitCode/my_code/erledit/Recompile",
+		"/C/Users/dzr/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/file2.erl                E%3A%5CgitCode%5Cmy_code%5Cerledit%5Cfile2.erl",
+		"/E/gitCode/my_code/erledit/file2.erl",
+		"/C/Users/dzr/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/file.erl                E%3A%5CgitCode%5Cmy_code%5Cerledit%5Cfile.erl",
+		"/E/my-program/erlang/ErleditProject/.eproject",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/simple/menu.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/src/gen/wxStyledTextEvent.erl",
+		"/C/Users/dzr/AppData/Roaming/Sublime Text 2/Packages/User/api_jump.py",
+		"/E/gitCode/my_code/erledit/ebin/Emakefile",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/src/gen/wxDirDialog.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/src/wxe_util.erl",
+		"/E/gitCode/my_code/erledit/include/codeIntel.hrl",
+		"/E/gitCode/my_code/erledit/ebin/Pman_buffer.shell",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_treeCtrl.erl",
+		"/D/A_TOOL/Sublime Text 2/sublime_plugin.py",
+		"/D/A_TOOL/Sublime Text 2/sublime_text.exe",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_textCtrl.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/test.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/include/gl.hrl",
+		"/E/gitCode/my_code/gedit/gedit/gedit-notebook.h",
+		"/E/gitCode/my_code/gedit/gedit/gedit-document.h",
+		"/E/gitCode/my_code/erledit/include/erledit_cmds.hrl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/src/gen/wxButton.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_popupMenu.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/src/gen/wxPanel.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/sudoku/sudoku.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/sudoku/sudoku_gui.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/simple/minimal.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/xrc/xrc.erl",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/xrc/rc/frame.xrc",
+		"/D/S_TOOL/erl5.8.4/lib/wx-0.98.10/examples/demo/ex_button.erl",
+		"/E/gitCode/my_code/erledit/Emakefile",
+		"/E/gitCode/my_code/gedit/BUGS",
+		"/E/ErlangWorkspace111/MyDebug/src/mydbg_gui.erl",
+		"/E/gitCode/my_code/gui_ssh/servers.xml",
+		"/E/gitCode/my_code/erldet/erldet.py",
+		"/E/gitCode/my_code/gui_ssh/load_cfg.py",
+		"/E/gitCode/my_code/tk/hello.py",
+		"/E/gitCode/my_code/gui_ssh/guissh.py",
+		"/E/gitCode/my_code/gui_ssh/ssh_manager.py",
+		"/E/gitCode/my_code/gui_ssh/shell_text.py"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"align=\"center\"",
+			"th",
+			"td",
+			"color",
+			"wrap",
+			"topnavitems",
+			"table",
+			"return",
+			"port_begin_valn",
+			"onu",
+			"show_login_view",
+			"login",
+			"left",
+			"align=\"center\"",
+			"td",
+			"<th",
+			"td",
+			"login",
+			"table",
+			"header",
+			"imagination",
+			"src=",
+			"href",
+			"pagecell1",
+			"衡阳有限设备验收系统",
+			"E:/gitCode/my_code",
+			"static",
+			"utility",
+			"d:",
+			"E:/gitCode",
+			"STATIC_ROOT",
+			"MEDIA_ROOT",
+			"E:/gitCode",
+			"　　　　　　",
+			"Directory",
+			"\\",
+			"WSGIScriptAlias",
+			"wsgi_module",
+			"python",
+			"LoadModule ",
+			"table",
+			"Message",
+			"len",
+			"User",
+			"primary_key",
+			"objects.get",
+			"valid_dev",
+			"action",
+			"report_date",
+			"table",
+			"DevONU",
+			"dev_id",
+			"datetime.datetime.now",
+			"table",
+			"dev_type",
+			"GET",
+			"POST",
+			"SLASH",
+			"APPEND_SLASH",
+			"check",
+			"post",
+			"upload",
+			"show_req_valid_view",
+			"show_check_valid_view",
+			"numofitems",
+			"allToggle",
+			"action-select",
+			"action-toggle",
+			"clear",
+			"actions",
+			"td",
+			"install_valid_devonu_tmp",
+			"onu_dev",
+			"= models",
+			"= models.",
+			"msg.",
+			"msg",
+			"filter",
+			"request.user.username",
+			"order_by",
+			"table.cell",
+			"'tmp.xlsx'",
+			"tmp",
+			"dev_type",
+			"= ",
+			"=",
+			"= models.",
+			"= ",
+			"table.cell",
+			"dev.",
+			"dev",
+			"table.cell",
+			"csrf_protect",
+			"FILE_UPLOAD_TEMP_DIR",
+			"main",
+			"<p",
+			"<td",
+			"request, t",
+			"show_login_view",
+			"check_valid",
+			"<p>",
+			"<a href=\"#\" class=\"capsule\">Capsule Story</a> Cras enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut eu augue. Integer risus wisi, semper eu, congue quis, lobortis ut, massa. Vestibulum auctor vestibulum lectus. Vivamus neque. Cras lobortis. Aenean ut turpis eu libero volutpat euismod. <a href=\"#\">Donec</a> eget lectus vitae ligula ornare tempor. Vivamus scelerisque lorem a elit. Sed id mauris. </p>          ",
+			"LOGIN",
+			"id=",
+			"gl",
+			"#",
+			"E:/gitCode/my_code/hy_wired",
+			"\\",
+			"numofitems",
+			"time",
+			"numofitems",
+			"time",
+			"index",
+			"GET",
+			"POST",
+			"GET",
+			"'login.html'",
+			"user",
+			"\\",
+			"ROOT_URLCONF",
+			"modelsdel",
+			"bind-address",
+			"Set2Str",
+			"i for i in",
+			"BaseSet",
+			"from sets import BaseSet",
+			"mysqld",
+			"file_intel"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"E:/gitCode",
+			"erledit_projectView"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "static/index.html",
+					"settings":
+					{
+						"buffer_size": 2032,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								204,
+								204
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 0.99,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1260.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "hy_wired/urls.py",
+					"settings":
+					{
+						"buffer_size": 912,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								341,
+								341
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "static/table.html",
+					"settings":
+					{
+						"buffer_size": 5520,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1156,
+								1141
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 1.0,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 480.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "install_valid/views.py",
+					"settings":
+					{
+						"buffer_size": 13467,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10930,
+								10939
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 0.99,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3535.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "static/upload_succ.html",
+					"settings":
+					{
+						"buffer_size": 3674,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								452,
+								468
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 0.99,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "static/page_check_valid.html",
+					"settings":
+					{
+						"buffer_size": 6028,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								567,
+								567
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 0.99,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "static/page_msg.html",
+					"settings":
+					{
+						"buffer_size": 1217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								297,
+								297
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 0.99,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 120.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "static/page_req_valid.html",
+					"settings":
+					{
+						"buffer_size": 439,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45,
+								45
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 0.99,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "static/valid_succ.html",
+					"settings":
+					{
+						"buffer_size": 647,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								647,
+								647
+							]
+						],
+						"settings":
+						{
+							"encoding_helper_confidence": 0.99,
+							"encoding_helper_encoding": "UTF-8",
+							"encoding_helper_encoding_sublime": "UTF-8",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 120.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 142.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"valid_succ",
+				"static/valid_succ.html"
+			],
+			[
+				"page_m",
+				"static/page_msg.html"
+			],
+			[
+				"style",
+				"static/style.css"
+			],
+			[
+				"mod",
+				"install_valid/models.py"
+			],
+			[
+				"upload_succ",
+				"static/upload_succ.html"
+			],
+			[
+				"view",
+				"install_valid/views.py"
+			],
+			[
+				"page_msg",
+				"static/page_msg.html"
+			],
+			[
+				"ur",
+				"hy_wired/urls.py"
+			],
+			[
+				"sett",
+				"hy_wired/settings.py"
+			],
+			[
+				"bass",
+				"static/css/bass.css"
+			],
+			[
+				"inex",
+				"static/index.html"
+			],
+			[
+				"changelists",
+				"static/css/changelists.css"
+			],
+			[
+				"jquery",
+				"static/js/jquery.js"
+			],
+			[
+				"actions",
+				"static/js/actions.js"
+			],
+			[
+				"comp",
+				"src/lib/dynamic_compile.erl"
+			],
+			[
+				"ser",
+				"ebin/server.config"
+			],
+			[
+				"mer_bas",
+				"src/mod/mer_base.erl"
+			],
+			[
+				"mod_merc",
+				"src/mod/mod_mercenary.erl"
+			],
+			[
+				"mod_cach",
+				"src/mod/mod_cache.erl"
+			],
+			[
+				"sd_env",
+				"src/sd_env.erl"
+			],
+			[
+				"server",
+				"ebin/server.config"
+			],
+			[
+				"mod_err",
+				"src/mod/mod_err.erl"
+			],
+			[
+				"gen_cach",
+				"memcache/gen_cache/gen_cache.erl"
+			],
+			[
+				"reco",
+				"include/record.hrl"
+			],
+			[
+				"tool_stop",
+				"tools/tool_stop.erl"
+			],
+			[
+				"util",
+				"src/lib/util.erl"
+			],
+			[
+				"mer_fo",
+				"src/mod/mer_foster.erl"
+			],
+			[
+				"sd_r",
+				"src/sd_reader.erl"
+			],
+			[
+				"pt_38",
+				"src/proto/pt_38.erl"
+			],
+			[
+				"data_to",
+				"src/data/data_tower.erl"
+			],
+			[
+				"pp_tower",
+				"src/pp/pp_tower.erl"
+			],
+			[
+				"mod_tower",
+				"src/mod/mod_tower.erl"
+			],
+			[
+				"mod_pl",
+				"src/mod/mod_player.erl"
+			],
+			[
+				"pick_s",
+				"src/mod/pick_star.erl"
+			],
+			[
+				"lib_sc",
+				"src/lib/lib_scene.erl"
+			],
+			[
+				"mod_to",
+				"src/mod/mod_tower.erl"
+			],
+			[
+				"g_cha",
+				"global/g_charge.erl"
+			],
+			[
+				"pp_mer",
+				"src/pp/pp_mercenary.erl"
+			],
+			[
+				"data_mer",
+				"src/data/data_mercenary.erl"
+			],
+			[
+				"re",
+				"include/record.hrl"
+			],
+			[
+				"data_ach",
+				"src/data/data_achieve.erl"
+			],
+			[
+				"pp_ach",
+				"src/pp/pp_achieve.erl"
+			],
+			[
+				"comm",
+				"include/common.hrl"
+			],
+			[
+				"data_charge_bonus",
+				"src/data/data_charge_bonus.erl"
+			],
+			[
+				"merc",
+				"include/mercenary.hrl"
+			],
+			[
+				"pp_gm",
+				"src/pp/pp_gm.erl"
+			],
+			[
+				"mer_d",
+				"src/lib/mer_db.erl"
+			],
+			[
+				"player",
+				"src/lib/player_db.erl"
+			],
+			[
+				"mod_pet",
+				"src/mod/mod_pet.erl"
+			],
+			[
+				"pt_11",
+				"src/proto/pt_11.erl"
+			],
+			[
+				"mod_lo",
+				"src/mod/mod_login.erl"
+			],
+			[
+				"mod_items",
+				"src/mod/mod_items.erl"
+			],
+			[
+				"log_t",
+				"include/log_type.hrl"
+			],
+			[
+				"mod_ach",
+				"src/mod/mod_achieve.erl"
+			],
+			[
+				"pp_pl",
+				"src/pp/pp_player_info.erl"
+			],
+			[
+				"mod_story",
+				"src/mod/mod_story.erl"
+			],
+			[
+				"data_ache",
+				"src/data/data_achieve.erl"
+			],
+			[
+				"data_story",
+				"src/data/data_story.erl"
+			],
+			[
+				"pp_play",
+				"src/pp/pp_player_info.erl"
+			],
+			[
+				"pp_25",
+				"src/proto/pt_25.erl"
+			],
+			[
+				"mer",
+				"src/lib/mer_db.erl"
+			],
+			[
+				"mod_sc",
+				"src/mod/mod_scene.erl"
+			],
+			[
+				"mod_pla",
+				"src/mod/mod_player.erl"
+			],
+			[
+				"lib_pla",
+				"src/lib/lib_player.erl"
+			],
+			[
+				"mod_login",
+				"src/mod/mod_login.erl"
+			],
+			[
+				"pt_25",
+				"src/proto/pt_25.erl"
+			],
+			[
+				"mod_use",
+				"src/mod/mod_user_log.erl"
+			],
+			[
+				"pp_sc",
+				"src/pp/pp_scene.erl"
+			],
+			[
+				"lib_player",
+				"src/lib/lib_player.erl"
+			],
+			[
+				"mod_ar",
+				"src/mod/mod_arena.erl"
+			],
+			[
+				"temp",
+				"ebin/temp1.log"
+			],
+			[
+				"rec",
+				"include/record.hrl"
+			],
+			[
+				"mod_player",
+				"src/mod/mod_player.erl"
+			],
+			[
+				"mod_are",
+				"src/mod/mod_arena.erl"
+			],
+			[
+				"sd_re",
+				"src/sd_reader.erl"
+			],
+			[
+				"pt_15",
+				"src/proto/pt_15.erl"
+			],
+			[
+				"lib_scene",
+				"src/lib/lib_scene.erl"
+			],
+			[
+				"data_sys",
+				"src/data/data_system.erl"
+			],
+			[
+				"mod_live",
+				"src/mod/mod_liveness.erl"
+			],
+			[
+				"mercenar",
+				"include/mercenary.hrl"
+			],
+			[
+				"cache_player",
+				"memcache/cache_player.erl"
+			],
+			[
+				"mod_gm",
+				"src/mod/mod_gm.erl"
+			],
+			[
+				"mod_battl",
+				"src/mod/mod_battle.erl"
+			],
+			[
+				"lib_pl",
+				"src/lib/lib_player.erl"
+			],
+			[
+				"test_out",
+				"ebin/test_out.txt"
+			],
+			[
+				"dragon_log",
+				"src/dragon_loglevel.erl"
+			],
+			[
+				"data_pi",
+				"src/data/data_pick_star.erl"
+			],
+			[
+				"mod_cache",
+				"src/mod/mod_cache.erl"
+			],
+			[
+				"pt.erl",
+				"src/proto/pt.erl"
+			],
+			[
+				"pt_10",
+				"src/proto/pt_10.erl"
+			],
+			[
+				"sd_reader",
+				"src/sd_reader.erl"
+			],
+			[
+				"mer_base",
+				"src/mod/mer_base.erl"
+			],
+			[
+				"mod_tax",
+				"src/mod/mod_tax.erl"
+			],
+			[
+				"error",
+				"include/error_code.hrl"
+			],
+			[
+				"mod_play",
+				"src/mod/mod_player_sup.erl"
+			],
+			[
+				"lib_account",
+				"src/lib/lib_account.erl"
+			],
+			[
+				"server.c",
+				"ebin/server.config"
+			],
+			[
+				"fast_b",
+				"src/mod/fast_battle.erl"
+			],
+			[
+				"mer_db",
+				"src/lib/mer_db.erl"
+			],
+			[
+				"log_typ",
+				"include/log_type.hrl"
+			],
+			[
+				"mod_task",
+				"src/mod/mod_task.erl"
+			],
+			[
+				"data_merc",
+				"src/data/data_mercenary.erl"
+			],
+			[
+				"data_scene",
+				"src/data/data_scene.erl"
+			],
+			[
+				"merdb",
+				"src/lib/mer_db.erl"
+			],
+			[
+				"mer_utl",
+				"src/lib/mercenary_util.erl"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 212.0,
+	"status_bar_visible": true
+}

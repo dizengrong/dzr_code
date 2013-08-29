@@ -1,0 +1,42 @@
+<table cellspacing="0" cellpadding="3">
+    <tr>
+        <th scope="col">操作</th>
+        <th scope="col">消息类型</th>
+        <th scope="col">来自</th>
+        <th scope="col">设备类型</th>
+        <th scope="col">消息日期</th>
+        <!-- <th scope="col">是否已读</th> -->
+    </tr>
+    {% for msg in msg_list %}
+        {% if msg.is_read %}
+        <tr class="alttr1"> 
+        {% else %}
+        <tr class="alttr1">
+        {% endif %}
+            <th scope="row">
+                {% if msg.msg_type == 1 %}
+                    <a href="/query_msg?msg_id={{msg.msg_id}}">查看</a> | <a href="/delete_msg?msg_id={{msg.msg_id}}">删除</a>
+                {% else %}
+                    <a href="/delete_msg?msg_id={{msg.msg_id}}">删除</a>
+                {% endif %}
+            </th>
+            <td>
+                {% if msg.msg_type == 1 %}
+                    验收请求
+                {% else %}
+                    验收通过
+                {% endif %}
+            </td>
+            <td>{{msg.from_who}}</td>
+            <td>
+                {% if msg.dev_type == 1 %}
+                    ONU设备
+                {% else %}
+                    EOC设备
+                {% endif %}
+            </td>
+            <td>{{msg.report_date|date:"Y-m-d H:i:s"}}</td>
+            <!-- <td>{{msg.is_read}}</td> -->
+        </tr>
+    {% endfor %}
+</table>

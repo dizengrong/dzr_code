@@ -1,0 +1,15 @@
+<div>
+	<form enctype="multipart/form-data" method="post" action="/upload/">
+		{% csrf_token %}
+		<p>
+			<input type="file" name="file" />
+			<input type="submit" value="上传文件" />
+		</p>
+		<p>
+			验收者：</br>
+			{% for valider in valider_list %}
+				<span style="font-size:24px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="radio" name="valider" value={{valider.user}}  />{{valider.user}}</br>
+			{% endfor %}
+		</p>
+	</form>
+</div>

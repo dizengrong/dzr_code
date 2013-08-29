@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>衡阳有限设备验收系统</title>
+<link href="/static/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="topbar">
+<div id="TopSection">
+<h1 id="sitename"><span><a href="#">衡阳有限 </a></span><a href="#">设备验收系统</a></h1>
+<div id="topbarnav"> 
+    <span class="topnavitems">{{user}} 您好！|  <a href="/logout/"> 注销 </a></span>
+    <!-- <span class="topnavitems"><a href="3">Register</a> | <a href="3">Login </a></span> -->
+    <!-- <form action="#">
+        <div class="searchform">
+          <label for="searchtxt">
+            Search Terms:
+          </label>
+          <input class="keywordfield" id="searchtxt"/>
+          <input type="submit" value="Search" />
+        </div> 
+    </form> -->
+</div>
+<div class="clear"></div>
+<ul id="topmenu">
+<li class="active"><a href="/main?action=msg">我的消息({{msg_len}})</a></li>
+<li><a href="/main?action=req_valid">提交验收请求</a></li>
+<li><a href="/main?action=check_onu_valid">待验证的ONU设备</a></li>
+<li><a href="/main?action=check_eoc_valid">待验证的EOC设备</a></li>
+<li><a href="#">查询</a></li>
+<!-- <li><a href="/main?action=query">查询</a></li> -->
+</ul>
+</div>
+</div>
+
+<div id="wrap">
+<div id="contents">
+<!-- <div class="clear"></div>
+<div id="aboutdiv"></div> -->
+
+<div id="left">
+    {% csrf_token %}
+    {% if action == 'msg' %}
+        {% include "page_msg.html" %}
+    {% endif %}
+
+    {% if action == 'req_valid' %}
+
+        {% include "page_req_valid.html" %}
+    {% endif %}
+
+    {% if action == 'check_onu_valid' or action == 'check_eoc_valid' %}
+        {% include "page_check_valid.html" %}
+    {% endif %}
+
+    {% if action == 'query' %}
+        {% include "page_query.html" %}
+    {% endif %}
+    
+
+
+<div class="clear"></div>
+
+</div>
+
+</div>
+</div>
+<!-- <div id="footer">
+<div id="footercontent">
+<div id="previews">
+
+<div class="clear"></div>
+</div>
+</div>
+
+</div> -->
+
+</body>
+</html>

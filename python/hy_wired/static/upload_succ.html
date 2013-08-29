@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>衡阳有限设备验收系统</title>
+<link href="/static/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="wrap">
+	<div id="contents">
+	<div id="left">
+		{% if error_msg == 'eoc_check_error' %}
+			<div id="error"><p>提交的EOC设备数据格式不对, 字段：{{type}}</p></div>
+	       <table id="result_list">
+		    <thead>
+		        <tr>
+		            <th scope="col" ><div class="text"><span>提交者</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>提交日期</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>一级点名称</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>二级点名称</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>安装详细地址</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>配线箱类型</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>设备箱类型</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>设备类型</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>覆盖用户数</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>型号</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>管理地址</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>子网掩码</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>默认网关</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>管理VLAN</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>端口开始VLAN</span></div><div class="clear"></div></th>
+		            <th scope="col" ><div class="text"><span>端口结束VLAN</span></div><div class="clear"></div></th>
+		        </tr>
+		    </thead>
+
+		    <tbody>
+		        <tr class="alttr1">
+		            {% for report_detail in eoc_check_list %}
+		                <th align="center">{{report_detail.user}}</th>
+		                <th align="center">{{report_detail.date}}</th>
+		                <th align="center">{{report_detail.addr_1}}</th>
+		                <th align="center">{{report_detail.addr_2}}</th>
+		                <th align="center">{{report_detail.addr_detail}}</th>
+		                <th align="center">{{report_detail.line_box_type}}</th>
+		                <th align="center">{{report_detail.dev_box_type}}</th>
+		                <th align="center">{{report_detail.dev_type}}</th>
+		                <th align="center">{{report_detail.cover_users}}</th>
+		                <th align="center">{{report_detail.model}}</th>
+		                <th align="center">{{report_detail.manager_ip}}</th>
+		                <th align="center">{{report_detail.ip_mask}}</th>
+		                <th align="center">{{report_detail.gateway}}</th>
+		                <th align="center">{{report_detail.manager_vlan}}</th>
+		                <th align="center">{{report_detail.port_begin_valn}}</th>
+		                <th align="center">{{report_detail.port_end_valn}}</th>
+		            {% endfor %}
+		        </tr>
+		    </tbody>
+		</table>
+	    {% else %}
+	    	{{error_msg}}
+	    {% endif %}
+	<div class="clear"></div>
+	</div>
+	</div>
+	</div>
+</body>
+</html>
