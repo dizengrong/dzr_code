@@ -1,0 +1,50 @@
+<%inherit file="../base.html"/>
+
+<%def name="js()">
+	<script src="/static/javascript/main.js"></script>
+	<script>
+		document.title = c('${stitle}');
+	</script>
+</%def>
+
+<%def name="body()">
+  ${parent.head_menu(none)}
+  <style>
+  	.showmsg_ul{
+		width:100%;
+		list-style:outside none outside;
+		padding:0;
+		margin:0;
+		overflow:auto;
+		word-wrap:break-word;
+		line-height:140%;
+	}
+	.showmsg_ul li{
+		padding:2px 0px 8px 5px;
+		border-bottom:1px solid #CCCCCC;
+	}
+	.showmsg_ul div{
+		padding:5px 16px 0 16px;
+	}
+	.pagi_p_list{
+		text-align:left;
+		font:12px/20px Verdana;
+		margin:20px 0 40px 50px;
+	}
+  </style>
+  <ul class="showmsg_ul">
+  	% for m in Msgs:
+		<li>
+			% if m.username == my.username:
+				<font color="green">${m.username}</font>
+			% else:
+				<font color="blue">${m.username}</font>
+			% endif
+			(${m.dateline})
+			<div>${m.msg}</div></li>
+	% endfor
+  </ul>
+  <div class="pagination pagi_p_list">
+    ${pagestr}
+  </div>
+</%def>

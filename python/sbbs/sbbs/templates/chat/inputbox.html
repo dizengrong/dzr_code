@@ -1,0 +1,21 @@
+<style>
+#inputbox{
+	width:99%;
+	height:90px;
+	overflow:auto;
+	border:0px solid;
+	font-family:宋体;
+}
+</style>
+
+<script>
+function keyPost(F){
+	F = F || window.event;
+	if(F.ctrlKey && F.keyCode == 13){
+		post_msg();
+	}
+}
+</script>
+
+<textarea id="inputbox" name="msg_inputbox" onkeydown="keyPost(event);">
+</textarea>

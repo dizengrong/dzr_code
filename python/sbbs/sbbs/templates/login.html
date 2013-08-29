@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>群体极化调查</title>
+<link rel="stylesheet" type="text/css" href="/static/my_css.css" />
+</head>
+
+<body>
+	{% if error %}
+        <p style="color: red;" align="center">用户名不存在或密码错误.</p>
+    {% endif %}
+	
+	<form action="{% url 'login' %}" method="post">
+	  {% csrf_token %}		
+	  <div align="center">
+	  	<p align="center">参与的昵称：<input type="text" name="user"></p>
+	    <input type="submit" value="参与">
+      </div>
+	</form>
+</body>

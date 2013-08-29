@@ -1,0 +1,2073 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"an",
+				"answer"
+			],
+			[
+				"ob",
+				"obj"
+			],
+			[
+				"o",
+				"obj"
+			],
+			[
+				"get",
+				"get_my_last_msg_id"
+			],
+			[
+				"msg",
+				"msg_id"
+			],
+			[
+				"ms",
+				"msg_dict"
+			],
+			[
+				"usr",
+				"username"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"use",
+				"user"
+			],
+			[
+				"u",
+				"user"
+			],
+			[
+				"object",
+				"objects"
+			],
+			[
+				"try",
+				"try	Try/Except"
+			],
+			[
+				"qu",
+				"questions"
+			],
+			[
+				"us",
+				"user_name"
+			],
+			[
+				"boa",
+				"board_dict"
+			],
+			[
+				"sta",
+				"statics_dict"
+			],
+			[
+				"ques",
+				"question"
+			],
+			[
+				"sur",
+				"survey_list"
+			],
+			[
+				"boar",
+				"board"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"te",
+				"Textarea"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"render",
+				"render_to_response"
+			],
+			[
+				"s",
+				"survey_type"
+			],
+			[
+				"Ma",
+				"MapID"
+			],
+			[
+				"mg",
+				"mgeem_map"
+			],
+			[
+				"is_",
+				"is_multi_player_fb"
+			],
+			[
+				"ma",
+				"max_hp"
+			],
+			[
+				"Mo",
+				"ModelType"
+			],
+			[
+				"get_ma",
+				"get_map_name_to_enter"
+			],
+			[
+				"Buff",
+				"BuffID"
+			],
+			[
+				"get_map",
+				"get_mapid/0"
+			],
+			[
+				"Buf",
+				"BuffId"
+			],
+			[
+				"add_buff",
+				"add_buff/2"
+			],
+			[
+				"gold_",
+				"gold_unbind"
+			],
+			[
+				"key",
+				"keymember/3"
+			],
+			[
+				"Typ",
+				"CountType"
+			],
+			[
+				"format",
+				"format_lang/2"
+			],
+			[
+				"common",
+				"common_misc"
+			],
+			[
+				"to",
+				"total_monster"
+			],
+			[
+				"comm",
+				"common_misc"
+			],
+			[
+				"com",
+				"common_bag2"
+			],
+			[
+				"F",
+				"FeeType"
+			],
+			[
+				"Fb",
+				"FbId"
+			],
+			[
+				"keys",
+				"keystore/4"
+			],
+			[
+				"Fbd",
+				"FbDetailRec"
+			],
+			[
+				"Fd",
+				"FbDetailRec"
+			],
+			[
+				"Re",
+				"Rest2"
+			],
+			[
+				"lis",
+				"lists_zip"
+			],
+			[
+				"cf",
+				"cfg_examine_fb"
+			],
+			[
+				"eras",
+				"erase/1"
+			],
+			[
+				"do_ex",
+				"do_examine_fb_quit_2"
+			],
+			[
+				"er",
+				"erlang"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"Go",
+				"Goods"
+			],
+			[
+				"G",
+				"Goods"
+			],
+			[
+				"Goods",
+				"GoodsList"
+			],
+			[
+				"und",
+				"undefined"
+			],
+			[
+				"H",
+				"HIDDEN_FB_TYPE_3"
+			],
+			[
+				"Nu",
+				"NuqiSkill"
+			],
+			[
+				"BuffId",
+				"BuffIdList"
+			],
+			[
+				"get_fi",
+				"get_first_barrier_id"
+			],
+			[
+				"role",
+				"role_id"
+			],
+			[
+				"Ba",
+				"BarrierID"
+			],
+			[
+				"Modet",
+				"ModelType"
+			],
+			[
+				"mod_role",
+				"mod_role_tab"
+			],
+			[
+				"fa",
+				"false"
+			],
+			[
+				"is_in",
+				"is_in_hero_fb"
+			],
+			[
+				"Drobox",
+				"DropBoxItemId"
+			],
+			[
+				"Barr",
+				"BarrierInfoRec"
+			],
+			[
+				"cfg",
+				"cfg_hero_fb"
+			],
+			[
+				"Hero",
+				"HeroFBMapInfo"
+			],
+			[
+				"r_hero",
+				"r_hero_fb_map_info"
+			],
+			[
+				"get_he",
+				"get_hero_fb_map_info"
+			],
+			[
+				"Mod",
+				"ModelType"
+			],
+			[
+				"ger",
+				"get_role_vip_level/1"
+			],
+			[
+				"_",
+				"_SkillID"
+			],
+			[
+				"PetB",
+				"PetBaseInfo"
+			],
+			[
+				"NewTime",
+				"NewLastEnterTime"
+			],
+			[
+				"last",
+				"last_type"
+			],
+			[
+				"common_e",
+				"send_common_error"
+			],
+			[
+				"Itm",
+				"ItemType"
+			],
+			[
+				"cfg_",
+				"cfg_pet_understanding"
+			],
+			[
+				"add",
+				"add_nuqi/2"
+			],
+			[
+				"pet_",
+				"pet_id"
+			],
+			[
+				"Pe",
+				"PetID"
+			],
+			[
+				"T",
+				"Text"
+			],
+			[
+				"un",
+				"undefined"
+			],
+			[
+				"ini",
+				"ini_parser"
+			],
+			[
+				"At",
+				"ArtMustache"
+			],
+			[
+				"Ri",
+				"RoleID"
+			],
+			[
+				"next",
+				"next_level_exp"
+			],
+			[
+				"max",
+				"max_understanding"
+			],
+			[
+				"cal",
+				"calc_pet_attr_toc"
+			],
+			[
+				"hook_pe",
+				"hook_pet_levelup"
+			],
+			[
+				"Pet",
+				"PetId"
+			],
+			[
+				"set",
+				"set_pet_info"
+			],
+			[
+				"ca",
+				"calc_pet_attr_toc/2"
+			],
+			[
+				"find",
+				"find/2"
+			],
+			[
+				"su",
+				"sublime"
+			],
+			[
+				"m",
+				"mgeer_role"
+			],
+			[
+				"common_config",
+				"common_config_dyn"
+			],
+			[
+				"Be",
+				"BetterCards1"
+			],
+			[
+				"comon",
+				"common_bag2"
+			],
+			[
+				"t_de",
+				"t_deduct_money"
+			],
+			[
+				"whe",
+				"whereis/1	erlang_completions"
+			],
+			[
+				"de",
+				"detail"
+			],
+			[
+				"mod",
+				"mod_map_pet"
+			],
+			[
+				"New",
+				"NewAptitude1"
+			],
+			[
+				"pet",
+				"pet_id"
+			],
+			[
+				"tra",
+				"training_result"
+			],
+			[
+				"Role",
+				"RoleID"
+			],
+			[
+				"module",
+				"Module"
+			],
+			[
+				"Ro",
+				"RoleID"
+			],
+			[
+				"mod_map",
+				"mod_map_pet"
+			],
+			[
+				"get_pet",
+				"get_pet_max_aptitude"
+			],
+			[
+				"commo",
+				"common_pet"
+			],
+			[
+				"Max",
+				"MaxAptitude"
+			],
+			[
+				"p_p",
+				"p_pet"
+			],
+			[
+				"p_i",
+				"p_item_base_info"
+			],
+			[
+				"Un",
+				"UnderStanding"
+			],
+			[
+				"session_sa",
+				"session_set_save_handler"
+			],
+			[
+				"Rol",
+				"RoleID"
+			],
+			[
+				"It",
+				"ItemTypeId"
+			],
+			[
+				"type",
+				"type_id"
+			],
+			[
+				"p_",
+				"p_pet"
+			],
+			[
+				"Cos",
+				"CostSilver"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "bbs1/views.py",
+			"settings":
+			{
+				"buffer_size": 5151,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sbbs/urls.py",
+			"settings":
+			{
+				"buffer_size": 1613,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bbs1/models.py",
+			"settings":
+			{
+				"buffer_size": 5223,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sbbs/templates/chat/index.html",
+			"settings":
+			{
+				"buffer_size": 2562,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sbbs/templates/chat/js.html",
+			"settings":
+			{
+				"buffer_size": 5784,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "chat/views.py",
+			"settings":
+			{
+				"buffer_size": 2294,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "chat/models.py",
+			"settings":
+			{
+				"buffer_size": 962,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sbbs/templates/index.html",
+			"settings":
+			{
+				"buffer_size": 805,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sbbs/templates/survey100.html",
+			"settings":
+			{
+				"buffer_size": 1347,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sbbs/templates/question3.html",
+			"settings":
+			{
+				"buffer_size": 1042,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sbbs/templates/survey101.html",
+			"settings":
+			{
+				"buffer_size": 1349,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sbbs/templates/survey1.html",
+			"settings":
+			{
+				"buffer_size": 2322,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sbbs/templates/chat/announce_online.html",
+			"settings":
+			{
+				"buffer_size": 3113,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Erlang/Erlang.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ssh",
+				"Set Syntax: HTML"
+			],
+			[
+				"SSE",
+				"Set Syntax: Erlang"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"sse",
+				"Set Syntax: Erlang"
+			],
+			[
+				"pac",
+				"Package Control: Enable Package"
+			],
+			[
+				"p",
+				"Package Control: Disable Package"
+			],
+			[
+				"pa",
+				"Package Control: Enable Package"
+			],
+			[
+				"se",
+				"Set Syntax: Erlang"
+			],
+			[
+				"create",
+				"Create file from Template"
+			],
+			[
+				"cre",
+				"Create file from Template"
+			],
+			[
+				"ss",
+				"Set Syntax: Erlang"
+			],
+			[
+				"see",
+				"Set Syntax: Erlang"
+			],
+			[
+				"ssa",
+				"Set Syntax: ActionScript"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 201.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/dzr/sbbs/sbbs/templates/thank_you.html",
+		"/E/dzr/sbbs/sbbs/templates/login.html",
+		"/E/dzr/sbbs/sbbs/templates/chat/button.html",
+		"/E/dzr/sbbs/sbbs/templates/chat/showmsg.html",
+		"/E/dzr/sbbs/sbbs/templates/chat/announce_online.html",
+		"/E/dzr/sbbs/sbbs/templates/question.html",
+		"/E/dzr/sbbs/sbbs/templates/question2.html",
+		"/E/dzr/sbbs/sbbs/templates/survey100.html",
+		"/E/dzr/sbbs/sbbs/templates/bbs2/survey100.html",
+		"/E/dzr/sbbs/sbbs/templates/posts.html",
+		"/E/dzr/sbbs/sbbs/templates/chat/inputbox.html",
+		"/E/dzr/sbbs/sbbs/templates/chat/ajax_send.html",
+		"/C/Users/Administrator/Desktop/jquery.js",
+		"/E/dzr/sbbs/sbbs/settings.py",
+		"/E/dzr/sbbs/sbbs/templates/head_nav.html",
+		"/E/dzr/sbbs/sbbs/static/css1.css",
+		"/E/dzr/sbbs/sbbs/templates/index.html",
+		"/E/dzr/sbbs/sbbs/templates/chat/js.html",
+		"/E/dzr/sbbs/sbbs/templates/survey2.html",
+		"/E/dzr/sbbs/sbbs/templates/survey1.html",
+		"/E/dzr/sbbs/sbbs/templates/survey_statics.html",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/hosts                C%3A%5CWindows%5CSystem32%5Cdrivers%5Cetc%5Chosts",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/E/dzr/sbbs/manage.py",
+		"/E/dzr/sbbs/sbbs/mydbrouter.py",
+		"/E/dzr/sbbs/sbbs/mydbrouter",
+		"/E/dzr/sbbs/bbs1/views.py",
+		"/E/dzr/sbbs/sbb_dist/django/core/servers/basehttp.py",
+		"/E/dzr/sbbs/setup.py",
+		"/E/dzr/sbbs/start.py",
+		"/E/dzr/sbbs/compile.py",
+		"/E/dzr/sbbs/使用说明.txt",
+		"/E/dzr/sbbs/sbb_dist/django/http/request.py",
+		"/E/dzr/sbbs/sbb_dist/django/contrib/gis/geos/io.py",
+		"/E/dzr/sbbs/sbb_dist/django/core/mail/message.py",
+		"/E/dzr/sbbs/sbbs/urls.py",
+		"/D/hy_wired/hy_wired/install_valid/views.py",
+		"/E/dzr/sbbs/bbs1/models.py",
+		"/E/dzr/sbbs/sbbs/static/site.css",
+		"/E/dzr/sbbs/sbbs/static/my_css.css",
+		"/E/dzr/sbbs/sbb_dist/django/utils/six.py",
+		"/E/dzr/sbbs/mysetup.py",
+		"/E/dzr/sbbs/sbbs/wsgi.py",
+		"/E/dzr/sbbs/sbb_dist/django/utils/text.py",
+		"/E/dzr/sbbs/sbbs/static/thank_you.html",
+		"/D/hy_wired/hy_wired/static/index.html",
+		"/E/dzr/sbbs/sbbs/templatetags/mod.py",
+		"/E/dzr/sbbs/sbbs/templatetags/__init__.py",
+		"/D/hy_wired/hy_wired/static/page_req_valid.html",
+		"/D/hy_wired/hy_wired/static/login.html",
+		"/E/dzr/sbbs/sbbs/static/bootstrap.css",
+		"/D/hy_wired/hy_wired/static/page_query.html",
+		"/E/dzr/sbbs/sbbs/templates/posts.html.back",
+		"/D/hy_wired/hy_wired/static/page_msg.html",
+		"/E/dzr/sukiyaki/templates/imageboard/board.html",
+		"/E/Google 云端硬盘/my_ code/python/sbbs/sbbs/templates/survey1.html",
+		"/D/hy_wired/hy_wired/hy_wired/urls.py",
+		"/E/Google 云端硬盘/my_ code/python/sbbs/sbbs/templates/survey2.html",
+		"/D/hy_wired/hy_wired/static/upload_succ.html",
+		"/D/hy_wired/hy_wired/hy_wired/settings.py",
+		"/E/Google 云端硬盘/my_ code/python/sbbs/sbbs/urls.py",
+		"/E/dzr/sukiyaki/imageboard/urls.py",
+		"/E/gitcode/hy_wired/hy_wired/settings.py",
+		"/E/dzr/sukiyaki-1.1-20111211/manage.py",
+		"/E/dzr/sukiyaki-1.1-20111211/settings.py",
+		"/E/project/t6_server/config/buffs.config",
+		"/E/project/t6_server/app/game/role/src/mod/mod_pet_buff.erl",
+		"/E/project/t6_server/app/game/role/src/mod/mod_buff_attr.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_skill.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_map_monster.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_monster_buff.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_buff.erl",
+		"/E/Google 云端硬盘/my_ code/SerialPort/SerialPort/output.txt",
+		"/E/dzr/nirs2000_demo/sampleDlg.cpp",
+		"/E/project/t6_server/app/game/map/src/mod/mod_common_map.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_mine_fb.erl",
+		"/E/project/t6_server/hrl/global_lang.hrl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_nationbattle_fb.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_crown_arena_fb.erl",
+		"/E/project/t6_server/config/map/arenabattle.config",
+		"/E/project/t6_server/app/game/role/src/mod/mod_role_buff.erl",
+		"/E/project/t6_server/proto/front-end/common/p_role_attr.as",
+		"/E/project/t6_server/proto/front-end/common/p_map_role.as",
+		"/E/project/t6_server/app/game/chat/src/mod/mod_chat_gm.erl",
+		"/E/project/t6_server/app/game/chat/src/mod/mod_chat_ban.erl",
+		"/E/project/t6_server/hrl/common.hrl",
+		"/E/project/t6_server/hrl/common_records.hrl",
+		"/E/project/t6_server/app/web/game.www/user/reconnect.php",
+		"/E/project/t6_server/app/web/game.www/index.php",
+		"/E/project/t6_server/server/setting/common.config",
+		"/E/project/t6_server/app/web/game.www/include/global.php",
+		"/E/project/t6_server/app/web/game.www/config/config.inc.php",
+		"/E/project/t6_server/app/web/game.www/config/config.php",
+		"/E/project/t6_server/app/game/map/src/mod/mod_pet_grow.erl",
+		"/E/project/t6_server/hrl/skill.hrl",
+		"/E/project/t6_server/config/map/daily_mission.config",
+		"/E/project/t6_server/app/game/map/src/mod/mod_daily_mission.erl",
+		"/E/project/t6_server/update/update_mnesia_1_0_6.erl",
+		"/E/project/t6_server/config/src/cfg_zazen.erl",
+		"/E/project/t6_server/config/map/skill_level.config",
+		"/E/project/t6_server/config/src/cfg_hero_fb.erl",
+		"/E/project/t6_server/config/src/cfg_activity.erl",
+		"/E/project/t6_server/config/map/skill.config",
+		"/E/project/t6_server/config/pet/pet_etc.config",
+		"/E/project/t6_server/app/game/map/src/mod/mod_map_drop.erl",
+		"/E/project/t6_server/app/game/map/src/mgeem_map.erl",
+		"/E/project/t6_server/app/game/role/src/mgeer_role.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_map_event.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_counter.erl",
+		"/E/project/t6_server/config/src/cfg_achievement.erl",
+		"/E/project/t6_server/config/map/item.config",
+		"/E/project/t6_server/config/src/cfg_bomb_fb.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_arena_manager.erl",
+		"/E/project/t6_server/config/map/arena.config",
+		"/E/project/t6_server/app/game/map/src/mod/mod_arena.erl",
+		"/E/project/t6_server/app/game/map/include/arena.hrl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_bomb_fb.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_tili.erl",
+		"/E/project/t6_server/app/game/common/src/common_tool.erl",
+		"/E/project/t6_server/app/game/role/src/mod/mod_role_attr.erl",
+		"/E/project/t6_server/app/game/role/src/mod/mod_role_pet.erl",
+		"/E/project/t6_server/config/monster/fb_manual_monster.config",
+		"/E/project/t6_server/hrl/server_map.xml",
+		"/E/project/t6_server/hrl/mnesia.hrl",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/mgeed_ctl.hrl                E%3A%5Cproject%5Ct6_server%5Capp%5Cgame%5Cdb%5Cinclude%5Cmgeed_ctl.hrl",
+		"/E/project/t6_server/config/src/cfg_pet_da_dan.erl",
+		"/E/project/t6_server/app/game/map/src/mod/mod_item_effect.erl",
+		"/E/project/t6_server/config/src/cfg_money_fb.erl"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"*.hrl, *.erl",
+			"*.hrl., *.erl",
+			"*.hrl. *.erl",
+			"",
+			"*.hrl, *.erl",
+			"*.hrl",
+			"*.hrl, *.erl",
+			"*.hrl",
+			"*.erl, *.hrl",
+			"*.php",
+			"*.erl, *.hrl",
+			"*.hrl",
+			"*.erl, *.hrl",
+			"",
+			"*.erl, *.hrl",
+			"*.config",
+			"*.erl, *.hrl",
+			"*.config",
+			"*.erl, *.hrl",
+			"*.php",
+			"*.erl, *.hrl",
+			"E:\\project\\t6_server\\app",
+			"E:\\project\\t6_server\\app, *.erl",
+			"E:\\project\\t6_server\\app\\game\\common, *.erl",
+			"*.erl, *.hrl",
+			"*.config",
+			"*.erl, *.hrl",
+			"E:\\project\\t6_server\\app\\web",
+			"E:\\project\\t6_server\\app\\web, *.php",
+			"*.erl, *.hrl",
+			"*.php",
+			"*.erl , *.hrl",
+			"*.sql",
+			"*.erl, *.hrl",
+			"",
+			"E:\\project\\t6_server\\config",
+			"*.erl, *.hrl",
+			"*.erl, *.hrl, *.config",
+			"*.erl, *.hrl",
+			"*.erl, *.hrll",
+			"*.config",
+			"*.erl, *.hrl",
+			"*.config",
+			"*.erl, *.hrl",
+			"",
+			"*.config",
+			"*.erl, *.hrl",
+			"*.config",
+			"*.erl, *.hrl",
+			"*.erl, *.hrl, *.config",
+			"*.erl, *.hrl",
+			"*.erl, *.hrl, *.config",
+			"*.erl, *.hrl",
+			"*.erl, *.hrl, *.config",
+			"*.erl, *.hrl, *.erl",
+			"*.erl, *.hrl",
+			"*.erl",
+			"E:\\project\\t6_server, *.erl",
+			"*.erl, *.hrl",
+			"*.erl, *.hrl, *config",
+			"*.erl, *.hrl",
+			"*.erl, *.hrl, *.php, *.config",
+			"*.erl, *.hrl, *.php",
+			"*.erl, *.hrl",
+			"*.erl",
+			"*.config",
+			"*.erl, *.hrl",
+			"*.erl",
+			"",
+			"E:\\project\\t6_server, *.erl",
+			"*.erl, *.hrl",
+			"*.erl",
+			"",
+			"E:\\project\\t6_server, *.erl",
+			"*.erl, *.hrl",
+			"*.erl",
+			"*.config",
+			"*.erl, *.hrl",
+			"*.erl",
+			"",
+			"*erl",
+			"",
+			"*.erl, *.hrl",
+			"*.erl",
+			"*.hrl",
+			"*.erl",
+			"",
+			"*.config",
+			"",
+			"*.erl, *.hrl",
+			"*.erl",
+			"*.sql",
+			"*.slq",
+			"",
+			"*.erl, *.hrl",
+			"*.erl",
+			"*.config",
+			"*.erl, *.hrl, *config",
+			"*.erl, *.hrl",
+			"mod_map_pet.erl",
+			"",
+			"*.php",
+			"",
+			"*.erl",
+			"",
+			"*.php",
+			"",
+			"*.php",
+			"",
+			"*.hrl",
+			"*.erl",
+			"",
+			"*.sql",
+			"",
+			"*.hrl",
+			"",
+			"*.erl",
+			"*.sh",
+			".sh",
+			"",
+			"*.hrl",
+			"",
+			"*.erl",
+			"",
+			"*.hrl",
+			"",
+			"E:\\project\\t6_server,*.erl, *.hrl"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"None",
+			"filter",
+			"set_my_last_msg_id",
+			"Object",
+			"username",
+			"/chat/ajax/getmsg",
+			"xmlHttp.send",
+			"jQuery",
+			"post_ajax",
+			"listen_ajax",
+			"getonline_ajax",
+			"listen_ajax",
+			"/ajax/listen",
+			"post_msg",
+			"{% url",
+			"csrftoken",
+			"post_msg",
+			"listen",
+			"narrow_td",
+			"listen_ajax",
+			"listen_dodo",
+			"getonline_ajax",
+			"include",
+			"announce",
+			"chat/ajax/listen",
+			"setting.charset",
+			"print",
+			"is_participated",
+			"model._meta.app_label",
+			"{% if",
+			"py2exe",
+			"dom.minidom",
+			"loggin",
+			"django.core.management",
+			"html_entities",
+			"moves",
+			"htmlentitydefs",
+			"{{static.",
+			"request.POST.get",
+			"request.POST.get('answer1', '6'))",
+			"同意同意",
+			"question_detail",
+			"logout",
+			"HttpResponseRedirect",
+			"logout",
+			"2",
+			"answer1",
+			"survey_dict",
+			"all",
+			"cut",
+			"date",
+			"editor-footer",
+			"avatar",
+			"comment",
+			"PRE",
+			"	\n",
+			"80px",
+			"container",
+			"board_form",
+			"comment-rich-editor",
+			"qs1",
+			"user",
+			"users",
+			"attitude",
+			"attitude1",
+			"show_req_valid_view",
+			"show_login_view",
+			"3px",
+			"attitude",
+			"color",
+			"#",
+			"</br>",
+			"comment",
+			"head",
+			"docs",
+			"do",
+			"docs",
+			"submit_new_thread",
+			"footer",
+			"comment-box-holder",
+			"comment-",
+			"comment-box",
+			"comment-box-",
+			"comment-box-holder",
+			"comment-box-holder ",
+			"comment",
+			"2013-07-02",
+			"reply.",
+			"{% url",
+			"get_or_create",
+			"HttpResponseRedirect",
+			"poster",
+			"@csrf_protect",
+			"forms",
+			"with",
+			"filter",
+			"object",
+			"file_name",
+			"base",
+			"board",
+			"bbs1.views",
+			"sbbs.",
+			"sbbs.bbs1.views",
+			"=",
+			"get_template",
+			"center",
+			"PROJECT_ROOT",
+			"templ",
+			"show_check_valid_view",
+			"static",
+			"TextPost",
+			"TextReplyForm",
+			"_txtreply",
+			"TextReplyForm",
+			"TextPost",
+			"board_index",
+			"Database",
+			"imageboard.views.board_index",
+			"load_template_source",
+			"django.template.loaders.filesystem.load_template_source",
+			"django.conf.urls.defaults",
+			"PROJECT_ROOT",
+			"背包里没有传送符，不能进行追踪",
+			"mod_role_buff:hook_role_online",
+			"DBG",
+			"start_buff",
+			"(BUFF_LAST_TYPE_FOREVER_TIME",
+			"start_buff"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"common_title_srv:remove_by_titleid",
+			"common_title_srv:remove_by_typeid",
+			"common_title_srv:add_title",
+			"钦点美人",
+			"#r_pet_task",
+			"PET_TASK_CLASS_KILL_MONSTER",
+			"PET_TASK_CLASS_VISIT_NPC",
+			"PET_TASK_CLASS_LEARN_SKILL",
+			"PET_TASK_CLASS_TRAIN",
+			"PET_TASK_CLASS_TIWU",
+			"PET_TASK_CLASS_XILING",
+			"?PET_TASK_CLASS_XILING"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "bbs1/views.py",
+					"settings":
+					{
+						"buffer_size": 5151,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3685,
+								3685
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1695.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sbbs/urls.py",
+					"settings":
+					{
+						"buffer_size": 1613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "bbs1/models.py",
+					"settings":
+					{
+						"buffer_size": 5223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sbbs/templates/chat/index.html",
+					"settings":
+					{
+						"buffer_size": 2562,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								340,
+								340
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "sbbs/templates/chat/js.html",
+					"settings":
+					{
+						"buffer_size": 5784,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4713,
+								4713
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3120.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "chat/views.py",
+					"settings":
+					{
+						"buffer_size": 2294,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								747,
+								747
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 240.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "chat/models.py",
+					"settings":
+					{
+						"buffer_size": 962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								625,
+								625
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 120.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "sbbs/templates/index.html",
+					"settings":
+					{
+						"buffer_size": 805,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								530,
+								530
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "sbbs/templates/survey100.html",
+					"settings":
+					{
+						"buffer_size": 1347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								960,
+								960
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 320.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "sbbs/templates/question3.html",
+					"settings":
+					{
+						"buffer_size": 1042,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								759,
+								759
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "sbbs/templates/survey101.html",
+					"settings":
+					{
+						"buffer_size": 1349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								529,
+								529
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "sbbs/templates/survey1.html",
+					"settings":
+					{
+						"buffer_size": 2322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								521,
+								587
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "sbbs/templates/chat/announce_online.html",
+					"settings":
+					{
+						"buffer_size": 3113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2276,
+								2340
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1080.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 40.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 154.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 560.0
+	},
+	"replace":
+	{
+		"height": 74.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"surv",
+				"sbbs/templates/survey1.html"
+			],
+			[
+				"question",
+				"sbbs/templates/question.html"
+			],
+			[
+				"showmsg",
+				"sbbs/templates/chat/showmsg.html"
+			],
+			[
+				"inp",
+				"sbbs/templates/chat/inputbox.html"
+			],
+			[
+				"head_nav",
+				"sbbs/templates/head_nav.html"
+			],
+			[
+				"inputbox",
+				"sbbs/templates/chat/inputbox.html"
+			],
+			[
+				"button",
+				"sbbs/templates/chat/button.html"
+			],
+			[
+				"button.html",
+				"sbbs/templates/chat/button.html"
+			],
+			[
+				"announce_online",
+				"sbbs/templates/chat/announce_online.html"
+			],
+			[
+				"js.html",
+				"sbbs/templates/chat/js.html"
+			],
+			[
+				"idex",
+				"sbbs/templates/index.html"
+			],
+			[
+				"statics",
+				"sbbs/templates/survey_statics.html"
+			],
+			[
+				"post",
+				"sbbs/templates/posts.html"
+			],
+			[
+				"basehttp.py",
+				"sbb_dist/django/core/servers/basehttp.py"
+			],
+			[
+				"io",
+				"sbb_dist/django/contrib/gis/geos/io.py"
+			],
+			[
+				"request.py",
+				"sbb_dist/django/http/request.py"
+			],
+			[
+				"message.py",
+				"sbb_dist/django/core/mail/message.py"
+			],
+			[
+				"my_css",
+				"sbbs/static/my_css.css"
+			],
+			[
+				"my_",
+				"sbbs/static/my_css.css"
+			],
+			[
+				"sett",
+				"sbbs/settings.py"
+			],
+			[
+				"thank",
+				"sbbs/static/thank_you.html"
+			],
+			[
+				"thank_you",
+				"sbbs/static/thank_you.html"
+			],
+			[
+				"board_",
+				"templates/imageboard/includes/board_list.html"
+			],
+			[
+				"mod_da",
+				"app/game/map/src/mod/mod_daily_activity.erl"
+			],
+			[
+				"cfg_",
+				"config/src/cfg_activity.erl"
+			],
+			[
+				"some",
+				"some.erl"
+			],
+			[
+				"buffs",
+				"config/buffs.config"
+			],
+			[
+				"mod_map_monster",
+				"app/game/map/src/mod/mod_map_monster.erl"
+			],
+			[
+				"mod_skill_man",
+				"app/game/map/src/mod/mod_skill_manager.erl"
+			],
+			[
+				"mod_pve",
+				"app/game/map/src/mod/mod_pve_fb.erl"
+			],
+			[
+				"mod_bigpve",
+				"app/game/map/src/mod/mod_bigpve_fb.erl"
+			],
+			[
+				"mod_role2",
+				"app/game/map/src/mod/mod_role2.erl"
+			],
+			[
+				"big",
+				"config/map/bigpve.config"
+			],
+			[
+				"pve_fb",
+				"config/map/pve_fb.config"
+			],
+			[
+				"mcm_",
+				"config/src/mcm_10001.erl"
+			],
+			[
+				"mod_common",
+				"app/game/map/src/mod/mod_common_map.erl"
+			],
+			[
+				"mod_mine",
+				"app/game/map/src/mod/mod_mine_fb.erl"
+			],
+			[
+				"mod_si",
+				"app/game/map/src/fb/mod_single_fb.erl"
+			],
+			[
+				"cfg_sing",
+				"config/src/cfg_single_fb.erl"
+			],
+			[
+				"mod_map_loa",
+				"app/game/map/src/mod/mod_map_loader.erl"
+			],
+			[
+				"arenabattle",
+				"config/map/arenabattle.config"
+			],
+			[
+				"_lang",
+				"hrl/global_lang.hrl"
+			],
+			[
+				"cfg_single",
+				"config/src/cfg_single_fb.erl"
+			],
+			[
+				"mgeem_map",
+				"app/game/map/src/mgeem_map.erl"
+			],
+			[
+				"mgeeg_rou",
+				"app/game/gateway/src/mgeeg_router.erl"
+			],
+			[
+				"single_fb",
+				"app/game/map/include/single_fb.hrl"
+			],
+			[
+				"p_role_attr",
+				"proto/front-end/common/p_role_attr.as"
+			],
+			[
+				"p_map_role",
+				"proto/front-end/common/p_map_role.as"
+			],
+			[
+				"mod_role_buff",
+				"app/game/role/src/mod/mod_role_buff.erl"
+			],
+			[
+				"mod_big_",
+				"app/game/map/src/mod/mod_bigpve_fb.erl"
+			],
+			[
+				"mod_single",
+				"app/game/map/src/fb/mod_single_fb.erl"
+			],
+			[
+				"cfg_ac",
+				"config/src/cfg_activity.erl"
+			],
+			[
+				"mod_dail",
+				"app/game/map/src/mod/mod_daily_mission.erl"
+			],
+			[
+				"g",
+				"proto/game.proto"
+			],
+			[
+				"common.hr",
+				"hrl/common.hrl"
+			],
+			[
+				"mod_chat_gm",
+				"app/game/chat/src/mod/mod_chat_gm.erl"
+			],
+			[
+				"mod_chat",
+				"app/game/chat/src/mod/mod_chat_ban.erl"
+			],
+			[
+				"role_misc",
+				"hrl/role_misc.hrl"
+			],
+			[
+				"common_rec",
+				"hrl/common_records.hrl"
+			],
+			[
+				"mod_activ",
+				"app/game/map/src/mod/mod_activity.erl"
+			],
+			[
+				"cfg_activi",
+				"config/src/cfg_activity.erl"
+			],
+			[
+				"mod_exa",
+				"app/game/map/src/mod/mod_examine_fb.erl"
+			],
+			[
+				"mof_b",
+				"app/game/map/src/fight/mof_before_attack.erl"
+			],
+			[
+				"mod_role_pet_mix.erl",
+				"app/game/map/src/mod/mod_role_pet_mix.erl"
+			],
+			[
+				"cfg_change",
+				"config/src/cfg_change_skill.erl"
+			],
+			[
+				"mod_pet_mi",
+				"app/game/map/src/mod/mod_role_pet_mix.erl"
+			],
+			[
+				"mod_map_pet",
+				"app/game/map/src/mod/mod_map_pet.erl"
+			],
+			[
+				"index",
+				"app/web/game.www/index.php"
+			],
+			[
+				"common.config",
+				"server/setting/common.config"
+			],
+			[
+				"global.php",
+				"app/web/game.www/include/global.php"
+			],
+			[
+				"config.inc.php",
+				"app/web/game.www/config/config.inc.php"
+			],
+			[
+				"config.php",
+				"app/web/game.www/config/config.php"
+			],
+			[
+				"reconnet.php",
+				"app/web/game.www/user/reconnect.php"
+			],
+			[
+				"common.conf",
+				"setting/common.config"
+			],
+			[
+				"c",
+				"proto/common.proto"
+			],
+			[
+				"mod_pet_bu",
+				"app/game/role/src/mod/mod_pet_buff.erl"
+			],
+			[
+				"mod_pet_attr",
+				"app/game/role/src/mod/mod_pet_attr.erl"
+			],
+			[
+				"skill_l",
+				"config/map/skill_level.config"
+			],
+			[
+				"pet_etc",
+				"config/pet/pet_etc.config"
+			],
+			[
+				"mod_pet_skill",
+				"app/game/map/src/mod/mod_pet_skill.erl"
+			],
+			[
+				"mod_pet_buff",
+				"app/game/role/src/mod/mod_pet_buff.erl"
+			],
+			[
+				"skill",
+				"config/map/skill.config"
+			],
+			[
+				"skill_leve",
+				"config/map/skill_level.config"
+			],
+			[
+				"mgeer_role.erl",
+				"app/game/role/src/mgeer_role.erl"
+			],
+			[
+				"mod_sing",
+				"app/game/map/src/fb/mod_single_fb.erl"
+			],
+			[
+				"common",
+				"hrl/common.hrl"
+			],
+			[
+				"cfg_acti",
+				"config/src/cfg_activity.erl"
+			],
+			[
+				"mod_sce",
+				"app/game/map/src/mod/mod_scene_war_fb.erl"
+			],
+			[
+				"scene",
+				"config/map/scene_war_fb.config"
+			],
+			[
+				"cfg_hero",
+				"config/src/cfg_hero_fb.erl"
+			],
+			[
+				"mod_hero",
+				"app/game/map/src/mod/mod_hero_fb.erl"
+			],
+			[
+				"mod_role_pe",
+				"app/game/map/src/mod/mod_role_pet_mix.erl"
+			],
+			[
+				"item",
+				"config/map/item.config"
+			],
+			[
+				"arena",
+				"config/map/arena.config"
+			],
+			[
+				"mod_arena",
+				"app/game/map/src/mod/mod_arena_manager.erl"
+			],
+			[
+				"mod_are",
+				"app/game/map/src/mod/mod_arena.erl"
+			],
+			[
+				"mod_bomb",
+				"app/game/map/src/mod/mod_bomb_fb.erl"
+			],
+			[
+				"mod_role_pet",
+				"app/game/role/src/mod/mod_role_pet.erl"
+			],
+			[
+				"mod_petequ",
+				"app/game/role/src/mod/mod_pet_equip.erl"
+			],
+			[
+				"mod_pet_ski",
+				"app/game/map/src/mod/mod_pet_skill.erl"
+			],
+			[
+				"mod_single_fb",
+				"app/game/map/src/fb/mod_single_fb.erl"
+			],
+			[
+				"cfg_pet.e",
+				"config/src/cfg_pet.erl"
+			],
+			[
+				"mod_tili",
+				"app/game/map/src/mod/mod_tili.erl"
+			],
+			[
+				"buff",
+				"config/buffs.config"
+			],
+			[
+				"skill_level",
+				"config/map/skill_level.config"
+			],
+			[
+				"mod_role_mis",
+				"app/game/map/src/mod/mod_role_misc.erl"
+			],
+			[
+				"mod_rol_buff",
+				"app/game/role/src/mod/mod_role_buff.erl"
+			],
+			[
+				"mod_cha",
+				"app/game/chat/src/mod/mod_chat_gm.erl"
+			],
+			[
+				"cfg_za",
+				"config/src/cfg_zazen.erl"
+			],
+			[
+				"fb_manual_monster",
+				"config/monster/fb_manual_monster.config"
+			],
+			[
+				"daily_mission",
+				"config/map/daily_mission.config"
+			],
+			[
+				"mod_daily_mission",
+				"app/game/map/src/mod/mod_daily_mission.erl"
+			],
+			[
+				"mod_role_equip",
+				"app/game/role/src/mod/mod_role_equip.erl"
+			],
+			[
+				"update_mnesia_1_0_6",
+				"update/update_mnesia_1_0_6.erl"
+			],
+			[
+				"upd",
+				"update/update_mnesia_1_0_5.erl"
+			],
+			[
+				"ser",
+				"hrl/server_map.xml"
+			],
+			[
+				"mod_money_fb",
+				"app/game/map/src/mod/mod_money_fb.erl"
+			],
+			[
+				"common_ti",
+				"app/game/common/src/common_title.erl"
+			],
+			[
+				"mod_title",
+				"app/game/map/src/mod/mod_title.erl"
+			],
+			[
+				"mgeer_role",
+				"app/game/role/src/mgeer_role.erl"
+			],
+			[
+				"update_m",
+				"update/update_mnesia_1_0_5.erl"
+			],
+			[
+				"mgeedm",
+				"app/game/db/src/mgeed_mnesia.erl"
+			],
+			[
+				"cfg_pet.erl",
+				"config/src/cfg_pet.erl"
+			],
+			[
+				"cfg_mone",
+				"config/src/cfg_money_fb.erl"
+			],
+			[
+				"mod_role_att",
+				"app/game/role/src/mod/mod_role_attr.erl"
+			],
+			[
+				"cfg_pet_da",
+				"config/src/cfg_pet_da_dan.erl"
+			],
+			[
+				"pve",
+				"config/map/pve_fb.config"
+			],
+			[
+				"buff_",
+				"config/buff_type.config"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 229.0,
+	"status_bar_visible": true
+}

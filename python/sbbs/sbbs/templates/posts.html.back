@@ -1,0 +1,42 @@
+<p>评论区</p>
+<div id="bm_comments" class="comments-holder" align='center'>
+    <div class="info">
+        <div class="info"><span class="comments-count">242</span>条评论</div>
+    </div>
+{% for post in posts %}
+<div id="cid-{{post.id}}" class="comment" data-id="{{post.id}}" data-author="{{post.user_name}}">
+    <div class="header">{{post.user_name}}</div>
+    <div class="content">
+        <pre><code></code><div><code>{{post.subject}}<br></code><div><code></code></div></div></pre>
+    </div>
+    <div class="footer">
+        <span class="date"> {{post.post_time|date:"Y-m-d H:i:s"}}</span>
+        <a href="#comment-box" class="reply" title="回复该评论">
+            <img src="/static/img/icons/reply.png" alt="回复" title="回复" align="" width="14">
+        </a>
+    </div>
+</div>
+    <!-- IMMEDIATE CHILD -->
+    <!-- <div class="post_replies">
+    {% for child in post.get_highest_ranked_children %}
+        <div style="margin-left:50px;" class="reply" id="post-{{ child.id }}">
+            <div class="post_data">
+                {% if child.text %}
+                <div class="reply_link">[<a href="">reply</a>]</div>
+                {% else %}
+                <div class="reply_link">[<a href="">reply</a>]</div>
+                {% endif %}
+                <span class="date">{{child.post_time|date:"D d.m.Y G:i:s"}}</span>
+                <span class="post_id">#{{child.id}}</span>
+                {% if child.email %}
+                <span class="username"><a href="mailto:{{child.email}}">{{child.user_name}}</a></span>
+                {% else %}
+                <span class="username">{{child.user_name}}</span>
+                {% endif %}
+                <span class="subject">{{child.subject}}</span>
+            </div>
+        </div>
+    {% endfor %}
+    </div> -->
+</div>
+{% endfor %}

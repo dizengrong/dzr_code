@@ -1,0 +1,160 @@
+.nav_welcome{
+	padding: 1px 10px;
+	text-align: right;
+	color: red;
+    /*border-top: 3px solid rgb(170, 170, 170);*/
+    border-bottom: 1px solid rgb(170, 170, 170);
+    /*border-right: 3px solid rgb(170, 170, 170);*/
+    /*border-left: 3px solid rgb(170, 170, 170);*/
+    /*background-color: rgb(0, 0, 0);*/
+}
+
+.nav_welcome p{
+	/*style="color: red;"*/
+	color: red;
+}
+.comment_rich_editor {
+
+    border: 1px solid rgb(221, 221, 221);
+    border-top-width: 1px;
+    border-right-width-value: 1px;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-bottom-width: 1px;
+    border-left-width-value: 1px;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-top-style: solid;
+    border-right-style-value: solid;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-bottom-style: solid;
+    border-left-style-value: solid;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-top-color: rgb(221, 221, 221);
+    border-right-color-value: rgb(221, 221, 221);
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-bottom-color: rgb(221, 221, 221);
+    border-left-color-value: rgb(221, 221, 221);
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image-source: none;
+    border-image-slice: 100% 100% 100% 100%;
+    border-image-width: 1 1 1 1;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: stretch stretch;
+	color: rgb(34, 34, 34);
+}
+
+.editor-content {
+    padding: 0px;
+    padding-top: 0px;
+    padding-right-value: 0px;
+    padding-bottom: 0px;
+    padding-left-value: 0px;
+    /*padding-left-ltr-source: physical;
+    padding-left-rtl-source: physical;
+    padding-right-ltr-source: physical;
+    padding-right-rtl-source: physical;*/
+}
+.textarea{
+	padding: 0px;
+	padding-bottom: 0px;
+	width: 100%;
+	height: 50%;
+
+}
+.editor-footer {
+    padding: 7px 8px;
+    padding-top: 7px;
+    padding-right-value: 8px;
+    padding-bottom: 7px;
+    padding-left-value: 8px;
+    padding-left-ltr-source: physical;
+    padding-left-rtl-source: physical;
+    padding-right-ltr-source: physical;
+    padding-right-rtl-source: physical;
+    position: relative;
+    border-top: 1px solid rgb(238, 238, 238);
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(238, 238, 238);
+    background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.5), rgb(238, 238, 238)) repeat scroll 0% 0% transparent;
+    background-color: transparent;
+    background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.5), rgb(238, 238, 238));
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+}
+
+.editor-footer .submit {
+    height: 100%;
+    display: block;
+    position: relative;
+    /*right: 0px;*/
+    top: 0px;
+    bottom: 0px;
+    /*font-size: 15px;*/
+    width: 80px;
+    /*border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color rgb(221, 221, 221);
+    border-top-color: -moz-use-text-color;
+    border-right-color-value: -moz-use-text-color;
+    border-bottom-color: -moz-use-text-color;
+    border-left-color-value: rgb(221, 221, 221);
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;*/
+
+	border-image: none;
+    border-image-source: none;
+    border-image-slice: 100% 100% 100% 100%;
+    border-image-width: 1 1 1 1;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: stretch stretch;
+
+    background: none repeat scroll 0% 0% transparent;
+    background-color: transparent;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+}
+
+.date{
+    color: rgb(255,0,0);
+}
+
+.statics{
+    padding: 10px 10px 10px 10px; 
+    border-top: 1px solid rgb(170, 170, 170);
+
+}
+.statics_head{
+    padding: 0px 10% 0px 3%;
+}
+.statics_detail{
+    padding: 0px 10% 0px 6%;
+}
+
+.statics_detail span{
+    font-weight:bold; 
+    color:blue;
+}
+

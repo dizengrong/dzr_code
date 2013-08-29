@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>群体极化调查</title>
+<link rel="stylesheet" type="text/css" href="/static/my_css.css" />
+</head>
+
+<body>
+{% include "head_nav.html" %}
+{% for survey_type, statics in board_dict.items %}
+<div class="statics">
+<p>调查{{survey_type}}统计如下：</p>
+	
+	{% for question_id, static in statics %}
+		<div class="statics_head"><p>选择问题{{question_id}}的答案分布如下：</p></div>
+		<div class="statics_detail" >
+			完全不同意: <span>{{static.answer1}}</span> | 基本不同意: <span>{{static.answer2}}</span> | 有点不同意: <span>{{static.answer3}}</span> | 有点同意: <span>{{static.answer4}}</span> | 基本同意: <span>{{static.answer5}}</span> | 完全同意: <span>{{static.answer6}}</span>
+		</div>
+	{% endfor %}
+</div>
+{% endfor %}
+</body>

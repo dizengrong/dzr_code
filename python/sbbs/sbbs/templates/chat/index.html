@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<meta http-equiv="refresh" content="900;url={% url 'survey' survey_type=101 %}" />
+<title></title>
+<script>google.load("jquery", "1.6");</script>
+<script src="/static/javascript/main.js"></script>
+<script>
+
+	function resize_ul(){	//改变聊天内容显示窗口的高度
+		$('showmsg_ul').style.height = $('showmsg_td').clientHeight + 'px';
+		var right_td_height = $('right_td').clientHeight;
+		$('right_table').style.height = right_td_height + 'px';
+		$('r2_div').style.height = (right_td_height - 170) + 'px';
+		$('showmsg_ul').scrollTop = 100000;
+	}
+</script>
+<style>
+  html,body{height:100%; overflow-y:hidden;}
+  .narrow_td{font-size:1px; line-height:1px; background:#F0F5FB;}
+  .inbox_border{border:1px #3A8DCF solid;}
+  .header li.current a{background:#F0F5FB !important;}
+</style>
+<link rel="stylesheet" type="text/css" href="/static/my_css.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/css1.css" />
+</head>
+
+<body onload="resize_ul();">
+  {% include "head_nav.html" %}
+  <table border="0" style="border:0; width:100%; height:100%;"; cellpadding="0" cellspacing="0">
+    
+    {% include "chat/js.html" %}<!--定义常用js函数-->
+    {% include "chat/ajax_send.html" %}
+    <tr>
+      <td colspan="5" style="height:5px;" class="narrow_td"><!--上外框--></td>
+    </tr>
+    <tr>
+      <td rowspan="4" style="width:5px;" class="narrow_td"><!--左外框--></td>
+      <td class="inbox_border" valign="top" id="showmsg_td">
+        <div style="position:relative;">{% include "chat/showmsg.html" %}</div><!--主体聊天内容显示窗口-->
+      </td>
+      <td rowspan="4" style="width:10px;" class="narrow_td"><!--右侧中竖框--></td>
+      <td style="width:180px; border-color:#85A6DD;" rowspan="4" class="inbox_border" valign="top" id="right_td">{% include "chat/announce_online.html" %}<!--在线列表--></td>
+      <td style="width:4px;" rowspan="4" class="narrow_td"><!--右外框--></td>
+    </tr>
+    <tr>
+      <td style="height:22px;" class="narrow_td"><!--字体设置框--></td>
+    </tr>
+    <tr>
+      <td style="height:80px;" class="inbox_border">  {% include "chat/inputbox.html" %}<!--输入框--></td>
+    </tr>
+    <tr>
+      <td style="height:16px; padding:5px 0px 0px 0px;" class="narrow_td">{% include "chat/button.html" %}<!--发送按钮框--></td>
+    </tr>
+    <tr>
+      <td colspan="5" style="height:40px;" class="narrow_td"><!--下外框--></td>
+    </tr>
+  </table>
+</body>
+</html>

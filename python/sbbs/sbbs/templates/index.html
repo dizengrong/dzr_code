@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>群体极化调查</title>
+<link rel="stylesheet" type="text/css" href="/static/my_css.css" />
+</head>
+
+<body>
+	<!-- <div class="nav_welcome">{{user_name}}</div> -->
+	{% include "head_nav.html" %}
+	<div align='center'>
+		<li><a href="{% url 'survey' survey_type=1 %}">调查一请进</a> </li>
+		<li><a href="{% url 'survey' survey_type=2 %}">调查二请进</a> </li>
+		<li><a href="{% url 'survey' survey_type=100 %}">调查xxx请进</a> </li>
+		<li><a href="{% url 'survey_statics' %}">调查结果统计</a> </li>
+	</div>
+</body>

@@ -1,0 +1,12 @@
+1.安装python2.7，然后将python安装目录(下面以PYTHON_INSTALL_PATH来表示)加入到系统的环境变量中
+2.打开cmd，进入本文件的目录下，找到ez_setup.py，然后执行：python ez_setup.py
+3.进入到PYTHON_INSTALL_PATH/Scripts目录下，然后执行：easy_install.exe "django==1.5.1"
+4.重新打开cmd，进入本文件的目录下，
+	然后执行：manage.py syncdb
+	成功后接着执行：manage.py runserver ip地址:端口
+	(查看本机的ip地址可以在cmd下敲命令：ipconfig)
+	启动成功就可以访问了
+
+5.修改对应的调查内容可以看	sbbs/templates/survey*.html，现在里面有survey1.html和survey2.html，分别对应调查一和调查二的
+
+6.如果想清理掉数据重新来过，可以关闭服务，然后删除sbbs\sbbs\sbbs.db文件，再重新执行第4步

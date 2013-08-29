@@ -1,0 +1,90 @@
+<style>
+	.r_title{
+		text-indent:8px;
+		background:#F3F8FC;
+		border-bottom:1px #85A6DD solid;
+	}
+	#showonline_ul{
+		list-style:outside none outside;
+		padding:0;
+		margin:0;
+		overflow:auto;
+		word-wrap:break-word;
+	}
+	#showonline_ul li{
+		padding:5px 0px 0px 5px;
+		height:20px;
+		line-height:20px;
+	}
+</style>
+<table id="right_table" style="position:absolute; width:180px;" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <script type="text/javascript">
+		function show_r_btn(){
+			$('edit_button').style.display='';
+		}
+		function hide_r_btn(){
+			$('edit_button').style.display='none';
+		}
+		function click_r_btn(){
+			$('edit_button').style.display='none';
+			$('announce_edit').style.display='';
+			createXMLHttp();
+			xmlHttp.onreadystatechange = function(){click_r_btn_dodo_getannounce()};
+			xmlHttp.open('get', '/chat/ajax/announce/'+parseInt(Math.random()*100000)+'/', true);
+			xmlHttp.send(null);
+		}
+		function click_r_btn_dodo_getannounce(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					$('announce_textarea').value = xmlHttp.responseText;
+				}
+			}
+		}
+		function announce_submit(){
+			createXMLHttp();
+			xmlHttp.onreadystatechange = function(){announce_post_dodo()};
+			xmlHttp.open("post", "/chat/ajax/announce/", true);
+			xmlHttp.setRequestHeader("cache-control","no-cache");
+			xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			xmlHttp.send('announce='+$('announce_textarea').value);
+		}
+		function announce_post_dodo(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					$('announce_edit').style.display = 'none';
+					$('announce_show').innerHTML = xmlHttp.responseText;
+				}
+			}
+		}
+	</script>
+    <td valign="top">
+	  <div style="height:150px; position:relative;"
+	  		% if my.groupid == 4:
+	  			onmouseover="show_r_btn()" onmouseout="hide_r_btn()"
+			% endif
+	  >
+	    <div class="r_title">公告</div>
+	    <div id='edit_button' style="position:absolute; top:116px; left:140px; border:1px #0000FF solid; background:#00CCFF; cursor:pointer; display:none; z-index:101;" onclick="click_r_btn()">编辑</div>
+	    <div id='announce_show' style="position:absolute; top:24px; left:5px; width:170px; height:120px; background:#FFF; overflow:hidden; z-index:100;">
+	    	{{announce}}
+	    	<!-- <a href="{% url 'survey' survey_type=101 %}">继续参与调查</a> -->
+	    </div>
+	    <div id='announce_edit' style="position:absolute; top:24px; left:5px; width:170px; height:120px; background:#FFF; display:none; z-index:102;">
+	  	  <textarea id='announce_textarea' style="overflow:auto; width:164px; height:94px;"></textarea>
+		  <div style="margin:2px 0px 0px 0px; height:16px; border:1px #999999 outset; line-height:16px; text-align:center; background:#bbb; width:40px; cursor:pointer;" onclick="announce_submit()">确认</div>
+	    </div>
+	 </div>
+	</td>
+  </tr>
+  <tr>
+    <td><div class="r_title" style="border-top:1px #85A6DD solid;">参与者</div></td>
+  </tr>
+  <tr>
+    <td id="r2_td" valign="top">
+	  <div id="r2_div" style="overflow-y:auto; border:0px red solid;">
+		<ul id='showonline_ul'>取读中...</ul>
+	  </div>
+	</td>
+  </tr>
+</table>

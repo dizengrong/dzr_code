@@ -1,0 +1,219 @@
+<script>
+/*禁用backspace键的后退功能，但是可以删除文本内容*/
+document.onkeydown = check;
+function check(e) {
+	var code;
+	if (!e) var e = window.event;
+	if (e.keyCode) code = e.keyCode;
+	else if (e.which) code = e.which;
+	if (
+			(
+				(
+					event.keyCode == 8								//BackSpace
+				)
+				&&
+				(
+					(
+						event.srcElement.type != "text" &&
+						event.srcElement.type != "textarea" &&
+						event.srcElement.type != "password"
+					)
+					||
+					event.srcElement.readOnly == true
+				)
+			)
+			||
+			(
+				(event.ctrlKey) && (event.keyCode == 78)			//CtrlN
+			)
+		)
+	{
+		event.keyCode = 0;
+		event.returnValue = false;
+	}
+	return true;
+}
+
+var username = '{{user_name}}';
+var firefox = (navigator.userAgent.indexOf("Firefox")>0);
+var pageid = {{room}};
+var oldmsg = '';//定义全局变量存储刚刚发出去的消息内容，当发送失败的时候再次发送
+var msgkey = 0;	//取聊天页面key，定义为全局变量
+
+/*初始化及获取聊天页面key相关操作*/
+init_key();
+function init_key(){
+	msgkey = parseInt(Math.random()*1000000000);
+	createXMLHttp();
+	xmlHttp.open('get', '/chat/ajax/initkey/'+msgkey+'/', true);
+	xmlHttp.send(null);
+}
+function getmylastid2(){
+	createXMLHttp();
+	xmlHttp.open('get', '/chat/ajax/getmylastid2/'+parseInt(Math.random()*100000)+'/', true);
+	xmlHttp.send(null);
+}
+
+/*获取最新消息的相关操作*/
+function getmsg_ajax(){
+	createXMLHttp();
+	if(!firefox){xmlHttp.onreadystatechange = function(){getmsg_dodo()};}
+	xmlHttp.open('get', '/chat/'+ {{room}} + '/ajax/getmsg/'+parseInt(Math.random()*100000)+'/', false);
+	try{
+		xmlHttp.send(null);
+	}catch(e){
+		listen_ajax();	//如果服务器关闭继续侦听
+	}
+	if(firefox){getmsg_dodo();}
+}
+function getmsg_dodo(){
+	if(xmlHttp.readyState==4){
+		if(xmlHttp.status==200){
+			result = xmlHttp.responseText;
+			if(result.substr(0,3) == 'msg'){	//以“msg”开头的返回结果是聊天内容
+				result = result.substr(3);
+				//alert(result);
+				//alert(msgkey);
+				// msgkey1 = msgkey.toString();
+				if(true){
+					result = result.replace(/\': u\'/gi,'\':\'');
+					eval('json='+result+';');
+					// json.sort(function(a,b){return a["mid"]>b["mid"]?1:a["mid"]==b["mid"]?0:-1});	//倒序
+					// alert(json.length);
+					for(i=0; i<json.length; i++){
+						if(json[i]['username'] == username){
+							var msguser = '<font color=green>' + json[i]['username'] + '</font>';
+						}else{
+							var msguser = '<font color=blue>' + json[i]['username'] + '</font>';
+						}
+						var msgtime = ' ' + json[i]['dateline'];
+						var msgcontent = '<div>' + json[i]['msg'] + '</div>';
+						var li = document.createElement('li');
+						li.innerHTML = msguser + msgtime + msgcontent;
+						$('showmsg_ul').appendChild(li);
+					}
+
+					{% for msg in msglist %}
+						{% if msg.username == username %}
+							var msguser = '<font color=green>' + {{msg.username}} + '</font>';
+						{% else %}
+							var msguser = '<font color=blue>' + {{msg.username}} + '</font>';
+						{% endif %}
+						var msgtime = ' ' + {{msg.dateline}};
+						var msgcontent = '<div>' + {{msg.msg}} + '</div>';
+						var li = document.createElement('li');
+						li.innerHTML = msguser + msgtime + msgcontent;
+						$('showmsg_ul').appendChild(li);
+						alert($('showmsg_ul').childNodes.length);
+					{% endfor %}
+				}else{
+					//alert('re_init_msgkey');
+					getmylastid2();
+					init_key();
+					getmsg_ajax();
+				}
+				$('showmsg_ul').scrollTop = 100000;								//自动滚屏
+				childlength = $('showmsg_ul').childNodes.length;				//统计子节点个数
+				for(i=0; i<childlength-150; i++){
+					$('showmsg_ul').removeChild($('showmsg_ul').firstChild)		//自动删除顶部节点
+				}
+				listen_ajax();
+			}else if(result == ''){
+				listen_ajax();
+			}else if(result == 'oldpage'){
+				alert('您已经在别的窗口打开群聊，如果继续在本窗口群聊，请按F5刷新本窗口');
+			}
+		}
+	}
+}
+
+/*获取最新在线列表的相关操作*/
+function getonline_ajax(){
+	createXMLHttp();
+	if(!firefox){xmlHttp.onreadystatechange = function(){getonline_dodo()};}
+	xmlHttp.open('get', '/chat/ajax/getonline/'+parseInt(Math.random()*100000)+'/', false);
+	try{
+		xmlHttp.send(null);
+	}catch(e){
+		listen_ajax();	//如果服务器关闭继续侦听
+	}
+	if(firefox){getonline_dodo();}
+}
+function getonline_dodo(){
+	if(xmlHttp.readyState==4){
+		if(xmlHttp.status==200){
+			$('showonline_ul').innerHTML = xmlHttp.responseText;
+			listen_ajax();
+		}
+	}
+}
+
+/*实时侦听消息状态的相关操作*/
+function listen_ajax(){
+	createXMLHttp();
+	xmlHttp.onreadystatechange = function(){listen_dodo()}
+	xmlHttp.open('get', '/chat/{{room}}/ajax/listen/'+parseInt(Math.random()*100000)+'/', true);
+	xmlHttp.send(null);
+}
+function listen_dodo(){
+	if(xmlHttp.readyState==4){
+		if(xmlHttp.status==200){
+			result = xmlHttp.responseText;
+			if(result.indexOf('newmsg')>=0){
+				getmsg_ajax();
+			}else if(result.indexOf('onlinechanged')>=0){
+				getonline_ajax();
+            }else if(result.indexOf('请先')>=0){
+                alert('请先登录');
+			}else{
+				listen_ajax();
+			}
+		}else{
+			alert(xmlHttp.responseText+','+xmlHttp.status+'，服务器关闭');	//服务器关闭
+		}
+	}
+}
+
+
+/*发送消息的相关操作*/
+function post_ajax(msg){
+	createXMLHttp();
+	xmlHttp.onreadystatechange = function(){post_dodo()};
+	xmlHttp.open("post", "/chat/{{room}}/ajax/postmsg/", true);
+	xmlHttp.setRequestHeader("cache-control","no-cache");
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	c = getCookie('csrftoken');
+	// xmlhttp.setRequestHeader("X-CSRFToken", c);
+	xmlHttp.send('msg=' + msg);
+	$('inputbox').readOnly = true;
+}
+
+
+
+function post_dodo(){
+	$('inputbox').readOnly = false;
+	$('inputbox').value = '';
+	$('inputbox').focus();
+	if(xmlHttp.readyState==4){
+		if(xmlHttp.status==200){
+			result = xmlHttp.responseText;
+			if(result=='postmsgok'){
+				listen_ajax();
+			}else if(result=='wrongkey'){
+				init_key();
+				msg = 'msg=' + c('key'+oldmsg, 'ENCODE', msgkey.toString())
+				post_ajax(msg);
+			}
+		}
+	}
+}
+function post_msg(){
+	var msg = $('inputbox').value;
+	if(msg.replace(/\s+/g,'')==''){
+		alert('聊天内容不能为空');
+		return;
+	}
+	oldmsg = msg;	//备份一份将要发出的消息，如果发送失败则重发
+	post_ajax(msg);
+}
+</script>

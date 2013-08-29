@@ -1,0 +1,31 @@
+<form action="{% url 'submit_survey' survey_type=type %}" method="post">
+{% csrf_token %} 
+<div>
+	{% for question in questions %}
+	<div class="question_detail">
+		<span>问题{{question.question_id}}：{{question.describe}}</span></br>
+		<input type="radio" name="answer{{question.question_id}}" value="1"  />A1 一定选择A
+		<input type="radio" name="answer{{question.question_id}}" value="2"  />A2 选择A
+		<input type="radio" name="answer{{question.question_id}}" value="3"  />A3 可能选择A
+		<input type="radio" name="answer{{question.question_id}}" value="4"  />B1 一定选择B
+		<input type="radio" name="answer{{question.question_id}}" value="5"  />B2 选择B
+		<input type="radio" name="answer{{question.question_id}}" value="6" checked="true"  />B3 可能选择B</br>
+	</div>
+	{% endfor %}
+</div>
+<div>
+	请填写如下问卷，填写完毕请提交。
+	<li>年龄</li>
+	<li>性别</li>
+	<li>职业</li>
+
+</div>
+<div class="question_submit">
+	{% if is_participated %}
+		<span style="color:red">您已经参与过该调查了</span>
+	{% else %}
+		<input type="submit" value="提交" class="submit_new_thread" />
+	{% endif %}
+</div>
+</form>
+

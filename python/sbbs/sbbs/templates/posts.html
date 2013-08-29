@@ -1,0 +1,26 @@
+{% load mod %}
+<div id="comments-list">
+{% for post in posts %}
+  {% if only_show_self_comment %}
+    {%if post.user_name == user_name %}
+    <div id="cid-{{post.id}}" class="comment" data-author="{{post.user_name}}" data-id="{{post.id}}">
+        <div >
+            <img style="display: inline;" src="/static/image/head{{forloop.counter|mod}}.png" alt="{{post.user_name}}" height="50" width="50">
+           {{post.user_name}}: <pre >{{post.comment}}
+----------------------------
+<span class="date">发表于： {{post.post_time|date:"Y-m-d H:i:s"}} </span></pre>
+        </div>
+    </div>
+    {% endif %}
+  {% else %}
+    <div id="cid-{{post.id}}" class="comment" data-author="{{post.user_name}}" data-id="{{post.id}}">
+        <div >
+            <img style="display: inline;" src="/static/image/head{{forloop.counter|mod}}.png" alt="{{post.user_name}}" height="50" width="50">
+           {{post.user_name}}: <pre >{{post.comment}}
+----------------------------
+<span class="date">发表于： {{post.post_time|date:"Y-m-d H:i:s"}} </span></pre>
+        </div>
+    </div>
+  {% endif %}
+{% endfor %}
+</div>

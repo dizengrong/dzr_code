@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>群体极化调查</title>
+  <link rel='stylesheet' href="/static/site.css"/>
+  <!-- <link rel='stylesheet' href="http://bm-cdn.b0.upaiyun.com/a411680/css/site.css?ver=a411680"/> -->
+  <link rel="stylesheet" type="text/css" href="/static/my_css.css" />
+  <link rel='shortcut icon' href='http://bm-cdn.b0.upaiyun.com/a411680/img/icons/favicon.png'/>
+</head>
+
+<body class="docs">
+<!-- <div class="nav_welcome">{{user_name}}</div> -->
+{% include "head_nav.html" %}
+  <div class="container">
+    <div id="main-content">
+      
+    <div class="highlight">
+        <p class="" style="width:600px;">
+            “kdkcn”对明天将要上市的手机进行产品预告
+        </p>
+    </div>
+    <br/>
+    <div class="highlight">
+        <p class="" style="width:600px;">
+          手机信息
+          <img src="/static/image/image1.jpg" alt="XXX手机" title="XXX手机"  border="0"/>
+        </p>
+    </div>
+    <div id="bm_comments" class="comments-holder"> 
+      {% include "posts.html" %}
+    </div>
+  </br>
+    <!-- <div > -->
+    <!-- <form action="{% url 'post' survey_type=type %}" method="post" class="comment_rich_editor">
+    {% csrf_token %} 
+        <div class="textarea">{{form.comment}}</div>
+        <div class="editor-footer">
+            <input id="comment-submit" class="btn submit" value="发布评论" type="submit">
+            <div class="clear"></div>
+        </div>
+    </form> -->
+    <!-- </div> -->
+    <div class="clear"></div>
+
+    <div class="question">
+        <p>通过对以上评论的阅读，请你完成以下的问题</p>
+        {% include "question.html" %}
+    </div>
+
+    </div>
+</br>
+    <div class="clear"></div>
+  </div>
+
+  
+
+</body>
+</html>
+ 

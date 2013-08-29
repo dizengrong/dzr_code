@@ -1,0 +1,23 @@
+<form action="{% url 'submit_survey' survey_type=type %}" method="post">
+{% csrf_token %} 
+<div>
+	{% for question in questions %}
+	<div class="question_detail">
+		<span>问题{{question.question_id}}：{{question.describe}}</span></br>
+		<input type="radio" name="answer{{question.question_id}}" value="1"  />完全不同意
+		<input type="radio" name="answer{{question.question_id}}" value="2"  />基本不同意
+		<input type="radio" name="answer{{question.question_id}}" value="3"  />有点不同意
+		<input type="radio" name="answer{{question.question_id}}" value="4"  />有点同意
+		<input type="radio" name="answer{{question.question_id}}" value="5"  />基本同意
+		<input type="radio" name="answer{{question.question_id}}" value="6" checked="true"  />完全同意</br>
+	</div>
+	{% endfor %}
+</div>
+<div class="question_submit">
+	{% if is_participated %}
+		<span style="color:red">您已经参与过该调查了</span>
+	{% else %}
+		<input type="submit" value="提交" class="submit_new_thread" />
+	{% endif %}
+</div>
+</form>

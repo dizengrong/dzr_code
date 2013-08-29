@@ -1,0 +1,35 @@
+<script>
+	function chan_img(obj, num){
+		url = '/static/image/button' + num + '.bmp';
+		obj.style.backgroundImage = 'url(' + url + ')';
+		if(num == 3){
+			obj.style.lineHeight = '24px';
+			obj.style.textIndent = '1px';
+		}else if(num == 2){
+			obj.style.lineHeight = '23px';
+			obj.style.textIndent = '0px';
+		}
+	}
+	function show_msglist(){
+		window.open('/chat/msgs/')
+	}
+</script>
+<style>
+	.button{
+		width:63px;
+		height:23px;
+		line-height:23px;
+		font-family:宋体;
+		font-size:12px;
+		text-align:center;
+		background-image:url(/static/image/button1.bmp);
+		cursor:default;
+		-moz-user-select:none;
+	}
+</style>
+<div style="float:right;">
+  <div style="background-image:url(/static/image/button4.bmp);" class="button" onMouseOver="chan_img(this, 2)" onMouseOut="chan_img(this, 4)" onMouseDown="chan_img(this, 3);post_msg();" onMouseUp="chan_img(this, 2)" onselectstart='return false;'>发送(<u>S</u>)</div>
+</div>
+<div style="float:left;">
+  <div class="button" onMouseOver="chan_img(this, 2)" onMouseOut="chan_img(this, 1)" onMouseDown="chan_img(this, 3);" onclick="show_msglist();" onMouseUp="chan_img(this, 2)" onselectstart='return false;'>交谈记录</div>
+</div>
