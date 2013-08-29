@@ -520,14 +520,6 @@
 	"buffers":
 	[
 		{
-			"file": "thread/cthread.h",
-			"settings":
-			{
-				"buffer_size": 744,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "thread/cthread.cc",
 			"settings":
 			{
@@ -632,6 +624,7 @@
 	},
 	"file_history":
 	[
+		"/E/gitcode/dzr_code/c++/thread/cthread.h",
 		"/E/gitcode/new_code/c++/cplus.sublime-project",
 		"/E/gitcode/my_code/.git/refs/remotes/origin/data_valid",
 		"/E/gitcode/my_code/.git/info/exclude",
@@ -758,8 +751,7 @@
 		"/E/project/t6_server/proto/front-end/line/m_examine_fb_hidden_enter_tos.as",
 		"/E/project/t6_server/proto/front-end/common/p_effect.as",
 		"/E/project/t6_server/app/game/gateway/src/mgeeg_router.erl",
-		"/E/project/t6_server/config/src/cfg_rage_practice.erl",
-		"/E/project/t6_server/as3/SocketCommand.as"
+		"/E/project/t6_server/config/src/cfg_rage_practice.erl"
 	],
 	"find":
 	{
@@ -1066,23 +1058,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "thread/cthread.h",
+					"file": "thread/cthread.cc",
 					"settings":
 					{
-						"buffer_size": 744,
+						"buffer_size": 2309,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								80,
-								80
+								2114,
+								2139
 							]
 						],
 						"settings":
@@ -1098,33 +1090,6 @@
 				},
 				{
 					"buffer": 1,
-					"file": "thread/cthread.cc",
-					"settings":
-					{
-						"buffer_size": 2309,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								759,
-								759
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 487.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "thread/test.cc",
 					"settings":
 					{
@@ -1135,8 +1100,8 @@
 						"selection":
 						[
 							[
-								799,
-								799
+								298,
+								298
 							]
 						],
 						"settings":
@@ -1145,7 +1110,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 660.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
