@@ -1,0 +1,18 @@
+<<<<<<< .mine
+#Tue Jun 19 15:43:28 CST 2012
+backend_version=R14B
+=======
+#Tue Jun 19 15:35:28 CST 2012
+backend_version=R15B
+>>>>>>> .r643
+compiler/export_all=true
+eclipse.preferences.version=1
+external_includes=
+external_modules=
+include_dirs=include
+output_dir=ebin
+<<<<<<< .mine
+source_dirs=tools;src/system/scene;src/system/player;src/log;src/system;src/pp;src/util/log;src/data_storage;src/data;src/util;src/gen_cache;src/util/mysql;src/main_control;src;src/protocol;src/system/role
+=======
+source_dirs=src/system/scene;src/system/player;src/log;src/system;tools;src/pp;src/util/log;src/data_storage;src/data;src/util;src/gen_cache;src/util/mysql;src/main_control;src;src/protocol;src/system/role
+>>>>>>> .r643

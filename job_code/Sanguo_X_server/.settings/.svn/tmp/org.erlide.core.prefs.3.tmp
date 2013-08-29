@@ -1,0 +1,17 @@
+<<<<<<< .mine
+#Wed Sep 12 12:54:40 CST 2012
+=======
+#Wed Sep 12 11:36:38 CST 2012
+>>>>>>> .r3462
+backend_version=R15B
+compiler/export_all=true
+eclipse.preferences.version=1
+external_includes=
+external_modules=
+include_dirs=include
+output_dir=ebin
+<<<<<<< .mine
+source_dirs=src/system/arena;src/system/battle;src/system/new_scene;src/system/guild;src/util/debug;src/util/mysql;src/util;src/protocol;src/pp;src/main_control;src/system;src/system/xunxian;src/system/fengdi;src/system/scene;src/system/role;src/system/player;src/system/items;tools;src/log;src/gen_cache;src/data;src
+=======
+source_dirs=src/system/arena;src/system/battle;src/system/guild;src/util/debug;src/util/mysql;src/util;src/protocol;src/pp;src/main_control;src/system;src/system/xunxian;src/system/fengdi;src/system/scene;src/system/role;src/system/player;src/system/items;tools;src/log;src/gen_cache;src/data;src
+>>>>>>> .r3462
