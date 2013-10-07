@@ -83,7 +83,7 @@ options = {"py2exe": {"compressed": 1,
 					  }
 		  },
 zipfile = None,
-windows = [{"script":"main.py", "icon_resources":[(1, "my.ico")]}],
+windows = [{"script":"main2.py", "icon_resources":[(1, "my.ico")]}],
 data_files = [("", [r"PortSetting.xls", r"my.ico"]),
 			  ("templates", []),
 			  ("documents", ["index.html"])
