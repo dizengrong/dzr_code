@@ -86,7 +86,9 @@ zipfile = None,
 windows = [{"script":"main2.py", "icon_resources":[(1, "my.ico")]}],
 data_files = [("", [r"PortSetting.xls", r"my.ico"]),
 			  ("templates", []),
-			  ("documents", ["index.html"])
+			  ("config", ["config/sessions"]),
+			  ("tools", []),
+			  ("documents", ["documents/index.html"])
     	     ]
 )
 
