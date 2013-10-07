@@ -119,7 +119,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u"设备配置程序v1.01", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u"设备配置程序v2.00", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -474,7 +474,6 @@ class LicenseManager(object):
 			return 0
 		except Exception, e:
 			print 'open license file failed, exception:', e
-			traceback.print_last()
 			return 1
 	
 	def IsAuthorizedMachine(self):
