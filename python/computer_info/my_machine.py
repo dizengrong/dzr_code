@@ -35,7 +35,12 @@ class Machine(object):
 	def get_cpu_serial_no(self):
 		s = ''
 		for cpu in self.wmi.Win32_Processor():
-			s += cpu.ProcessorId.strip() + "|"
+			tmp = ""
+			try:
+				tmp = cpu.ProcessorId.strip()
+			except Exception, e:
+				print "get cpu serial number exception: ", e
+			s += tmp + "|"
 		return s[:-1]
 
 	def get_disk_serial_no(self):
