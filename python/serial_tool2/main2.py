@@ -538,7 +538,7 @@ if __name__ == "__main__":
 	app = wx.PySimpleApp(0)
 	wx.InitAllImageHandlers()
 	license_mag = LicenseManager()
-	val = license_mag.OpenLicense('./license.license')
+	val = license_mag.OpenLicense(u'./license.license')
 	if val == 1:
 		util.ShowMessageDialog(None, u'该软件没有正确的授权，无法使用！', u'错误')
 	elif val == 2:
