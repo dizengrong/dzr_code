@@ -4,7 +4,7 @@
 import my_machine, GenComputerInfoFrame, wx, csv, base64, os
 
 def generate_computer_info():
-	path = './computer_info'
+	path = u'./computer_info'
 	fd          = open(path, "w")
 	machine = my_machine.Machine()
 	dic         = {}
@@ -20,7 +20,7 @@ def generate_computer_info():
 	return os.path.abspath(path)
 
 def get_computer_info():
-	fd = open("computer_info", "r")
+	fd = open(u"computer_info", "r")
 	dic = eval(base64.decodestring(fd.read()))
 	print dic
 	return dic
