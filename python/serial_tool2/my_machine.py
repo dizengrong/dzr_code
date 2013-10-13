@@ -35,19 +35,33 @@ class Machine(object):
 	def get_cpu_serial_no(self):
 		s = ''
 		for cpu in self.wmi.Win32_Processor():
-			s += cpu.ProcessorId.strip() + "|"
+			tmp = ""
+			try:
+				tmp = cpu.ProcessorId.strip()
+			except Exception, e:
+				print "get cpu serial number exception: ", e
+			s += tmp + "|"
 		return s[:-1]
 
 	def get_disk_serial_no(self):
 		s = ''
 		for physical_disk in self.wmi.Win32_DiskDrive():
-			s += physical_disk.SerialNumber.strip() + "|"
+			tmp = ""
+			try:
+				tmp = physical_disk.SerialNumber.strip()
+			except Exception, e:
+				print "get disk serial number exception: ", e
+			s += tmp + "|"
 		return s[:-1]
 
 
 	def get_bios_serial_no(self):
 		for bios_id in self.wmi.Win32_BIOS():
-			return bios_id.SerialNumber.strip()
+			try:
+				return bios_id.SerialNumber.strip()
+			except Exception, e:
+				print "get bios serial number exception: ", e
+				return ""
 
 	def get_mac_address(self):
 		s = ''
