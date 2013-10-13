@@ -63,7 +63,7 @@ class MyFrame(AuthorizeFrame.MyLicenseControlFrame):
 				self.license_dic['version'] = base64.encodestring(u'dzr2') #注册版
 
 			print self.license_dic
-			path        = './license.license'
+			path        = u'./license.license'
 			fd          = open(path, 'w')
 			encrypt_str =  base64.encodestring(str(self.license_dic))
 			fd.write(encrypt_str)
