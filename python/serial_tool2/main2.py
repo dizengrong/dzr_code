@@ -463,18 +463,18 @@ class LicenseManager(object):
 			fd.close()
 
 			if not self.IsDateValid():
-				return 2
+				return (2, "")
 
 			if self.IsLicenseExpired():
-				return 3
+				return (3, "")
 
 			if not self.IsAuthorizedMachine():
-				return 4
+				return (4, "")
 
-			return 0
+			return (0, "")
 		except Exception, e:
 			print 'open license file failed, exception:', e
-			return 1
+			return (1, e)
 	
 	def IsAuthorizedMachine(self):
 		machine = my_machine.Machine()
@@ -538,9 +538,9 @@ if __name__ == "__main__":
 	app = wx.PySimpleApp(0)
 	wx.InitAllImageHandlers()
 	license_mag = LicenseManager()
-	val = license_mag.OpenLicense(u'./license.license')
+	(val, msg) = license_mag.OpenLicense(u'./license.license')
 	if val == 1:
-		util.ShowMessageDialog(None, u'该软件没有正确的授权，无法使用！', u'错误')
+		util.ShowMessageDialog(None, u'该软件没有正确的授权，无法使用！%s' % (msg), u'错误')
 	elif val == 2:
 		util.ShowMessageDialog(None, u'系统时间有问题，请您正确设置时间并合法使用该软件', u'错误')
 	elif val == 3:
