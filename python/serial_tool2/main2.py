@@ -447,7 +447,7 @@ class MyChangeIpDialog(ChangeIpDialog.ChangeIpDialog):
 
 		if ip == "" or mask == "" or gateway == "":
 			return
-		cmd = "netsh interface ip set address name=\"%s\" source=static addr=%s mask=%s gateway=%s" % (connection_name, ip, mask, gateway)
+		cmd = "netsh interface ip set address name=\"%s\" source=static addr=%s mask=%s gateway=%s 1" % (connection_name, ip, mask, gateway)
 		util.ShowMessageDialog(self, util.ExecuteCmd(cmd.encode('gbk')), u"执行结果")
 		event.Skip()
 
