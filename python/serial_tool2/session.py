@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-import util, serial, os, telnetlib, ConfigParser
+import util, serial, os, telnetlib, ConfigParser, time
 from util import PortSetting
 
 # 记录目前有多少个
@@ -56,7 +56,9 @@ class SessionManager(object):
 				else:
 					ip = self.session_conf.get(session_name, "ip")
 					port = int(self.session_conf.get(session_name, "port"))
-					session = TelnetSession(ip, port, session_name = session_name)
+					username = self.session_conf.get(session_name, "username")
+					password = self.session_conf.get(session_name, "password")
+					session = TelnetSession(ip, port, session_name = session_name, username = username, password = password)
 				log_file = self.session_conf.get(session_name, "logFile")
 				session.SetLogFile(log_file)
 				self.saved_sessions.append(session)
@@ -162,6 +164,8 @@ class SessionManager(object):
 			else:
 				self.session_conf.set(new_sec_name, "ip", session.ip)
 				self.session_conf.set(new_sec_name, "port", session.port)
+				self.session_conf.set(new_sec_name, "username", session.username)
+				self.session_conf.set(new_sec_name, "password", session.password)
 
 			self.AddSavedSession(session)
 			self.session_conf.set("global", "total_session", self.total_session)
@@ -285,10 +289,12 @@ class SerialSession(SessionBase):
 # telnet://202.85.101.136:8603
 
 class TelnetSession(SessionBase):
-	def __init__(self, ip, port = 23, session_name = None):
+	def __init__(self, ip, port = 23, session_name = None, username = '', password = ''):
 		super(TelnetSession, self).__init__()
 		self.ip = ip
 		self.port = port
+		self.username = username
+		self.password = password
 		
 		if session_name is not None:
 			self.session_name = session_name
@@ -299,6 +305,13 @@ class TelnetSession(SessionBase):
 	def Open(self):
 		try:
 			self.handler = telnetlib.Telnet(self.ip, port = self.port, timeout = 3)
+			if self.username != '':
+				self.handler.read_until('login: ', timeout = 2)
+				self.handler.write(self.username + '\n')
+
+				self.handler.read_until('password: ', timeout = 2)
+				self.handler.write(self.username + '\n')
+
 			self.StartLog()
 			return True
 		except Exception, e:
@@ -311,6 +324,7 @@ class TelnetSession(SessionBase):
 
 	def Read(self, size):
 		if self.IsAlive():
+			time.sleep(0.03)
 			return self.handler.read_some()
 		else:
 			return ""

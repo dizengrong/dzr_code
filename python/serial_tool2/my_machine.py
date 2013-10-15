@@ -68,5 +68,4 @@ class Machine(object):
 		for mac in self.wmi.Win32_NetworkAdapter():
 			if mac.AdapterTypeId != None and mac.AdapterTypeId == 0:
 				if mac.PNPDeviceID[0:3] == 'PCI':
-					s += mac.MACAddress + '|'
-		return s[:-1]
+					return mac.MACAddress

@@ -93,7 +93,7 @@ class Mytty ( wx.Frame ):
 		self.m_panel6.SetSizer( bSizer11 )
 		self.m_panel6.Layout()
 		bSizer11.Fit( self.m_panel6 )
-		self.m_notebook2.AddPage( self.m_panel6, u"serial连接", True )
+		self.m_notebook2.AddPage( self.m_panel6, u"serial连接", False )
 		self.m_panel7 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer13 = wx.BoxSizer( wx.HORIZONTAL )
 		
@@ -110,6 +110,20 @@ class Mytty ( wx.Frame ):
 		
 		self.m_textCtrl14 = wx.TextCtrl( self.m_panel7, wx.ID_ANY, u"23", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer13.Add( self.m_textCtrl14, 0, wx.ALL|wx.EXPAND, 2 )
+		
+		self.m_staticText201 = wx.StaticText( self.m_panel7, wx.ID_ANY, u"用户名", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText201.Wrap( -1 )
+		bSizer13.Add( self.m_staticText201, 0, wx.ALIGN_CENTER|wx.ALL|wx.LEFT|wx.RIGHT, 2 )
+		
+		self.m_textCtrl121 = wx.TextCtrl( self.m_panel7, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer13.Add( self.m_textCtrl121, 0, wx.ALL|wx.EXPAND, 2 )
+		
+		self.m_staticText21 = wx.StaticText( self.m_panel7, wx.ID_ANY, u"密码", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText21.Wrap( -1 )
+		bSizer13.Add( self.m_staticText21, 0, wx.ALIGN_CENTER|wx.LEFT|wx.RIGHT, 2 )
+		
+		self.m_textCtrl13 = wx.TextCtrl( self.m_panel7, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_PASSWORD )
+		bSizer13.Add( self.m_textCtrl13, 0, wx.ALL|wx.EXPAND, 2 )
 		
 		self.m_button111 = wx.Button( self.m_panel7, wx.ID_ANY, u"修改本机ip地址", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer13.Add( self.m_button111, 0, wx.ALL|wx.EXPAND, 2 )
@@ -133,7 +147,7 @@ class Mytty ( wx.Frame ):
 		self.m_panel7.SetSizer( bSizer13 )
 		self.m_panel7.Layout()
 		bSizer13.Fit( self.m_panel7 )
-		self.m_notebook2.AddPage( self.m_panel7, u"telnet连接", False )
+		self.m_notebook2.AddPage( self.m_panel7, u"telnet连接", True )
 		
 		bSizer5.Add( self.m_notebook2, 0, wx.EXPAND |wx.ALL, 0 )
 		

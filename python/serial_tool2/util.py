@@ -71,22 +71,13 @@ def GetAllNetworkName():
     ret = []
     for str in os.popen("netsh interface show int").readlines():
         # str = str.decode('GBK')
-        index = 0
-        count = 0
-        while index < len(str):
-            if str[index] == ' ':
-                count += 1
-                index += 1
-                while str[index] == ' ':
-                    index += 1
-            else:
-                index += 1
-            if count >= 3:
-                break
-        if count >= 3:
-            # print str[index:-1].decode("GBK")
-            ret.append(str[index:-1])
-    return ret[1:]
+        str = str.strip('\n')
+        str = str.strip(' ')
+        if str == '':
+            continue
+        str = str[::-1] # 反转字符串
+        ret.append(str.split('  ')[0][::-1])
+    return ret[2:]
 
 # 执行外部命令，并获取结果
 def ExecuteCmd(cmd):

@@ -38,6 +38,8 @@ license_mag = None
 # 	m_textCtrl14: telnet连接输入port的控件
 # 	m_textCtrl71: 直接发送命令的控件
 # 	m_menu2: 外部工具菜单
+# 	m_textCtrl121: telnet登陆的用户名
+# 	m_textCtrl13: telnet登陆的密码
 class MyttyFrame(Mytty.Mytty):
 	#会话管理（类变量）
 	session_manager = session.SessionManager()
@@ -119,7 +121,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u"设备配置程序v2.00", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备配置程序 mytty-v2.01 \n 制作：nx工作室 \n 联系方式：\n      联系人：谢志文\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -157,7 +159,10 @@ class MyttyFrame(Mytty.Mytty):
 			dlg.Destroy()
 	
 	def OnOpenTelnet( self, event ):
-		session = TelnetSession(self.m_textCtrl12.GetValue().strip(), int(self.m_textCtrl14.GetValue().strip()))
+		session = TelnetSession(self.m_textCtrl12.GetValue().strip(), 
+								int(self.m_textCtrl14.GetValue().strip()),
+								username=self.m_textCtrl121.GetValue().strip(),
+								password=self.m_textCtrl13.GetValue().strip())
 		self.OpenSession(session)
 	
 	def OnGenerateTemplate( self, event ):

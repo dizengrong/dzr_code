@@ -95,9 +95,9 @@ class wxTerm(wx.TextCtrl):
 			except Exception, e:
 				print "read process exception: %s" % (e)
 			
-			if output != "":
-				print "Received: ",
-				util.PrintStringAsAscii(output)
+			# if output != "":
+			# 	print "Received: ",
+			# 	util.PrintStringAsAscii(output)
 
 			if output != "":
 				try:
