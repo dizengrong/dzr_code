@@ -1,21 +1,5 @@
 [global]
-total_session = ||serial_com1||telnet_94.142.241.111
+total_session = 
 
-[serial_com1]
-type = serial
-logfile = 
-port = com1
-baudrate = 9600
-bytesize = 8
-parity = N
-stopbits = 1
-dtrcontrol = 0
 
-[telnet_94.142.241.111]
-type = telnet
-logfile = 
-ip = 94.142.241.111
-port = 23
-username = 
-password = 
 

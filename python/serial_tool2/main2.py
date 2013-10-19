@@ -38,8 +38,6 @@ license_mag = None
 # 	m_textCtrl14: telnet连接输入port的控件
 # 	m_textCtrl71: 直接发送命令的控件
 # 	m_menu2: 外部工具菜单
-# 	m_textCtrl121: telnet登陆的用户名
-# 	m_textCtrl13: telnet登陆的密码
 class MyttyFrame(Mytty.Mytty):
 	#会话管理（类变量）
 	session_manager = session.SessionManager()
@@ -100,6 +98,7 @@ class MyttyFrame(Mytty.Mytty):
 			if session_manager.SaveSession(session, save_name, save_path):
 				self.m_auinotebook2.SetPageText(self.m_auinotebook2.GetSelection(), session.GetSessionName())
 			else:
+				util.ShowMessageDialog(self, u"保存会话失败，已存在同名的会话了", u"信息")
 				print u"save session failed!"
 		dlg.Destroy()
 	
@@ -121,7 +120,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u" 版本：设备配置程序 mytty-v2.01 \n 制作：nx工作室 \n 联系方式：\n      联系人：谢志文\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备配置程序 mytty-v2.02 \n 制作：nx工作室 \n 联系方式：\n      联系人：谢志文\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -160,9 +159,7 @@ class MyttyFrame(Mytty.Mytty):
 	
 	def OnOpenTelnet( self, event ):
 		session = TelnetSession(self.m_textCtrl12.GetValue().strip(), 
-								int(self.m_textCtrl14.GetValue().strip()),
-								username=self.m_textCtrl121.GetValue().strip(),
-								password=self.m_textCtrl13.GetValue().strip())
+								int(self.m_textCtrl14.GetValue().strip()))
 		self.OpenSession(session)
 	
 	def OnGenerateTemplate( self, event ):
@@ -175,6 +172,7 @@ class MyttyFrame(Mytty.Mytty):
 			return
 
 		tpl_file = "templates/" + self.m_choice7.GetStringSelection()
+		tpl_file = tpl_file.encode('gbk')
 		# print tpl_file
 		dict_data = {"mangr_vlan": device.mangr_vlan,
 					 "mangr_ip": device.mangr_ip,
@@ -384,7 +382,7 @@ class MyOpenSessionDialog(OpenSessionDialog.OpenSessionDialog):
 		index = 0
 		for session in MyttyFrame.session_manager.saved_sessions:
 			session_name = session.GetSessionName()
-			self.m_listCtrl2.InsertStringItem(index, session_name + "[" + session.GetSessionInfo() + "]")
+			self.m_listCtrl2.InsertStringItem(index, session_name + " [" + session.GetSessionInfo() + "]")
 			self.m_listCtrl2.SetItemData(index, len(session_name))
 			index += 1
 

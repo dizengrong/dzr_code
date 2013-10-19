@@ -56,9 +56,9 @@ class SessionManager(object):
 				else:
 					ip = self.session_conf.get(session_name, "ip")
 					port = int(self.session_conf.get(session_name, "port"))
-					username = self.session_conf.get(session_name, "username")
-					password = self.session_conf.get(session_name, "password")
-					session = TelnetSession(ip, port, session_name = session_name, username = username, password = password)
+					# username = self.session_conf.get(session_name, "username")
+					# password = self.session_conf.get(session_name, "password")
+					session = TelnetSession(ip, port, session_name = session_name)
 				log_file = self.session_conf.get(session_name, "logFile")
 				session.SetLogFile(log_file)
 				self.saved_sessions.append(session)
@@ -164,8 +164,8 @@ class SessionManager(object):
 			else:
 				self.session_conf.set(new_sec_name, "ip", session.ip)
 				self.session_conf.set(new_sec_name, "port", session.port)
-				self.session_conf.set(new_sec_name, "username", session.username)
-				self.session_conf.set(new_sec_name, "password", session.password)
+				# self.session_conf.set(new_sec_name, "username", session.username)
+				# self.session_conf.set(new_sec_name, "password", session.password)
 
 			self.AddSavedSession(session)
 			self.session_conf.set("global", "total_session", self.total_session)

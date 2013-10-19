@@ -74,7 +74,7 @@ class Mytty ( wx.Frame ):
 		
 		bSizer11.AddSpacer( ( 10, 0), 0, wx.EXPAND, 5 )
 		
-		self.m_staticText13 = wx.StaticText( self.m_panel6, wx.ID_ANY, u"选择设置", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText13 = wx.StaticText( self.m_panel6, wx.ID_ANY, u"波特率设置", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText13.Wrap( -1 )
 		bSizer11.Add( self.m_staticText13, 0, wx.ALIGN_CENTER, 2 )
 		
@@ -102,7 +102,7 @@ class Mytty ( wx.Frame ):
 		bSizer13.Add( self.m_staticText18, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL, 2 )
 		
 		self.m_textCtrl12 = wx.TextCtrl( self.m_panel7, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer13.Add( self.m_textCtrl12, 1, wx.ALL|wx.EXPAND, 2 )
+		bSizer13.Add( self.m_textCtrl12, 1, wx.ALL|wx.EXPAND|wx.FIXED_MINSIZE, 2 )
 		
 		self.m_staticText20 = wx.StaticText( self.m_panel7, wx.ID_ANY, u"端口", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText20.Wrap( -1 )
@@ -110,20 +110,6 @@ class Mytty ( wx.Frame ):
 		
 		self.m_textCtrl14 = wx.TextCtrl( self.m_panel7, wx.ID_ANY, u"23", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer13.Add( self.m_textCtrl14, 0, wx.ALL|wx.EXPAND, 2 )
-		
-		self.m_staticText201 = wx.StaticText( self.m_panel7, wx.ID_ANY, u"用户名", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText201.Wrap( -1 )
-		bSizer13.Add( self.m_staticText201, 0, wx.ALIGN_CENTER|wx.ALL|wx.LEFT|wx.RIGHT, 2 )
-		
-		self.m_textCtrl121 = wx.TextCtrl( self.m_panel7, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer13.Add( self.m_textCtrl121, 0, wx.ALL|wx.EXPAND, 2 )
-		
-		self.m_staticText21 = wx.StaticText( self.m_panel7, wx.ID_ANY, u"密码", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText21.Wrap( -1 )
-		bSizer13.Add( self.m_staticText21, 0, wx.ALIGN_CENTER|wx.LEFT|wx.RIGHT, 2 )
-		
-		self.m_textCtrl13 = wx.TextCtrl( self.m_panel7, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_PASSWORD )
-		bSizer13.Add( self.m_textCtrl13, 0, wx.ALL|wx.EXPAND, 2 )
 		
 		self.m_button111 = wx.Button( self.m_panel7, wx.ID_ANY, u"修改本机ip地址", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer13.Add( self.m_button111, 0, wx.ALL|wx.EXPAND, 2 )

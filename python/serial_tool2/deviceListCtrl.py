@@ -47,6 +47,8 @@ class DeviceListCtrl(wx.ListCtrl, listmix.TextEditMixin):
 		# for wxGTK
 		self.Bind(wx.EVT_RIGHT_UP, self.OnRightClick)
 
+		self.SetBackgroundColour('#d9d6c3')
+
 		# add blank rows
 		for index in xrange(0,100):
 			self.AddNewRow(index)
