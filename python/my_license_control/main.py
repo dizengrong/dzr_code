@@ -38,10 +38,10 @@ class MyFrame(AuthorizeFrame.MyLicenseControlFrame):
 				fd = open(path, "r")
 				dic = eval(base64.decodestring(fd.read())[3:])
 				print dic
-				self.m_textCtrl11.SetValue(dic['cpu.ProcessorId'])
-				self.m_textCtrl12.SetValue(dic['physical_disk.SerialNumber'])
-				self.m_textCtrl13.SetValue(dic['bios_id.SerialNumber'])
-				self.m_textCtrl14.SetValue(dic['mac.MACAddress'])
+				self.m_textCtrl11.SetValue(dic.get('cpu.ProcessorId', 'None'))
+				self.m_textCtrl12.SetValue(dic.get('physical_disk.SerialNumber', 'None'))
+				self.m_textCtrl13.SetValue(dic.get('bios_id.SerialNumber', 'None'))
+				self.m_textCtrl14.SetValue(dic.get('mac.MACAddress', 'None'))
 				self.license_dic = dic
 				self.m_button16.Enable(True)
 			except Exception, e:

@@ -521,10 +521,10 @@ class LicenseManager(object):
 		disk = machine.get_disk_info()
 		bios = machine.get_bios_info()
 		mac  = machine.get_mac_info()
-		return (self.license_dic['cpu.ProcessorId'] == cpu['cpu.ProcessorId'] and \
-				self.license_dic['physical_disk.SerialNumber'] == disk['physical_disk.SerialNumber'] and \
-			    self.license_dic['bios_id.SerialNumber'] == bios['bios_id.SerialNumber'] and \
-			    self.license_dic['mac.MACAddress'] == mac['mac.MACAddress'])
+		return (self.license_dic.get('cpu.ProcessorId', 'None') == cpu.get('cpu.ProcessorId', 'None') and \
+				self.license_dic.get('physical_disk.SerialNumber', 'None') == disk.get('physical_disk.SerialNumber', 'None') and \
+			    self.license_dic.get('bios_id.SerialNumber', 'None') == bios.get('bios_id.SerialNumber', 'None') and \
+			    self.license_dic.get('mac.MACAddress', 'None') == mac.get('mac.MACAddress'], 'None')
 
 	def IsDateValid(self):
 		if self.license_dic.has_key('using_logs'):
