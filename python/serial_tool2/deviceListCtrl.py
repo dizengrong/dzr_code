@@ -4,6 +4,7 @@ import wx
 import xdrlib, sys, xlrd, os, util, serialRxEvent
 import wx.lib.mixins.listctrl as listmix
 from util import PortSetting, Device
+import  wx.grid as  gridlib
 
 # 设备数据字段
 ENUM_DEVICE_DEV_TYPE    = 0
@@ -16,93 +17,122 @@ ENUM_DEVICE_END_VLAN    = 6
 
 MAX_COL = ENUM_DEVICE_END_VLAN
 
-class DeviceListCtrl(wx.ListCtrl, listmix.TextEditMixin):
+def GetDeviceTypeList():
+	fd = open(u'config/设备类型配置.txt', 'r')
+	str = fd.read().strip()
+	return str.split('\n')
+
+class DeviceListCtrl(gridlib.Grid):
 	def __init__(self, parent, Id, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0):
-		wx.ListCtrl.__init__(self, parent, Id, pos, size, style)
-		listmix.TextEditMixin.__init__(self)
+		gridlib.Grid.__init__(self, parent, Id)
+		self.CreateGrid(100, MAX_COL + 1)
+		# ULC.UltimateListCtrl.__init__(self, parent, Id, pos, size, agwStyle = style | ULC.ULC_HAS_VARIABLE_ROW_HEIGHT)
+		# listmix.TextEditMixin.__init__(self)
 
-		self.InsertColumn(ENUM_DEVICE_DEV_TYPE, u'设备安装地址')
-		self.SetColumnWidth(ENUM_DEVICE_DEV_TYPE, 120)
+		self.SetColLabelValue(ENUM_DEVICE_DEV_TYPE, u'设备安装地址')
+		self.SetColSize(ENUM_DEVICE_DEV_TYPE, 120)
 
-		self.InsertColumn(ENUM_DEVICE_MANGR_IP, u'管理地址')
-		self.SetColumnWidth(ENUM_DEVICE_MANGR_IP, 120)
+		self.SetColLabelValue(ENUM_DEVICE_MANGR_IP, u'管理地址')
+		self.SetColSize(ENUM_DEVICE_MANGR_IP, 120)
 
-		self.InsertColumn(ENUM_DEVICE_SUBMASK_IP, u'子网掩码')
-		self.SetColumnWidth(ENUM_DEVICE_SUBMASK_IP, 120)
+		self.SetColLabelValue(ENUM_DEVICE_SUBMASK_IP, u'子网掩码')
+		self.SetColSize(ENUM_DEVICE_SUBMASK_IP, 120)
 
-		self.InsertColumn(ENUM_DEVICE_GATEWAY_IP, u'默认网关')
-		self.SetColumnWidth(ENUM_DEVICE_GATEWAY_IP, 120)
+		self.SetColLabelValue(ENUM_DEVICE_GATEWAY_IP, u'默认网关')
+		self.SetColSize(ENUM_DEVICE_GATEWAY_IP, 120)
 
-		self.InsertColumn(ENUM_DEVICE_MANGR_VLAN, u'管理VLAN')
-		self.SetColumnWidth(ENUM_DEVICE_MANGR_VLAN, 120)
+		self.SetColLabelValue(ENUM_DEVICE_MANGR_VLAN, u'管理VLAN')
+		self.SetColSize(ENUM_DEVICE_MANGR_VLAN, 120)
 
-		self.InsertColumn(ENUM_DEVICE_BEGIN_VLAN, u'端口开始VLAN')
-		self.SetColumnWidth(ENUM_DEVICE_BEGIN_VLAN, 120)
+		self.SetColLabelValue(ENUM_DEVICE_BEGIN_VLAN, u'端口开始VLAN')
+		self.SetColSize(ENUM_DEVICE_BEGIN_VLAN, 120)
 
-		self.InsertColumn(ENUM_DEVICE_END_VLAN, u'端口结束VLAN')
-		self.SetColumnWidth(ENUM_DEVICE_END_VLAN, 120)
+		self.SetColLabelValue(ENUM_DEVICE_END_VLAN, u'端口结束VLAN')
+		self.SetColSize(ENUM_DEVICE_END_VLAN, 120)
+
+		for row in xrange(0,100):
+			renderer = gridlib.GridCellChoiceEditor(GetDeviceTypeList(), allowOthers=True)
+			# self.SetCellValue(row, ENUM_DEVICE_DEV_TYPE, 'one')
+			self.SetCellEditor(row, ENUM_DEVICE_DEV_TYPE, renderer)
 
 		# for wxMSW
 		self.Bind(wx.EVT_COMMAND_RIGHT_CLICK, self.OnRightClick)
 		# for wxGTK
 		self.Bind(wx.EVT_RIGHT_UP, self.OnRightClick)
 
+		self.Bind(wx.grid.EVT_GRID_CELL_CHANGE, self.OnCellDataChange)
+		self.Bind(wx.grid.EVT_GRID_RANGE_SELECT, self.OnSelectRangeChange)
+		self.Bind(wx.grid.EVT_GRID_SELECT_CELL, self.OnSelectChange)
+
 		self.SetBackgroundColour('#d9d6c3')
 
 		# add blank rows
-		for index in xrange(0,100):
-			self.AddNewRow(index)
+		# for index in xrange(0,100):
+		# 	self.AddNewRow(index)
 
 	def SetMainFrame(self, main_frame):
 		self.main_frame = main_frame
 
-	def OpenEditor(self, col, row):
-		self.tmp_old_data = self.GetItem(row, col).GetText()
-		# print "want to edit: %s" % (self.tmp_old_data)
-		listmix.TextEditMixin.OpenEditor(self, col, row)
-
-	def CloseEditor(self, evt=None):
-		listmix.TextEditMixin.CloseEditor(self, evt)
-		if evt is not None and evt.GetEventType() == wx.wxEVT_KILL_FOCUS:
-			return
-		item    = self.GetItem(self.curRow, self.curCol)
-		newname = item.GetText()
-
-		if self.tmp_old_data == newname:
-			return
-
-		if self.curCol in [ENUM_DEVICE_MANGR_IP, ENUM_DEVICE_SUBMASK_IP, ENUM_DEVICE_GATEWAY_IP]:
-			if not util.IsValidIP(newname):
-				util.ShowMessageDialog(self.main_frame, u"输入的ip: " + newname + u"非法\n", u"错误")
-				self.SetStringItem(self.curRow, self.curCol, self.tmp_old_data)
-				return
-
-		ip_str1 = self.GetItem(self.curRow, ENUM_DEVICE_MANGR_IP).GetText()
-		ip_str2 = self.GetItem(self.curRow, ENUM_DEVICE_GATEWAY_IP).GetText()
-		if util.IsValidIP(ip_str1) and util.IsValidIP(ip_str2):
-			if not util.IsInSameSubNets(ip_str1, ip_str2):
-				util.ShowMessageDialog(self.main_frame, u"管理地址与默认网关不在同一网关\n", u"错误")
-				self.SetStringItem(self.curRow, self.curCol, self.tmp_old_data)
-				return
-
-		if self.tmp_old_data != newname:
-			self.SetItemTextColour(self.curRow, wx.RED)
 
 	def GetSelectedDevice(self):
-		sel_index = self.GetFirstSelected()
+		sel_index = self.GetSelectedRows()[0]
+		print sel_index
 		if sel_index == -1:
 			return None
 		try:
-			return Device(self.GetItem(self.curRow, ENUM_DEVICE_DEV_TYPE).GetText(),
-					  self.GetItem(self.curRow, ENUM_DEVICE_MANGR_IP).GetText(),
-					  self.GetItem(self.curRow, ENUM_DEVICE_SUBMASK_IP).GetText(),
-					  self.GetItem(self.curRow, ENUM_DEVICE_GATEWAY_IP).GetText(),
-					  int(self.GetItem(self.curRow, ENUM_DEVICE_MANGR_VLAN).GetText()),
-					  int(self.GetItem(self.curRow, ENUM_DEVICE_BEGIN_VLAN).GetText()),
-					  int(self.GetItem(self.curRow, ENUM_DEVICE_END_VLAN).GetText())
+			return Device(self.GetCellValue(sel_index, ENUM_DEVICE_DEV_TYPE),
+					  self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_IP),
+					  self.GetCellValue(sel_index, ENUM_DEVICE_SUBMASK_IP),
+					  self.GetCellValue(sel_index, ENUM_DEVICE_GATEWAY_IP),
+					  int(self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_VLAN)),
+					  int(self.GetCellValue(sel_index, ENUM_DEVICE_BEGIN_VLAN)),
+					  int(self.GetCellValue(sel_index, ENUM_DEVICE_END_VLAN))
 					 )
 		except Exception, e: # 处理数据错误或空白行的问题
+			print 'GetSelectedDevice exception: ', e
 			return None
+
+	def FilterTemplateList(self, device_type):
+		if device_type == '':
+			self.main_frame.m_choice7.Clear()
+		else:
+			filter_tpls = []
+			for cmd_tpl in self.main_frame.cmd_tpl_list:
+				if cmd_tpl.decode('gbk').startswith(device_type):
+					filter_tpls.append(cmd_tpl)
+			self.main_frame.m_choice7.Clear()
+			self.main_frame.m_choice7.AppendItems(filter_tpls)
+			self.main_frame.m_choice7.Select(0)
+
+		if device_type == '':
+			self.main_frame.m_choice9.Clear()
+		else:
+			filter_tpls = []
+			for cmd_tpl in self.main_frame.cmd_tpl_list:
+				if cmd_tpl.decode('gbk').startswith(u'清除-' + device_type):
+					filter_tpls.append(cmd_tpl)
+			self.main_frame.m_choice9.Clear()
+			self.main_frame.m_choice9.AppendItems(filter_tpls)
+			self.main_frame.m_choice9.Select(0)
+
+	def OnSelectRangeChange(self, event):
+		device_type = self.GetCellValue(event.GetTopRow(), ENUM_DEVICE_DEV_TYPE)
+		self.FilterTemplateList(device_type)
+		event.Skip()
+
+	def OnSelectChange(self, event):
+		device_type = self.GetCellValue(event.Row, ENUM_DEVICE_DEV_TYPE)
+		self.FilterTemplateList(device_type)
+		event.Skip()
+
+	def OnCellDataChange(self, event):
+		print 'event.Col:', event.Col
+		if event.Col == ENUM_DEVICE_DEV_TYPE:
+			device_type = self.GetCellValue(event.Row, event.Col)
+			print device_type
+			self.FilterTemplateList(device_type)
+		event.Skip()
+			
 		
 
 	def OnImportDeviceDatas(self, e):
@@ -110,10 +140,7 @@ class DeviceListCtrl(wx.ListCtrl, listmix.TextEditMixin):
 		self.device_list = []
 		dlg = wx.FileDialog(self, "Choose a file", self.dirname, "", "Excel Files (*.xlc;*.xls)|*.xlc; *.xls|All Files (*.*)|*.*||", wx.OPEN)
 		if dlg.ShowModal() == wx.ID_OK:
-			self.DeleteAllItems()
-			self.DeleteAllColumns()
-			for index in xrange(0,100):
-				self.AddNewRow(index)
+			self.DeleteRows()
 
 			self.filename = dlg.GetFilename()
 			self.dirname = dlg.GetDirectory()
@@ -121,17 +148,14 @@ class DeviceListCtrl(wx.ListCtrl, listmix.TextEditMixin):
 
 			table = xml_data.sheet_by_index(0)
 			total_cols = table.ncols
-			# 设置列名
-			for i in range(0, total_cols):
-				self.InsertColumn(i, util.to_str(table.cell(0, i).value))
-				self.SetColumnWidth(i, 120)
+			
 			# 加载数据
 			for i in range(1, table.nrows):
-				self.InsertStringItem(i-1,u"")
+				self.AppendRows()
 				for j in range(0, total_cols):
-					self.SetStringItem(i - 1, j, util.to_str(table.cell(i, j).value))
-				if (i - 1) % 2 == 1:
-					self.SetItemTextColour(i - 1, wx.BLUE)
+					self.SetCellValue(i - 1, j, util.to_str(table.cell(i, j).value))
+				# if (i - 1) % 2 == 1:
+				# 	self.SetItemTextColour(i - 1, wx.BLUE)
 
 				device = Device(util.to_str(table.cell(i, ENUM_DEVICE_DEV_TYPE).value),
 								util.to_str(table.cell(i, ENUM_DEVICE_MANGR_IP).value),
@@ -141,7 +165,6 @@ class DeviceListCtrl(wx.ListCtrl, listmix.TextEditMixin):
 								int(table.cell(i, ENUM_DEVICE_BEGIN_VLAN).value),
 								int(table.cell(i, ENUM_DEVICE_END_VLAN).value))
 				self.device_list.append(device)
-			self.Select(0)
 		dlg.Destroy()
 
 	def OnRightClick(self, event):
@@ -170,6 +193,16 @@ class DeviceListCtrl(wx.ListCtrl, listmix.TextEditMixin):
 		self.InsertStringItem(index, u"")
 		for col in xrange(0, MAX_COL):
 			self.SetStringItem(index, col, "")
+			if col == 1:
+				# panel = wx.Panel(self, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( 50,60 ), style = wx.TAB_TRAVERSAL )
+				# bSizer24 = wx.BoxSizer( wx.VERTICAL )
+				# choice = wx.Choice(panel, -1, choices=["one", "two"])
+
+				# bSizer24.Add( choice, 1, wx.ALL, 1 )
+				# panel.SetSizer( bSizer24 )
+				# panel.Layout()
+				panel = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+				self.SetItemWindow(index, col, panel, expand=True)
 
 	def OnPopupSelect(self, event):
 		pass

@@ -26,8 +26,9 @@ license_mag = None
 
 #各控件说明：
 # 	m_listCtrl1: 设备数据
-# 	m_choice8: serial的设置选择列表
 # 	m_choice7: 命令模板选择列表
+# 	m_choice8: serial的设置选择列表
+# 	m_choice9: 生成清除配置的命令选择列表
 # 	m_comboBox1: 端口选择列表
 # 	m_statusBar1: status bar
 # 	m_auinotebook2: 管理会话tab的控件
@@ -161,7 +162,21 @@ class MyttyFrame(Mytty.Mytty):
 		session = TelnetSession(self.m_textCtrl12.GetValue().strip(), 
 								int(self.m_textCtrl14.GetValue().strip()))
 		self.OpenSession(session)
-	
+
+	def OnGenerateClearCmd( self, event ):
+		if self.m_choice9.GetSelection() == wx.NOT_FOUND:
+			self.m_statusBar1.SetStatusText(u"请选择模板")
+			return
+		device = self.m_listCtrl1.GetSelectedDevice()
+		if device == None:
+			self.m_statusBar1.SetStatusText(u"请选择一条设备数据")
+			return
+
+		tpl_file = "templates/" + self.m_choice9.GetStringSelection()
+
+		fd = open(tpl_file, 'r')
+		self.m_textCtrl6.SetValue(fd.read())
+
 	def OnGenerateTemplate( self, event ):
 		if self.m_choice7.GetSelection() == wx.NOT_FOUND:
 			self.m_statusBar1.SetStatusText(u"请选择模板")
@@ -196,13 +211,25 @@ class MyttyFrame(Mytty.Mytty):
 		cmd_list = tpl_content.split("\n")
 		self.StartSendTplCmdThread(cmd_list, send_interval)
 
-	def OnSendComand( self, event ):
-		content = self.m_textCtrl71.GetValue()
-		if content != '' and self.AssertOpenSession():
-			send_interval = self.GetSendInterval()
-			cmd_list = content.split("\n")
-			self.StartSendTplCmdThread(cmd_list, send_interval)
-		self.m_textCtrl71.Clear()
+	# def OnSendComand( self, event ):
+	# 	content = self.m_textCtrl71.GetValue()
+	# 	if content != '' and self.AssertOpenSession():
+	# 		send_interval = self.GetSendInterval()
+	# 		cmd_list = content.split("\n")
+	# 		self.StartSendTplCmdThread(cmd_list, send_interval)
+	# 	self.m_textCtrl71.Clear()
+
+	def OnSendCmdKeyDown( self, event ):
+		event.Skip()
+		if event.GetKeyCode() == wx.WXK_RETURN:
+			if event.ControlDown():
+				content = self.m_textCtrl71.GetValue()
+				if content != '' and self.AssertOpenSession():
+					send_interval = self.GetSendInterval()
+					cmd_list = content.split("\n")
+					self.StartSendTplCmdThread(cmd_list, send_interval)
+				self.m_textCtrl71.Clear()
+
 	
 	def OnSessionPageChanged( self, event ):
 		event.Skip()
@@ -321,14 +348,12 @@ class MyttyFrame(Mytty.Mytty):
 		return desc_list	
 
 	def InitCmdTemplates(self):
-		self.tpl_list = []
-		desc_list = []
+		self.cmd_tpl_list = []
 		for item in os.listdir("templates/"):
 			if item.endswith(".txt"):
 				tpl = os.path.basename(item)
-				self.tpl_list.append(tpl)
-				desc_list.append(tpl)
-		return desc_list
+				self.cmd_tpl_list.append(tpl)
+		return self.cmd_tpl_list
 
 
 # 控件说明：
@@ -460,9 +485,9 @@ class LicenseManager(object):
 		self.path = path
 		try:
 			fd = open(self.path, 'r')
-			self.license_dic = eval(base64.decodestring(fd.read()))
+			self.license_dic = eval(base64.decodestring(fd.read())[3:])
 			for key in self.license_dic.keys():
-				self.license_dic[key] = base64.decodestring(self.license_dic[key])[3:]
+				self.license_dic[key] = base64.decodestring(self.license_dic[key])
 			fd.close()
 
 			if not self.IsDateValid():
@@ -481,12 +506,14 @@ class LicenseManager(object):
 	
 	def IsAuthorizedMachine(self):
 		machine = my_machine.Machine()
-		cpu  = machine.get_cpu_serial_no()
-		disk = machine.get_disk_serial_no()
-		bios = machine.get_bios_serial_no()
-		mac  = machine.get_mac_address()
-		return (self.license_dic['cpu'] == cpu and self.license_dic['disk'] == disk and \
-			    self.license_dic['bios'] == bios and self.license_dic['mac'] == mac)
+		cpu  = machine.get_cpu_info()
+		disk = machine.get_disk_info()
+		bios = machine.get_bios_info()
+		mac  = machine.get_mac_info()
+		return (self.license_dic['cpu.ProcessorId'] == cpu['cpu.ProcessorId'] and \
+				self.license_dic['physical_disk.SerialNumber'] == disk['physical_disk.SerialNumber'] and \
+			    self.license_dic['bios_id.SerialNumber'] == bios['bios_id.SerialNumber'] and \
+			    self.license_dic['mac.MACAddress'] == mac['mac.MACAddress'])
 
 	def IsDateValid(self):
 		if self.license_dic.has_key('using_logs'):
@@ -521,9 +548,9 @@ class LicenseManager(object):
 		fd          = open(self.path, 'w')
 		encrypt_dic = {}
 		for key in self.license_dic.keys():
-			encrypt_dic[key] = base64.encodestring(u'dzr' + self.license_dic[key])
+			encrypt_dic[key] = base64.encodestring(self.license_dic[key])
 
-		encrypt_str =  base64.encodestring(str(encrypt_dic))
+		encrypt_str =  base64.encodestring(u'dzr' + str(encrypt_dic))
 		fd.write(encrypt_str)
 		fd.flush()
 		fd.close()

@@ -36,12 +36,12 @@ class MyFrame(AuthorizeFrame.MyLicenseControlFrame):
 			print "You chose the following file(s):", path
 			try:
 				fd = open(path, "r")
-				dic = eval(base64.decodestring(fd.read()))
+				dic = eval(base64.decodestring(fd.read())[3:])
 				print dic
-				self.m_textCtrl11.SetValue(base64.decodestring(dic['cpu'])[3:])
-				self.m_textCtrl12.SetValue(base64.decodestring(dic['disk'])[3:])
-				self.m_textCtrl13.SetValue(base64.decodestring(dic['bios'])[3:])
-				self.m_textCtrl14.SetValue(base64.decodestring(dic['mac'])[3:])
+				self.m_textCtrl11.SetValue(base64.decodestring(dic['cpu.ProcessorId']))
+				self.m_textCtrl12.SetValue(base64.decodestring(dic['physical_disk.SerialNumber']))
+				self.m_textCtrl13.SetValue(base64.decodestring(dic['bios_id.SerialNumber']))
+				self.m_textCtrl14.SetValue(base64.decodestring(dic['mac.MACAddress']))
 				self.license_dic = dic
 				self.m_button16.Enable(True)
 			except Exception, e:
@@ -52,20 +52,19 @@ class MyFrame(AuthorizeFrame.MyLicenseControlFrame):
 	def OnAuthorize( self, event ):
 		try:
 			print self.m_datePicker1.GetValue().FormatISODate()
-			self.license_dic['start_date'] = base64.encodestring(u'dzr' + self.m_datePicker1.GetValue().FormatISODate())
-			self.license_dic['end_date'] = base64.encodestring(u'dzr' + self.m_datePicker2.GetValue().FormatISODate())
+			self.license_dic['start_date'] = base64.encodestring(self.m_datePicker1.GetValue().FormatISODate())
+			self.license_dic['end_date'] = base64.encodestring(self.m_datePicker2.GetValue().FormatISODate())
 			now = datetime.datetime.today()
-			self.license_dic['using_logs'] = base64.encodestring(u'dzr' + now.strftime('%Y-%m-%d %H:%M:%S'))
-			print "111"
+			self.license_dic['using_logs'] = base64.encodestring(now.strftime('%Y-%m-%d %H:%M:%S'))
 			if self.m_radioBtn1.GetValue():
-				self.license_dic['version'] = base64.encodestring(u'dzr1') #试用版
+				self.license_dic['version'] = base64.encodestring(u'1') #试用版
 			else:
-				self.license_dic['version'] = base64.encodestring(u'dzr2') #注册版
+				self.license_dic['version'] = base64.encodestring(u'2') #注册版
 
 			print self.license_dic
 			path        = u'./license.license'
 			fd          = open(path, 'w')
-			encrypt_str =  base64.encodestring(str(self.license_dic))
+			encrypt_str =  base64.encodestring(u'dzr' + str(self.license_dic))
 			fd.write(encrypt_str)
 			fd.flush()
 			fd.close()

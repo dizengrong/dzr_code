@@ -19,7 +19,7 @@ from deviceListCtrl import DeviceListCtrl
 class Mytty ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Mytty", pos = wx.DefaultPosition, size = wx.Size( 800,600 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MAXIMIZE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.SYSTEM_MENU|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Mytty", pos = wx.DefaultPosition, size = wx.Size( 800,600 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MAXIMIZE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.SYSTEM_MENU )
 		
 		self.SetSizeHintsSz( wx.Size( 800,600 ), wx.DefaultSize )
 		
@@ -93,7 +93,7 @@ class Mytty ( wx.Frame ):
 		self.m_panel6.SetSizer( bSizer11 )
 		self.m_panel6.Layout()
 		bSizer11.Fit( self.m_panel6 )
-		self.m_notebook2.AddPage( self.m_panel6, u"serial连接", False )
+		self.m_notebook2.AddPage( self.m_panel6, u"serial连接", True )
 		self.m_panel7 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer13 = wx.BoxSizer( wx.HORIZONTAL )
 		
@@ -133,7 +133,7 @@ class Mytty ( wx.Frame ):
 		self.m_panel7.SetSizer( bSizer13 )
 		self.m_panel7.Layout()
 		bSizer13.Fit( self.m_panel7 )
-		self.m_notebook2.AddPage( self.m_panel7, u"telnet连接", True )
+		self.m_notebook2.AddPage( self.m_panel7, u"telnet连接", False )
 		
 		bSizer5.Add( self.m_notebook2, 0, wx.EXPAND |wx.ALL, 0 )
 		
@@ -147,17 +147,24 @@ class Mytty ( wx.Frame ):
 		
 		bSizer8 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		self.m_staticText9 = wx.StaticText( self.m_panel8, wx.ID_ANY, u"选择命令模板", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText9.Wrap( -1 )
-		bSizer8.Add( self.m_staticText9, 0, wx.ALIGN_CENTER, 2 )
-		
 		m_choice7Choices = []
 		self.m_choice7 = wx.Choice( self.m_panel8, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice7Choices, 0 )
 		self.m_choice7.SetSelection( 0 )
-		bSizer8.Add( self.m_choice7, 0, wx.ALL|wx.EXPAND, 2 )
+		bSizer8.Add( self.m_choice7, 0, wx.ALL, 5 )
 		
-		self.m_button3 = wx.Button( self.m_panel8, wx.ID_ANY, u"生成", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer8.Add( self.m_button3, 0, wx.ALL|wx.EXPAND, 2 )
+		self.m_button3 = wx.Button( self.m_panel8, wx.ID_ANY, u"生成配置命令", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer8.Add( self.m_button3, 0, wx.ALL, 5 )
+		
+		self.m_staticline2 = wx.StaticLine( self.m_panel8, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LI_HORIZONTAL|wx.LI_VERTICAL )
+		bSizer8.Add( self.m_staticline2, 0, wx.EXPAND |wx.ALL, 5 )
+		
+		m_choice9Choices = []
+		self.m_choice9 = wx.Choice( self.m_panel8, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice9Choices, 0 )
+		self.m_choice9.SetSelection( 0 )
+		bSizer8.Add( self.m_choice9, 0, wx.ALL, 5 )
+		
+		self.m_button15 = wx.Button( self.m_panel8, wx.ID_ANY, u"生成清除配置命令", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer8.Add( self.m_button15, 0, wx.ALL, 5 )
 		
 		
 		bSizer7.Add( bSizer8, 0, wx.ALIGN_CENTER|wx.ALL|wx.EXPAND, 1 )
@@ -197,7 +204,7 @@ class Mytty ( wx.Frame ):
 		
 		bSizer14.Add( self.m_auinotebook2, 5, wx.EXPAND |wx.ALL, 1 )
 		
-		self.m_textCtrl71 = wx.TextCtrl( self.m_panel8, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE|wx.TE_PROCESS_ENTER )
+		self.m_textCtrl71 = wx.TextCtrl( self.m_panel8, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE|wx.TE_PROCESS_ENTER|wx.TE_PROCESS_TAB )
 		bSizer14.Add( self.m_textCtrl71, 1, wx.ALL|wx.EXPAND, 1 )
 		
 		
@@ -229,9 +236,11 @@ class Mytty ( wx.Frame ):
 		self.m_button11.Bind( wx.EVT_BUTTON, self.OnTestTelnet )
 		self.m_button12.Bind( wx.EVT_BUTTON, self.OnOpenTelnet )
 		self.m_button3.Bind( wx.EVT_BUTTON, self.OnGenerateTemplate )
+		self.m_button15.Bind( wx.EVT_BUTTON, self.OnGenerateClearCmd )
 		self.m_button5.Bind( wx.EVT_BUTTON, self.OnSendTemplate )
 		self.m_auinotebook2.Bind( wx.aui.EVT_AUINOTEBOOK_PAGE_CHANGED, self.OnSessionPageChanged )
 		self.m_auinotebook2.Bind( wx.aui.EVT_AUINOTEBOOK_PAGE_CLOSE, self.OnSessionPageClose )
+		self.m_textCtrl71.Bind( wx.EVT_KEY_DOWN, self.OnSendCmdKeyDown )
 		self.m_textCtrl71.Bind( wx.EVT_TEXT_ENTER, self.OnSendComand )
 	
 	def __del__( self ):
@@ -278,6 +287,9 @@ class Mytty ( wx.Frame ):
 	def OnGenerateTemplate( self, event ):
 		event.Skip()
 	
+	def OnGenerateClearCmd( self, event ):
+		event.Skip()
+	
 	def OnSendTemplate( self, event ):
 		event.Skip()
 	
@@ -285,6 +297,9 @@ class Mytty ( wx.Frame ):
 		event.Skip()
 	
 	def OnSessionPageClose( self, event ):
+		event.Skip()
+	
+	def OnSendCmdKeyDown( self, event ):
 		event.Skip()
 	
 	def OnSendComand( self, event ):

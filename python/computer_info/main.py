@@ -7,12 +7,18 @@ def generate_computer_info():
 	path = u'./computer_info'
 	fd          = open(path, "w")
 	machine = my_machine.Machine()
-	dic         = {}
-	dic['cpu']  = base64.encodestring(u'dzr' + machine.get_cpu_serial_no())
-	dic['disk'] = base64.encodestring(u'dzr' + machine.get_disk_serial_no())
-	dic['bios'] = base64.encodestring(u'dzr' + machine.get_bios_serial_no())
-	dic['mac']  = base64.encodestring(u'dzr' + machine.get_mac_address())
-	encrypt_str =  base64.encodestring(str(dic))
+	dic = dict(machine.get_cpu_info().items() + machine.get_disk_info().items() + 
+			   machine.get_bios_info().items() + machine.get_mac_info().items())
+
+	for key in dic.keys():
+		s = dic[key].encode('utf8')
+		dic[key] = base64.encodestring(s)
+
+	# dic['cpu']  = base64.encodestring(u'dzr' + machine.get_cpu_info())
+	# dic['disk'] = base64.encodestring(u'dzr' + machine.get_disk_info())
+	# dic['bios'] = base64.encodestring(u'dzr' + machine.get_bios_info())
+	# dic['mac']  = base64.encodestring(u'dzr' + )
+	encrypt_str =  base64.encodestring(u'dzr' + str(dic))
 	print encrypt_str
 	fd.write(encrypt_str)
 	fd.flush()
