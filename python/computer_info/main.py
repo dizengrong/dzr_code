@@ -10,9 +10,9 @@ def generate_computer_info():
 	dic = dict(machine.get_cpu_info().items() + machine.get_disk_info().items() + 
 			   machine.get_bios_info().items() + machine.get_mac_info().items())
 
-	for key in dic.keys():
-		s = dic[key].encode('utf8')
-		dic[key] = base64.encodestring(s)
+	# for key in dic.keys():
+	# 	s = dic[key].encode('utf8')
+	# 	dic[key] = base64.encodestring(s)
 
 	# dic['cpu']  = base64.encodestring(u'dzr' + machine.get_cpu_info())
 	# dic['disk'] = base64.encodestring(u'dzr' + machine.get_disk_info())

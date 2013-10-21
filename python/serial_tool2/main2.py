@@ -218,11 +218,23 @@ class MyttyFrame(Mytty.Mytty):
 	# 		cmd_list = content.split("\n")
 	# 		self.StartSendTplCmdThread(cmd_list, send_interval)
 	# 	self.m_textCtrl71.Clear()
+	# 	event.Skip()
 
-	def OnSendCmdKeyDown( self, event ):
+	# def OnSendCmdKeyDown( self, event ):
+	# 	event.Skip()
+	# 	if event.GetKeyCode() == wx.WXK_RETURN:
+	# 		if event.ControlDown():
+	# 			content = self.m_textCtrl71.GetValue()
+	# 			if content != '' and self.AssertOpenSession():
+	# 				send_interval = self.GetSendInterval()
+	# 				cmd_list = content.split("\n")
+	# 				self.StartSendTplCmdThread(cmd_list, send_interval)
+	# 			self.m_textCtrl71.Clear()
+
+	def OnSendCmdKeyUp( self, event ):
 		event.Skip()
 		if event.GetKeyCode() == wx.WXK_RETURN:
-			if event.ControlDown():
+			if event.ShiftDown():
 				content = self.m_textCtrl71.GetValue()
 				if content != '' and self.AssertOpenSession():
 					send_interval = self.GetSendInterval()
@@ -230,7 +242,6 @@ class MyttyFrame(Mytty.Mytty):
 					self.StartSendTplCmdThread(cmd_list, send_interval)
 				self.m_textCtrl71.Clear()
 
-	
 	def OnSessionPageChanged( self, event ):
 		event.Skip()
 		tab_title = self.m_auinotebook2.GetPageText(event.GetSelection())
@@ -486,8 +497,8 @@ class LicenseManager(object):
 		try:
 			fd = open(self.path, 'r')
 			self.license_dic = eval(base64.decodestring(fd.read())[3:])
-			for key in self.license_dic.keys():
-				self.license_dic[key] = base64.decodestring(self.license_dic[key])
+			# for key in self.license_dic.keys():
+			# 	self.license_dic[key] = base64.decodestring(self.license_dic[key])
 			fd.close()
 
 			if not self.IsDateValid():
@@ -546,11 +557,11 @@ class LicenseManager(object):
 		self.license_dic['using_logs'] = using_logs
 
 		fd          = open(self.path, 'w')
-		encrypt_dic = {}
-		for key in self.license_dic.keys():
-			encrypt_dic[key] = base64.encodestring(self.license_dic[key])
+		# encrypt_dic = {}
+		# for key in self.license_dic.keys():
+		# 	encrypt_dic[key] = base64.encodestring(self.license_dic[key])
 
-		encrypt_str =  base64.encodestring(u'dzr' + str(encrypt_dic))
+		encrypt_str =  base64.encodestring(u'dzr' + str(self.license_dic))
 		fd.write(encrypt_str)
 		fd.flush()
 		fd.close()

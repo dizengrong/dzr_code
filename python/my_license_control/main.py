@@ -38,10 +38,10 @@ class MyFrame(AuthorizeFrame.MyLicenseControlFrame):
 				fd = open(path, "r")
 				dic = eval(base64.decodestring(fd.read())[3:])
 				print dic
-				self.m_textCtrl11.SetValue(base64.decodestring(dic['cpu.ProcessorId']))
-				self.m_textCtrl12.SetValue(base64.decodestring(dic['physical_disk.SerialNumber']))
-				self.m_textCtrl13.SetValue(base64.decodestring(dic['bios_id.SerialNumber']))
-				self.m_textCtrl14.SetValue(base64.decodestring(dic['mac.MACAddress']))
+				self.m_textCtrl11.SetValue(dic['cpu.ProcessorId'])
+				self.m_textCtrl12.SetValue(dic['physical_disk.SerialNumber'])
+				self.m_textCtrl13.SetValue(dic['bios_id.SerialNumber'])
+				self.m_textCtrl14.SetValue(dic['mac.MACAddress'])
 				self.license_dic = dic
 				self.m_button16.Enable(True)
 			except Exception, e:
@@ -52,14 +52,14 @@ class MyFrame(AuthorizeFrame.MyLicenseControlFrame):
 	def OnAuthorize( self, event ):
 		try:
 			print self.m_datePicker1.GetValue().FormatISODate()
-			self.license_dic['start_date'] = base64.encodestring(self.m_datePicker1.GetValue().FormatISODate())
-			self.license_dic['end_date'] = base64.encodestring(self.m_datePicker2.GetValue().FormatISODate())
+			self.license_dic['start_date'] = self.m_datePicker1.GetValue().FormatISODate()
+			self.license_dic['end_date'] = self.m_datePicker2.GetValue().FormatISODate()
 			now = datetime.datetime.today()
-			self.license_dic['using_logs'] = base64.encodestring(now.strftime('%Y-%m-%d %H:%M:%S'))
+			self.license_dic['using_logs'] = now.strftime('%Y-%m-%d %H:%M:%S')
 			if self.m_radioBtn1.GetValue():
-				self.license_dic['version'] = base64.encodestring(u'1') #试用版
+				self.license_dic['version'] = u'1' #试用版
 			else:
-				self.license_dic['version'] = base64.encodestring(u'2') #注册版
+				self.license_dic['version'] = u'2' #注册版
 
 			print self.license_dic
 			path        = u'./license.license'

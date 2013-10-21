@@ -19,9 +19,9 @@ from deviceListCtrl import DeviceListCtrl
 class Mytty ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Mytty", pos = wx.DefaultPosition, size = wx.Size( 800,600 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MAXIMIZE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.SYSTEM_MENU )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Mytty", pos = wx.DefaultPosition, size = wx.Size( 1086,600 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MAXIMIZE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.SYSTEM_MENU )
 		
-		self.SetSizeHintsSz( wx.Size( 800,600 ), wx.DefaultSize )
+		self.SetSizeHintsSz( wx.Size( 1086,600 ), wx.DefaultSize )
 		
 		self.m_menubar1 = wx.MenuBar( 0 )
 		self.m_menu3 = wx.Menu()
@@ -241,6 +241,7 @@ class Mytty ( wx.Frame ):
 		self.m_auinotebook2.Bind( wx.aui.EVT_AUINOTEBOOK_PAGE_CHANGED, self.OnSessionPageChanged )
 		self.m_auinotebook2.Bind( wx.aui.EVT_AUINOTEBOOK_PAGE_CLOSE, self.OnSessionPageClose )
 		self.m_textCtrl71.Bind( wx.EVT_KEY_DOWN, self.OnSendCmdKeyDown )
+		self.m_textCtrl71.Bind( wx.EVT_KEY_UP, self.OnSendCmdKeyUp )
 		self.m_textCtrl71.Bind( wx.EVT_TEXT_ENTER, self.OnSendComand )
 	
 	def __del__( self ):
@@ -300,6 +301,9 @@ class Mytty ( wx.Frame ):
 		event.Skip()
 	
 	def OnSendCmdKeyDown( self, event ):
+		event.Skip()
+	
+	def OnSendCmdKeyUp( self, event ):
 		event.Skip()
 	
 	def OnSendComand( self, event ):
