@@ -19,7 +19,7 @@ MAX_COL = ENUM_DEVICE_END_VLAN
 
 def GetDeviceTypeList():
 	fd = open(u'config/设备类型配置.txt', 'r')
-	str = fd.read().strip()
+	str = fd.read().strip().decode('utf8')
 	return str.split('\n')
 
 class DeviceListCtrl(gridlib.Grid):
