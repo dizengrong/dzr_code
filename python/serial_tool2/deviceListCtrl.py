@@ -8,12 +8,13 @@ import  wx.grid as  gridlib
 
 # 设备数据字段
 ENUM_DEVICE_DEV_TYPE    = 0
-ENUM_DEVICE_MANGR_IP    = 1
-ENUM_DEVICE_SUBMASK_IP  = 2
-ENUM_DEVICE_GATEWAY_IP  = 3
-ENUM_DEVICE_MANGR_VLAN  = 4
-ENUM_DEVICE_BEGIN_VLAN  = 5
-ENUM_DEVICE_END_VLAN    = 6
+ENUM_DEVICE_DEV_ADDR    = 1
+ENUM_DEVICE_MANGR_IP    = 2
+ENUM_DEVICE_SUBMASK_IP  = 3
+ENUM_DEVICE_GATEWAY_IP  = 4
+ENUM_DEVICE_MANGR_VLAN  = 5
+ENUM_DEVICE_BEGIN_VLAN  = 6
+ENUM_DEVICE_END_VLAN    = 7
 
 MAX_COL = ENUM_DEVICE_END_VLAN
 
@@ -26,11 +27,12 @@ class DeviceListCtrl(gridlib.Grid):
 	def __init__(self, parent, Id, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0):
 		gridlib.Grid.__init__(self, parent, Id)
 		self.CreateGrid(100, MAX_COL + 1)
-		# ULC.UltimateListCtrl.__init__(self, parent, Id, pos, size, agwStyle = style | ULC.ULC_HAS_VARIABLE_ROW_HEIGHT)
-		# listmix.TextEditMixin.__init__(self)
 
-		self.SetColLabelValue(ENUM_DEVICE_DEV_TYPE, u'设备安装地址')
+		self.SetColLabelValue(ENUM_DEVICE_DEV_TYPE, u'设备类型')
 		self.SetColSize(ENUM_DEVICE_DEV_TYPE, 120)
+
+		self.SetColLabelValue(ENUM_DEVICE_DEV_ADDR, u'设备安装地址')
+		self.SetColSize(ENUM_DEVICE_DEV_ADDR, 120)
 
 		self.SetColLabelValue(ENUM_DEVICE_MANGR_IP, u'管理地址')
 		self.SetColSize(ENUM_DEVICE_MANGR_IP, 120)
@@ -50,15 +52,17 @@ class DeviceListCtrl(gridlib.Grid):
 		self.SetColLabelValue(ENUM_DEVICE_END_VLAN, u'端口结束VLAN')
 		self.SetColSize(ENUM_DEVICE_END_VLAN, 120)
 
+		self.AutoSizeColumns(setAsMin = True)
+
 		for row in xrange(0,100):
 			renderer = gridlib.GridCellChoiceEditor(GetDeviceTypeList(), allowOthers=True)
 			# self.SetCellValue(row, ENUM_DEVICE_DEV_TYPE, 'one')
 			self.SetCellEditor(row, ENUM_DEVICE_DEV_TYPE, renderer)
 
 		# for wxMSW
-		self.Bind(wx.EVT_COMMAND_RIGHT_CLICK, self.OnRightClick)
+		# self.Bind(wx.EVT_COMMAND_RIGHT_CLICK, self.OnRightClick)
 		# for wxGTK
-		self.Bind(wx.EVT_RIGHT_UP, self.OnRightClick)
+		# self.Bind(wx.EVT_RIGHT_UP, self.OnRightClick)
 
 		self.Bind(wx.grid.EVT_GRID_CELL_CHANGE, self.OnCellDataChange)
 		self.Bind(wx.grid.EVT_GRID_RANGE_SELECT, self.OnSelectRangeChange)
@@ -73,7 +77,6 @@ class DeviceListCtrl(gridlib.Grid):
 	def SetMainFrame(self, main_frame):
 		self.main_frame = main_frame
 
-
 	def GetSelectedDevice(self):
 		sel_index = self.GetSelectedRows()[0]
 		print sel_index
@@ -81,12 +84,13 @@ class DeviceListCtrl(gridlib.Grid):
 			return None
 		try:
 			return Device(self.GetCellValue(sel_index, ENUM_DEVICE_DEV_TYPE),
-					  self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_IP),
-					  self.GetCellValue(sel_index, ENUM_DEVICE_SUBMASK_IP),
-					  self.GetCellValue(sel_index, ENUM_DEVICE_GATEWAY_IP),
-					  int(self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_VLAN)),
-					  int(self.GetCellValue(sel_index, ENUM_DEVICE_BEGIN_VLAN)),
-					  int(self.GetCellValue(sel_index, ENUM_DEVICE_END_VLAN))
+					  	  self.GetCellValue(sel_index, ENUM_DEVICE_DEV_ADDR),
+					  	  self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_IP),
+					  	  self.GetCellValue(sel_index, ENUM_DEVICE_SUBMASK_IP),
+					  	  self.GetCellValue(sel_index, ENUM_DEVICE_GATEWAY_IP),
+					  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_VLAN)),
+					  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_BEGIN_VLAN)),
+					  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_END_VLAN))
 					 )
 		except Exception, e: # 处理数据错误或空白行的问题
 			print 'GetSelectedDevice exception: ', e
@@ -132,8 +136,10 @@ class DeviceListCtrl(gridlib.Grid):
 			print device_type
 			self.FilterTemplateList(device_type)
 		event.Skip()
-			
+		wx.CallAfter(self.AdjustSizeColumns)
 		
+	def AdjustSizeColumns(self):
+		self.AutoSizeColumns(setAsMin = True)
 
 	def OnImportDeviceDatas(self, e):
 		self.dirname = ''
@@ -158,6 +164,7 @@ class DeviceListCtrl(gridlib.Grid):
 				# 	self.SetItemTextColour(i - 1, wx.BLUE)
 
 				device = Device(util.to_str(table.cell(i, ENUM_DEVICE_DEV_TYPE).value),
+								util.to_str(table.cell(i, ENUM_DEVICE_DEV_ADDR).value),
 								util.to_str(table.cell(i, ENUM_DEVICE_MANGR_IP).value),
 								util.to_str(table.cell(i, ENUM_DEVICE_SUBMASK_IP).value),
 								util.to_str(table.cell(i, ENUM_DEVICE_GATEWAY_IP).value),
@@ -166,6 +173,7 @@ class DeviceListCtrl(gridlib.Grid):
 								int(table.cell(i, ENUM_DEVICE_END_VLAN).value))
 				self.device_list.append(device)
 		dlg.Destroy()
+		wx.CallAfter(self.AdjustSizeColumns)
 
 	def OnRightClick(self, event):
 		# only do this part the first time so the events are only bound once

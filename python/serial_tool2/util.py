@@ -18,8 +18,9 @@ class PortSetting(object):
         self.dtrControl = dtrControl    # 数据流控制
 
 class Device(object):
-    def __init__(self, dev_type, mangr_ip, submask_ip, gateway_ip, mangr_vlan, begin_vlan, end_vlan):
+    def __init__(self, dev_type, dev_addr, mangr_ip, submask_ip, gateway_ip, mangr_vlan, begin_vlan, end_vlan):
         self.dev_type   = dev_type          # 设备箱类型
+        self.dev_addr   = dev_addr          # 设备箱安装地址
         self.mangr_ip   = mangr_ip          # 管理地址
         self.submask_ip = submask_ip        # 子网掩码
         self.gateway_ip = gateway_ip        # 默认网关
