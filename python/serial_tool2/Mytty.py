@@ -184,6 +184,10 @@ class Mytty ( wx.Frame ):
 		self.m_button5 = wx.Button( self.m_panel8, wx.ID_ANY, u"发送", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer10.Add( self.m_button5, 0, wx.ALL|wx.EXPAND, 1 )
 		
+		self.m_staticText191 = wx.StaticText( self.m_panel8, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText191.Wrap( -1 )
+		bSizer10.Add( self.m_staticText191, 1, wx.ALL, 5 )
+		
 		
 		bSizer7.Add( bSizer10, 0, wx.EXPAND, 5 )
 		

@@ -39,6 +39,7 @@ license_mag = None
 # 	m_textCtrl14: telnet连接输入port的控件
 # 	m_textCtrl71: 直接发送命令的控件
 # 	m_menu2: 外部工具菜单
+# 	m_staticText191: 发送提示
 class MyttyFrame(Mytty.Mytty):
 	#会话管理（类变量）
 	session_manager = session.SessionManager()
@@ -121,7 +122,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u" 版本：设备配置程序 mytty-v2.02 \n 制作：nx工作室 \n 联系方式：\n      联系人：谢志文\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备配置程序 mytty-v2.05 \n 制作：nx工作室 \n 联系方式：\n      联系人：谢志文\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -366,6 +367,9 @@ class MyttyFrame(Mytty.Mytty):
 				self.cmd_tpl_list.append(tpl)
 		return self.cmd_tpl_list
 
+	def SetSendPrompt(self, prompt):
+		print "prompt:", prompt
+		self.m_staticText191.SetLabel(u' | 发送提示：' + prompt)
 
 # 控件说明：
 # 	m_staticText21: 连接信息显示控件
@@ -405,7 +409,7 @@ class MySaveSessionDialog(SaveSessionDialog.SaveSessionDialog):
 	def SetConnectionInfo(self, session):
 		self.m_staticText21.SetLabel(u"当前连接信息：" + session.GetSessionInfo())
 
-
+	
 # 控件说明：
 # 	m_listCtrl2: 显示已保存的session
 class MyOpenSessionDialog(OpenSessionDialog.OpenSessionDialog):

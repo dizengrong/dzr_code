@@ -23,6 +23,17 @@ def GetDeviceTypeList():
 	str = fd.read().strip().decode('utf8')
 	return str.split('\n')
 
+def GetSendPrompt():
+	fd = open(u'config/设备发送命令提示.txt', 'r')
+	str = fd.read().strip().decode('utf8')
+	prompts = str.split('\n')
+	dic = {}
+	for prompt in prompts:
+		tmp = prompt.split('=')
+		dic[tmp[0]] = tmp[1]
+	return dic
+		
+
 class DeviceListCtrl(gridlib.Grid):
 	def __init__(self, parent, Id, pos=wx.DefaultPosition, size=wx.DefaultSize, style=0):
 		gridlib.Grid.__init__(self, parent, Id)
@@ -69,6 +80,8 @@ class DeviceListCtrl(gridlib.Grid):
 		self.Bind(wx.grid.EVT_GRID_SELECT_CELL, self.OnSelectChange)
 
 		self.SetBackgroundColour('#d9d6c3')
+
+		self.send_prompts = GetSendPrompt()
 
 		# add blank rows
 		# for index in xrange(0,100):
@@ -119,14 +132,20 @@ class DeviceListCtrl(gridlib.Grid):
 			self.main_frame.m_choice9.AppendItems(filter_tpls)
 			self.main_frame.m_choice9.Select(0)
 
+	def SetPromptForSend(self, device_type):
+		prompt = self.send_prompts.get(device_type, u'暂无发送提示')
+		self.main_frame.SetSendPrompt(prompt)
+
 	def OnSelectRangeChange(self, event):
 		device_type = self.GetCellValue(event.GetTopRow(), ENUM_DEVICE_DEV_TYPE)
 		self.FilterTemplateList(device_type)
+		self.SetPromptForSend(device_type)
 		event.Skip()
 
 	def OnSelectChange(self, event):
 		device_type = self.GetCellValue(event.Row, ENUM_DEVICE_DEV_TYPE)
 		self.FilterTemplateList(device_type)
+		self.SetPromptForSend(device_type)
 		event.Skip()
 
 	def OnCellDataChange(self, event):
@@ -135,6 +154,7 @@ class DeviceListCtrl(gridlib.Grid):
 			device_type = self.GetCellValue(event.Row, event.Col)
 			print device_type
 			self.FilterTemplateList(device_type)
+			self.SetPromptForSend(device_type)
 		event.Skip()
 		wx.CallAfter(self.AdjustSizeColumns)
 		
