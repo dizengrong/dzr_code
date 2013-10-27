@@ -179,7 +179,7 @@ class wxTerm(wx.TextCtrl):
 		lineNo = self.linesScrolledUp + row
 		insertionPoint = self.GetTextCtrlLineStart(lineNo)
 		insertionPoint += col 
-		print "row: %d, col: %d, insertionPoint: %d" % (row, col, insertionPoint)
+		# print "row: %d, col: %d, insertionPoint: %d" % (row, col, insertionPoint)
 		self.SetInsertionPoint(insertionPoint)
 
 	def UpdateDirtyLines(self, dirtyLines = None):
@@ -203,14 +203,14 @@ class wxTerm(wx.TextCtrl):
 		
 		for row in dirtyLines:
 			text = ""
-			print "screen[%d]: %s|" % (row, screen[row])
+			# print "screen[%d]: %s|" % (row, screen[row])
 			# finds the line starting and ending index
 			lineNo = self.linesScrolledUp + row
 			lineStart = self.GetTextCtrlLineStart(lineNo)
 			# lineText = self.GetLineText(lineNo)
 			# lineEnd = lineStart + len(lineText)
 			lineEnd = lineStart + self.termCols
-			print "lineStart:%d, lineEnd:%d" % (lineStart, lineEnd)
+			# print "lineStart:%d, lineEnd:%d" % (lineStart, lineEnd)
 			
 			# delete the line content
 			self.Replace(lineStart, lineEnd, "")
@@ -263,7 +263,6 @@ class wxTerm(wx.TextCtrl):
 		event.Skip()
 		
 	def OnTerminalChar(self, event):
-		print "OnTerminalChar"
 		if self.session is None:
 			return
 		ascii = event.GetKeyCode()

@@ -142,12 +142,14 @@ class DeviceListCtrl(gridlib.Grid):
 		device_type = self.GetCellValue(event.GetTopRow(), ENUM_DEVICE_DEV_TYPE)
 		self.FilterTemplateList(device_type)
 		self.SetPromptForSend(device_type)
+		self.main_frame.m_textCtrl6.SetValue('')
 		event.Skip()
 
 	def OnSelectChange(self, event):
 		device_type = self.GetCellValue(event.Row, ENUM_DEVICE_DEV_TYPE)
 		self.FilterTemplateList(device_type)
 		self.SetPromptForSend(device_type)
+		self.main_frame.m_textCtrl6.SetValue('')
 		event.Skip()
 
 	def OnCellDataChange(self, event):

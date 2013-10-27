@@ -206,7 +206,7 @@ class MyttyFrame(Mytty.Mytty):
 					 "gateway_ip": device.gateway_ip
 					 }
 		content  = engine.render(tpl_file, dict_data)
-		util.ExecuteCmd('del *.cache')
+		util.ExecuteCmd('del .\\templates\\*.cache')
 		self.m_textCtrl6.SetValue(content)
 	
 	def OnSendTemplate( self, event ):
@@ -278,7 +278,6 @@ class MyttyFrame(Mytty.Mytty):
 			tabPanel.SetSizer( tabPanelSizer )
 			tabPanel.Layout()
 			self.m_textCtrl71.Enable(True)
-			session.SetTerminate(self.terminate)
 		else:
 			dlg = wx.MessageDialog(self, u"连接：%s 打开失败" % session.GetSessionInfo(), u"错误", wx.OK)
 			dlg.ShowModal()
@@ -292,7 +291,7 @@ class MyttyFrame(Mytty.Mytty):
 	def SendTplCmdThread(self, cmd_list, send_interval):
 		session = self.GetCurActivatedSession()
 		for cmd in cmd_list:
-			print "send cmd: %s\n" % (cmd)
+			# print "send cmd: %s\n" % (cmd)
 			session.Write(cmd + "\n")
 			# event = wx.KeyEvent(eventType=wx.wxEVT_CHAR)
 			# for ch in cmd:
