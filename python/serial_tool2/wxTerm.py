@@ -263,9 +263,9 @@ class wxTerm(wx.TextCtrl):
 		event.Skip()
 		
 	def OnTerminalChar(self, event):
+		print "OnTerminalChar"
 		if self.session is None:
 			return
-
 		ascii = event.GetKeyCode()
 		print "ASCII =", ascii
 		

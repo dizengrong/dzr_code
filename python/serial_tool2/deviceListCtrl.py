@@ -91,23 +91,25 @@ class DeviceListCtrl(gridlib.Grid):
 		self.main_frame = main_frame
 
 	def GetSelectedDevice(self):
-		sel_index = self.GetSelectedRows()[0]
-		print sel_index
-		if sel_index == -1:
+		if len(self.GetSelectedRows()) == 0:
 			return None
-		try:
-			return Device(self.GetCellValue(sel_index, ENUM_DEVICE_DEV_TYPE),
-					  	  self.GetCellValue(sel_index, ENUM_DEVICE_DEV_ADDR),
-					  	  self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_IP),
-					  	  self.GetCellValue(sel_index, ENUM_DEVICE_SUBMASK_IP),
-					  	  self.GetCellValue(sel_index, ENUM_DEVICE_GATEWAY_IP),
-					  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_VLAN)),
-					  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_BEGIN_VLAN)),
-					  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_END_VLAN))
-					 )
-		except Exception, e: # 处理数据错误或空白行的问题
-			print 'GetSelectedDevice exception: ', e
-			return None
+		else:
+			sel_index = self.GetSelectedRows()[0]
+			if sel_index == -1:
+				return None
+			try:
+				return Device(self.GetCellValue(sel_index, ENUM_DEVICE_DEV_TYPE),
+						  	  self.GetCellValue(sel_index, ENUM_DEVICE_DEV_ADDR),
+						  	  self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_IP),
+						  	  self.GetCellValue(sel_index, ENUM_DEVICE_SUBMASK_IP),
+						  	  self.GetCellValue(sel_index, ENUM_DEVICE_GATEWAY_IP),
+						  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_MANGR_VLAN)),
+						  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_BEGIN_VLAN)),
+						  	  int(self.GetCellValue(sel_index, ENUM_DEVICE_END_VLAN))
+						 )
+			except Exception, e: # 处理数据错误或空白行的问题
+				print 'GetSelectedDevice exception: ', e
+				return None
 
 	def FilterTemplateList(self, device_type):
 		if device_type == '':

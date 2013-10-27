@@ -19,9 +19,9 @@ from deviceListCtrl import DeviceListCtrl
 class Mytty ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Mytty", pos = wx.DefaultPosition, size = wx.Size( 1086,600 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MAXIMIZE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.SYSTEM_MENU )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"设备简易配置程序", pos = wx.DefaultPosition, size = wx.Size( 1131,600 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MAXIMIZE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.SYSTEM_MENU )
 		
-		self.SetSizeHintsSz( wx.Size( 1086,600 ), wx.DefaultSize )
+		self.SetSizeHintsSz( wx.Size( 1131,600 ), wx.DefaultSize )
 		
 		self.m_menubar1 = wx.MenuBar( 0 )
 		self.m_menu3 = wx.Menu()

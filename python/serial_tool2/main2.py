@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 
 
-import wx, os, serial, threading, util, Mytty, session, base64
+import wx, os, serial, threading, util, Mytty, base64, thread
 import xdrlib, sys, xlrd, tenjin, time, datetime, webbrowser, telnetlib
 import SaveSessionDialog, OpenSessionDialog, ChangeIpDialog
 from tenjin.escaped import *
@@ -10,8 +10,8 @@ from tenjin.helpers import to_str
 from deviceListCtrl import DeviceListCtrl
 from util import PortSetting, Device
 from wxTerm import *
-from session import *
-import my_machine, traceback
+from session_manager import *
+import my_machine, traceback, session_manager
 
 # 端口设置字段
 ENUM_SETTING_DESC       = 0
@@ -23,6 +23,7 @@ ENUM_SETTING_DTRCONTROL = 5
 
 engine = tenjin.SafeEngine()
 license_mag = None
+
 
 #各控件说明：
 # 	m_listCtrl1: 设备数据
@@ -41,12 +42,8 @@ license_mag = None
 # 	m_menu2: 外部工具菜单
 # 	m_staticText191: 发送提示
 class MyttyFrame(Mytty.Mytty):
-	#会话管理（类变量）
-	session_manager = session.SessionManager()
-
 	def __init__(self):
 		super(MyttyFrame, self).__init__(None)
-		session_manager.InitConfig()
 
 		self.m_choice8.AppendItems(self.InitPortSetting())
 		self.m_choice7.AppendItems(self.InitCmdTemplates())
@@ -63,6 +60,17 @@ class MyttyFrame(Mytty.Mytty):
 		self.m_listCtrl1.SetMainFrame(self)
 		version = u"（版本：%s    剩余使用天数：%d）" % (license_mag.GetVersion(), license_mag.GetLeftDays())
 		self.SetLabel(self.GetLabel() + version)
+
+		self.icon = wx.Icon("my.ico", wx.BITMAP_TYPE_ICO)
+		self.SetIcon(self.icon)
+		
+		try:
+			session_manager.session_manag.InitConfig()
+		except Exception, e:
+			os.system('copy /y config\\sessions config\\sessions.back')
+			open('config/sessions', 'w').write('{}')
+			util.ShowMessageDialog(None, u'读取会话文件sessions出错，已备份到session.back。错误：%s' % e, u'警告')
+			session_manager.session_manag.InitConfig()
 
 	def InitExtralToolsMenu(self):
 		for item in os.listdir("./tools/"):
@@ -97,7 +105,7 @@ class MyttyFrame(Mytty.Mytty):
 		if dlg.ShowModal() == wx.ID_OK:
 			save_name = dlg.GetSessionSaveName()
 			save_path = dlg.GetLogFileName()
-			if session_manager.SaveSession(session, save_name, save_path):
+			if session_manager.session_manag.SaveSession(session, save_name, save_path):
 				self.m_auinotebook2.SetPageText(self.m_auinotebook2.GetSelection(), session.GetSessionName())
 			else:
 				util.ShowMessageDialog(self, u"保存会话失败，已存在同名的会话了", u"信息")
@@ -118,11 +126,11 @@ class MyttyFrame(Mytty.Mytty):
 		self.Close(True)
 	
 	def OnOpenDoc( self, event ):
-		doc = os.path.join(os.path.realpath(os.path.dirname(".")), "documents/index.html")
+		doc = os.path.join(os.path.realpath(os.path.dirname(".")), "documents/help.chm")
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u" 版本：设备配置程序 mytty-v2.05 \n 制作：nx工作室 \n 联系方式：\n      联系人：谢志文\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.06 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -198,6 +206,7 @@ class MyttyFrame(Mytty.Mytty):
 					 "gateway_ip": device.gateway_ip
 					 }
 		content  = engine.render(tpl_file, dict_data)
+		util.ExecuteCmd('del *.cache')
 		self.m_textCtrl6.SetValue(content)
 	
 	def OnSendTemplate( self, event ):
@@ -211,26 +220,6 @@ class MyttyFrame(Mytty.Mytty):
 
 		cmd_list = tpl_content.split("\n")
 		self.StartSendTplCmdThread(cmd_list, send_interval)
-
-	# def OnSendComand( self, event ):
-	# 	content = self.m_textCtrl71.GetValue()
-	# 	if content != '' and self.AssertOpenSession():
-	# 		send_interval = self.GetSendInterval()
-	# 		cmd_list = content.split("\n")
-	# 		self.StartSendTplCmdThread(cmd_list, send_interval)
-	# 	self.m_textCtrl71.Clear()
-	# 	event.Skip()
-
-	# def OnSendCmdKeyDown( self, event ):
-	# 	event.Skip()
-	# 	if event.GetKeyCode() == wx.WXK_RETURN:
-	# 		if event.ControlDown():
-	# 			content = self.m_textCtrl71.GetValue()
-	# 			if content != '' and self.AssertOpenSession():
-	# 				send_interval = self.GetSendInterval()
-	# 				cmd_list = content.split("\n")
-	# 				self.StartSendTplCmdThread(cmd_list, send_interval)
-	# 			self.m_textCtrl71.Clear()
 
 	def OnSendCmdKeyUp( self, event ):
 		event.Skip()
@@ -246,7 +235,7 @@ class MyttyFrame(Mytty.Mytty):
 	def OnSessionPageChanged( self, event ):
 		event.Skip()
 		tab_title = self.m_auinotebook2.GetPageText(event.GetSelection())
-		session = session_manager.GetSessionByName(tab_title)
+		session = session_manager.session_manag.GetSessionByName(tab_title)
 		if session:
 			self.SetConnectionInfo(session)
 			self.m_textCtrl71.Enable(True)
@@ -255,7 +244,7 @@ class MyttyFrame(Mytty.Mytty):
 		dlg = wx.MessageDialog(self, u"确定要关闭连接？", u"提示", wx.OK|wx.CANCEL)
 		if dlg.ShowModal() == wx.ID_OK:
 			session = self.GetCurActivatedSession()
-			session_manager.RemoveSession(session)
+			session_manager.session_manag.RemoveSession(session)
 			session.Close()
 			event.Skip()
 			self.m_textCtrl71.Enable(False)
@@ -268,7 +257,7 @@ class MyttyFrame(Mytty.Mytty):
 		if session:
 			dlg = wx.MessageDialog(self, u"确定要关闭全部连接吗？", u"提示", wx.OK|wx.CANCEL)
 			if dlg.ShowModal() == wx.ID_OK:
-				session_manager.CloseAllSessions()
+				session_manager.session_manag.CloseAllSessions()
 				event.Skip()
 			else:
 				event.Veto()
@@ -278,18 +267,18 @@ class MyttyFrame(Mytty.Mytty):
 
 	def OpenSession(self, session):
 		if session.Open():
-			session_manager.AddSession(session)
+			session_manager.session_manag.AddSession(session)
 			tabPanel = wx.Panel( self.m_auinotebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 			self.m_auinotebook2.AddPage( tabPanel, session.GetSessionName(), True, wx.NullBitmap )
 			self.SetConnectionInfo(session)
 
 			tabPanelSizer = wx.BoxSizer( wx.VERTICAL )
-			terminate = wxTerm(tabPanel, "", session = session)
-			tabPanelSizer.Add( terminate, 1, wx.ALL|wx.EXPAND, 1 )
+			self.terminate = wxTerm(tabPanel, "", session = session)
+			tabPanelSizer.Add( self.terminate, 1, wx.ALL|wx.EXPAND, 1 )
 			tabPanel.SetSizer( tabPanelSizer )
 			tabPanel.Layout()
 			self.m_textCtrl71.Enable(True)
-			print "page index: %d" % (self.m_auinotebook2.GetPageIndex(tabPanel))
+			session.SetTerminate(self.terminate)
 		else:
 			dlg = wx.MessageDialog(self, u"连接：%s 打开失败" % session.GetSessionInfo(), u"错误", wx.OK)
 			dlg.ShowModal()
@@ -305,6 +294,12 @@ class MyttyFrame(Mytty.Mytty):
 		for cmd in cmd_list:
 			print "send cmd: %s\n" % (cmd)
 			session.Write(cmd + "\n")
+			# event = wx.KeyEvent(eventType=wx.wxEVT_CHAR)
+			# for ch in cmd:
+			# 	event.m_keyCode = ord(ch)
+			# 	# session.term.WriteText(ch)
+			# 	session.term.OnTerminalChar(event)
+			# 	# wx.PostEvent(self.terminate, event) 
 			time.sleep(send_interval/1000.0)
 
 			if not session.IsAlive():
@@ -317,7 +312,7 @@ class MyttyFrame(Mytty.Mytty):
 		selected_tab = self.m_auinotebook2.GetSelection()
 		if selected_tab >= 0:
 			tab_title = self.m_auinotebook2.GetPageText(self.m_auinotebook2.GetSelection())
-			session = session_manager.GetSessionByName(tab_title)
+			session = session_manager.session_manag.GetSessionByName(tab_title)
 			return session
 		else:
 			return None
@@ -390,7 +385,7 @@ class MySaveSessionDialog(SaveSessionDialog.SaveSessionDialog):
 	def OnSaveSession( self, event ):
 		save_name = self.GetSessionSaveName()
 		if save_name != self.session.GetSessionName():
-			if MyttyFrame.session_manager.IsNameExist(save_name):
+			if session_manager.session_manag.IsNameExist(save_name):
 				util.ShowMessageDialog(self, u"该会话名已存在！", u"信息")
 			else:
 				event.Skip()
@@ -420,7 +415,8 @@ class MyOpenSessionDialog(OpenSessionDialog.OpenSessionDialog):
 		self.m_listCtrl2.SetColumnWidth(0, 260)
 
 		index = 0
-		for session in MyttyFrame.session_manager.saved_sessions:
+		for session in session_manager.session_manag.saved_sessions:
+			print "open init:", session
 			session_name = session.GetSessionName()
 			self.m_listCtrl2.InsertStringItem(index, session_name + " [" + session.GetSessionInfo() + "]")
 			self.m_listCtrl2.SetItemData(index, len(session_name))
@@ -434,18 +430,18 @@ class MyOpenSessionDialog(OpenSessionDialog.OpenSessionDialog):
 		session_name = self.m_listCtrl2.GetItemText(sel_index)
 		length = self.m_listCtrl2.GetItemData(sel_index)
 		session_name = session_name[0:length]
-		return MyttyFrame.session_manager.GetSavedSessionByName(session_name)
+		return session_manager.session_manag.GetSavedSessionByName(session_name)
 
 	def OnItemActivated( self, event ):
 		pass
 
 	def OnDeleteSession( self, event ):
-		sel_index = self.m_listCtrl2.GetFirstSelected()
-		if sel_index == -1:
+		session = self.GetSelectedSession()
+		if session == None:
 			return None
-		session_name = self.m_listCtrl2.GetItemText(sel_index)
-		if MyttyFrame.session_manager.DeleteSavedSessionByName(session_name):
-			self.m_listCtrl2.DeleteItem(sel_index)
+		session_name = session.GetSessionName()
+		if session_manager.session_manag.DeleteSavedSessionByName(session_name):
+			self.m_listCtrl2.DeleteItem(self.m_listCtrl2.GetFirstSelected())
 		else:
 			util.ShowMessageDialog(self, u"删除会话记录失败，可能已经不存在那个会话了", u"错误")
 
@@ -578,6 +574,7 @@ class LicenseManager(object):
 			return u'试用版'
 		else:
 			return u'注册版'
+
 
 if __name__ == "__main__":
 	app = wx.PySimpleApp(0)
