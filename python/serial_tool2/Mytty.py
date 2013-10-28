@@ -19,7 +19,7 @@ from deviceListCtrl import DeviceListCtrl
 class Mytty ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"设备简易配置程序", pos = wx.DefaultPosition, size = wx.Size( 1131,600 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MAXIMIZE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.SYSTEM_MENU )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"设备简易配置程序", pos = wx.DefaultPosition, size = wx.Size( 1131,600 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MAXIMIZE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.SYSTEM_MENU )
 		
 		self.SetSizeHintsSz( wx.Size( 1131,600 ), wx.DefaultSize )
 		
@@ -148,8 +148,10 @@ class Mytty ( wx.Frame ):
 		bSizer8 = wx.BoxSizer( wx.HORIZONTAL )
 		
 		m_choice7Choices = []
-		self.m_choice7 = wx.Choice( self.m_panel8, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice7Choices, 0 )
+		self.m_choice7 = wx.Choice( self.m_panel8, wx.ID_ANY, wx.DefaultPosition, wx.Size( 190,-1 ), m_choice7Choices, 0 )
 		self.m_choice7.SetSelection( 0 )
+		self.m_choice7.SetMinSize( wx.Size( 190,-1 ) )
+		
 		bSizer8.Add( self.m_choice7, 0, wx.ALL, 5 )
 		
 		self.m_button3 = wx.Button( self.m_panel8, wx.ID_ANY, u"生成配置命令", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -159,8 +161,10 @@ class Mytty ( wx.Frame ):
 		bSizer8.Add( self.m_staticline2, 0, wx.EXPAND |wx.ALL, 5 )
 		
 		m_choice9Choices = []
-		self.m_choice9 = wx.Choice( self.m_panel8, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice9Choices, 0 )
+		self.m_choice9 = wx.Choice( self.m_panel8, wx.ID_ANY, wx.DefaultPosition, wx.Size( 200,-1 ), m_choice9Choices, 0 )
 		self.m_choice9.SetSelection( 0 )
+		self.m_choice9.SetMinSize( wx.Size( 200,-1 ) )
+		
 		bSizer8.Add( self.m_choice9, 0, wx.ALL, 5 )
 		
 		self.m_button15 = wx.Button( self.m_panel8, wx.ID_ANY, u"生成清除配置命令", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -178,7 +182,7 @@ class Mytty ( wx.Frame ):
 		self.m_staticText11.Wrap( -1 )
 		bSizer10.Add( self.m_staticText11, 0, wx.ALIGN_CENTER, 1 )
 		
-		self.m_textCtrl7 = wx.TextCtrl( self.m_panel8, wx.ID_ANY, u"100", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_textCtrl7 = wx.TextCtrl( self.m_panel8, wx.ID_ANY, u"300", wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
 		bSizer10.Add( self.m_textCtrl7, 0, wx.ALL|wx.EXPAND, 1 )
 		
 		self.m_button5 = wx.Button( self.m_panel8, wx.ID_ANY, u"发送", wx.DefaultPosition, wx.DefaultSize, 0 )

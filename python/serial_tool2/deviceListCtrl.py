@@ -40,7 +40,7 @@ class DeviceListCtrl(gridlib.Grid):
 		self.CreateGrid(100, MAX_COL + 1)
 
 		self.SetColLabelValue(ENUM_DEVICE_DEV_TYPE, u'设备类型')
-		self.SetColSize(ENUM_DEVICE_DEV_TYPE, 120)
+		self.SetColMinimalWidth(ENUM_DEVICE_DEV_TYPE, 180)
 
 		self.SetColLabelValue(ENUM_DEVICE_DEV_ADDR, u'设备安装地址')
 		self.SetColSize(ENUM_DEVICE_DEV_ADDR, 120)
@@ -63,7 +63,7 @@ class DeviceListCtrl(gridlib.Grid):
 		self.SetColLabelValue(ENUM_DEVICE_END_VLAN, u'端口结束VLAN')
 		self.SetColSize(ENUM_DEVICE_END_VLAN, 120)
 
-		self.AutoSizeColumns(setAsMin = True)
+		self.AutoSizeColumns(setAsMin = False)
 
 		for row in xrange(0,100):
 			renderer = gridlib.GridCellChoiceEditor(GetDeviceTypeList(), allowOthers=True)
@@ -163,7 +163,7 @@ class DeviceListCtrl(gridlib.Grid):
 		wx.CallAfter(self.AdjustSizeColumns)
 		
 	def AdjustSizeColumns(self):
-		self.AutoSizeColumns(setAsMin = True)
+		self.AutoSizeColumns(setAsMin = False)
 
 	def OnImportDeviceDatas(self, e):
 		self.dirname = ''

@@ -292,7 +292,10 @@ class MyttyFrame(Mytty.Mytty):
 		session = self.GetCurActivatedSession()
 		for cmd in cmd_list:
 			# print "send cmd: %s\n" % (cmd)
-			session.Write(cmd + "\n")
+			if session.GetSessionType() == 'telnet':
+				session.Write(cmd + "\n\r")
+			else:
+				session.Write(cmd + "\n")
 			# event = wx.KeyEvent(eventType=wx.wxEVT_CHAR)
 			# for ch in cmd:
 			# 	event.m_keyCode = ord(ch)
@@ -324,11 +327,11 @@ class MyttyFrame(Mytty.Mytty):
 		return True
 
 	def GetSendInterval(self):
-		send_interval = 100
+		send_interval = 300
 		try:
 			send_interval = int(self.m_textCtrl7.GetValue())
 		except Exception, e:
-			self.m_textCtrl7.SetValue("100")
+			self.m_textCtrl7.SetValue("300")
 		return send_interval
 
 	def SetConnectionInfo(self, session):
