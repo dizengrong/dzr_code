@@ -2,7 +2,7 @@
 # -*- coding: utf8 -*-
 
 
-import wx, os, serial, threading, util, Mytty, base64, thread
+import wx, os, serial, threading, util, Mytty, base64, thread, logging
 import xdrlib, sys, xlrd, tenjin, time, datetime, webbrowser, telnetlib
 import SaveSessionDialog, OpenSessionDialog, ChangeIpDialog
 from tenjin.escaped import *
@@ -23,6 +23,8 @@ ENUM_SETTING_DTRCONTROL = 5
 
 engine = tenjin.SafeEngine()
 license_mag = None
+logging.basicConfig(filename = os.path.join(os.getcwd(), 'mytty_log.txt'), 
+					format = '%(asctime)s - %(levelname)s: %(message)s', level = logging.INFO)
 
 
 #各控件说明：
@@ -292,10 +294,11 @@ class MyttyFrame(Mytty.Mytty):
 		session = self.GetCurActivatedSession()
 		for cmd in cmd_list:
 			# print "send cmd: %s\n" % (cmd)
-			if session.GetSessionType() == 'telnet':
+			cmd = cmd.encode('ascii')
+			try:
 				session.Write(cmd + "\n\r")
-			else:
-				session.Write(cmd + "\n")
+			except Exception, e:
+				logging.error('send command: (%s) failed, exception: %s', *(cmd, e))
 			# event = wx.KeyEvent(eventType=wx.wxEVT_CHAR)
 			# for ch in cmd:
 			# 	event.m_keyCode = ord(ch)
