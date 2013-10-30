@@ -132,7 +132,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.06 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.07 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -293,10 +293,11 @@ class MyttyFrame(Mytty.Mytty):
 	def SendTplCmdThread(self, cmd_list, send_interval):
 		session = self.GetCurActivatedSession()
 		for cmd in cmd_list:
-			# print "send cmd: %s\n" % (cmd)
+			cmd = cmd + '\n'
+			# print "send cmd: [%s]end" % (cmd)
 			cmd = cmd.encode('ascii')
 			try:
-				session.Write(cmd + "\n\r")
+				session.Write(cmd)
 			except Exception, e:
 				logging.error('send command: (%s) failed, exception: %s', *(cmd, e))
 			# event = wx.KeyEvent(eventType=wx.wxEVT_CHAR)
@@ -463,6 +464,8 @@ class MyChangeIpDialog(ChangeIpDialog.ChangeIpDialog):
 		all_network_connections = util.GetAllNetworkName()
 
 		self.m_choice8.AppendItems(util.GetAllNetworkName())
+		self.m_textCtrl14.SetValue('255.255.255.0')
+		self.m_textCtrl15.SetValue('192.168.1.1')
 		
 	def OnChangeIpMode1( self, event ):
 		# 改为自动获取ip地址
@@ -484,10 +487,19 @@ class MyChangeIpDialog(ChangeIpDialog.ChangeIpDialog):
 		mask    = self.m_textCtrl14.GetValue().strip()
 		gateway = self.m_textCtrl15.GetValue().strip()
 
-		if ip == "" or mask == "" or gateway == "":
+		if ip == "" or mask == "":
+			util.ShowMessageDialog(self, u"ip地址或子网掩码不能为空", u"错误操作")
 			return
-		cmd = "netsh interface ip set address name=\"%s\" source=static addr=%s mask=%s gateway=%s 1" % (connection_name, ip, mask, gateway)
-		util.ShowMessageDialog(self, util.ExecuteCmd(cmd.encode('gbk')), u"执行结果")
+		if gateway == "":
+			cmd = "netsh interface ip set address name=\"%s\" source=static addr=%s mask=%s gateway=none 1" % (connection_name, ip, mask)
+		else:
+			cmd = "netsh interface ip set address name=\"%s\" source=static addr=%s mask=%s gateway=%s 1" % (connection_name, ip, mask, gateway)
+		result = util.ExecuteCmd(cmd.encode('gbk')).strip()
+		result_utf8 = result.decode('gbk')
+		# print "result: [%s]" % (result)
+		if result_utf8 == u'' or result_utf8 == u'\n' or result_utf8 == u'ok' or result_utf8 == u'确定':
+			result = u'修改成功'
+		util.ShowMessageDialog(self, result, u"执行结果")
 		event.Skip()
 
 

@@ -152,7 +152,7 @@ class Mytty ( wx.Frame ):
 		self.m_choice7.SetSelection( 0 )
 		self.m_choice7.SetMinSize( wx.Size( 190,-1 ) )
 		
-		bSizer8.Add( self.m_choice7, 0, wx.ALL, 5 )
+		bSizer8.Add( self.m_choice7, 1, wx.ALL, 5 )
 		
 		self.m_button3 = wx.Button( self.m_panel8, wx.ID_ANY, u"生成配置命令", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer8.Add( self.m_button3, 0, wx.ALL, 5 )
@@ -165,7 +165,7 @@ class Mytty ( wx.Frame ):
 		self.m_choice9.SetSelection( 0 )
 		self.m_choice9.SetMinSize( wx.Size( 200,-1 ) )
 		
-		bSizer8.Add( self.m_choice9, 0, wx.ALL, 5 )
+		bSizer8.Add( self.m_choice9, 1, wx.ALL, 5 )
 		
 		self.m_button15 = wx.Button( self.m_panel8, wx.ID_ANY, u"生成清除配置命令", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer8.Add( self.m_button15, 0, wx.ALL, 5 )
