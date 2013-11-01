@@ -79,11 +79,13 @@ options = {"py2exe": {"compressed": 1,
 					  "optimize": 2,
 					  # "ascii": 0,
 					  "includes":includes,
-					  "dll_excludes": ["MSVCP90.dll"]
+					  "dll_excludes": ["MSVCP90.dll"],
+					  "bundle_files": 1 #所有文件打包成一个exe文件
 					  }
 		  },
 zipfile = None,
-description = "dzR",
+description = u"mytty",
+name = u"mytty",
 windows = [{"script":"main2.py", "icon_resources":[(1, "my.ico")]}],
 data_files = [("", [r"PortSetting.xls", r"my.ico"]),
 			  ("templates", []),

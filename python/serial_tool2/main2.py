@@ -293,7 +293,7 @@ class MyttyFrame(Mytty.Mytty):
 	def SendTplCmdThread(self, cmd_list, send_interval):
 		session = self.GetCurActivatedSession()
 		for cmd in cmd_list:
-			cmd = cmd + '\n'
+			cmd = cmd + '\r\n'
 			# print "send cmd: [%s]end" % (cmd)
 			cmd = cmd.encode('ascii')
 			try:
