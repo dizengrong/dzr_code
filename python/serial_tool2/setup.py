@@ -91,7 +91,7 @@ data_files = [("", [r"PortSetting.xls", r"my.ico"]),
 			  ("templates", []),
 			  ("config", ["config/sessions", u"config/设备类型配置.txt", u"config/设备发送命令提示.txt"]),
 			  ("tools", []),
-			  ("documents", ["documents/help.chm"])
+			  ("documents", [u"documents/help.chm"])
     	     ]
 )
 
