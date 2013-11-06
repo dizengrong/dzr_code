@@ -63,6 +63,8 @@ class DeviceListCtrl(gridlib.Grid):
 		self.SetColLabelValue(ENUM_DEVICE_END_VLAN, u'端口结束VLAN')
 		self.SetColSize(ENUM_DEVICE_END_VLAN, 120)
 
+		self.SetRowLabelSize(60)
+
 		self.AutoSizeColumns(setAsMin = False)
 
 		for row in xrange(0,100):
@@ -80,6 +82,7 @@ class DeviceListCtrl(gridlib.Grid):
 		self.Bind(wx.grid.EVT_GRID_SELECT_CELL, self.OnSelectChange)
 
 		self.SetBackgroundColour('#d9d6c3')
+		self.SetDefaultRowSize(20)
 
 		self.send_prompts = GetSendPrompt()
 

@@ -4,7 +4,7 @@
 
 import wx, os, serial, threading, util, Mytty, base64, thread, logging
 import xdrlib, sys, xlrd, tenjin, time, datetime, webbrowser, telnetlib
-import SaveSessionDialog, OpenSessionDialog, ChangeIpDialog
+import SaveSessionDialog, OpenSessionDialog, ChangeIpDialog, SendProgressDialog
 from tenjin.escaped import *
 from tenjin.helpers import to_str
 from deviceListCtrl import DeviceListCtrl
@@ -132,7 +132,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.2.8 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.2.9 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -197,19 +197,36 @@ class MyttyFrame(Mytty.Mytty):
 			self.m_statusBar1.SetStatusText(u"请选择一条设备数据")
 			return
 
-		tpl_file = "templates/" + self.m_choice7.GetStringSelection()
-		tpl_file = tpl_file.encode('gbk')
-		# print tpl_file
-		dict_data = {"mangr_vlan": device.mangr_vlan,
-					 "mangr_ip": device.mangr_ip,
-					 "submask_ip": device.submask_ip,
-					 "begin_vlan": device.begin_vlan,
-					 "end_vlan": device.end_vlan,
-					 "gateway_ip": device.gateway_ip
-					 }
-		content  = engine.render(tpl_file, dict_data)
-		util.ExecuteCmd('del .\\templates\\*.cache')
-		self.m_textCtrl6.SetValue(content)
+		if self.m_listCtrl1.GetRowLabelValue(self.m_listCtrl1.GetSelectedRows()[0]) == u'已配置':
+			dlg = wx.MessageDialog(self, u'该设备已配置过，是否再次进行操作', u'提示', wx.OK | wx.CANCEL)
+			if dlg.ShowModal() != wx.ID_OK:
+				return
+
+		content = u"您选择的设备数据如下：\n\t设备类型：       " + device.dev_type + \
+										 u"\n\t设备安装地址： " + device.dev_addr + \
+										 u"\n\t管理地址：       " + device.mangr_ip + \
+										 u"\n\t子网掩码：       " + device.submask_ip + \
+										 u"\n\t默认网关：       " + device.gateway_ip + \
+										 u"\n\t管理vlan：       " + str(device.mangr_vlan) + \
+										 u"\n\t端口开始vlan： " + str(device.begin_vlan) + \
+										 u"\n\t端口结束vlan： " + str(device.end_vlan) + \
+										 u"\n是否确定生成命令？"
+
+		dlg = wx.MessageDialog(self, content, u"提示", wx.OK|wx.CANCEL)
+		if dlg.ShowModal() == wx.ID_OK :
+			tpl_file = "templates/" + self.m_choice7.GetStringSelection()
+			tpl_file = tpl_file.encode('gbk')
+			# print tpl_file
+			dict_data = {"mangr_vlan": device.mangr_vlan,
+						 "mangr_ip": device.mangr_ip,
+						 "submask_ip": device.submask_ip,
+						 "begin_vlan": device.begin_vlan,
+						 "end_vlan": device.end_vlan,
+						 "gateway_ip": device.gateway_ip
+						 }
+			content  = engine.render(tpl_file, dict_data)
+			util.ExecuteCmd('del .\\templates\\*.cache')
+			self.m_textCtrl6.SetValue(content)
 	
 	def OnSendTemplate( self, event ):
 		tpl_content = self.m_textCtrl6.GetValue()
@@ -221,7 +238,21 @@ class MyttyFrame(Mytty.Mytty):
 		send_interval = self.GetSendInterval()
 
 		cmd_list = tpl_content.split("\n")
-		self.StartSendTplCmdThread(cmd_list, send_interval)
+		self.SendCommand(cmd_list, send_interval)
+		
+		# self.StartSendTplCmdThread(cmd_list, send_interval)
+
+	def SendCommand(self, cmd_list, send_interval):
+		session  = self.GetCurActivatedSession()
+		dlg      = MySendProgressDialog(self, cmd_list, send_interval, session)
+		dlg.ShowModal()
+		dlg.Destroy()
+		self.m_textCtrl6.SetValue('')
+		row = self.m_listCtrl1.GetSelectedRows()[0]
+		col = 0
+		self.m_listCtrl1.SetCellTextColour(row, col, wx.Colour(255, 0, 0))
+		self.m_listCtrl1.SetRowLabelValue(row, u'已配置')
+
 
 	def OnSendCmdKeyUp( self, event ):
 		event.Skip()
@@ -231,7 +262,8 @@ class MyttyFrame(Mytty.Mytty):
 				if content != '' and self.AssertOpenSession():
 					send_interval = self.GetSendInterval()
 					cmd_list = content.split("\n")
-					self.StartSendTplCmdThread(cmd_list, send_interval)
+					self.SendCommand(cmd_list, send_interval)
+					# self.StartSendTplCmdThread(cmd_list, send_interval)
 				self.m_textCtrl71.Clear()
 
 	def OnSessionPageChanged( self, event ):
@@ -592,6 +624,59 @@ class LicenseManager(object):
 		else:
 			return u'注册版'
 
+class MySendProgressDialog(SendProgressDialog.SendProgressDialog):
+	"""docstring for MySendProgressDialog"""
+	def __init__(self, parent, cmd_list, send_interval, session):
+		super(MySendProgressDialog, self).__init__(parent)
+		self.parent        = parent
+		self.cmd_list      = cmd_list
+		self.session       = session
+		self.send_interval = send_interval
+		self.current_count = 0
+		self.total_count   = len(self.cmd_list)
+		self.m_gauge2.SetRange(self.total_count)
+		self.m_staticText21.SetLabel(self.cmd_list[self.current_count])
+		self.timer = wx.Timer(self, 1)
+		self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)
+		self.timer.Start(self.send_interval)
+
+	def BeginSendProgress(self):
+		cmd = self.cmd_list[self.current_count]
+		cmd = cmd + '\r\n'
+		cmd = cmd.encode('ascii')
+		try:
+			self.session.Write(cmd)
+		except Exception, e:
+			logging.error('send command: (%s) failed, exception: %s', *(cmd, e))
+
+		# time.sleep(self.send_interval)
+		self.current_count = self.current_count + 1
+
+		if self.current_count >= self.total_count:
+			self.m_button15.Enable( True )
+			self.m_staticText24.SetLabel(u"命令发送完毕，请做好标签拔掉连接线更换配置设备")
+		else:
+			self.m_staticText21.SetLabel(self.cmd_list[self.current_count])
+			if not self.session.IsAlive():
+				util.ShowMessageDialog(self, u"连接已断开，发送模板数据已终止！", u"错误")
+				self.timer.Stop()
+				# self.parent.m_statusBar1.SetStatusText(u"连接已断开，发送模板数据已终止！")
+
+		
+			
+	def OnTimer(self, event):
+		print("on timer")
+		self.BeginSendProgress()
+		self.m_gauge2.SetValue(self.current_count + 1)
+		if self.current_count >= self.total_count:
+			self.timer.Stop()
+
+	def OnIdle(self, event):
+		print("idle time")
+		self.m_gauge2.SetValue(self.current_count + 1)
+
+		
+		
 
 if __name__ == "__main__":
 	app = wx.PySimpleApp(0)
