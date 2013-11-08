@@ -93,7 +93,7 @@ class Mytty ( wx.Frame ):
 		self.m_panel6.SetSizer( bSizer11 )
 		self.m_panel6.Layout()
 		bSizer11.Fit( self.m_panel6 )
-		self.m_notebook2.AddPage( self.m_panel6, u"serial连接", True )
+		self.m_notebook2.AddPage( self.m_panel6, u"串口连接", True )
 		self.m_panel7 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer13 = wx.BoxSizer( wx.HORIZONTAL )
 		

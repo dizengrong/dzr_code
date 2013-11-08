@@ -65,6 +65,7 @@ class MyttyFrame(Mytty.Mytty):
 
 		self.icon = wx.Icon("my.ico", wx.BITMAP_TYPE_ICO)
 		self.SetIcon(self.icon)
+		self.is_clear_cmd = False
 		
 		try:
 			session_manager.session_manag.InitConfig()
@@ -141,11 +142,13 @@ class MyttyFrame(Mytty.Mytty):
 	
 	def OnOpenSerialPort( self, event ):
 		if self.m_comboBox1.GetSelection() == wx.NOT_FOUND:
-			self.m_statusBar1.SetStatusText(u"请选择端口")
+			# self.m_statusBar1.SetStatusText(u"请选择端口")
+			util.ShowMessageDialog(self, u"请选择端口", u'提示')
 			return
 
 		if self.m_choice8.GetSelection() == wx.NOT_FOUND:
-			self.m_statusBar1.SetStatusText(u"请选择端口设置")
+			# self.m_statusBar1.SetStatusText(u"请选择端口设置")
+			util.ShowMessageDialog(self, u"请选择端口设置", u'提示')
 			return
 
 		portstr = self.m_comboBox1.GetStringSelection()
@@ -176,25 +179,32 @@ class MyttyFrame(Mytty.Mytty):
 
 	def OnGenerateClearCmd( self, event ):
 		if self.m_choice9.GetSelection() == wx.NOT_FOUND:
-			self.m_statusBar1.SetStatusText(u"请选择模板")
+			# self.m_statusBar1.SetStatusText(u"请选择模板")
+			util.ShowMessageDialog(self, u"请选择模板", u'提示')
 			return
 		device = self.m_listCtrl1.GetSelectedDevice()
 		if device == None:
-			self.m_statusBar1.SetStatusText(u"请选择一条设备数据")
+			# self.m_statusBar1.SetStatusText(u"请选择一条设备数据")
+			util.ShowMessageDialog(self, u"请选择一条设备数据", u'提示')
 			return
+		content = u'此动作会生成清除设备中所有配置的命令，是否继续？'
+		dlg = wx.MessageDialog(self, content, u"提示", wx.OK|wx.CANCEL)
+		if dlg.ShowModal() == wx.ID_OK :
+			tpl_file = "templates/" + self.m_choice9.GetStringSelection()
 
-		tpl_file = "templates/" + self.m_choice9.GetStringSelection()
-
-		fd = open(tpl_file, 'r')
-		self.m_textCtrl6.SetValue(fd.read())
+			fd = open(tpl_file, 'r')
+			self.m_textCtrl6.SetValue(fd.read())
+			self.is_clear_cmd = True
 
 	def OnGenerateTemplate( self, event ):
 		if self.m_choice7.GetSelection() == wx.NOT_FOUND:
-			self.m_statusBar1.SetStatusText(u"请选择模板")
+			# self.m_statusBar1.SetStatusText(u"请选择模板")
+			util.ShowMessageDialog(self, u"请选择模板", u'提示')
 			return
 		device = self.m_listCtrl1.GetSelectedDevice()
 		if device == None:
-			self.m_statusBar1.SetStatusText(u"请选择一条设备数据")
+			# self.m_statusBar1.SetStatusText(u"请选择一条设备数据")
+			util.ShowMessageDialog(self, u"请选择一条设备数据", u'提示')
 			return
 
 		if self.m_listCtrl1.GetRowLabelValue(self.m_listCtrl1.GetSelectedRows()[0]) == u'已配置':
@@ -203,14 +213,14 @@ class MyttyFrame(Mytty.Mytty):
 				return
 
 		content = u"您选择的设备数据如下：\n\t设备类型：       " + device.dev_type + \
-										 u"\n\t设备安装地址： " + device.dev_addr + \
-										 u"\n\t管理地址：       " + device.mangr_ip + \
-										 u"\n\t子网掩码：       " + device.submask_ip + \
-										 u"\n\t默认网关：       " + device.gateway_ip + \
-										 u"\n\t管理vlan：       " + str(device.mangr_vlan) + \
-										 u"\n\t端口开始vlan： " + str(device.begin_vlan) + \
-										 u"\n\t端口结束vlan： " + str(device.end_vlan) + \
-										 u"\n是否确定生成命令？"
+										u"\n\t安装地址：       " + device.dev_addr + \
+										u"\n\t管理地址：       " + device.mangr_ip + \
+										u"\n\t子网掩码：       " + device.submask_ip + \
+										u"\n\t默认网关：       " + device.gateway_ip + \
+										u"\n\t管理vlan：       " + str(device.mangr_vlan) + \
+										u"\n\t端口开始vlan： " + str(device.begin_vlan) + \
+										u"\n\t端口结束vlan： " + str(device.end_vlan) + \
+										u"\n是否确定生成命令？"
 
 		dlg = wx.MessageDialog(self, content, u"提示", wx.OK|wx.CANCEL)
 		if dlg.ShowModal() == wx.ID_OK :
@@ -227,11 +237,13 @@ class MyttyFrame(Mytty.Mytty):
 			content  = engine.render(tpl_file, dict_data)
 			util.ExecuteCmd('del .\\templates\\*.cache')
 			self.m_textCtrl6.SetValue(content)
+			self.is_clear_cmd = False
 	
 	def OnSendTemplate( self, event ):
 		tpl_content = self.m_textCtrl6.GetValue()
 		if tpl_content == '':
-			self.m_statusBar1.SetStatusText(u"还没有生成命令")
+			# self.m_statusBar1.SetStatusText(u"还没有生成命令")
+			util.ShowMessageDialog(self, u"还没有生成命令", u'提示')
 			return
 		if not self.AssertOpenSession():
 			return
@@ -242,16 +254,17 @@ class MyttyFrame(Mytty.Mytty):
 		
 		# self.StartSendTplCmdThread(cmd_list, send_interval)
 
-	def SendCommand(self, cmd_list, send_interval):
+	def SendCommand(self, cmd_list, send_interval, from_template=True):
 		session  = self.GetCurActivatedSession()
-		dlg      = MySendProgressDialog(self, cmd_list, send_interval, session)
+		dlg      = MySendProgressDialog(self, cmd_list, send_interval, session, self.is_clear_cmd)
 		dlg.ShowModal()
 		dlg.Destroy()
 		self.m_textCtrl6.SetValue('')
-		row = self.m_listCtrl1.GetSelectedRows()[0]
-		col = 0
-		self.m_listCtrl1.SetCellTextColour(row, col, wx.Colour(255, 0, 0))
-		self.m_listCtrl1.SetRowLabelValue(row, u'已配置')
+		if from_template:
+			row = self.m_listCtrl1.GetSelectedRows()[0]
+			col = 0
+			self.m_listCtrl1.SetCellTextColour(row, col, wx.Colour(255, 0, 0))
+			self.m_listCtrl1.SetRowLabelValue(row, u'已配置')
 
 
 	def OnSendCmdKeyUp( self, event ):
@@ -262,7 +275,7 @@ class MyttyFrame(Mytty.Mytty):
 				if content != '' and self.AssertOpenSession():
 					send_interval = self.GetSendInterval()
 					cmd_list = content.split("\n")
-					self.SendCommand(cmd_list, send_interval)
+					self.SendCommand(cmd_list, send_interval, False)
 					# self.StartSendTplCmdThread(cmd_list, send_interval)
 				self.m_textCtrl71.Clear()
 
@@ -312,10 +325,10 @@ class MyttyFrame(Mytty.Mytty):
 			tabPanel.SetSizer( tabPanelSizer )
 			tabPanel.Layout()
 			self.m_textCtrl71.Enable(True)
+			util.ShowMessageDialog(self, u"连接成功", u"提示")
+			session.Write('\r\n')
 		else:
-			dlg = wx.MessageDialog(self, u"连接：%s 打开失败" % session.GetSessionInfo(), u"错误", wx.OK)
-			dlg.ShowModal()
-			dlg.Destroy()
+			util.ShowMessageDialog(self, u"连接：%s 打开失败" % session.GetSessionInfo(), u"错误")
 
 	def StartSendTplCmdThread(self, cmd_list, send_interval):
 		self.send_thread = threading.Thread(target=self.SendTplCmdThread, args = (cmd_list, send_interval))
@@ -341,7 +354,8 @@ class MyttyFrame(Mytty.Mytty):
 			time.sleep(send_interval/1000.0)
 
 			if not session.IsAlive():
-				self.m_statusBar1.SetStatusText(u"连接已断开，发送模板数据已终止！")
+				# self.m_statusBar1.SetStatusText(u"连接已断开，发送模板数据已终止！")
+				util.ShowMessageDialog(self, u"连接已断开，发送模板数据已终止！", u'提示')
 				break
 
 		self.send_thread = None
@@ -359,6 +373,7 @@ class MyttyFrame(Mytty.Mytty):
 		selected_tab = self.m_auinotebook2.GetSelection()
 		if selected_tab == -1:
 			self.m_statusBar1.SetStatusText(u"当前没有连接的会话")
+			util.ShowMessageDialog(self, u"当前没有连接的会话", u'提示')
 			return False
 		return True
 
@@ -626,12 +641,13 @@ class LicenseManager(object):
 
 class MySendProgressDialog(SendProgressDialog.SendProgressDialog):
 	"""docstring for MySendProgressDialog"""
-	def __init__(self, parent, cmd_list, send_interval, session):
+	def __init__(self, parent, cmd_list, send_interval, session, is_clear_cmd):
 		super(MySendProgressDialog, self).__init__(parent)
 		self.parent        = parent
 		self.cmd_list      = cmd_list
 		self.session       = session
 		self.send_interval = send_interval
+		self.is_clear_cmd  = is_clear_cmd
 		self.current_count = 0
 		self.total_count   = len(self.cmd_list)
 		self.m_gauge2.SetRange(self.total_count)
@@ -654,7 +670,10 @@ class MySendProgressDialog(SendProgressDialog.SendProgressDialog):
 
 		if self.current_count >= self.total_count:
 			self.m_button15.Enable( True )
-			self.m_staticText24.SetLabel(u"命令发送完毕，请做好标签拔掉连接线更换配置设备")
+			if self.is_clear_cmd:
+				self.m_staticText24.SetLabel(u"清除设备配置完毕，请等待设备重启")
+			else:
+				self.m_staticText24.SetLabel(u"命令发送完毕，请做好标签拔掉连接线更换配置设备")
 		else:
 			self.m_staticText21.SetLabel(self.cmd_list[self.current_count])
 			if not self.session.IsAlive():
