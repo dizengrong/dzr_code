@@ -133,7 +133,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.2.9 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.3.2 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -250,7 +250,9 @@ class MyttyFrame(Mytty.Mytty):
 		send_interval = self.GetSendInterval()
 
 		cmd_list = tpl_content.split("\n")
-		self.SendCommand(cmd_list, send_interval)
+		dlg = wx.MessageDialog(self, u'请仔细比对发送提示和窗口输出，是否确认发送？', u'提示', wx.OK | wx.CANCEL)
+		if dlg.ShowModal() == wx.ID_OK:
+			self.SendCommand(cmd_list, send_interval)
 		
 		# self.StartSendTplCmdThread(cmd_list, send_interval)
 
@@ -262,8 +264,9 @@ class MyttyFrame(Mytty.Mytty):
 		self.m_textCtrl6.SetValue('')
 		if from_template:
 			row = self.m_listCtrl1.GetSelectedRows()[0]
-			col = 0
-			self.m_listCtrl1.SetCellTextColour(row, col, wx.Colour(255, 0, 0))
+			max_col = 7
+			for col in xrange(0,max_col + 1):
+				self.m_listCtrl1.SetCellTextColour(row, col, wx.Colour(255, 0, 0))
 			self.m_listCtrl1.SetRowLabelValue(row, u'已配置')
 
 
