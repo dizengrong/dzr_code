@@ -66,6 +66,7 @@ class MyttyFrame(Mytty.Mytty):
 		self.icon = wx.Icon("my.ico", wx.BITMAP_TYPE_ICO)
 		self.SetIcon(self.icon)
 		self.is_clear_cmd = False
+		self.init_inline_datas()
 		
 		try:
 			session_manager.session_manag.InitConfig()
@@ -74,6 +75,14 @@ class MyttyFrame(Mytty.Mytty):
 			open('config/sessions', 'w').write('{}')
 			util.ShowMessageDialog(None, u'读取会话文件sessions出错，已备份到session.back。错误：%s' % e, u'警告')
 			session_manager.session_manag.InitConfig()
+
+	def init_inline_datas(self):
+		str = open(u'config/进线口.txt').read().strip().decode('utf8')
+		inline_list = str.split('\n')
+		self.inline_dic = {}
+		for inline in inline_list:
+			tmp = inline.split('=')
+			self.inline_dic[tmp[0]] = tmp[1]
 
 	def InitExtralToolsMenu(self):
 		for item in os.listdir("./tools/"):
@@ -220,6 +229,7 @@ class MyttyFrame(Mytty.Mytty):
 										u"\n\t管理vlan：       " + str(device.mangr_vlan) + \
 										u"\n\t端口开始vlan： " + str(device.begin_vlan) + \
 										u"\n\t端口结束vlan： " + str(device.end_vlan) + \
+										u"\n\t进线口：          " + self.inline_dic.get(device.dev_type, "1") + \
 										u"\n是否确定生成命令？"
 
 		dlg = wx.MessageDialog(self, content, u"提示", wx.OK|wx.CANCEL)
@@ -413,7 +423,7 @@ class MyttyFrame(Mytty.Mytty):
 	def InitCmdTemplates(self):
 		self.cmd_tpl_list = []
 		for item in os.listdir("templates/"):
-			if item.endswith(".txt"):
+			if item.endswith(".tpl"):
 				tpl = os.path.basename(item)
 				self.cmd_tpl_list.append(tpl)
 		return self.cmd_tpl_list
@@ -672,10 +682,10 @@ class MySendProgressDialog(SendProgressDialog.SendProgressDialog):
 		self.current_count = self.current_count + 1
 
 		if self.current_count >= self.total_count:
-			self.m_button15.Enable( True )
 			if self.is_clear_cmd:
 				self.m_staticText24.SetLabel(u"清除设备配置完毕，请等待设备重启")
 			else:
+				self.m_button15.Enable( True )
 				self.m_staticText24.SetLabel(u"命令发送完毕，请做好标签拔掉连接线更换配置设备")
 		else:
 			self.m_staticText21.SetLabel(self.cmd_list[self.current_count])
@@ -687,15 +697,25 @@ class MySendProgressDialog(SendProgressDialog.SendProgressDialog):
 		
 			
 	def OnTimer(self, event):
-		print("on timer")
+		# print("on timer")
 		self.BeginSendProgress()
 		self.m_gauge2.SetValue(self.current_count + 1)
 		if self.current_count >= self.total_count:
 			self.timer.Stop()
+			if self.is_clear_cmd:
+				self.m_gauge2.SetRange(60)
+				self.reboot_count = 0
+				self.reboot_timer = wx.Timer(self, 1)
+				self.Bind(wx.EVT_TIMER, self.OnDeviceRebootTimer, self.reboot_timer)
+				self.reboot_timer.Start(500)
 
-	def OnIdle(self, event):
-		print("idle time")
-		self.m_gauge2.SetValue(self.current_count + 1)
+	def OnDeviceRebootTimer(self, event):
+		self.reboot_count = self.reboot_count + 1
+		self.m_gauge2.SetValue(self.reboot_count)
+		if self.reboot_count >= 60:
+			self.reboot_timer.Stop()
+			self.m_staticText24.SetLabel(u"设备重启完毕！")
+			self.m_button15.Enable( True )
 
 		
 		
