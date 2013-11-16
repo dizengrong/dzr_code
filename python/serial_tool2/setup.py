@@ -89,9 +89,9 @@ name = u"mytty",
 windows = [{"script":"main2.py", "icon_resources":[(1, "my.ico")]}],
 data_files = [("", [r"PortSetting.xls", r"my.ico"]),
 			  ("templates", []),
-			  ("config", ["config/sessions", u"config/设备类型配置.txt", u"config/设备发送命令提示.txt", u"config/进口线.txt"]),
+			  ("config", ["config/sessions", u"config/设备类型配置.txt", u"config/设备发送命令提示.txt", u"config/进线口.txt"]),
 			  ("tools", []),
-			  ("documents", [u"documents/help.chm"])
+			  ("documents", ["documents/help.chm"])
     	     ]
 )
 

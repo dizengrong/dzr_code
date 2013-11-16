@@ -2,16 +2,18 @@
 # -*- coding: utf8 -*-
 
 
-import wx, os, serial, threading, util, Mytty, base64, thread, logging
-import xdrlib, sys, xlrd, tenjin, time, datetime, webbrowser, telnetlib
+import wx, os, serial, threading, util, Mytty, base64, thread, logging, deviceListCtrl
+import xdrlib, sys, xlrd, tenjin, time, datetime, webbrowser, telnetlib, tarfile, zipfile
 import SaveSessionDialog, OpenSessionDialog, ChangeIpDialog, SendProgressDialog
 from tenjin.escaped import *
 from tenjin.helpers import to_str
-from deviceListCtrl import DeviceListCtrl
+from deviceListCtrl import *
 from util import PortSetting, Device
 from wxTerm import *
 from session_manager import *
 import my_machine, traceback, session_manager
+from HtmlMessageDialog import *
+import tempfile
 
 # 端口设置字段
 ENUM_SETTING_DESC       = 0
@@ -199,7 +201,7 @@ class MyttyFrame(Mytty.Mytty):
 		content = u'此动作会生成清除设备中所有配置的命令，是否继续？'
 		dlg = wx.MessageDialog(self, content, u"提示", wx.OK|wx.CANCEL)
 		if dlg.ShowModal() == wx.ID_OK :
-			tpl_file = "templates/" + self.m_choice9.GetStringSelection()
+			tpl_file = "templates/" + self.m_choice9.GetStringSelection() + ".tpl"
 
 			fd = open(tpl_file, 'r')
 			self.m_textCtrl6.SetValue(fd.read())
@@ -234,7 +236,8 @@ class MyttyFrame(Mytty.Mytty):
 
 		dlg = wx.MessageDialog(self, content, u"提示", wx.OK|wx.CANCEL)
 		if dlg.ShowModal() == wx.ID_OK :
-			tpl_file = "templates/" + self.m_choice7.GetStringSelection()
+			# tpl_file = "templates/" + self.m_choice7.GetStringSelection() + ".tpl"
+			tpl_file = os.path.join(self.temp_tpls_dir, self.m_choice7.GetStringSelection() + ".tpl")
 			tpl_file = tpl_file.encode('gbk')
 			# print tpl_file
 			dict_data = {"mangr_vlan": device.mangr_vlan,
@@ -245,7 +248,7 @@ class MyttyFrame(Mytty.Mytty):
 						 "gateway_ip": device.gateway_ip
 						 }
 			content  = engine.render(tpl_file, dict_data)
-			util.ExecuteCmd('del .\\templates\\*.cache')
+			# util.ExecuteCmd('del .\\templates\\*.cache')
 			self.m_textCtrl6.SetValue(content)
 			self.is_clear_cmd = False
 	
@@ -260,7 +263,7 @@ class MyttyFrame(Mytty.Mytty):
 		send_interval = self.GetSendInterval()
 
 		cmd_list = tpl_content.split("\n")
-		dlg = wx.MessageDialog(self, u'请仔细比对发送提示和窗口输出，是否确认发送？', u'提示', wx.OK | wx.CANCEL)
+		dlg = HtmlMessageDialog(self, u'提示', u'<font color="red"><p>请仔细比对发送提示和窗口输出</p><p>是否确认发送？</p></font>')
 		if dlg.ShowModal() == wx.ID_OK:
 			self.SendCommand(cmd_list, send_interval)
 		
@@ -274,10 +277,11 @@ class MyttyFrame(Mytty.Mytty):
 		self.m_textCtrl6.SetValue('')
 		if from_template:
 			row = self.m_listCtrl1.GetSelectedRows()[0]
-			max_col = 7
+			max_col = deviceListCtrl.MAX_COL
 			for col in xrange(0,max_col + 1):
 				self.m_listCtrl1.SetCellTextColour(row, col, wx.Colour(255, 0, 0))
 			self.m_listCtrl1.SetRowLabelValue(row, u'已配置')
+			self.m_listCtrl1.SetCellValue(row, 0, '1')
 
 
 	def OnSendCmdKeyUp( self, event ):
@@ -313,15 +317,18 @@ class MyttyFrame(Mytty.Mytty):
 			event.Veto()
 
 	def OnClose( self, event ):
+
 		session = self.GetCurActivatedSession()
 		if session:
 			dlg = wx.MessageDialog(self, u"确定要关闭全部连接吗？", u"提示", wx.OK|wx.CANCEL)
 			if dlg.ShowModal() == wx.ID_OK:
 				session_manager.session_manag.CloseAllSessions()
 				event.Skip()
+				util.ExecuteCmd('rd /Q /S ' + self.temp_tpls_dir)
 			else:
 				event.Veto()
 		else:
+			util.ExecuteCmd('rd /Q /S ' + self.temp_tpls_dir)
 			event.Skip()
 
 
@@ -422,10 +429,19 @@ class MyttyFrame(Mytty.Mytty):
 
 	def InitCmdTemplates(self):
 		self.cmd_tpl_list = []
-		for item in os.listdir("templates/"):
+		self.tpls_tar = zipfile.ZipFile("templates/templates.zip")
+		self.temp_tpls_dir = tempfile.mkdtemp()
+		print(self.temp_tpls_dir)
+		self.tpls_tar.extractall(self.temp_tpls_dir)
+		# for item in self.tpls_tar.namelist():
+		# 	if item.endswith(".tpl"):
+		# 		tpl = os.path.basename(item)
+		# 		self.cmd_tpl_list.append(tpl[:-4])
+		# return self.cmd_tpl_list
+		for item in os.listdir(self.temp_tpls_dir):
 			if item.endswith(".tpl"):
 				tpl = os.path.basename(item)
-				self.cmd_tpl_list.append(tpl)
+				self.cmd_tpl_list.append(tpl[:-4])
 		return self.cmd_tpl_list
 
 	def SetSendPrompt(self, prompt):
@@ -703,16 +719,16 @@ class MySendProgressDialog(SendProgressDialog.SendProgressDialog):
 		if self.current_count >= self.total_count:
 			self.timer.Stop()
 			if self.is_clear_cmd:
-				self.m_gauge2.SetRange(60)
+				self.m_gauge2.SetRange(50)
 				self.reboot_count = 0
 				self.reboot_timer = wx.Timer(self, 1)
 				self.Bind(wx.EVT_TIMER, self.OnDeviceRebootTimer, self.reboot_timer)
-				self.reboot_timer.Start(500)
+				self.reboot_timer.Start(1000)
 
 	def OnDeviceRebootTimer(self, event):
 		self.reboot_count = self.reboot_count + 1
 		self.m_gauge2.SetValue(self.reboot_count)
-		if self.reboot_count >= 60:
+		if self.reboot_count >= 50:
 			self.reboot_timer.Stop()
 			self.m_staticText24.SetLabel(u"设备重启完毕！")
 			self.m_button15.Enable( True )
