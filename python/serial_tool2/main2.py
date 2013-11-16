@@ -144,7 +144,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.3.2 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.3.4 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
@@ -201,8 +201,9 @@ class MyttyFrame(Mytty.Mytty):
 		content = u'此动作会生成清除设备中所有配置的命令，是否继续？'
 		dlg = wx.MessageDialog(self, content, u"提示", wx.OK|wx.CANCEL)
 		if dlg.ShowModal() == wx.ID_OK :
-			tpl_file = "templates/" + self.m_choice9.GetStringSelection() + ".tpl"
-
+			# tpl_file = "templates/" + self.m_choice9.GetStringSelection() + ".tpl"
+			tpl_file = os.path.join(self.temp_tpls_dir, self.m_choice9.GetStringSelection() + ".tpl")
+			tpl_file = tpl_file.encode('gbk')
 			fd = open(tpl_file, 'r')
 			self.m_textCtrl6.SetValue(fd.read())
 			self.is_clear_cmd = True
