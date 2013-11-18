@@ -78,6 +78,8 @@ class MyttyFrame(Mytty.Mytty):
 			util.ShowMessageDialog(None, u'读取会话文件sessions出错，已备份到session.back。错误：%s' % e, u'警告')
 			session_manager.session_manag.InitConfig()
 
+		wx.CallAfter(self.m_listCtrl1.ImportDeviceDatas, u'config/设备数据.xls')
+
 	def init_inline_datas(self):
 		str = open(u'config/进线口.txt').read().strip().decode('utf8')
 		inline_list = str.split('\n')
@@ -144,7 +146,7 @@ class MyttyFrame(Mytty.Mytty):
 		webbrowser.open(doc)
 	
 	def OnAbout( self, event ):
-		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.3.4 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
+		dlg = wx.MessageDialog(self, u" 版本：设备简易配置程序-v2.3.5 \n\n 联系方式：\n      联系人：谢先生\n      手机   ：13575121258 \n      邮箱   ：348588919@qq.com\n版权所有 2013-2020 nx创意软件工作室\n保留一切权利", u"关于", wx.OK)
 		dlg.ShowModal()
 		dlg.Destroy()
 	
