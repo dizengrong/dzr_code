@@ -3,7 +3,7 @@
 
 
 import wx, os, serial, threading, util, Mytty, base64, thread, logging, deviceListCtrl
-import xdrlib, sys, xlrd, tenjin, time, datetime, webbrowser, telnetlib, tarfile, zipfile
+import xdrlib, sys, xlrd, tenjin, time, datetime, webbrowser, telnetlib, zipfile
 import SaveSessionDialog, OpenSessionDialog, ChangeIpDialog, SendProgressDialog
 from tenjin.escaped import *
 from tenjin.helpers import to_str
@@ -284,7 +284,6 @@ class MyttyFrame(Mytty.Mytty):
 			for col in xrange(0,max_col + 1):
 				self.m_listCtrl1.SetCellTextColour(row, col, wx.Colour(255, 0, 0))
 			self.m_listCtrl1.SetRowLabelValue(row, u'已配置')
-			self.m_listCtrl1.SetCellValue(row, 0, '1')
 
 
 	def OnSendCmdKeyUp( self, event ):
@@ -434,7 +433,7 @@ class MyttyFrame(Mytty.Mytty):
 		self.cmd_tpl_list = []
 		self.tpls_tar = zipfile.ZipFile("templates/templates.zip")
 		self.temp_tpls_dir = tempfile.mkdtemp()
-		print(self.temp_tpls_dir)
+		logging.info('unzip templates.zip to directory: %s' % (self.temp_tpls_dir))
 		self.tpls_tar.extractall(self.temp_tpls_dir)
 		# for item in self.tpls_tar.namelist():
 		# 	if item.endswith(".tpl"):
