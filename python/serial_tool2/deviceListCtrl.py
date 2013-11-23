@@ -7,6 +7,7 @@ from util import PortSetting, Device
 import  wx.grid as  gridlib
 
 # 设备数据字段
+# ENUM_DEVICE_FLAG    	= 0
 ENUM_DEVICE_DEV_TYPE    = 0
 ENUM_DEVICE_DEV_ADDR    = 1
 ENUM_DEVICE_MANGR_IP    = 2
@@ -39,6 +40,9 @@ class DeviceListCtrl(gridlib.Grid):
 		gridlib.Grid.__init__(self, parent, Id)
 		self.CreateGrid(100, MAX_COL + 1)
 
+		# self.SetColLabelValue(ENUM_DEVICE_FLAG, u'')
+		# self.SetColMinimalWidth(ENUM_DEVICE_FLAG, 50)
+
 		self.SetColLabelValue(ENUM_DEVICE_DEV_TYPE, u'设备类型')
 		self.SetColMinimalWidth(ENUM_DEVICE_DEV_TYPE, 180)
 
@@ -68,9 +72,13 @@ class DeviceListCtrl(gridlib.Grid):
 		self.AutoSizeColumns(setAsMin = False)
 
 		for row in xrange(0,100):
-			renderer = gridlib.GridCellChoiceEditor(GetDeviceTypeList(), allowOthers=True)
+			editor1 = gridlib.GridCellChoiceEditor(GetDeviceTypeList(), allowOthers=True)
 			# self.SetCellValue(row, ENUM_DEVICE_DEV_TYPE, 'one')
-			self.SetCellEditor(row, ENUM_DEVICE_DEV_TYPE, renderer)
+			self.SetCellEditor(row, ENUM_DEVICE_DEV_TYPE, editor1)
+
+			# editor2 = gridlib.GridCellBoolEditor()
+			# self.SetCellEditor(row, ENUM_DEVICE_FLAG, editor2)
+			# self.SetCellRenderer(row, ENUM_DEVICE_FLAG, gridlib.GridCellBoolRenderer())
 
 		# for wxMSW
 		# self.Bind(wx.EVT_COMMAND_RIGHT_CLICK, self.OnRightClick)
@@ -81,7 +89,7 @@ class DeviceListCtrl(gridlib.Grid):
 		self.Bind(wx.grid.EVT_GRID_RANGE_SELECT, self.OnSelectRangeChange)
 		self.Bind(wx.grid.EVT_GRID_SELECT_CELL, self.OnSelectChange)
 
-		self.SetBackgroundColour('#d9d6c3')
+		# self.SetBackgroundColour('#d9d6c3')
 		self.SetDefaultRowSize(20)
 
 		self.send_prompts = GetSendPrompt()
@@ -162,6 +170,11 @@ class DeviceListCtrl(gridlib.Grid):
 			print device_type
 			self.FilterTemplateList(device_type)
 			self.SetPromptForSend(device_type)
+		elif event.Col == ENUM_DEVICE_MANGR_IP or event.Col == ENUM_DEVICE_SUBMASK_IP or event.Col == ENUM_DEVICE_GATEWAY_IP:
+			if not util.IsValidIP(self.GetCellValue(event.Row, event.Col)):
+				util.ShowMessageDialog(self, u"非法的ip地址", u"错误")
+				event.Veto()
+				return
 		event.Skip()
 		wx.CallAfter(self.AdjustSizeColumns)
 		
@@ -170,37 +183,45 @@ class DeviceListCtrl(gridlib.Grid):
 
 	def OnImportDeviceDatas(self, e):
 		self.dirname = ''
-		self.device_list = []
+		# self.device_list = []
 		dlg = wx.FileDialog(self, "Choose a file", self.dirname, "", "Excel Files (*.xlc;*.xls)|*.xlc; *.xls|All Files (*.*)|*.*||", wx.OPEN)
 		if dlg.ShowModal() == wx.ID_OK:
 			self.DeleteRows()
 
 			self.filename = dlg.GetFilename()
 			self.dirname = dlg.GetDirectory()
-			xml_data  = xlrd.open_workbook(os.path.join(self.dirname, self.filename))
-
-			table = xml_data.sheet_by_index(0)
-			total_cols = table.ncols
+			self.ImportDeviceDatas(os.path.join(self.dirname, self.filename))
 			
-			# 加载数据
-			for i in range(1, table.nrows):
-				self.AppendRows()
-				for j in range(0, total_cols):
-					self.SetCellValue(i - 1, j, util.to_str(table.cell(i, j).value))
-				# if (i - 1) % 2 == 1:
-				# 	self.SetItemTextColour(i - 1, wx.BLUE)
-
-				device = Device(util.to_str(table.cell(i, ENUM_DEVICE_DEV_TYPE).value),
-								util.to_str(table.cell(i, ENUM_DEVICE_DEV_ADDR).value),
-								util.to_str(table.cell(i, ENUM_DEVICE_MANGR_IP).value),
-								util.to_str(table.cell(i, ENUM_DEVICE_SUBMASK_IP).value),
-								util.to_str(table.cell(i, ENUM_DEVICE_GATEWAY_IP).value),
-								int(table.cell(i, ENUM_DEVICE_MANGR_VLAN).value),
-								int(table.cell(i, ENUM_DEVICE_BEGIN_VLAN).value),
-								int(table.cell(i, ENUM_DEVICE_END_VLAN).value))
-				self.device_list.append(device)
 		dlg.Destroy()
 		wx.CallAfter(self.AdjustSizeColumns)
+
+	def ImportDeviceDatas(self, filename):
+		if not os.path.isfile(filename):
+			return
+		self.device_list = []
+		xml_data  = xlrd.open_workbook(filename)
+
+		table = xml_data.sheet_by_index(0)
+		total_cols = table.ncols
+		
+		# 加载数据
+		for i in range(1, table.nrows):
+			self.AppendRows()
+			for j in range(0, MAX_COL + 1):
+				self.SetCellValue(i - 1, j, util.to_str(table.cell(i, j).value))
+			# if (i - 1) % 2 == 1:
+			# 	self.SetItemTextColour(i - 1, wx.BLUE)
+
+			device = Device(util.to_str(table.cell(i, ENUM_DEVICE_DEV_TYPE).value),
+							util.to_str(table.cell(i, ENUM_DEVICE_DEV_ADDR).value),
+							util.to_str(table.cell(i, ENUM_DEVICE_MANGR_IP).value),
+							util.to_str(table.cell(i, ENUM_DEVICE_SUBMASK_IP).value),
+							util.to_str(table.cell(i, ENUM_DEVICE_GATEWAY_IP).value),
+							int(table.cell(i, ENUM_DEVICE_MANGR_VLAN).value),
+							int(table.cell(i, ENUM_DEVICE_BEGIN_VLAN).value),
+							int(table.cell(i, ENUM_DEVICE_END_VLAN).value))
+			self.device_list.append(device)
+		
 
 	def OnRightClick(self, event):
 		# only do this part the first time so the events are only bound once

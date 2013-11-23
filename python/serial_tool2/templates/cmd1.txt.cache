@@ -1,3 +1,0 @@
-timestamp: 1380091867.45
-
-_extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', ));
