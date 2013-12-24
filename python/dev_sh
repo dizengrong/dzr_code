@@ -1,0 +1,34 @@
+############################## 客户端 ############################## 
+# 服务器环境要求：
+# 1.python2.7
+# 2.python的包管理器:easy_install 或 pip
+# 3.使用easy_install或pip安装python的json库
+
+# 部署客户端版本：
+python client_deploy.py --deploy "svn://s1.cqsvn.com:8004/cehua/dpcqRelease" "/data/dpcq/web/static" 12.23.18 dizengrong 435ad654bf4868f
+
+#删除客户端版本：
+python client_deploy.py --delete_deploy "/data/dpcq/web/static" 12.24.11
+
+# 差异文件列表生成:
+python svn_util.py --changed_list /data/dpcq/web/static/ 1223 12.23.18
+
+# 创建分支
+svn copy -m "comment" svn_url branch_svn_url/{branch_name} --non-interactive --no-auth-cache  --username=$SVN_USER --password=$SVN_PASSWORD
+############################## 客户端 ############################## 
+
+
+############################## 服务端 ############################## 
+# 创建分支的脚本
+/bin/bash /data/sh/dpcq/del_branch.sh svn_username svn_password B_beta1.0.2
+/bin/bash /data/sh/dpcq/create_branch.sh svn_username svn_password B_beta1.0.2
+
+# 签出服务端版本
+cd /data/sh/dpcq/
+/data/sh/dpcq/checkout_release.sh B_beta1.0.2
+
+# 更新版本：
+screen bash /data/sh/dpcq/daily_public.sh auto branch/B_beta1.0.2 branch/B_beta1.0.2  B_beta1.0.2 false svn_username
+############################## 服务端 ############################## 
+
+
