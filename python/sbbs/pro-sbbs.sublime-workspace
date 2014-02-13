@@ -611,7 +611,7 @@
 			"file": "sbbs/templates/survey1.html",
 			"settings":
 			{
-				"buffer_size": 2322,
+				"buffer_size": 2443,
 				"line_ending": "Windows"
 			}
 		},
@@ -973,6 +973,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"csrf",
+			"RequestContext",
 			"None",
 			"filter",
 			"set_my_last_msg_id",
@@ -1098,8 +1100,6 @@
 			"背包里没有传送符，不能进行追踪",
 			"mod_role_buff:hook_role_online",
 			"DBG",
-			"start_buff",
-			"(BUFF_LAST_TYPE_FOREVER_TIME",
 			"start_buff"
 		],
 		"highlight": true,
@@ -1131,7 +1131,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1146,8 +1146,8 @@
 						"selection":
 						[
 							[
-								3685,
-								3685
+								361,
+								365
 							]
 						],
 						"settings":
@@ -1156,7 +1156,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1695.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1228,8 +1228,8 @@
 						"selection":
 						[
 							[
-								340,
-								340
+								685,
+								685
 							]
 						],
 						"settings":
@@ -1439,15 +1439,15 @@
 					"file": "sbbs/templates/survey1.html",
 					"settings":
 					{
-						"buffer_size": 2322,
+						"buffer_size": 2443,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								521,
-								587
+								0,
+								0
 							]
 						],
 						"settings":
