@@ -2,7 +2,7 @@
 # 添加售出记录的对话框界面
 
 from DepotWindows import DlgAddSell
-import models, wx, sqlite3
+import models, wx, sqlite3, db
 
 # 控件说明：
 #	m_choice8：界面的产品分类选择框	
@@ -16,13 +16,12 @@ import models, wx, sqlite3
 # 	m_staticText39：界面的欠款label
 # 	m_datePicker3：界面的出售日期控件
 class MyDlgAddSell(DlgAddSell):
-	def __init__(self, parent, db_conn, all_products, all_buyers):
+	def __init__(self):
 		super(MyDlgAddSell, self).__init__(None)
-		self.db_conn      = db_conn
-		self.all_products = all_products
+		self.all_products = db.GetAllProducts()
 		self.m_choice8.AppendItems(models.ALL_PRODUCT_TYPE.keys())
 		self.m_staticText24.SetLabel("")
-		self.all_buyers = all_buyers
+		self.all_buyers = db.GetAllBuyers()
 		self.m_choice3.AppendItems(all_buyers.keys())
 
 	def OnProductClassChoice(self, event):
