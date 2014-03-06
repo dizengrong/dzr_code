@@ -55,6 +55,20 @@ class Terminal(wx.Panel):
         self.timer.Start(700)
         self.paint_for_sursor = False
 
+        # for test
+        self.test_timer = wx.Timer(self, 1)
+        self.Bind(wx.EVT_TIMER, self.OnTestTimer, self.test_timer)
+        self.timer.Start(1)
+        self.cmd_list = open("Terminal.py", 'r').read().split('\n')
+
+    def OnTestTimer(self, event):
+        if len(self.cmd_list) > 0:
+            cmd = self.cmd_list[0]
+            self.cmd_list = self.cmd_list[1:]
+            for ch in cmd:
+                self.InsertChar(ch)
+            self.InsertChar('\n')
+
     def OnTimer(self, event):
         self.turn = (self.turn + 1) % 2
         self.paint_for_sursor = True
