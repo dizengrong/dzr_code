@@ -1,0 +1,854 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"row",
+				"row_count"
+			],
+			[
+				"m",
+				"m_grid1"
+			],
+			[
+				"db",
+				"db_cur"
+			],
+			[
+				"ter",
+				"termRows"
+			],
+			[
+				"lin",
+				"line_num"
+			],
+			[
+				"max",
+				"maxWidth"
+			],
+			[
+				"ma",
+				"maxHeight"
+			],
+			[
+				"dr",
+				"DrawLine"
+			],
+			[
+				"real",
+				"real_cy"
+			],
+			[
+				"Dra",
+				"DrawCursor"
+			],
+			[
+				"fi",
+				"filename"
+			],
+			[
+				"enum",
+				"ENUM_DEVICE_MANGR_IP"
+			],
+			[
+				"tpl",
+				"tpls_tar"
+			],
+			[
+				"zip",
+				"zipfile"
+			],
+			[
+				"id",
+				"ID_OK"
+			],
+			[
+				"dev",
+				"deviceListCtrl"
+			],
+			[
+				"cmd",
+				"cmd_list"
+			],
+			[
+				"U",
+				"u"
+			],
+			[
+				"Set",
+				"SetValue"
+			],
+			[
+				"sess",
+				"session"
+			],
+			[
+				"pro",
+				"property	New Property"
+			],
+			[
+				"session",
+				"session_manager"
+			],
+			[
+				"port",
+				"port"
+			],
+			[
+				"ports",
+				"port_setting"
+			],
+			[
+				"by",
+				"byteSize"
+			],
+			[
+				"new",
+				"new_sec_name"
+			],
+			[
+				"sys",
+				"system"
+			],
+			[
+				"ut",
+				"utf8"
+			],
+			[
+				"licen",
+				"license_dic"
+			],
+			[
+				"ex",
+				"exception"
+			],
+			[
+				"el",
+				"else"
+			],
+			[
+				"l",
+				"license_mag"
+			],
+			[
+				"try",
+				"try	Try/Except"
+			],
+			[
+				"li",
+				"license_dic"
+			],
+			[
+				"us",
+				"using_time"
+			],
+			[
+				"she",
+				"ShowMessageDialog"
+			],
+			[
+				"tr",
+				"try	Try/Except"
+			],
+			[
+				"show",
+				"ShowMessageDialog"
+			],
+			[
+				"en",
+				"encode"
+			],
+			[
+				"My",
+				"MyChangeIpDialog"
+			],
+			[
+				"in",
+				"index"
+			],
+			[
+				"u",
+				"utf-8"
+			],
+			[
+				"clos",
+				"Close"
+			],
+			[
+				"te",
+				"text"
+			],
+			[
+				"onchar",
+				"__OnCharCR"
+			],
+			[
+				"exc",
+				"except"
+			],
+			[
+				"Getsess",
+				"GetSessionInfo"
+			],
+			[
+				"Get",
+				"GetSessionInfo"
+			],
+			[
+				"Show",
+				"ShowMessageDialog"
+			],
+			[
+				"sel",
+				"self"
+			],
+			[
+				"Gets",
+				"GetSessionName"
+			],
+			[
+				"GEt",
+				"GetPath"
+			],
+			[
+				"log",
+				"log_file"
+			],
+			[
+				"sa",
+				"save_name"
+			],
+			[
+				"to",
+				"total_saved_num"
+			],
+			[
+				"Sa",
+				"SaveName"
+			],
+			[
+				"des",
+				"Destroy"
+			],
+			[
+				"sessi",
+				"session_manager"
+			],
+			[
+				"se",
+				"self"
+			],
+			[
+				"sessio",
+				"session"
+			],
+			[
+				"tab",
+				"tabPanel"
+			],
+			[
+				"sta",
+				"m_statusBar1"
+			],
+			[
+				"por",
+				"port_str"
+			],
+			[
+				"GEts",
+				"GetSessionInfo"
+			],
+			[
+				"Se",
+				"SessionBase"
+			],
+			[
+				"ski",
+				"Skip"
+			],
+			[
+				"phonet",
+				"phone_test"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "depot.py",
+			"settings":
+			{
+				"buffer_size": 3511,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
+			"settings":
+			{
+				"buffer_size": 5749,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "models.py",
+			"settings":
+			{
+				"buffer_size": 584,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
+			"settings":
+			{
+				"buffer_size": 8746,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "DepotWindows.py",
+			"settings":
+			{
+				"buffer_size": 29632,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ssp",
+				"Set Syntax: Python"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/wxPython2.8 Docs and Demos/demo/Grid_MegaExample.py",
+		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-05/gridGeneric.py",
+		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-05/gridModel.py",
+		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-14/grid_table_header.py",
+		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-14/grid_headers.py",
+		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-14/grid_attr.py",
+		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-14/grid_basic.py",
+		"/D/wxPython2.8 Docs and Demos/demo/Grid.py",
+		"/E/my_git/dzr_code/python/depot/DepotWindows.py",
+		"/E/my_git/dzr_code/python/depot/depot.py",
+		"/E/my_git/dzr_code/python/depot/MainFrame.py",
+		"/D/wxPython2.8 Docs and Demos/samples/mainloop/mainloop.py",
+		"/E/my_git/dzr_code/python/serial_tool2/TermEmulatorDemo.py.back",
+		"/D/wxPython2.8 Docs and Demos/demo/ScrolledWindow.py",
+		"/E/my_git/dzr_code/python/serial_tool2/TermEmulator.py",
+		"/E/my_git/dzr_code/python/my_terminal/main.py",
+		"/E/my_git/dzr_code/python/my_terminal/Terminal.py",
+		"/E/my_git/dzr_code/python/my_terminal/Terminal2.py",
+		"/E/my_code/my_terminal/main.py",
+		"/E/my_git/dzr_code/python/my_terminal/Terminal3.py",
+		"/E/my_code/wxScrolBarWindow.py",
+		"/E/my_git/dzr_code/python/serial_tool2/main2.py",
+		"/E/my_git/dzr_code/python/serial_tool2/TermEmulatorDemo.py",
+		"/E/my_code/my_terminal/Terminal.py",
+		"/D/Programs/Python27/Lib/site-packages/wx-2.8-msw-unicode/wx/lib/masked/textctrl.py",
+		"/E/my_code/pyterm/MainFrame.py",
+		"/E/my_code/pyterm/PyTerm.py",
+		"/E/my_code/pyterm/PortConfigurationDialog.py",
+		"/E/my_code/pyterm/Terminal.py",
+		"/E/my_code/pyterm/Configuration.py",
+		"/E/my_code/pyterm/Helpers.py",
+		"/E/my_code/pyterm/Transports.py",
+		"/E/my_code/putty-src/TERMINAL.H",
+		"/E/my_code/putty-src/SSH.H",
+		"/E/my_code/putty-src/SERCFG.C",
+		"/E/my_code/putty-src/TESTDATA/VT100.TXT",
+		"/E/my_code/my_sina_app/weichihuo/1/my_test/test.py",
+		"/E/my_git/dzr_code/python/serial_tool2/util.py",
+		"/E/my_git/pyte/examples/helloworld.py.dump",
+		"/E/my_git/pyte/examples/inception.py.dump",
+		"/E/my_git/pyte/pyte/__main__.py",
+		"/E/my_git/pyte/pyte/charsets.py",
+		"/E/my_git/pyte/examples/inception.py",
+		"/E/my_git/pyte/examples/helloworld.py",
+		"/E/my_git/dzr_code/python/serial_tool2/pyterm/MainFrame.py",
+		"/E/my_git/dzr_code/python/serial_tool2/pyterm/PyTerm.py",
+		"/E/study/weixin/wx_sample.php",
+		"/D/Google_driver/weixin/send_msg_2_user.php",
+		"/D/game/3DM-Kings/King's Bounty - Warriors of the North/sessions/addon/newset/hero.txt",
+		"/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
+		"/C/Users/dzR/Desktop/handover-qos.cc",
+		"/C/Users/dzR/Desktop/handover-qos.h",
+		"/E/my_git/dzr_code/python/serial_tool2/session_manager.py",
+		"/E/my_git/dzr_code/python/serial_tool2/Mytty.py",
+		"/E/my_git/dzr_code/python/serial_tool2/wxTerm.py",
+		"/E/my_git/dzr_code/python/serial_tool2/setup.py",
+		"/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py.back",
+		"/D/wxPython2.8 Docs and Demos/demo/GridSimple.py",
+		"/D/wxPython2.8 Docs and Demos/demo/GridStdEdRend.py",
+		"/E/my_code/my_sina_app/dzrman/1/config.yaml",
+		"/E/my_code/my_sina_app/dzrman/1/index.wsgi",
+		"/D/Programs/Python27/Lib/site-packages/tenjin.py",
+		"/E/my_code/wxDialog.py",
+		"/E/my_git/dzr_code/python/serial_tool2/HtmlMessageDialog.py",
+		"/E/my_git/dzr_code/python/serial_tool2/templates/onu-1-cmd1-密码.txt",
+		"/E/my_git/dzr_code/python/serial_tool2/SendProgressDialog.py",
+		"/C/Windows/System32/drivers/etc/hosts.dump",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/hosts.dump",
+		"/D/hosts",
+		"/C/Users/dzR/Desktop/hosts.dump",
+		"/C/Users/dzR/Desktop/hosts",
+		"/E/my_git/dzr_code/python/serial_tool2/config/sessions",
+		"/E/my_git/dzr_code/python/serial_tool2/session.py",
+		"/E/my_git/dzr_code/python/serial_tool2/documents/help.chm",
+		"/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
+		"/E/my_git/dzr_code/python/serial_tool2/config/设备发送命令提示.txt",
+		"/C/Users/dzR/Desktop/设备类型配置.txt.dump",
+		"/C/Users/dzR/Desktop/设备类型配置.txt",
+		"/E/my_git/dzr_code/python/serial_tool2/config/设备类型配置.txt",
+		"/E/my_git/dzr_code/python/serial_tool2/config/设备类型配置.txt.dump",
+		"/E/my_git/dzr_code/python/serial_tool2/templates/清除-onu-1.txt",
+		"/E/tmp/main.py",
+		"/D/wxPython2.8 Docs and Demos/demo/agw/UltimateReportDemo.py",
+		"/E/my_git/dzr_code/python/serial_tool2/OpenSessionDialog.py",
+		"/E/my_git/dzr_code/python/serial_tool2/my_machine.py",
+		"/E/my_git/dzr_code/python/serial_tool2/main.py",
+		"/E/tmp/test.py",
+		"/D/安装包/dzr/simple ip config/Source/sic_main.au3",
+		"/E/work/code/communicatenew/start.bat",
+		"/E/work/code/communicatenew/setEnv.bat",
+		"/E/my_git/dzr_code/python/serial_tool2/license.license",
+		"/E/my_git/dzr_code/python/computer_info/main.py",
+		"/E/my_git/dzr_code/python/computer_info/my_machine.py",
+		"/E/my_git/dzr_code/python/serial_tool2/SaveSessionDialog.py",
+		"/D/Programs/Python27/Lib/site-packages/serial/serialutil.py",
+		"/D/Programs/Python27/Lib/site-packages/wmi.py",
+		"/E/my_git/dzr_code/python/serial_tool2/ChangeIpDialog.py",
+		"/E/serial2.log.dump",
+		"/E/serial2.log",
+		"/D/Programs/OpenLicense_2.00a/bin/Examples/cs/my.lic",
+		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/ASCIIPresentation/ASCIIPresentation.sublime-settings",
+		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/ASCIIPresentation/Default (Windows).sublime-keymap",
+		"/D/Programs/Python27/Lib/site-packages/serial/serialwin32.py",
+		"/E/my_git/dzr_code/python/serial_tool/wxTerm.py",
+		"/D/Programs/Python27/Lib/telnetlib.py",
+		"/E/my_git/dzr_code/python/serial_tool/main.py",
+		"/E/my_git/dzr_code/python/serial_tool2/templates/cmd1.txt.cache",
+		"/E/my_git/dzr_code/job_code/cqzj/gen_config_tool/cfg_hero_fb.tpl",
+		"/E/my_git/dzr_code/python/serial_tool2/MyttyFrame.py",
+		"/C/Windows/System32/drivers/etc/hosts.ics",
+		"/E/my_git/dzr_code/python/serial_tool/util.py",
+		"/D/Programs/Python27/Lib/site-packages/serial/serialcli.py",
+		"/E/my_git/dzr_code/python/serial_tool/wxTerm.py.back",
+		"/E/my_git/dzr_code/python/serial_tool/deviceListCtrl.py",
+		"/E/sbbs/sbbs/urls.py",
+		"/E/网页文件/1/index.html",
+		"/D/Programs/Python27/easy_setup.py",
+		"/E/sbbs/使用说明.txt",
+		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/hosts                C%3A%5CWindows%5CSystem32%5Cdrivers%5Cetc%5Chosts",
+		"/C/Users/dzR/Desktop/要求.txt"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"sell_rec",
+			"rec",
+			"SetCellValue",
+			"SetColLabelValue",
+			"True",
+			"AppendCols",
+			"SetColLabelValue",
+			"self",
+			"ENUM_DEVICE_DEV_ADDR",
+			"姨做的一个库存管理",
+			"CalcScrolledPosition",
+			"BUFFERED",
+			"bgColor",
+			"Brush",
+			"onclose",
+			"self.screen",
+			"GetDirtyLines",
+			"UpdateDirtyLines",
+			"OnTermEmulatorUpdateLines",
+			"ProcessInput",
+			"waitingForOutput",
+			"processIO",
+			"ReadProcessOutput",
+			"__ProcessOuputNotifierRun",
+			"ReadProcessOutput",
+			"OnTerminalChar",
+			"rows",
+			"ScrollUp",
+			"CALLBACK_SCROLL_UP_SCREEN",
+			"OnTermEmulatorScrollUpScreen",
+			"CALLBACK_SCROLL_UP_SCREEN",
+			"scrolledUpLinesLen",
+			"linesScrolledUp",
+			"dimension",
+			"min_dimensions",
+			"dimensions",
+			"min_dimensions",
+			"OnTermEmulatorScrollUpScreen",
+			"UpdateCursor",
+			"line_num",
+			"DrawLine",
+			"paint_for_sursor",
+			"FlashingCursor",
+			"print",
+			"FillScreen",
+			"print(s",
+			"BreakLine",
+			"IsLine",
+			"BreakLine",
+			"DrawLine",
+			"IsLine",
+			"scroll",
+			"line_num",
+			"__init_char_dimensions",
+			"EmptyBitmap",
+			"Panel",
+			"DrawCursor",
+			"dirty",
+			"DrawLine",
+			"BufferedDC",
+			"break",
+			"DoDrawing",
+			"UpdateView",
+			"Draw",
+			"DrawLine",
+			"self.cy",
+			"isDrawing",
+			"self.cy",
+			"DrawLine",
+			"KeepCursorOnScreen",
+			"cvert",
+			"IsLine",
+			"DrawLine",
+			"BreakLine",
+			"IsLine",
+			"lines",
+			"IsLine",
+			"bh",
+			"bw",
+			"self.bw",
+			"wx.Brush",
+			"transports",
+			"ScrolledPanel",
+			"ScrolledWindow",
+			"false",
+			"Panel",
+			"ScrolledWindow",
+			"Panel",
+			"bw",
+			"bw ",
+			"Panel",
+			"EM_EXSETSEL",
+			"wxTextCtrl",
+			"OnTermEmulatorUpdateLines",
+			"fw",
+			"HideAndDrawCursor",
+			"DrawCursor",
+			"FlashingCursor",
+			"FillScreen",
+			"UpdateDirtyLines",
+			"turn",
+			"HideCursor",
+			"DrawCursor",
+			"OnTimer",
+			"__OnCharESC",
+			"__HandleEscSeq",
+			"__ASCII_BEL",
+			"ProcessInput",
+			"lines",
+			"InsertChar",
+			"TransportsTransmit",
+			"Terminal",
+			"Configuration",
+			"pyterm",
+			"Terminal",
+			"FIXME",
+			"CUU",
+			"logging",
+			"initc",
+			"logging",
+			"log",
+			"mportDeviceDat",
+			"ImportDeviceDatas",
+			"OnCellDataChange",
+			"del",
+			"m_choice7",
+			"engine",
+			"tarfile"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "depot.py",
+					"settings":
+					{
+						"buffer_size": 3511,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1780,
+								1780
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 684.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
+					"settings":
+					{
+						"buffer_size": 5749,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								508,
+								525
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1653.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models.py",
+					"settings":
+					{
+						"buffer_size": 584,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								552,
+								558
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
+					"settings":
+					{
+						"buffer_size": 8746,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6728,
+								6792
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3742.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "DepotWindows.py",
+					"settings":
+					{
+						"buffer_size": 29632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								29632,
+								29632
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 14210.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 339.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"devi",
+				"deviceListCtrl.py.back"
+			],
+			[
+				"set",
+				"setup.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 214.0,
+	"status_bar_visible": true
+}
