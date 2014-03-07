@@ -3,6 +3,8 @@
 
 from DepotWindows import DlgAddSell
 import models, wx, sqlite3, db
+from models import SellRecord
+from DlgBuyerManager import MyDlgBuyerManager
 
 # 控件说明：
 #	m_choice8：界面的产品分类选择框	
@@ -22,7 +24,7 @@ class MyDlgAddSell(DlgAddSell):
 		self.m_choice8.AppendItems(models.ALL_PRODUCT_TYPE.keys())
 		self.m_staticText24.SetLabel("")
 		self.all_buyers = db.GetAllBuyers()
-		self.m_choice3.AppendItems(all_buyers.keys())
+		self.m_choice3.AppendItems(self.all_buyers.keys())
 
 	def OnProductClassChoice(self, event):
 		category_str = self.m_choice8.GetStringSelection()
@@ -31,7 +33,11 @@ class MyDlgAddSell(DlgAddSell):
 		self.m_choice2.AppendItems(self.all_products[category_int].keys())
 
 	def OnMangerBuyers(self, event):
-		pass
+		dlg = MyDlgBuyerManager()
+		if dlg.ShowModal() == wx.ID_OK:
+			rec = dlg.GetSellRecord()
+			self.InsertSellRecord(rec)
+		dlg.Destroy()
 
 	def OnSellNumTextChange(self, event):
 		self.OnTextChange(event)
@@ -63,6 +69,17 @@ class MyDlgAddSell(DlgAddSell):
 		if paid != "" and deal_price != "":
 			self.m_staticText39.SetLabel(str(float(deal_price) - float(paid)))
 
+	def OnOkBtnClick(self, event):
+		if self.m_choice2.GetSelection() == wx.NOT_FOUND or \
+		   self.m_choice8.GetSelection() == wx.NOT_FOUND or \
+		   self.m_choice3.GetSelection() == wx.NOT_FOUND or \
+		   self.m_textCtrl8.GetValue() == "" or \
+		   self.m_textCtrl6.GetValue() == "" or \
+		   self.m_textCtrl10.GetValue() == "" or \
+		   self.m_textCtrl11.GetValue() == "" :
+			return
+		event.Skip()
+
 	def GetSellRecord(self):
 		category_str        = self.m_choice8.GetStringSelection()
 		category_int        = models.ALL_PRODUCT_TYPE[category_str]
@@ -72,12 +89,13 @@ class MyDlgAddSell(DlgAddSell):
 		rec.deal_unit_price = self.m_textCtrl8.GetValue()
 		rec.amount          = self.m_textCtrl6.GetValue()
 		rec.deal_price      = self.m_textCtrl10.GetValue()
-		rec.deal_date       = self.m_datePicker3.GetValue()
+		rec.deal_date       = str(self.m_datePicker3.GetValue().Format("%Y-%m-%d"))
 		rec.paid            = self.m_textCtrl11.GetValue()
 		rec.buyer_name      = self.m_choice3.GetStringSelection()
 		
 		buyer               = self.all_buyers[rec.buyer_name]
 		rec.buyer           = buyer.uid
 		
-		rec.total_price     = rec.deal_unit_price * rec.amount
-		rec.unpaid          = rec.deal_price - rec.paid
+		rec.total_price     = str(float(rec.deal_unit_price) * float(rec.amount))
+		rec.unpaid          = str(float(rec.deal_price) - float(rec.paid))
+		return rec

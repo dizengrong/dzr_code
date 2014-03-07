@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- 
 
-import wx, sqlite3, models
+import wx, sqlite3, models, db
 from DepotWindows import MainFrame
 from models import SellRecord, Product, Buyer
 from DlgAddSell import MyDlgAddSell
@@ -19,6 +19,11 @@ ENUM_SELL_DEAL_DATE     = 10 	# 成交日期
 
 MAX_COL = ENUM_SELL_DEAL_DATE + 1	# 售出数据表格的列数
 
+# 售出数据表格的右键菜单
+SELL_TAB_CONTEXT_MENU = [(wx.NewId(), u"添加", "OnAddSellRecord"),
+						 (wx.NewId(), u"修改", "OnModifySellRecord"),
+						 (wx.NewId(), u"删除", "OnDeleteSellRecord"),
+						]
 
 # 控件说明：
 #	m_grid1：主界面的售出数据表格	
@@ -47,16 +52,15 @@ class MyFrame(MainFrame):
 		self.m_grid1.SetColLabelValue(ENUM_SELL_UNPAY, u'剩余欠款')
 		self.m_grid1.SetColLabelValue(ENUM_SELL_DEAL_DATE, u'成交日期')
 
-		db_cur    = self.db_conn.cursor()
-		db_cur.execute(SQL_SELECT_SELLS)
 		row_count = 0
-		for rec in db.GetAllSellRecords():
+		for rec in db.GetAllSellRecords().values():
 			self.m_grid1.AppendRows()
 			self.SetSellTableRow(row_count, rec)
 			row_count = row_count + 1
 
-		if self.m_grid1.GetNumberRows() == 0:
-			self.m_grid1.AppendRows(1, True)
+		# if self.m_grid1.GetNumberRows() == 0:
+		self.m_grid1.AppendRows(1, True)
+		self.m_grid1.AutoSize()
 			
 	def __init__products(self):
 		pass
@@ -75,17 +79,18 @@ class MyFrame(MainFrame):
 		menu.Destroy()
 
 	def OnAddSellRecord(self, event):
-		dlg = MyDlgAddSell(self)
+		dlg = MyDlgAddSell()
 		if dlg.ShowModal() == wx.ID_OK:
 			rec = dlg.GetSellRecord()
 			self.InsertSellRecord(rec)
 		dlg.Destroy()
 
 	def InsertSellRecord(self, sell_rec):
-		db.InsertSellRecord(sell_rec)
-		row = self.m_grid1.GetNumberRows()
-		self.SetSellTableRow(row, sell_rec)
+		sell_rec = db.InsertSellRecord(sell_rec)
+		row      = self.m_grid1.GetNumberRows()
+		self.SetSellTableRow(row - 1, sell_rec)
 		self.m_grid1.AppendRows()
+		self.m_grid1.AutoSize()
 
 	def OnModifySellRecord(self, event):
 		print "OnModifySellRecord called! "
@@ -95,8 +100,9 @@ class MyFrame(MainFrame):
 
 	def SetSellTableRow(self, row_num, sell_rec):
 		"""根据sell_rec设置售出表格的第row_num行的数据"""
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_UID, sell_rec.uid)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_PRODUCT_CLASS, sell_rec.product_class)
+		category = models.ALL_PRODUCT_TYPE2[sell_rec.product_class]
+		self.m_grid1.SetCellValue(row_num, ENUM_SELL_UID, str(sell_rec.uid))
+		self.m_grid1.SetCellValue(row_num, ENUM_SELL_PRODUCT_CLASS, category)
 		self.m_grid1.SetCellValue(row_num, ENUM_SELL_PRODUCT_TYPE, sell_rec.product_type)
 		self.m_grid1.SetCellValue(row_num, ENUM_SELL_BUYER, sell_rec.buyer_name)
 		self.m_grid1.SetCellValue(row_num, ENUM_SELL_UNIT_PRICE, sell_rec.deal_unit_price)
@@ -106,6 +112,9 @@ class MyFrame(MainFrame):
 		self.m_grid1.SetCellValue(row_num, ENUM_SELL_PAID, sell_rec.paid)
 		self.m_grid1.SetCellValue(row_num, ENUM_SELL_UNPAY, sell_rec.unpaid)
 		self.m_grid1.SetCellValue(row_num, ENUM_SELL_DEAL_DATE, sell_rec.deal_date)
+
+		if float(sell_rec.unpaid) >= 0.001:
+			self.m_grid1.SetCellTextColour(row_num, ENUM_SELL_UNPAY, wx.RED)
 
 
 app = wx.App(redirect=False)   # Error messages go to popup window

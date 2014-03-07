@@ -141,6 +141,8 @@ class DlgAddSell : public wxDialog
 	private:
 	
 	protected:
+		wxStaticText* m_staticText53;
+		wxChoice* m_choice8;
 		wxStaticText* m_staticText12;
 		wxChoice* m_choice2;
 		wxStaticText* m_staticText16;
@@ -159,15 +161,25 @@ class DlgAddSell : public wxDialog
 		wxStaticText* m_staticText25;
 		wxTextCtrl* m_textCtrl11;
 		wxStaticText* m_staticText26;
-		wxTextCtrl* m_textCtrl12;
+		wxStaticText* m_staticText39;
 		wxStaticText* m_staticText15;
 		wxDatePickerCtrl* m_datePicker3;
 		wxButton* m_button9;
 		wxButton* m_button10;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnProductClassChoice( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnMangerBuyers( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnSellNumTextChange( wxKeyEvent& event ) { event.Skip(); }
+		virtual void OnUnitPriceTextChange( wxKeyEvent& event ) { event.Skip(); }
+		virtual void OnDealPriceTextChange( wxKeyEvent& event ) { event.Skip(); }
+		virtual void OnPaidTextChange( wxKeyEvent& event ) { event.Skip(); }
+		virtual void OnOkBtnClick( wxCommandEvent& event ) { event.Skip(); }
+		
 	
 	public:
 		
-		DlgAddSell( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("添加售出记录"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 382,411 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ); 
+		DlgAddSell( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("添加售出记录"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 382,429 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER ); 
 		~DlgAddSell();
 	
 };
@@ -221,6 +233,14 @@ class DlgBuyerManager : public wxDialog
 	
 	protected:
 		wxGrid* m_grid3;
+		wxButton* m_button15;
+		wxButton* m_button16;
+		wxStaticText* m_staticText40;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnCellChange( wxGridEvent& event ) { event.Skip(); }
+		virtual void OnOKBtnClick( wxCommandEvent& event ) { event.Skip(); }
+		
 	
 	public:
 		

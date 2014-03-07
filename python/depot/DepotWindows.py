@@ -119,7 +119,7 @@ class MainFrame ( wx.Frame ):
 		
 		# Grid
 		self.m_grid1.CreateGrid( 0, 0 )
-		self.m_grid1.EnableEditing( True )
+		self.m_grid1.EnableEditing( False )
 		self.m_grid1.EnableGridLines( True )
 		self.m_grid1.EnableDragGridSize( False )
 		self.m_grid1.SetMargins( 0, 0 )
@@ -532,6 +532,7 @@ class DlgAddSell ( wx.Dialog ):
 		self.m_textCtrl8.Bind( wx.EVT_CHAR, self.OnUnitPriceTextChange )
 		self.m_textCtrl10.Bind( wx.EVT_CHAR, self.OnDealPriceTextChange )
 		self.m_textCtrl11.Bind( wx.EVT_CHAR, self.OnPaidTextChange )
+		self.m_button9.Bind( wx.EVT_BUTTON, self.OnOkBtnClick )
 	
 	def __del__( self ):
 		pass
@@ -554,6 +555,9 @@ class DlgAddSell ( wx.Dialog ):
 		event.Skip()
 	
 	def OnPaidTextChange( self, event ):
+		event.Skip()
+	
+	def OnOkBtnClick( self, event ):
 		event.Skip()
 	
 
@@ -705,45 +709,74 @@ class DlgBuyerManager ( wx.Dialog ):
 		
 		bSizer20 = wx.BoxSizer( wx.VERTICAL )
 		
-		self.m_grid3 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_grid5 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 		
 		# Grid
-		self.m_grid3.CreateGrid( 5, 5 )
-		self.m_grid3.EnableEditing( True )
-		self.m_grid3.EnableGridLines( True )
-		self.m_grid3.EnableDragGridSize( False )
-		self.m_grid3.SetMargins( 0, 0 )
+		self.m_grid5.CreateGrid( 0, 0 )
+		self.m_grid5.EnableEditing( True )
+		self.m_grid5.EnableGridLines( True )
+		self.m_grid5.EnableDragGridSize( False )
+		self.m_grid5.SetMargins( 0, 0 )
 		
 		# Columns
-		self.m_grid3.EnableDragColMove( False )
-		self.m_grid3.EnableDragColSize( True )
-		self.m_grid3.SetColLabelSize( 30 )
-		self.m_grid3.SetColLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
+		self.m_grid5.EnableDragColMove( False )
+		self.m_grid5.EnableDragColSize( True )
+		self.m_grid5.SetColLabelSize( 30 )
+		self.m_grid5.SetColLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
 		
 		# Rows
-		self.m_grid3.SetRowSize( 0, 18 )
-		self.m_grid3.SetRowSize( 1, 18 )
-		self.m_grid3.SetRowSize( 2, 18 )
-		self.m_grid3.SetRowSize( 3, 18 )
-		self.m_grid3.SetRowSize( 4, 18 )
-		self.m_grid3.EnableDragRowSize( True )
-		self.m_grid3.SetRowLabelSize( 80 )
-		self.m_grid3.SetRowLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
+		self.m_grid5.EnableDragRowSize( True )
+		self.m_grid5.SetRowLabelSize( 80 )
+		self.m_grid5.SetRowLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
 		
 		# Label Appearance
 		
 		# Cell Defaults
-		self.m_grid3.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer20.Add( self.m_grid3, 0, wx.ALL, 5 )
+		self.m_grid5.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer20.Add( self.m_grid5, 0, wx.ALL, 5 )
+		
+		bSizer17 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		gSizer1 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		self.m_button15 = wx.Button( self, wx.ID_OK, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer1.Add( self.m_button15, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+		
+		self.m_button16 = wx.Button( self, wx.ID_CANCEL, u"取消", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer1.Add( self.m_button16, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+		
+		
+		bSizer17.Add( gSizer1, 1, wx.EXPAND, 5 )
+		
+		
+		bSizer20.Add( bSizer17, 0, wx.EXPAND, 5 )
+		
+		self.m_staticText40 = wx.StaticText( self, wx.ID_ANY, u"注意：表格可以直接编辑，点击确定按钮将会保存您的修改，点击取消按钮则放弃更改！", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText40.Wrap( -1 )
+		self.m_staticText40.SetForegroundColour( wx.Colour( 255, 0, 0 ) )
+		
+		bSizer20.Add( self.m_staticText40, 0, wx.ALL, 5 )
 		
 		
 		self.SetSizer( bSizer20 )
 		self.Layout()
 		
 		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.m_grid5.Bind( wx.grid.EVT_GRID_CELL_CHANGE, self.OnCellChange )
+		self.m_button15.Bind( wx.EVT_BUTTON, self.OnOKBtnClick )
 	
 	def __del__( self ):
 		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def OnCellChange( self, event ):
+		event.Skip()
+	
+	def OnOKBtnClick( self, event ):
+		event.Skip()
 	
 
 ###########################################################################

@@ -110,7 +110,7 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer3;
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
 	
-	m_auinotebook1 = new wxAuiNotebook( m_panel3, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxAUI_NB_DEFAULT_STYLE );
+	m_auinotebook1 = new wxAuiNotebook( m_panel3, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxAUI_NB_CLOSE_ON_ALL_TABS|wxAUI_NB_DEFAULT_STYLE );
 	m_panel5 = new wxPanel( m_auinotebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer41;
 	bSizer41 = new wxBoxSizer( wxVERTICAL );
@@ -118,8 +118,8 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_grid1 = new wxGrid( m_panel5, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
 	
 	// Grid
-	m_grid1->CreateGrid( 5, 5 );
-	m_grid1->EnableEditing( true );
+	m_grid1->CreateGrid( 0, 0 );
+	m_grid1->EnableEditing( false );
 	m_grid1->EnableGridLines( true );
 	m_grid1->EnableDragGridSize( false );
 	m_grid1->SetMargins( 0, 0 );
@@ -394,6 +394,15 @@ DlgAddSell::DlgAddSell( wxWindow* parent, wxWindowID id, const wxString& title, 
 	fgSizer4->SetFlexibleDirection( wxBOTH );
 	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
+	m_staticText53 = new wxStaticText( this, wxID_ANY, wxT("产品分类："), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText53->Wrap( -1 );
+	fgSizer4->Add( m_staticText53, 0, wxALL, 5 );
+	
+	wxArrayString m_choice8Choices;
+	m_choice8 = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice8Choices, 0 );
+	m_choice8->SetSelection( 0 );
+	fgSizer4->Add( m_choice8, 0, wxALL, 5 );
+	
 	m_staticText12 = new wxStaticText( this, wxID_ANY, wxT("产品型号："), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText12->Wrap( -1 );
 	fgSizer4->Add( m_staticText12, 0, wxALL, 5 );
@@ -472,8 +481,11 @@ DlgAddSell::DlgAddSell( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_staticText26->Wrap( -1 );
 	fgSizer4->Add( m_staticText26, 0, wxALL, 5 );
 	
-	m_textCtrl12 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer4->Add( m_textCtrl12, 0, wxALL, 5 );
+	m_staticText39 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText39->Wrap( -1 );
+	m_staticText39->SetForegroundColour( wxColour( 255, 0, 0 ) );
+	
+	fgSizer4->Add( m_staticText39, 0, wxALL, 5 );
 	
 	m_staticText15 = new wxStaticText( this, wxID_ANY, wxT("出售日期："), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText15->Wrap( -1 );
@@ -502,10 +514,28 @@ DlgAddSell::DlgAddSell( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->Layout();
 	
 	this->Centre( wxBOTH );
+	
+	// Connect Events
+	m_choice8->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DlgAddSell::OnProductClassChoice ), NULL, this );
+	m_button6->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgAddSell::OnMangerBuyers ), NULL, this );
+	m_textCtrl6->Connect( wxEVT_CHAR, wxKeyEventHandler( DlgAddSell::OnSellNumTextChange ), NULL, this );
+	m_textCtrl8->Connect( wxEVT_CHAR, wxKeyEventHandler( DlgAddSell::OnUnitPriceTextChange ), NULL, this );
+	m_textCtrl10->Connect( wxEVT_CHAR, wxKeyEventHandler( DlgAddSell::OnDealPriceTextChange ), NULL, this );
+	m_textCtrl11->Connect( wxEVT_CHAR, wxKeyEventHandler( DlgAddSell::OnPaidTextChange ), NULL, this );
+	m_button9->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgAddSell::OnOkBtnClick ), NULL, this );
 }
 
 DlgAddSell::~DlgAddSell()
 {
+	// Disconnect Events
+	m_choice8->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DlgAddSell::OnProductClassChoice ), NULL, this );
+	m_button6->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgAddSell::OnMangerBuyers ), NULL, this );
+	m_textCtrl6->Disconnect( wxEVT_CHAR, wxKeyEventHandler( DlgAddSell::OnSellNumTextChange ), NULL, this );
+	m_textCtrl8->Disconnect( wxEVT_CHAR, wxKeyEventHandler( DlgAddSell::OnUnitPriceTextChange ), NULL, this );
+	m_textCtrl10->Disconnect( wxEVT_CHAR, wxKeyEventHandler( DlgAddSell::OnDealPriceTextChange ), NULL, this );
+	m_textCtrl11->Disconnect( wxEVT_CHAR, wxKeyEventHandler( DlgAddSell::OnPaidTextChange ), NULL, this );
+	m_button9->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgAddSell::OnOkBtnClick ), NULL, this );
+	
 }
 
 DlgModifySell::DlgModifySell( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
@@ -650,7 +680,7 @@ DlgBuyerManager::DlgBuyerManager( wxWindow* parent, wxWindowID id, const wxStrin
 	m_grid3 = new wxGrid( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
 	
 	// Grid
-	m_grid3->CreateGrid( 5, 5 );
+	m_grid3->CreateGrid( 0, 0 );
 	m_grid3->EnableEditing( true );
 	m_grid3->EnableGridLines( true );
 	m_grid3->EnableDragGridSize( false );
@@ -678,15 +708,47 @@ DlgBuyerManager::DlgBuyerManager( wxWindow* parent, wxWindowID id, const wxStrin
 	m_grid3->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
 	bSizer20->Add( m_grid3, 0, wxALL, 5 );
 	
+	wxBoxSizer* bSizer17;
+	bSizer17 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxGridSizer* gSizer1;
+	gSizer1 = new wxGridSizer( 0, 2, 0, 0 );
+	
+	m_button15 = new wxButton( this, wxID_OK, wxT("确定"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer1->Add( m_button15, 0, wxALIGN_CENTER|wxALL, 5 );
+	
+	m_button16 = new wxButton( this, wxID_CANCEL, wxT("取消"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer1->Add( m_button16, 0, wxALIGN_CENTER|wxALL, 5 );
+	
+	
+	bSizer17->Add( gSizer1, 1, wxEXPAND, 5 );
+	
+	
+	bSizer20->Add( bSizer17, 0, wxEXPAND, 5 );
+	
+	m_staticText40 = new wxStaticText( this, wxID_ANY, wxT("注意：表格可以直接编辑，点击确定按钮将会保存您的修改，点击取消按钮则放弃更改！"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText40->Wrap( -1 );
+	m_staticText40->SetForegroundColour( wxColour( 255, 0, 0 ) );
+	
+	bSizer20->Add( m_staticText40, 0, wxALL, 5 );
+	
 	
 	this->SetSizer( bSizer20 );
 	this->Layout();
 	
 	this->Centre( wxBOTH );
+	
+	// Connect Events
+	m_grid3->Connect( wxEVT_GRID_CELL_CHANGE, wxGridEventHandler( DlgBuyerManager::OnCellChange ), NULL, this );
+	m_button15->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgBuyerManager::OnOKBtnClick ), NULL, this );
 }
 
 DlgBuyerManager::~DlgBuyerManager()
 {
+	// Disconnect Events
+	m_grid3->Disconnect( wxEVT_GRID_CELL_CHANGE, wxGridEventHandler( DlgBuyerManager::OnCellChange ), NULL, this );
+	m_button15->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgBuyerManager::OnOKBtnClick ), NULL, this );
+	
 }
 
 DlgHistoryDeals::DlgHistoryDeals( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )

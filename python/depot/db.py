@@ -1,24 +1,17 @@
 # -*- coding: utf-8 -*- 
 # 数据操作层
 
-import sqlite3, models
+import sqlite3, models, datetime
 from models import SellRecord, Product, Buyer
-
-
-# 售出数据表格的右键菜单
-SELL_TAB_CONTEXT_MENU = [(wx.NewId(), u"添加", "OnAddSellRecord"),
-						 (wx.NewId(), u"修改", "OnModifySellRecord"),
-						 (wx.NewId(), u"删除", "OnDeleteSellRecord"),
-						]
 
 # 查询所有售出记录的sql语句
 SQL_SELECT_SELLS = "select sell_record.uid, product_class, product_type, " \
 				   "deal_unit_price, amount, buyer, deal_price, deal_date, paid, " \
-				   "buyer_name from sell_record, buyer where sell_record.buyer = buyer.uid"
+				   "buyer_name from sell_record, buyer where sell_record.buyer = buyer.uid order by sell_record.uid"
 # 插入售出记录
 SQL_INSERT_SELL = "insert into sell_record (product_class, product_type, " \
-				  "deal_unit_price, amount, buyer, deal_price, deal_date, paid, buyer_name) VALUES" \
-				  "(%d, %d, %f, %d, %d, %f, %s, %f, %s)"
+				  "deal_unit_price, amount, buyer, deal_price, paid, deal_date) VALUES" \
+				  "('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
 
 # 查询所有的产品信息
 SQL_ALL_PRODUCT_TYPE = "select class, type, length, width, height, per_weight, price from product"
@@ -36,20 +29,20 @@ def GetAllSellRecords():
 	all_sells = {}
 	for row in db_cur:
 		rec                 = SellRecord()
-		rec.uid             = row[0]
-		rec.product_class   = row[1]
+		rec.uid             = str(row[0])
+		rec.product_class   = str(row[1])
 		rec.product_type    = row[2]
-		rec.deal_unit_price = row[3]
-		rec.amount          = row[4]
-		rec.buyer           = row[5]
-		rec.deal_price      = row[6]
-		rec.deal_date       = row[7]
-		rec.paid            = row[8]
+		rec.deal_unit_price = str(row[3])
+		rec.amount          = str(row[4])
+		rec.buyer           = str(row[5])
+		rec.deal_price      = str(row[6])
+		rec.deal_date       = row[7] # datetime.datetime.strptime(row[7], "%Y-%m-%d").strftime("%Y-%m-%d")
+		rec.paid            = str(row[8])
 		rec.buyer_name      = row[9]
 		
-		rec.total_price     = rec.deal_unit_price * rec.amount
-		rec.unpaid          = rec.deal_price - rec.paid
-		all_sells[uid]      = rec
+		rec.total_price     = str(float(rec.deal_unit_price) * float(rec.amount))
+		rec.unpaid          = str(float(rec.deal_price) - float(rec.paid))
+		all_sells[rec.uid]  = rec
 
 	return all_sells
 
@@ -62,16 +55,15 @@ def GetAllProducts():
 		all_products[category] = {}
 	for row in db_cur:
 		rec            = Product()
-		rec.category   = row[0]
+		rec.category   = str(row[0])
 		rec.type       = row[1]
-		rec.length     = row[2]
-		rec.width      = row[3]
-		rec.height     = row[4]
-		rec.per_weight = row[5]
-		rec.price      = row[6]
+		rec.length     = str(row[2])
+		rec.width      = str(row[3])
+		rec.height     = str(row[4])
+		rec.per_weight = str(row[5])
+		rec.price      = str(row[6])
 		all_products[rec.category][rec.type] = rec
 	return all_products
-
 
 def GetAllBuyers():
 	"""获取所有的买家数据"""
@@ -80,7 +72,7 @@ def GetAllBuyers():
 	all_buyers = {}
 	for row in db_cur:
 		rec            = Buyer()
-		rec.uid        = row[0]
+		rec.uid        = str(row[0])
 		rec.buyer_name = row[1]
 		rec.phone1     = row[2]
 		rec.phone2     = row[3]
@@ -91,3 +83,20 @@ def GetAllBuyers():
 	return all_buyers
 
 def InsertSellRecord(sell_rec):
+	db_cur = db_conn.cursor()
+	print(type(sell_rec.deal_date))
+	sql = SQL_INSERT_SELL % (sell_rec.product_class, 
+							 sell_rec.product_type,
+							 sell_rec.deal_unit_price,
+							 sell_rec.amount,
+							 sell_rec.buyer,
+							 sell_rec.deal_price,
+							 sell_rec.paid,
+							 sell_rec.deal_date
+							 )
+	db_cur.execute(sql)
+	db_conn.commit()
+	db_cur = db_conn.cursor()
+	db_cur.execute("select max(uid) from sell_record")
+	sell_rec.uid = db_cur.next()[0]
+	return sell_rec
