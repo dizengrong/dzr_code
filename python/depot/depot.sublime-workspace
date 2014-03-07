@@ -279,15 +279,15 @@
 			"file": "depot.py",
 			"settings":
 			{
-				"buffer_size": 3511,
+				"buffer_size": 3832,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
+			"file": "DlgAddSell.py",
 			"settings":
 			{
-				"buffer_size": 5749,
+				"buffer_size": 2667,
 				"line_ending": "Windows"
 			}
 		},
@@ -295,15 +295,15 @@
 			"file": "models.py",
 			"settings":
 			{
-				"buffer_size": 584,
+				"buffer_size": 1168,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
+			"file": "db.py",
 			"settings":
 			{
-				"buffer_size": 8746,
+				"buffer_size": 2573,
 				"line_ending": "Windows"
 			}
 		},
@@ -311,7 +311,7 @@
 			"file": "DepotWindows.py",
 			"settings":
 			{
-				"buffer_size": 29632,
+				"buffer_size": 30562,
 				"line_ending": "Windows"
 			}
 		}
@@ -352,6 +352,8 @@
 	},
 	"file_history":
 	[
+		"/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
+		"/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
 		"/D/wxPython2.8 Docs and Demos/demo/Grid_MegaExample.py",
 		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-05/gridGeneric.py",
 		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-05/gridModel.py",
@@ -401,7 +403,6 @@
 		"/E/study/weixin/wx_sample.php",
 		"/D/Google_driver/weixin/send_msg_2_user.php",
 		"/D/game/3DM-Kings/King's Bounty - Warriors of the North/sessions/addon/newset/hero.txt",
-		"/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
 		"/C/Users/dzR/Desktop/handover-qos.cc",
 		"/C/Users/dzR/Desktop/handover-qos.h",
 		"/E/my_git/dzr_code/python/serial_tool2/session_manager.py",
@@ -427,7 +428,6 @@
 		"/E/my_git/dzr_code/python/serial_tool2/config/sessions",
 		"/E/my_git/dzr_code/python/serial_tool2/session.py",
 		"/E/my_git/dzr_code/python/serial_tool2/documents/help.chm",
-		"/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
 		"/E/my_git/dzr_code/python/serial_tool2/config/设备发送命令提示.txt",
 		"/C/Users/dzR/Desktop/设备类型配置.txt.dump",
 		"/C/Users/dzR/Desktop/设备类型配置.txt",
@@ -492,6 +492,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"AddSellRecord",
+			"all_products",
 			"sell_rec",
 			"rec",
 			"SetCellValue",
@@ -617,9 +619,7 @@
 			"ImportDeviceDatas",
 			"OnCellDataChange",
 			"del",
-			"m_choice7",
-			"engine",
-			"tarfile"
+			"m_choice7"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -637,7 +637,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -645,51 +645,51 @@
 					"file": "depot.py",
 					"settings":
 					{
-						"buffer_size": 3511,
+						"buffer_size": 3832,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1780,
-								1780
+								2527,
+								2501
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 684.0,
+						"translation.y": 1235.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
+					"file": "DlgAddSell.py",
 					"settings":
 					{
-						"buffer_size": 5749,
+						"buffer_size": 2667,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								508,
-								525
+								1864,
+								1877
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1653.0,
+						"translation.y": 1080.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -699,41 +699,15 @@
 					"file": "models.py",
 					"settings":
 					{
-						"buffer_size": 584,
+						"buffer_size": 1168,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								552,
-								558
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
-					"settings":
-					{
-						"buffer_size": 8746,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6728,
-								6792
+								0,
+								0
 							]
 						],
 						"settings":
@@ -742,7 +716,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3742.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "db.py",
+					"settings":
+					{
+						"buffer_size": 2573,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1084,
+								1084
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 113.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -752,15 +753,15 @@
 					"file": "DepotWindows.py",
 					"settings":
 					{
-						"buffer_size": 29632,
+						"buffer_size": 30562,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								29632,
-								29632
+								10458,
+								10458
 							]
 						],
 						"settings":
@@ -769,7 +770,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 14210.0,
+						"translation.y": 4760.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -52,15 +52,7 @@ class MyFrame(MainFrame):
 		self.m_grid1.SetColLabelValue(ENUM_SELL_UNPAY, u'剩余欠款')
 		self.m_grid1.SetColLabelValue(ENUM_SELL_DEAL_DATE, u'成交日期')
 
-		row_count = 0
-		for rec in db.GetAllSellRecords().values():
-			self.m_grid1.AppendRows()
-			self.SetSellTableRow(row_count, rec)
-			row_count = row_count + 1
-
-		# if self.m_grid1.GetNumberRows() == 0:
-		self.m_grid1.AppendRows(1, True)
-		self.m_grid1.AutoSize()
+		self.ReloadSellTab()
 			
 	def __init__products(self):
 		pass
@@ -84,6 +76,7 @@ class MyFrame(MainFrame):
 			rec = dlg.GetSellRecord()
 			self.InsertSellRecord(rec)
 		dlg.Destroy()
+		wx.CallAfter(self.ReloadSellTab)
 
 	def InsertSellRecord(self, sell_rec):
 		sell_rec = db.InsertSellRecord(sell_rec)
@@ -97,6 +90,24 @@ class MyFrame(MainFrame):
 
 	def OnDeleteSellRecord(self, event):
 		print "OnDeleteSellRecord called! "
+		row      = event.GetRow()
+		sell_uid = self.m_grid1.GetCellValue(row, ENUM_SELL_UID)
+		dlg      = wx.MessageDialog(self, content, u"您确定要删除交易号为%s的交易记录？" % (sell_uid), wx.OK|wx.CANCEL)
+		if dlg.ShowModal() == wx.ID_OK :
+			db.DeleteSellRecord(sell_uid)
+			wx.CallAfter(self.ReloadSellTab)
+		dlg.Destroy()
+
+	def ReloadSellTab(self):
+		"""重新加载售出记录数据"""
+		self.m_grid1.Clear()
+		self.all_sells = db.GetAllSellRecords()
+		for rec in self.all_sellsvalues():
+			self.m_grid1.AppendRows()
+			self.SetSellTableRow(row_count, rec)
+			row_count = row_count + 1
+		self.m_grid1.AppendRows(1, True)
+		self.m_grid1.AutoSize()
 
 	def SetSellTableRow(self, row_num, sell_rec):
 		"""根据sell_rec设置售出表格的第row_num行的数据"""
