@@ -578,6 +578,14 @@ class DlgModifySell ( wx.Dialog ):
 		fgSizer4.SetFlexibleDirection( wx.BOTH )
 		fgSizer4.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
+		self.m_staticText41 = wx.StaticText( self, wx.ID_ANY, u"产品分类：", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText41.Wrap( -1 )
+		fgSizer4.Add( self.m_staticText41, 0, wx.ALL, 5 )
+		
+		self.m_staticText42 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText42.Wrap( -1 )
+		fgSizer4.Add( self.m_staticText42, 0, wx.ALL, 5 )
+		
 		self.m_staticText12 = wx.StaticText( self, wx.ID_ANY, u"产品型号：", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText12.Wrap( -1 )
 		fgSizer4.Add( self.m_staticText12, 0, wx.ALL, 5 )
@@ -627,7 +635,7 @@ class DlgModifySell ( wx.Dialog ):
 		
 		self.m_staticText24 = wx.StaticText( self, wx.ID_ANY, u"数量*单价", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText24.Wrap( -1 )
-		self.m_staticText24.SetForegroundColour( wx.Colour( 255, 0, 0 ) )
+		self.m_staticText24.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
 		
 		fgSizer4.Add( self.m_staticText24, 0, wx.ALL, 5 )
 		
@@ -651,19 +659,21 @@ class DlgModifySell ( wx.Dialog ):
 		self.m_staticText25.Wrap( -1 )
 		fgSizer4.Add( self.m_staticText25, 0, wx.ALL, 5 )
 		
-		self.m_textCtrl11 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_READONLY|wx.NO_BORDER )
-		self.m_textCtrl11.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_APPWORKSPACE ) )
+		self.m_staticText43 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText43.Wrap( -1 )
+		self.m_staticText43.SetForegroundColour( wx.Colour( 255, 0, 0 ) )
 		
-		fgSizer4.Add( self.m_textCtrl11, 0, wx.ALL, 5 )
+		fgSizer4.Add( self.m_staticText43, 0, wx.ALL, 5 )
 		
 		self.m_staticText26 = wx.StaticText( self, wx.ID_ANY, u"欠款：", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText26.Wrap( -1 )
 		fgSizer4.Add( self.m_staticText26, 0, wx.ALL, 5 )
 		
-		self.m_textCtrl12 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_READONLY|wx.NO_BORDER )
-		self.m_textCtrl12.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_APPWORKSPACE ) )
+		self.m_staticText44 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText44.Wrap( -1 )
+		self.m_staticText44.SetForegroundColour( wx.Colour( 255, 0, 0 ) )
 		
-		fgSizer4.Add( self.m_textCtrl12, 0, wx.ALL, 5 )
+		fgSizer4.Add( self.m_staticText44, 0, wx.ALL, 5 )
 		
 		self.m_staticText15 = wx.StaticText( self, wx.ID_ANY, u"出售日期：", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText15.Wrap( -1 )
@@ -691,9 +701,25 @@ class DlgModifySell ( wx.Dialog ):
 		self.Layout()
 		
 		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.m_textCtrl6.Bind( wx.EVT_CHAR, self.OnTextChange )
+		self.m_textCtrl10.Bind( wx.EVT_CHAR, self.OnTextChange )
+		self.m_textCtrl23.Bind( wx.EVT_CHAR, self.OnTextChange )
+		self.m_button9.Bind( wx.EVT_BUTTON, self.OnOKBtnClick )
 	
 	def __del__( self ):
 		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def OnTextChange( self, event ):
+		event.Skip()
+	
+	
+	
+	def OnOKBtnClick( self, event ):
+		event.Skip()
 	
 
 ###########################################################################

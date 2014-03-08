@@ -4,6 +4,7 @@ import wx, sqlite3, models, db
 from DepotWindows import MainFrame
 from models import SellRecord, Product, Buyer
 from DlgAddSell import MyDlgAddSell
+from DlgModifySell import MyDlgModifySell
 
 ENUM_SELL_UID           = 0		# 售出的uid
 ENUM_SELL_PRODUCT_CLASS = 1		# 产品分类
@@ -66,17 +67,17 @@ class MyFrame(MainFrame):
 			it = wx.MenuItem(menu, id, title)
 			menu.AppendItem(it)
 			self.Bind(wx.EVT_MENU, getattr(self, action), it) 
+		self.sell_tab_clicked_row = event.GetRow()
 		self.PopupMenu(menu) 
 		
 		menu.Destroy()
+		self.sell_tab_clicked_row = None
 
 	def OnAddSellRecord(self, event):
 		dlg = MyDlgAddSell()
 		if dlg.ShowModal() == wx.ID_OK:
-			rec = dlg.GetSellRecord()
-			self.InsertSellRecord(rec)
+			wx.CallAfter(self.ReloadSellTab)
 		dlg.Destroy()
-		wx.CallAfter(self.ReloadSellTab)
 
 	def InsertSellRecord(self, sell_rec):
 		sell_rec = db.InsertSellRecord(sell_rec)
@@ -86,13 +87,23 @@ class MyFrame(MainFrame):
 		self.m_grid1.AutoSize()
 
 	def OnModifySellRecord(self, event):
-		print "OnModifySellRecord called! "
+		row = self.sell_tab_clicked_row
+		if row == None:
+			return
+		sell_uid = self.m_grid1.GetCellValue(row, ENUM_SELL_UID)
+		sell_rec = self.all_sells[sell_uid]
+		dlg = MyDlgModifySell(sell_rec)
+		if dlg.ShowModal() == wx.ID_OK:
+			wx.CallAfter(self.ReloadSellTab)
+		dlg.Destroy()
+
 
 	def OnDeleteSellRecord(self, event):
-		print "OnDeleteSellRecord called! "
-		row      = event.GetRow()
+		row = self.sell_tab_clicked_row
+		if row == None:
+			return
 		sell_uid = self.m_grid1.GetCellValue(row, ENUM_SELL_UID)
-		dlg      = wx.MessageDialog(self, content, u"您确定要删除交易号为%s的交易记录？" % (sell_uid), wx.OK|wx.CANCEL)
+		dlg      = wx.MessageDialog(self, u"您确定要删除交易号为%s的交易记录？" % (sell_uid), u"删除交易记录", wx.OK|wx.CANCEL)
 		if dlg.ShowModal() == wx.ID_OK :
 			db.DeleteSellRecord(sell_uid)
 			wx.CallAfter(self.ReloadSellTab)
@@ -100,9 +111,13 @@ class MyFrame(MainFrame):
 
 	def ReloadSellTab(self):
 		"""重新加载售出记录数据"""
-		self.m_grid1.Clear()
+		# self.m_grid1.ClearGrid()
+		rows = self.m_grid1.GetNumberRows()
+		if rows > 0:
+			self.m_grid1.DeleteRows(numRows = rows)
 		self.all_sells = db.GetAllSellRecords()
-		for rec in self.all_sellsvalues():
+		row_count = 0
+		for rec in self.all_sells.values():
 			self.m_grid1.AppendRows()
 			self.SetSellTableRow(row_count, rec)
 			row_count = row_count + 1

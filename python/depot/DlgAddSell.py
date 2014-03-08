@@ -53,8 +53,10 @@ class MyDlgAddSell(DlgAddSell):
 
 	def OnTextChange(self, event):
 		key_code = event.GetKeyCode()
-		char = chr(key_code)
-		if key_code == wx.WXK_BACK or chr(key_code).isdigit():
+		if key_code == wx.WXK_RIGHT or key_code == wx.WXK_LEFT:
+			event.Skip()
+			return
+		if key_code == wx.WXK_BACK or key_code == ord('-') or key_code == ord('.') or chr(key_code).isdigit():
 			event.Skip()
 			wx.CallAfter(self.UpdateUI)
 
