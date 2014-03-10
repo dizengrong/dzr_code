@@ -2,8 +2,10 @@
 # 数据模型class
 
 # 所有的产品class
-ALL_PRODUCT_TYPE = {u"木板":'1', u"白膜":'2', u"蜂窝纸":'3'}
+ALL_PRODUCT_TYPE  = {u"木板":'1', u"白膜":'2', u"蜂窝纸":'3'}
 ALL_PRODUCT_TYPE2 = {'1':u"木板", '2':u"白膜", '3':u"蜂窝纸"}
+ALL_PRODUCT_PRICE = {'1':0, '2':0, '3':0}
+PRODUCT_COLORS    = {'1':'yellowgreen', '2':'gold', '3':'lightskyblue'}
 
 
 class SellRecord(object):

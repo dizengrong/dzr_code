@@ -5,18 +5,14 @@ from DepotWindows import MainFrame
 from models import SellRecord, Product, Buyer
 from DlgAddSell import MyDlgAddSell
 from DlgModifySell import MyDlgModifySell
+from DlgBuyerManager import MyDlgBuyerManager
+from DlgManagerProduct import MyDlgManagerProduct
+from SearchResutlPanel import MySearchResutlPanel
+from gui_util import *
+from common import *
+import gui_util
 
-ENUM_SELL_UID           = 0		# 售出的uid
-ENUM_SELL_PRODUCT_CLASS = 1		# 产品分类
-ENUM_SELL_PRODUCT_TYPE  = 2		# 产品型号
-ENUM_SELL_BUYER         = 3		# 买家
-ENUM_SELL_UNIT_PRICE    = 4		# 成交的单价
-ENUM_SELL_AMOUNT        = 5		# 成交数量
-ENUM_SELL_TOTAL_PRICE   = 6		# 计算所得总价
-ENUM_SELL_DEAL_PRICE    = 7 	# 实际成交总价
-ENUM_SELL_PAID          = 8 	# 已收款
-ENUM_SELL_UNPAY         = 9 	# 剩余欠款
-ENUM_SELL_DEAL_DATE     = 10 	# 成交日期
+
 
 MAX_COL = ENUM_SELL_DEAL_DATE + 1	# 售出数据表格的列数
 
@@ -27,7 +23,8 @@ SELL_TAB_CONTEXT_MENU = [(wx.NewId(), u"添加", "OnAddSellRecord"),
 						]
 
 # 控件说明：
-#	m_grid1：主界面的售出数据表格	
+#	m_grid1：主界面的售出数据表格
+# 	m_auinotebook1：数据和查询结果的notebook	
 class MyFrame(MainFrame):
 	def __init__(self, parent):
 		super(MyFrame, self).__init__(parent)
@@ -37,22 +34,11 @@ class MyFrame(MainFrame):
 		self.__init__sell_table()
 		self.__init__products()
 		self.__init_buyers()
+		self.temp = self.m_listbook2.GetChildren()[0] 
+		self.temp.SetSingleStyle(wx.LC_SMALL_ICON | wx.LC_ALIGN_LEFT) 
 
 	def __init__sell_table(self):
-		self.m_grid1.AppendCols(MAX_COL, True)
-
-		self.m_grid1.SetColLabelValue(ENUM_SELL_UID, u'交易id')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_PRODUCT_CLASS, u'产品分类')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_PRODUCT_TYPE, u'产品型号')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_BUYER, u'买家')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_UNIT_PRICE, u'成交的单价')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_AMOUNT, u'成交数量')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_TOTAL_PRICE, u'计算所得总价')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_DEAL_PRICE, u'实际成交总价')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_PAID, u'已收款')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_UNPAY, u'剩余欠款')
-		self.m_grid1.SetColLabelValue(ENUM_SELL_DEAL_DATE, u'成交日期')
-
+		gui_util.InitSellRecordTab(self.m_grid1)
 		self.ReloadSellTab()
 			
 	def __init__products(self):
@@ -76,13 +62,15 @@ class MyFrame(MainFrame):
 	def OnAddSellRecord(self, event):
 		dlg = MyDlgAddSell()
 		if dlg.ShowModal() == wx.ID_OK:
+			rec = dlg.GetSellRecord()
+			db.InsertSellRecord(rec)
 			wx.CallAfter(self.ReloadSellTab)
 		dlg.Destroy()
 
 	def InsertSellRecord(self, sell_rec):
 		sell_rec = db.InsertSellRecord(sell_rec)
 		row      = self.m_grid1.GetNumberRows()
-		self.SetSellTableRow(row - 1, sell_rec)
+		gui_util.SetSellTableRow(self.m_grid1, row - 1, sell_rec)
 		self.m_grid1.AppendRows()
 		self.m_grid1.AutoSize()
 
@@ -94,6 +82,8 @@ class MyFrame(MainFrame):
 		sell_rec = self.all_sells[sell_uid]
 		dlg = MyDlgModifySell(sell_rec)
 		if dlg.ShowModal() == wx.ID_OK:
+			rec = dlg.GetNewSellRecord()
+			db.UpdateSellRecord(rec)
 			wx.CallAfter(self.ReloadSellTab)
 		dlg.Destroy()
 
@@ -117,31 +107,47 @@ class MyFrame(MainFrame):
 			self.m_grid1.DeleteRows(numRows = rows)
 		self.all_sells = db.GetAllSellRecords()
 		row_count = 0
-		for rec in self.all_sells.values():
+		for sell_uid in sorted(self.all_sells.keys()):
+			rec = self.all_sells[sell_uid]
 			self.m_grid1.AppendRows()
-			self.SetSellTableRow(row_count, rec)
+			gui_util.SetSellTableRow(self.m_grid1, row_count, rec)
 			row_count = row_count + 1
 		self.m_grid1.AppendRows(1, True)
 		self.m_grid1.AutoSize()
+		self.m_panel5.Layout()
 
-	def SetSellTableRow(self, row_num, sell_rec):
-		"""根据sell_rec设置售出表格的第row_num行的数据"""
-		category = models.ALL_PRODUCT_TYPE2[sell_rec.product_class]
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_UID, str(sell_rec.uid))
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_PRODUCT_CLASS, category)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_PRODUCT_TYPE, sell_rec.product_type)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_BUYER, sell_rec.buyer_name)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_UNIT_PRICE, sell_rec.deal_unit_price)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_AMOUNT, sell_rec.amount)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_TOTAL_PRICE, sell_rec.total_price)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_DEAL_PRICE, sell_rec.deal_price)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_PAID, sell_rec.paid)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_UNPAY, sell_rec.unpaid)
-		self.m_grid1.SetCellValue(row_num, ENUM_SELL_DEAL_DATE, sell_rec.deal_date)
+	
 
-		if float(sell_rec.unpaid) >= 0.001:
-			self.m_grid1.SetCellTextColour(row_num, ENUM_SELL_UNPAY, wx.RED)
+	def OnManagerBuyers(sell_rec, event):
+		dlg = MyDlgBuyerManager()
+		if dlg.ShowModal() == wx.ID_OK:
+			pass
+			# self.all_buyers = db.GetAllBuyers()
+		dlg.Destroy()
 
+	def OnAddProductBaseInfo(self, event):
+		dlg = MyDlgManagerProduct()
+		if dlg.ShowModal() == wx.ID_OK:
+			pass
+			# self.all_buyers = db.GetAllBuyers()
+		dlg.Destroy()
+
+	def OnExit(self, event):
+		self.Close(True)
+
+	def OnSearch( self, event ):
+		btn_id = event.GetId()
+		if btn_id == self.m_button2.GetId():
+			begin = self.m_datePicker1.GetValue().Format("%Y-%m-%d")
+			end   = self.m_datePicker2.GetValue().Format("%Y-%m-%d")
+			panel = MySearchResutlPanel(self.m_auinotebook1, begin, end, SEARCH_TYPE_TOTAL)
+			self.m_auinotebook1.AddPage(panel, u"查询结果", True, wx.NullBitmap )
+			panel.Layout()
+			# self.SearchTotalSell(begin, end)
+		elif btn_id == self.m_button21.GetId():
+			pass
+		elif btn_id == self.m_button22.GetId():
+			pass
 
 app = wx.App(redirect=False)   # Error messages go to popup window
 top = MyFrame(None)

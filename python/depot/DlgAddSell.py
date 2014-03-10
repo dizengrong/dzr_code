@@ -2,9 +2,10 @@
 # 添加售出记录的对话框界面
 
 from DepotWindows import DlgAddSell
-import models, wx, sqlite3, db
+import models, wx, db
 from models import SellRecord
 from DlgBuyerManager import MyDlgBuyerManager
+from DlgHistoryDeals import MyDlgHistoryDeals
 
 # 控件说明：
 #	m_choice8：界面的产品分类选择框	
@@ -17,14 +18,19 @@ from DlgBuyerManager import MyDlgBuyerManager
 # 	m_textCtrl11：界面的已收款控件
 # 	m_staticText39：界面的欠款label
 # 	m_datePicker3：界面的出售日期控件
+# 	m_button8：界面的查询历史记录的按钮
 class MyDlgAddSell(DlgAddSell):
 	def __init__(self):
 		super(MyDlgAddSell, self).__init__(None)
 		self.all_products = db.GetAllProducts()
 		self.m_choice8.AppendItems(models.ALL_PRODUCT_TYPE.keys())
 		self.m_staticText24.SetLabel("")
+		self.__init_buyers()
+
+	def __init_buyers(self):
 		self.all_buyers = db.GetAllBuyers()
-		self.m_choice3.AppendItems(self.all_buyers.keys())
+		self.m_choice3.Clear()
+		self.m_choice3.AppendItems(sorted([buyer.buyer_name for buyer in self.all_buyers]))
 
 	def OnProductClassChoice(self, event):
 		category_str = self.m_choice8.GetStringSelection()
@@ -35,8 +41,7 @@ class MyDlgAddSell(DlgAddSell):
 	def OnMangerBuyers(self, event):
 		dlg = MyDlgBuyerManager()
 		if dlg.ShowModal() == wx.ID_OK:
-			rec = dlg.GetSellRecord()
-			self.InsertSellRecord(rec)
+			self.__init_buyers()
 		dlg.Destroy()
 
 	def OnSellNumTextChange(self, event):
@@ -95,9 +100,25 @@ class MyDlgAddSell(DlgAddSell):
 		rec.paid            = self.m_textCtrl11.GetValue()
 		rec.buyer_name      = self.m_choice3.GetStringSelection()
 		
-		buyer               = self.all_buyers[rec.buyer_name]
+		buyer               = db.GetBuyer(rec.buyer_name, self.all_buyers)
 		rec.buyer           = buyer.uid
 		
 		rec.total_price     = str(float(rec.deal_unit_price) * float(rec.amount))
 		rec.unpaid          = str(float(rec.deal_price) - float(rec.paid))
 		return rec
+
+	def OnSelectBuyer(self, event):
+		buyer_name    = event.GetString()
+		history_sells = db.GetHistorySellsByBuyerName(buyer_name)
+		if len(history_sells) > 0:
+			self.m_button8.Enable(True)
+			self.m_button8.SetLabel(u"点击查看")
+		else:
+			self.m_button8.Enable(False)
+			self.m_button8.SetLabel(u"没有历史交易")
+
+	def OnQueryHistorySells(self, event):
+		buyer_name = self.m_choice3.GetStringSelection()
+		dlg        = MyDlgHistoryDeals(buyer_name)
+		dlg.ShowModal()
+		dlg.Destroy()

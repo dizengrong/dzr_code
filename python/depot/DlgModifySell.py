@@ -2,7 +2,8 @@
 # 修改售出记录的对话框界面
 
 from DepotWindows import DlgModifySell
-import models, wx
+import models, wx, db
+from DlgHistoryDeals import MyDlgHistoryDeals
 
 # 控件说明：
 # 	m_staticText42：产品分类
@@ -15,11 +16,11 @@ import models, wx
 # 	m_textCtrl23：新增收款
 # 	m_staticText43：已收款
 # 	m_staticText44：欠款
+# 	m_datePicker3：出售日期
 class MyDlgModifySell(DlgModifySell):
 	"""docstring for MyDlgModifySell"""
 	def __init__(self, sell_rec):
 		super(MyDlgModifySell, self).__init__(None)
-		print("sell_rec.total_price: ", sell_rec.total_price)
 		self.m_staticText42.SetLabel(models.ALL_PRODUCT_TYPE2[sell_rec.product_class])
 		self.m_staticText49.SetLabel(sell_rec.product_type)
 		self.m_staticText50.SetLabel(sell_rec.buyer_name)
@@ -30,11 +31,19 @@ class MyDlgModifySell(DlgModifySell):
 		self.m_staticText43.SetLabel(sell_rec.paid)
 		self.m_staticText44.SetLabel(sell_rec.unpaid)
 		self.m_textCtrl23.SetValue("0")
+		date = wx.DateTime()
+		date.ParseDate(sell_rec.deal_date)
+		self.m_datePicker3.SetValue(date)
+
+		history_sells = db.GetHistorySellsByBuyerName(sell_rec.buyer_name)
+		if len(history_sells) > 0:
+			self.m_button8.Enable(True)
+			self.m_button8.SetLabel(u"点击查看")
 
 		self.sell_rec = sell_rec
 	
 	def OnOKBtnClick(self, event):
-		pass
+		event.Skip()
 
 	def OnTextChange(self, event):
 		key_code = event.GetKeyCode()
@@ -46,7 +55,9 @@ class MyDlgModifySell(DlgModifySell):
 			wx.CallAfter(self.UpdateUI)
 
 	def UpdateUI(self):
-		amount     = self.m_textCtrl6.GetValue()
+		amount = self.m_textCtrl6.GetValue()
+		if amount == "":
+			amount = 0
 		unit_price = self.m_textCtrl8.GetValue()
 		self.m_staticText24.SetLabel(str(float(unit_price) * float(amount)))
 
@@ -56,3 +67,17 @@ class MyDlgModifySell(DlgModifySell):
 		unpaid     = float(deal_price) - float(self.sell_rec.paid)
 		self.m_staticText43.SetLabel(self.sell_rec.paid + " + " + add_paid + " = " + str(new_paid))
 		self.m_staticText44.SetLabel(str(unpaid) + " - " + add_paid + " = " + str(unpaid - float(add_paid)))
+
+	def GetNewSellRecord(self):
+		self.sell_rec.amount     = self.m_textCtrl6.GetValue()
+		self.sell_rec.deal_price = self.m_textCtrl10.GetValue()
+		self.sell_rec.paid       = str(float(self.sell_rec.paid) + float(self.m_textCtrl23.GetValue()))
+		self.sell_rec.unpaid     = str(float(self.sell_rec.deal_price) - float(self.sell_rec.paid))
+		self.sell_rec.deal_date  = str(self.m_datePicker3.GetValue().Format("%Y-%m-%d"))
+		return self.sell_rec
+
+	def OnQueryHistorySells(self, event):
+		buyer_name = self.m_staticText50.GetLabel()
+		dlg        = MyDlgHistoryDeals(buyer_name)
+		dlg.ShowModal()
+		dlg.Destroy()

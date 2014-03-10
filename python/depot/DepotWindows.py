@@ -31,8 +31,11 @@ class MainFrame ( wx.Frame ):
 		self.m_menubar1.Append( self.m_menu2, u"文件" ) 
 		
 		self.m_menu5 = wx.Menu()
-		self.m_menuItem3 = wx.MenuItem( self.m_menu5, wx.ID_ANY, u"添加产品型号", wx.EmptyString, wx.ITEM_NORMAL )
+		self.m_menuItem3 = wx.MenuItem( self.m_menu5, wx.ID_ANY, u"管理产品型号", wx.EmptyString, wx.ITEM_NORMAL )
 		self.m_menu5.AppendItem( self.m_menuItem3 )
+		
+		self.m_menuItem4 = wx.MenuItem( self.m_menu5, wx.ID_ANY, u"管理买家数据", wx.EmptyString, wx.ITEM_NORMAL )
+		self.m_menu5.AppendItem( self.m_menuItem4 )
 		
 		self.m_menubar1.Append( self.m_menu5, u"管理" ) 
 		
@@ -59,48 +62,144 @@ class MainFrame ( wx.Frame ):
 		
 		bSizer4.Add( self.m_staticText1, 0, wx.ALL|wx.EXPAND, 0 )
 		
-		sbSizer1 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel2, wx.ID_ANY, u"时间条件" ), wx.VERTICAL )
+		self.m_listbook2 = wx.Listbook( self.m_panel2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LB_DEFAULT )
+		self.m_panel20 = wx.Panel( self.m_listbook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		bSizer27 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.m_staticText49 = wx.StaticText( self.m_panel20, wx.ID_ANY, u"说明：查询一段时间内的销售总额明细", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText49.Wrap( -1 )
+		self.m_staticText49.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		
+		bSizer27.Add( self.m_staticText49, 0, wx.ALL, 5 )
+		
+		sbSizer1 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel20, wx.ID_ANY, u"时间条件" ), wx.VERTICAL )
 		
 		fgSizer1 = wx.FlexGridSizer( 0, 2, 0, 0 )
 		fgSizer1.SetFlexibleDirection( wx.BOTH )
 		fgSizer1.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
-		self.m_staticText3 = wx.StaticText( self.m_panel2, wx.ID_ANY, u"开始：", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText3 = wx.StaticText( self.m_panel20, wx.ID_ANY, u"开始：", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText3.Wrap( -1 )
 		fgSizer1.Add( self.m_staticText3, 0, wx.ALL, 5 )
 		
-		self.m_datePicker1 = wx.DatePickerCtrl( self.m_panel2, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT|wx.DP_DROPDOWN )
+		self.m_datePicker1 = wx.DatePickerCtrl( self.m_panel20, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT|wx.DP_DROPDOWN )
 		fgSizer1.Add( self.m_datePicker1, 0, wx.ALL, 5 )
 		
-		self.m_staticText4 = wx.StaticText( self.m_panel2, wx.ID_ANY, u"结束：", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText4 = wx.StaticText( self.m_panel20, wx.ID_ANY, u"结束：", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText4.Wrap( -1 )
 		fgSizer1.Add( self.m_staticText4, 0, wx.ALL, 5 )
 		
-		self.m_datePicker2 = wx.DatePickerCtrl( self.m_panel2, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT|wx.DP_DROPDOWN )
+		self.m_datePicker2 = wx.DatePickerCtrl( self.m_panel20, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT|wx.DP_DROPDOWN )
 		fgSizer1.Add( self.m_datePicker2, 0, wx.ALL, 5 )
 		
 		
 		sbSizer1.Add( fgSizer1, 1, wx.EXPAND, 5 )
 		
 		
-		bSizer4.Add( sbSizer1, 0, wx.EXPAND, 5 )
+		bSizer27.Add( sbSizer1, 0, wx.EXPAND, 5 )
 		
-		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel2, wx.ID_ANY, u"产品分类条件" ), wx.VERTICAL )
-		
-		self.m_checkBox2 = wx.CheckBox( self.m_panel2, wx.ID_ANY, u"分类1", wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer2.Add( self.m_checkBox2, 0, wx.ALL, 5 )
-		
-		self.m_checkBox3 = wx.CheckBox( self.m_panel2, wx.ID_ANY, u"分类2", wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer2.Add( self.m_checkBox3, 0, wx.ALL, 5 )
-		
-		self.m_checkBox4 = wx.CheckBox( self.m_panel2, wx.ID_ANY, u"分类3", wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer2.Add( self.m_checkBox4, 0, wx.ALL, 5 )
+		self.m_button2 = wx.Button( self.m_panel20, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer27.Add( self.m_button2, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
 		
 		
-		bSizer4.Add( sbSizer2, 0, wx.EXPAND, 5 )
+		self.m_panel20.SetSizer( bSizer27 )
+		self.m_panel20.Layout()
+		bSizer27.Fit( self.m_panel20 )
+		self.m_listbook2.AddPage( self.m_panel20, u"销售总额查询", True )
+		self.m_panel21 = wx.Panel( self.m_listbook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		bSizer28 = wx.BoxSizer( wx.VERTICAL )
 		
-		self.m_button2 = wx.Button( self.m_panel2, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer4.Add( self.m_button2, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+		self.m_staticText50 = wx.StaticText( self.m_panel21, wx.ID_ANY, u"说明：查询某产品的销售明细", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText50.Wrap( -1 )
+		self.m_staticText50.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		
+		bSizer28.Add( self.m_staticText50, 0, wx.ALL, 5 )
+		
+		self.m_choicebook2 = wx.Choicebook( self.m_panel21, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.CHB_DEFAULT )
+		self.m_panel24 = wx.Panel( self.m_choicebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		bSizer30 = wx.BoxSizer( wx.VERTICAL )
+		
+		bSizer33 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		self.m_checkBox5 = wx.CheckBox( self.m_panel24, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer33.Add( self.m_checkBox5, 0, wx.ALL, 5 )
+		
+		
+		bSizer30.Add( bSizer33, 0, wx.EXPAND, 5 )
+		
+		
+		self.m_panel24.SetSizer( bSizer30 )
+		self.m_panel24.Layout()
+		bSizer30.Fit( self.m_panel24 )
+		self.m_choicebook2.AddPage( self.m_panel24, u"白膜", False )
+		self.m_panel25 = wx.Panel( self.m_choicebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		bSizer301 = wx.BoxSizer( wx.VERTICAL )
+		
+		bSizer331 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		self.m_checkBox51 = wx.CheckBox( self.m_panel25, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer331.Add( self.m_checkBox51, 0, wx.ALL, 5 )
+		
+		
+		bSizer301.Add( bSizer331, 0, wx.EXPAND, 5 )
+		
+		
+		self.m_panel25.SetSizer( bSizer301 )
+		self.m_panel25.Layout()
+		bSizer301.Fit( self.m_panel25 )
+		self.m_choicebook2.AddPage( self.m_panel25, u"蜂窝纸", False )
+		self.m_panel26 = wx.Panel( self.m_choicebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		bSizer302 = wx.BoxSizer( wx.VERTICAL )
+		
+		bSizer332 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		self.m_checkBox52 = wx.CheckBox( self.m_panel26, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer332.Add( self.m_checkBox52, 0, wx.ALL, 5 )
+		
+		
+		bSizer302.Add( bSizer332, 0, wx.EXPAND, 5 )
+		
+		
+		self.m_panel26.SetSizer( bSizer302 )
+		self.m_panel26.Layout()
+		bSizer302.Fit( self.m_panel26 )
+		self.m_choicebook2.AddPage( self.m_panel26, u"木板", False )
+		bSizer28.Add( self.m_choicebook2, 0, wx.EXPAND |wx.ALL, 5 )
+		
+		self.m_button21 = wx.Button( self.m_panel21, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer28.Add( self.m_button21, 0, wx.ALL, 5 )
+		
+		
+		self.m_panel21.SetSizer( bSizer28 )
+		self.m_panel21.Layout()
+		bSizer28.Fit( self.m_panel21 )
+		self.m_listbook2.AddPage( self.m_panel21, u"产品相关查询", False )
+		self.m_panel22 = wx.Panel( self.m_listbook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		bSizer29 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.m_staticText51 = wx.StaticText( self.m_panel22, wx.ID_ANY, u"说明：查询与某买家的交易明细", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText51.Wrap( 0 )
+		self.m_staticText51.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		
+		bSizer29.Add( self.m_staticText51, 0, wx.ALL, 5 )
+		
+		fgSizer6 = wx.FlexGridSizer( 0, 1, 0, 0 )
+		fgSizer6.SetFlexibleDirection( wx.BOTH )
+		fgSizer6.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		
+		
+		bSizer29.Add( fgSizer6, 0, wx.EXPAND, 5 )
+		
+		self.m_button22 = wx.Button( self.m_panel22, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer29.Add( self.m_button22, 0, wx.ALL, 5 )
+		
+		
+		self.m_panel22.SetSizer( bSizer29 )
+		self.m_panel22.Layout()
+		bSizer29.Fit( self.m_panel22 )
+		self.m_listbook2.AddPage( self.m_panel22, u"买家相关查询", False )
+		
+		bSizer4.Add( self.m_listbook2, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
 		self.m_panel2.SetSizer( bSizer4 )
@@ -121,6 +220,7 @@ class MainFrame ( wx.Frame ):
 		self.m_grid1.CreateGrid( 0, 0 )
 		self.m_grid1.EnableEditing( False )
 		self.m_grid1.EnableGridLines( True )
+		self.m_grid1.SetGridLineColour( wx.Colour( 128, 128, 0 ) )
 		self.m_grid1.EnableDragGridSize( False )
 		self.m_grid1.SetMargins( 0, 0 )
 		
@@ -152,25 +252,115 @@ class MainFrame ( wx.Frame ):
 		self.m_panel9 = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer8 = wx.BoxSizer( wx.HORIZONTAL )
 		
+		
+		self.m_panel9.SetSizer( bSizer8 )
+		self.m_panel9.Layout()
+		bSizer8.Fit( self.m_panel9 )
+		self.m_auinotebook1.AddPage( self.m_panel9, u"查询1", False, wx.NullBitmap )
+		
+		bSizer3.Add( self.m_auinotebook1, 1, wx.EXPAND |wx.ALL, 0 )
+		
+		
+		self.m_panel3.SetSizer( bSizer3 )
+		self.m_panel3.Layout()
+		bSizer3.Fit( self.m_panel3 )
+		self.m_splitter1.SplitVertically( self.m_panel2, self.m_panel3, 332 )
+		bSizer1.Add( self.m_splitter1, 1, wx.EXPAND, 5 )
+		
+		
+		self.SetSizer( bSizer1 )
+		self.Layout()
+		self.m_statusBar1 = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
+		
+		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.Bind( wx.EVT_MENU, self.OnExit, id = self.m_menuItem1.GetId() )
+		self.Bind( wx.EVT_MENU, self.OnAddProductBaseInfo, id = self.m_menuItem3.GetId() )
+		self.Bind( wx.EVT_MENU, self.OnManagerBuyers, id = self.m_menuItem4.GetId() )
+		self.Bind( wx.EVT_MENU, self.OnAbout, id = self.m_menuItem2.GetId() )
+		self.m_button2.Bind( wx.EVT_BUTTON, self.OnSearch )
+		self.m_choicebook2.Bind( wx.EVT_CHOICEBOOK_PAGE_CHANGED, self.OnChoiceCategoryChanged )
+		self.m_checkBox5.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAll )
+		self.m_checkBox51.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAll )
+		self.m_checkBox52.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAll )
+		self.m_button21.Bind( wx.EVT_BUTTON, self.OnSearch )
+		self.m_button22.Bind( wx.EVT_BUTTON, self.OnSearch )
+		self.m_grid1.Bind( wx.grid.EVT_GRID_CELL_RIGHT_CLICK, self.OnCellRightClick )
+	
+	def __del__( self ):
+		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def OnExit( self, event ):
+		event.Skip()
+	
+	def OnAddProductBaseInfo( self, event ):
+		event.Skip()
+	
+	def OnManagerBuyers( self, event ):
+		event.Skip()
+	
+	def OnAbout( self, event ):
+		event.Skip()
+	
+	def OnSearch( self, event ):
+		event.Skip()
+	
+	def OnChoiceCategoryChanged( self, event ):
+		event.Skip()
+	
+	def OnCheckBoxSelectAll( self, event ):
+		event.Skip()
+	
+	
+	
+	
+	
+	def OnCellRightClick( self, event ):
+		event.Skip()
+	
+	def m_splitter1OnIdle( self, event ):
+		self.m_splitter1.SetSashPosition( 332 )
+		self.m_splitter1.Unbind( wx.EVT_IDLE )
+	
+
+###########################################################################
+## Class SearchResutlPanel
+###########################################################################
+
+class SearchResutlPanel ( wx.Panel ):
+	
+	def __init__( self, parent ):
+		wx.Panel.__init__ ( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( 563,330 ), style = wx.TAB_TRAVERSAL )
+		
+		bSizer51 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.m_notebook2 = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.NB_BOTTOM|wx.NB_FIXEDWIDTH )
+		self.m_panel27 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer10 = wx.BoxSizer( wx.VERTICAL )
 		
-		sbSizer7 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel9, wx.ID_ANY, u"过滤条件" ), wx.VERTICAL )
+		sbSizer7 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel27, wx.ID_ANY, u"过滤条件" ), wx.VERTICAL )
 		
-		self.m_staticText14 = wx.StaticText( self.m_panel9, wx.ID_ANY, u"这里填写查询的过滤条件", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText14 = wx.StaticText( self.m_panel27, wx.ID_ANY, u"这里填写查询的过滤条件", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText14.Wrap( -1 )
+		self.m_staticText14.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		
 		sbSizer7.Add( self.m_staticText14, 0, wx.ALL, 5 )
 		
 		
-		bSizer10.Add( sbSizer7, 0, wx.EXPAND, 5 )
+		bSizer10.Add( sbSizer7, 0, wx.ALL|wx.EXPAND, 5 )
 		
-		sbSizer6 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel9, wx.ID_ANY, u"查询结果" ), wx.VERTICAL )
+		sbSizer6 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel27, wx.ID_ANY, u"查询结果" ), wx.VERTICAL )
 		
-		self.m_grid2 = wx.grid.Grid( self.m_panel9, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_grid2 = wx.grid.Grid( self.m_panel27, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 		
 		# Grid
-		self.m_grid2.CreateGrid( 5, 5 )
-		self.m_grid2.EnableEditing( True )
+		self.m_grid2.CreateGrid( 0, 0 )
+		self.m_grid2.EnableEditing( False )
 		self.m_grid2.EnableGridLines( True )
+		self.m_grid2.SetGridLineColour( wx.Colour( 128, 128, 0 ) )
 		self.m_grid2.EnableDragGridSize( False )
 		self.m_grid2.SetMargins( 0, 0 )
 		
@@ -189,97 +379,66 @@ class MainFrame ( wx.Frame ):
 		
 		# Cell Defaults
 		self.m_grid2.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		sbSizer6.Add( self.m_grid2, 0, wx.ALL, 5 )
+		sbSizer6.Add( self.m_grid2, 4, wx.ALL, 5 )
 		
-		self.m_staticText11 = wx.StaticText( self.m_panel9, wx.ID_ANY, u"汇总信息：xxxx", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText11 = wx.StaticText( self.m_panel27, wx.ID_ANY, u"汇总信息：xxxx", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText11.Wrap( -1 )
-		sbSizer6.Add( self.m_staticText11, 0, wx.ALL, 5 )
+		self.m_staticText11.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		
+		sbSizer6.Add( self.m_staticText11, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		bSizer11 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		self.m_button9 = wx.Button( self.m_panel9, wx.ID_ANY, u"生成报表", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_button9 = wx.Button( self.m_panel27, wx.ID_ANY, u"生成报表", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer11.Add( self.m_button9, 0, wx.ALL, 5 )
 		
-		self.m_button10 = wx.Button( self.m_panel9, wx.ID_ANY, u"导出到Excel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_button10 = wx.Button( self.m_panel27, wx.ID_ANY, u"导出到Excel", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer11.Add( self.m_button10, 0, wx.ALL, 5 )
 		
 		
-		sbSizer6.Add( bSizer11, 1, wx.EXPAND, 5 )
+		sbSizer6.Add( bSizer11, 0, wx.ALL|wx.EXPAND, 5 )
 		
 		
-		bSizer10.Add( sbSizer6, 0, wx.EXPAND, 5 )
+		bSizer10.Add( sbSizer6, 0, wx.ALL|wx.EXPAND, 5 )
 		
 		
-		bSizer8.Add( bSizer10, 0, wx.EXPAND, 5 )
+		self.m_panel27.SetSizer( bSizer10 )
+		self.m_panel27.Layout()
+		bSizer10.Fit( self.m_panel27 )
+		self.m_notebook2.AddPage( self.m_panel27, u"查询结果", True )
+		self.m_panel28 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.m_notebook2.AddPage( self.m_panel28, u"报表", False )
 		
-		self.m_scrolledWindow1 = wx.ScrolledWindow( self.m_panel9, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
-		self.m_scrolledWindow1.SetScrollRate( 5, 5 )
-		self.m_scrolledWindow1.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DDKSHADOW ) )
-		
-		bSizer8.Add( self.m_scrolledWindow1, 1, wx.EXPAND |wx.ALL, 5 )
-		
-		
-		self.m_panel9.SetSizer( bSizer8 )
-		self.m_panel9.Layout()
-		bSizer8.Fit( self.m_panel9 )
-		self.m_auinotebook1.AddPage( self.m_panel9, u"查询1", False, wx.NullBitmap )
-		
-		bSizer3.Add( self.m_auinotebook1, 1, wx.EXPAND |wx.ALL, 0 )
+		bSizer51.Add( self.m_notebook2, 1, wx.EXPAND |wx.ALL, 5 )
 		
 		
-		self.m_panel3.SetSizer( bSizer3 )
-		self.m_panel3.Layout()
-		bSizer3.Fit( self.m_panel3 )
-		self.m_splitter1.SplitVertically( self.m_panel2, self.m_panel3, 189 )
-		bSizer1.Add( self.m_splitter1, 1, wx.EXPAND, 5 )
-		
-		
-		self.SetSizer( bSizer1 )
+		self.SetSizer( bSizer51 )
 		self.Layout()
-		self.m_statusBar1 = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
-		
-		self.Centre( wx.BOTH )
 		
 		# Connect Events
-		self.Bind( wx.EVT_MENU, self.OnExit, id = self.m_menuItem1.GetId() )
-		self.Bind( wx.EVT_MENU, self.OnAddProductBaseInfo, id = self.m_menuItem3.GetId() )
-		self.Bind( wx.EVT_MENU, self.OnAbout, id = self.m_menuItem2.GetId() )
-		self.m_button2.Bind( wx.EVT_BUTTON, self.OnSearch )
-		self.m_grid1.Bind( wx.grid.EVT_GRID_CELL_RIGHT_CLICK, self.OnCellRightClick )
+		self.m_button9.Bind( wx.EVT_BUTTON, self.OnGenerateReport )
+		self.m_button10.Bind( wx.EVT_BUTTON, self.OnExport2Excel )
 	
 	def __del__( self ):
 		pass
 	
 	
 	# Virtual event handlers, overide them in your derived class
-	def OnExit( self, event ):
+	def OnGenerateReport( self, event ):
 		event.Skip()
 	
-	def OnAddProductBaseInfo( self, event ):
+	def OnExport2Excel( self, event ):
 		event.Skip()
-	
-	def OnAbout( self, event ):
-		event.Skip()
-	
-	def OnSearch( self, event ):
-		event.Skip()
-	
-	def OnCellRightClick( self, event ):
-		event.Skip()
-	
-	def m_splitter1OnIdle( self, event ):
-		self.m_splitter1.SetSashPosition( 189 )
-		self.m_splitter1.Unbind( wx.EVT_IDLE )
 	
 
 ###########################################################################
-## Class DlgAddProductType
+## Class DlgManagerProduct2
 ###########################################################################
 
-class DlgAddProductType ( wx.Dialog ):
+class DlgManagerProduct2 ( wx.Dialog ):
 	
 	def __init__( self, parent ):
-		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"添加产品型号", pos = wx.DefaultPosition, size = wx.Size( 367,533 ), style = wx.DEFAULT_DIALOG_STYLE )
+		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"产品管理", pos = wx.DefaultPosition, size = wx.Size( 367,533 ), style = wx.DEFAULT_DIALOG_STYLE )
 		
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
 		
@@ -527,7 +686,9 @@ class DlgAddSell ( wx.Dialog ):
 		
 		# Connect Events
 		self.m_choice8.Bind( wx.EVT_CHOICE, self.OnProductClassChoice )
+		self.m_choice3.Bind( wx.EVT_CHOICE, self.OnSelectBuyer )
 		self.m_button6.Bind( wx.EVT_BUTTON, self.OnMangerBuyers )
+		self.m_button8.Bind( wx.EVT_BUTTON, self.OnQueryHistorySells )
 		self.m_textCtrl6.Bind( wx.EVT_CHAR, self.OnSellNumTextChange )
 		self.m_textCtrl8.Bind( wx.EVT_CHAR, self.OnUnitPriceTextChange )
 		self.m_textCtrl10.Bind( wx.EVT_CHAR, self.OnDealPriceTextChange )
@@ -542,7 +703,13 @@ class DlgAddSell ( wx.Dialog ):
 	def OnProductClassChoice( self, event ):
 		event.Skip()
 	
+	def OnSelectBuyer( self, event ):
+		event.Skip()
+	
 	def OnMangerBuyers( self, event ):
+		event.Skip()
+	
+	def OnQueryHistorySells( self, event ):
 		event.Skip()
 	
 	def OnSellNumTextChange( self, event ):
@@ -703,6 +870,7 @@ class DlgModifySell ( wx.Dialog ):
 		self.Centre( wx.BOTH )
 		
 		# Connect Events
+		self.m_button8.Bind( wx.EVT_BUTTON, self.OnQueryHistorySells )
 		self.m_textCtrl6.Bind( wx.EVT_CHAR, self.OnTextChange )
 		self.m_textCtrl10.Bind( wx.EVT_CHAR, self.OnTextChange )
 		self.m_textCtrl23.Bind( wx.EVT_CHAR, self.OnTextChange )
@@ -713,6 +881,9 @@ class DlgModifySell ( wx.Dialog ):
 	
 	
 	# Virtual event handlers, overide them in your derived class
+	def OnQueryHistorySells( self, event ):
+		event.Skip()
+	
 	def OnTextChange( self, event ):
 		event.Skip()
 	
@@ -741,6 +912,7 @@ class DlgBuyerManager ( wx.Dialog ):
 		self.m_grid5.CreateGrid( 0, 0 )
 		self.m_grid5.EnableEditing( True )
 		self.m_grid5.EnableGridLines( True )
+		self.m_grid5.SetGridLineColour( wx.Colour( 128, 128, 0 ) )
 		self.m_grid5.EnableDragGridSize( False )
 		self.m_grid5.SetMargins( 0, 0 )
 		
@@ -792,6 +964,7 @@ class DlgBuyerManager ( wx.Dialog ):
 		# Connect Events
 		self.m_grid5.Bind( wx.grid.EVT_GRID_CELL_CHANGE, self.OnCellChange )
 		self.m_button15.Bind( wx.EVT_BUTTON, self.OnOKBtnClick )
+		self.m_button16.Bind( wx.EVT_BUTTON, self.OnCancelBtnClick )
 	
 	def __del__( self ):
 		pass
@@ -802,6 +975,97 @@ class DlgBuyerManager ( wx.Dialog ):
 		event.Skip()
 	
 	def OnOKBtnClick( self, event ):
+		event.Skip()
+	
+	def OnCancelBtnClick( self, event ):
+		event.Skip()
+	
+
+###########################################################################
+## Class DlgManagerProduct
+###########################################################################
+
+class DlgManagerProduct ( wx.Dialog ):
+	
+	def __init__( self, parent ):
+		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"产品管理", pos = wx.DefaultPosition, size = wx.Size( 518,392 ), style = wx.CLOSE_BOX|wx.DEFAULT_DIALOG_STYLE|wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER )
+		
+		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
+		
+		bSizer20 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.m_grid5 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		
+		# Grid
+		self.m_grid5.CreateGrid( 0, 0 )
+		self.m_grid5.EnableEditing( True )
+		self.m_grid5.EnableGridLines( True )
+		self.m_grid5.SetGridLineColour( wx.Colour( 128, 128, 0 ) )
+		self.m_grid5.EnableDragGridSize( False )
+		self.m_grid5.SetMargins( 0, 0 )
+		
+		# Columns
+		self.m_grid5.EnableDragColMove( False )
+		self.m_grid5.EnableDragColSize( True )
+		self.m_grid5.SetColLabelSize( 30 )
+		self.m_grid5.SetColLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
+		
+		# Rows
+		self.m_grid5.EnableDragRowSize( True )
+		self.m_grid5.SetRowLabelSize( 80 )
+		self.m_grid5.SetRowLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
+		
+		# Label Appearance
+		
+		# Cell Defaults
+		self.m_grid5.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer20.Add( self.m_grid5, 1, wx.ALL|wx.EXPAND, 5 )
+		
+		bSizer17 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		gSizer1 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		self.m_button15 = wx.Button( self, wx.ID_OK, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer1.Add( self.m_button15, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+		
+		self.m_button16 = wx.Button( self, wx.ID_CANCEL, u"取消", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer1.Add( self.m_button16, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+		
+		
+		bSizer17.Add( gSizer1, 0, wx.EXPAND, 5 )
+		
+		
+		bSizer20.Add( bSizer17, 0, wx.EXPAND, 5 )
+		
+		self.m_staticText40 = wx.StaticText( self, wx.ID_ANY, u"注意：表格可以直接编辑，点击确定按钮将会保存您的修改，点击取消按钮则放弃更改！", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText40.Wrap( -1 )
+		self.m_staticText40.SetForegroundColour( wx.Colour( 255, 0, 0 ) )
+		
+		bSizer20.Add( self.m_staticText40, 0, wx.ALL, 5 )
+		
+		
+		self.SetSizer( bSizer20 )
+		self.Layout()
+		
+		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.m_grid5.Bind( wx.grid.EVT_GRID_CELL_CHANGE, self.OnCellChange )
+		self.m_button15.Bind( wx.EVT_BUTTON, self.OnOKBtnClick )
+		self.m_button16.Bind( wx.EVT_BUTTON, self.OnCancelBtnClick )
+	
+	def __del__( self ):
+		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def OnCellChange( self, event ):
+		event.Skip()
+	
+	def OnOKBtnClick( self, event ):
+		event.Skip()
+	
+	def OnCancelBtnClick( self, event ):
 		event.Skip()
 	
 
@@ -821,9 +1085,10 @@ class DlgHistoryDeals ( wx.Dialog ):
 		self.m_grid4 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 		
 		# Grid
-		self.m_grid4.CreateGrid( 5, 5 )
-		self.m_grid4.EnableEditing( True )
+		self.m_grid4.CreateGrid( 0, 0 )
+		self.m_grid4.EnableEditing( False )
 		self.m_grid4.EnableGridLines( True )
+		self.m_grid4.SetGridLineColour( wx.Colour( 128, 128, 0 ) )
 		self.m_grid4.EnableDragGridSize( False )
 		self.m_grid4.SetMargins( 0, 0 )
 		
