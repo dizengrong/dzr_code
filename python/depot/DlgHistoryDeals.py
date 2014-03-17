@@ -7,6 +7,7 @@ from DepotWindows import DlgHistoryDeals
 class MyDlgHistoryDeals(DlgHistoryDeals):
 	def __init__(self, buyer_name):
 		super(MyDlgHistoryDeals, self).__init__(None)
+		self.SetLabel(u"与【%s】的交易历史记录" % buyer_name)
 		history_sells = db.GetHistorySellsByBuyerName(buyer_name)
 		gui_util.InitSellRecordTab(self.m_grid4)
 

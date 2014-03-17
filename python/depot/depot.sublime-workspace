@@ -4,12 +4,92 @@
 		"selected_items":
 		[
 			[
-				"S",
-				"Skip"
+				"all",
+				"ALL_PRODUCT_TYPE"
+			],
+			[
+				"el",
+				"elif"
+			],
+			[
+				"app",
+				"append"
+			],
+			[
+				"sel",
+				"self"
+			],
+			[
+				"Getall",
+				"GetAllBuyers"
+			],
+			[
+				"win",
+				"wind"
+			],
+			[
+				"prod",
+				"product_class"
+			],
+			[
+				"pa",
+				"page_id"
+			],
+			[
+				"to",
+				"total"
+			],
+			[
+				"searchre",
+				"search_results"
+			],
+			[
+				"dea",
+				"deal_prices"
+			],
+			[
+				"deal",
+				"deal_price"
+			],
+			[
+				"tota",
+				"total_paid"
 			],
 			[
 				"sell",
-				"sell_uid"
+				"sell_rec"
+			],
+			[
+				"be",
+				"begin_date"
+			],
+			[
+				"sea",
+				"search_type"
+			],
+			[
+				"m",
+				"m_button8"
+			],
+			[
+				"b",
+				"buyer"
+			],
+			[
+				"bu",
+				"buyer_name"
+			],
+			[
+				"pr",
+				"product_type"
+			],
+			[
+				"buy",
+				"buyer_name"
+			],
+			[
+				"S",
+				"Skip"
 			],
 			[
 				"row",
@@ -22,10 +102,6 @@
 			[
 				"sell_",
 				"sell_record"
-			],
-			[
-				"deal",
-				"deal_date"
 			],
 			[
 				"db",
@@ -52,16 +128,8 @@
 				"category_int"
 			],
 			[
-				"all",
-				"all_products"
-			],
-			[
 				"On",
 				"OnAddSellRecord"
-			],
-			[
-				"m",
-				"m_grid1"
 			],
 			[
 				"ter",
@@ -168,10 +236,6 @@
 				"exception"
 			],
 			[
-				"el",
-				"else"
-			],
-			[
 				"l",
 				"license_mag"
 			],
@@ -240,10 +304,6 @@
 				"ShowMessageDialog"
 			],
 			[
-				"sel",
-				"self"
-			],
-			[
 				"Gets",
 				"GetSessionName"
 			],
@@ -258,10 +318,6 @@
 			[
 				"sa",
 				"save_name"
-			],
-			[
-				"to",
-				"total_saved_num"
 			],
 			[
 				"Sa",
@@ -319,55 +375,7 @@
 			"file": "depot.py",
 			"settings":
 			{
-				"buffer_size": 5019,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "db.py",
-			"settings":
-			{
-				"buffer_size": 5445,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "DlgBuyerManager.py",
-			"settings":
-			{
-				"buffer_size": 1477,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
-			"settings":
-			{
-				"buffer_size": 5749,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "models.py",
-			"settings":
-			{
-				"buffer_size": 1229,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "DepotWindows.py",
-			"settings":
-			{
-				"buffer_size": 32425,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "DlgAddSell.py",
-			"settings":
-			{
-				"buffer_size": 3463,
+				"buffer_size": 10289,
 				"line_ending": "Windows"
 			}
 		},
@@ -380,6 +388,54 @@
 			}
 		},
 		{
+			"file": "gui_util.py",
+			"settings":
+			{
+				"buffer_size": 2846,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "DlgManagerProduct.py",
+			"settings":
+			{
+				"buffer_size": 3925,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "models.py",
+			"settings":
+			{
+				"buffer_size": 1344,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "DepotWindows.py",
+			"settings":
+			{
+				"buffer_size": 46974,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "SearchResutlPanel.py",
+			"settings":
+			{
+				"buffer_size": 9567,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/my_code/embedding_in_wx2.py",
+			"settings":
+			{
+				"buffer_size": 2974,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "/E/my_git/dzr_code/python/serial_tool2/main2.py",
 			"settings":
 			{
@@ -388,18 +444,10 @@
 			}
 		},
 		{
-			"file": "DlgModifySell.py",
+			"file": "setup.py",
 			"settings":
 			{
-				"buffer_size": 2006,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/my_git/dzr_code/python/serial_tool2/wxTerm.py",
-			"settings":
-			{
-				"buffer_size": 10072,
+				"buffer_size": 2553,
 				"line_ending": "Windows"
 			}
 		}
@@ -440,9 +488,36 @@
 	},
 	"file_history":
 	[
+		"/E/my_git/dzr_code/python/depot/dist/mpl-data/matplotlibrc",
+		"/E/my_git/dzr_code/python/depot/db.py",
+		"/E/my_git/dzr_code/python/depot/DlgBuyerManager.py",
+		"/E/my_git/dzr_code/python/depot/common.py",
+		"/E/my_code/demo_ribbon_box.py",
+		"/E/my_code/annotation_demo2.py",
+		"/D/wxPython2.8 Docs and Demos/demo/Grid_MegaExample.py",
+		"/D/wxPython2.8 Docs and Demos/demo/drawingOnGridColumnLabel.py",
+		"/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.pyc",
+		"/D/wxPython2.8 Docs and Demos/demo/RadioBox.py",
+		"/E/my_git/dzr_code/python/depot/SellDataTable.py",
+		"/E/my_code/custom_ticker1.py",
+		"/E/my_git/dzr_code/python/depot/DlgAddSell.py",
+		"/E/my_git/dzr_code/python/depot/product_report.png",
+		"/E/my_git/dzr_code/python/serial_tool2/main2.py",
+		"/E/my_code/embedding_in_wx2.py",
+		"/D/Programs/Python27/Lib/site-packages/matplotlib/mpl-data/matplotlibrc",
+		"/E/my_git/dzr_code/python/depot/DlgHistoryDeals.py",
+		"/E/my_code/matplotlib_test2.py",
+		"/E/my_code/matplotlib_test.py",
+		"/E/my_code/matplotlib_test.2py",
+		"/E/my_git/dzr_code/python/depot/DlgModifySell.py",
+		"/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
+		"/E/my_git/dzr_code/python/serial_tool2/util.py",
+		"/E/my_code/ListBook1.py",
+		"/E/my_git/dzr_code/python/serial_tool2/wxTerm.py",
+		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
 		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-05/gridGeneric.py",
 		"/D/wxPython2.8 Docs and Demos/demo/GridCustEditor.pyc",
-		"/D/wxPython2.8 Docs and Demos/demo/Grid_MegaExample.py",
 		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-05/gridModel.py",
 		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-14/grid_table_header.py",
 		"/D/wxPython2.8 Docs and Demos/wxPython/samples/wxPIA_book/Chapter-14/grid_headers.py",
@@ -462,7 +537,6 @@
 		"/E/my_code/my_terminal/main.py",
 		"/E/my_git/dzr_code/python/my_terminal/Terminal3.py",
 		"/E/my_code/wxScrolBarWindow.py",
-		"/E/my_git/dzr_code/python/serial_tool2/main2.py",
 		"/E/my_git/dzr_code/python/serial_tool2/TermEmulatorDemo.py",
 		"/E/my_code/my_terminal/Terminal.py",
 		"/D/Programs/Python27/Lib/site-packages/wx-2.8-msw-unicode/wx/lib/masked/textctrl.py",
@@ -478,7 +552,6 @@
 		"/E/my_code/putty-src/SERCFG.C",
 		"/E/my_code/putty-src/TESTDATA/VT100.TXT",
 		"/E/my_code/my_sina_app/weichihuo/1/my_test/test.py",
-		"/E/my_git/dzr_code/python/serial_tool2/util.py",
 		"/E/my_git/pyte/examples/helloworld.py.dump",
 		"/E/my_git/pyte/examples/inception.py.dump",
 		"/E/my_git/pyte/pyte/__main__.py",
@@ -490,12 +563,10 @@
 		"/E/study/weixin/wx_sample.php",
 		"/D/Google_driver/weixin/send_msg_2_user.php",
 		"/D/game/3DM-Kings/King's Bounty - Warriors of the North/sessions/addon/newset/hero.txt",
-		"/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
 		"/C/Users/dzR/Desktop/handover-qos.cc",
 		"/C/Users/dzR/Desktop/handover-qos.h",
 		"/E/my_git/dzr_code/python/serial_tool2/session_manager.py",
 		"/E/my_git/dzr_code/python/serial_tool2/Mytty.py",
-		"/E/my_git/dzr_code/python/serial_tool2/wxTerm.py",
 		"/E/my_git/dzr_code/python/serial_tool2/setup.py",
 		"/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py.back",
 		"/D/wxPython2.8 Docs and Demos/demo/GridSimple.py",
@@ -516,7 +587,6 @@
 		"/E/my_git/dzr_code/python/serial_tool2/config/sessions",
 		"/E/my_git/dzr_code/python/serial_tool2/session.py",
 		"/E/my_git/dzr_code/python/serial_tool2/documents/help.chm",
-		"/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
 		"/E/my_git/dzr_code/python/serial_tool2/config/设备发送命令提示.txt",
 		"/C/Users/dzR/Desktop/设备类型配置.txt.dump",
 		"/C/Users/dzR/Desktop/设备类型配置.txt",
@@ -545,24 +615,7 @@
 		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/ASCIIPresentation/ASCIIPresentation.sublime-settings",
 		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/ASCIIPresentation/Default (Windows).sublime-keymap",
-		"/D/Programs/Python27/Lib/site-packages/serial/serialwin32.py",
-		"/E/my_git/dzr_code/python/serial_tool/wxTerm.py",
-		"/D/Programs/Python27/Lib/telnetlib.py",
-		"/E/my_git/dzr_code/python/serial_tool/main.py",
-		"/E/my_git/dzr_code/python/serial_tool2/templates/cmd1.txt.cache",
-		"/E/my_git/dzr_code/job_code/cqzj/gen_config_tool/cfg_hero_fb.tpl",
-		"/E/my_git/dzr_code/python/serial_tool2/MyttyFrame.py",
-		"/C/Windows/System32/drivers/etc/hosts.ics",
-		"/E/my_git/dzr_code/python/serial_tool/util.py",
-		"/D/Programs/Python27/Lib/site-packages/serial/serialcli.py",
-		"/E/my_git/dzr_code/python/serial_tool/wxTerm.py.back",
-		"/E/my_git/dzr_code/python/serial_tool/deviceListCtrl.py",
-		"/E/sbbs/sbbs/urls.py",
-		"/E/网页文件/1/index.html",
-		"/D/Programs/Python27/easy_setup.py",
-		"/E/sbbs/使用说明.txt",
-		"/C/Users/dzR/AppData/Roaming/Sublime Text 2/Packages/GBK Encoding Support/tmp/hosts                C%3A%5CWindows%5CSystem32%5Cdrivers%5Cetc%5Chosts",
-		"/C/Users/dzR/Desktop/要求.txt"
+		"/D/Programs/Python27/Lib/site-packages/serial/serialwin32.py"
 	],
 	"find":
 	{
@@ -581,134 +634,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"m_textCtrl12",
-			"m_textCtrl11",
-			"SetValue",
-			"=",
-			"models",
-			"m_textCtr",
+			"font.sans-serif",
+			"mytty",
+			"HtmlMessageDialog",
+			"col2sellfield",
+			"GetSellFieldByCol",
+			"self",
+			"wxFileDialog",
+			"ReloadSellTabHelp",
+			"strptime",
+			"last_clicked_col_label",
+			"self",
+			"ENUM_SELL_UID",
+			"OnGridLabelLeftClick",
+			"sortedColumn",
+			"self",
+			"OnColumnHeaderPaint",
+			"MegaTable",
+			"row_num",
+			"CustomDataTable",
+			"InitSellRecordTab",
+			"dataTypes",
+			"ENUM_SELL_UID",
+			"colLabels",
+			"CustomDataTable",
+			"wx.grid",
+			"OnCellRightClick",
+			"ResetView",
+			"SortColumn",
+			"InitSellRecordTab",
+			"colPopup",
+			"radio_box",
+			"__init_buyer_query_panel",
+			"__init_product_query_panel",
+			"__init_buyer_query_panel",
+			"__init_buyers",
+			"MyDlgAddSell",
+			"OnManagerBuyers",
+			"__init_buyer_query_panel",
+			"m_radioBox1",
+			"fgSizer73",
+			"m_radioBox1",
+			"m_radioBox1Choices",
+			"buyer_list",
+			"OnCheckBoxSelectAllProductTypes",
+			"__init_buyer_query_panel",
+			"__init_product_query_panel",
+			"SQL_ALL_BUYERS",
+			"all_buyers",
+			"self.winds",
+			"__init_product_query_panel",
+			"__init_query_panel",
+			"x",
+			"numpy",
+			"plt",
+			"self.search_results",
+			"QuerySellsByProductType",
+			"__init_query_panel",
+			"m_checkBox51",
+			"Skip",
+			"m_checkBox5",
+			"OnCheckBoxSelectAll",
+			"SQL_DELETE_PRODUCT",
+			"axis_bgcolor",
+			"axisbg",
+			"axes2",
+			"axes",
+			"True",
+			"ttf",
+			"Vera",
+			"Vera.ttf",
+			"verbose.level",
+			"colors",
+			"sizes",
+			"labels",
+			"m_panel28",
+			"uid",
+			":",
+			"search_results",
+			"sizer.Add",
+			"m_notebook2",
+			"wx.LEFT",
+			"self.m_panel28",
+			"self",
+			"1f",
+			"sells",
+			"m_notebook2",
+			"MySearchResutlPanel",
+			"m_panel28",
+			"m_panel6",
+			"bSizer3",
+			"history_sells",
+			"m_grid4",
+			"MySearchResutlPanel",
+			"m_auinotebook1",
+			"arg",
+			"OnSearch",
+			"m_listbook2",
+			"listbook",
+			"sizer_3",
+			"ListbookPanel",
+			"m_staticText50",
+			"SetSellTableRow",
+			"m_grid1",
+			"SetSellTableRow",
+			"choice",
+			"self",
+			"m_grid1",
+			"ReloadSellTab",
+			"ENUM_SELL_UID",
+			"row",
+			"GetSelection",
+			"buyer",
+			"GetAllSellRecords",
 			"all_buyers",
 			"GetAllBuyers",
-			"m_grid3",
-			"m_grid1",
-			"u",
-			"grid",
-			"m_grid",
-			"SetSellTableRow",
-			"`",
-			"select",
-			"rec",
-			"self",
-			",",
-			"SellRecord",
-			"ImportDeviceDatas",
-			"key",
-			"Veto",
-			"OnSendCmdKeyUp",
-			"KeyCode",
-			"evnet",
-			"choice",
-			"class",
-			"self",
-			"rec",
-			"self",
-			"all_sells",
-			"arg",
-			"rec",
-			"db_cur",
-			"arg",
-			"sell_rec",
-			"rec",
-			"SetCellValue",
-			"SetColLabelValue",
-			"True",
-			"AppendCols",
-			"SetColLabelValue",
-			"self",
-			"ENUM_DEVICE_DEV_ADDR",
-			"姨做的一个库存管理",
-			"CalcScrolledPosition",
-			"BUFFERED",
-			"bgColor",
-			"Brush",
-			"onclose",
-			"self.screen",
-			"GetDirtyLines",
-			"UpdateDirtyLines",
-			"OnTermEmulatorUpdateLines",
-			"ProcessInput",
-			"waitingForOutput",
-			"processIO",
-			"ReadProcessOutput",
-			"__ProcessOuputNotifierRun",
-			"ReadProcessOutput",
-			"OnTerminalChar",
-			"rows",
-			"ScrollUp",
-			"CALLBACK_SCROLL_UP_SCREEN",
-			"OnTermEmulatorScrollUpScreen",
-			"CALLBACK_SCROLL_UP_SCREEN",
-			"scrolledUpLinesLen",
-			"linesScrolledUp",
-			"dimension",
-			"min_dimensions",
-			"dimensions",
-			"min_dimensions",
-			"OnTermEmulatorScrollUpScreen",
-			"UpdateCursor",
-			"line_num",
-			"DrawLine",
-			"paint_for_sursor",
-			"FlashingCursor",
-			"print",
-			"FillScreen",
-			"print(s",
-			"BreakLine",
-			"IsLine",
-			"BreakLine",
-			"DrawLine",
-			"IsLine",
-			"scroll",
-			"line_num",
-			"__init_char_dimensions",
-			"EmptyBitmap",
-			"Panel",
-			"DrawCursor",
-			"dirty",
-			"DrawLine",
-			"BufferedDC",
-			"break",
-			"DoDrawing",
-			"UpdateView",
-			"Draw",
-			"DrawLine",
-			"self.cy",
-			"isDrawing",
-			"self.cy",
-			"DrawLine",
-			"KeepCursorOnScreen",
-			"cvert",
-			"IsLine",
-			"DrawLine",
-			"BreakLine",
-			"IsLine",
-			"lines",
-			"IsLine",
-			"bh",
-			"bw",
-			"self.bw",
-			"wx.Brush",
-			"transports",
-			"ScrolledPanel",
-			"ScrolledWindow",
-			"false",
-			"Panel",
-			"ScrolledWindow",
-			"Panel",
-			"bw",
-			"bw ",
-			"Panel",
-			"EM_EXSETSEL"
+			"m_choice",
+			"mess",
+			"new_buyers",
+			"new_list",
+			"mrow",
+			"row",
+			"buyer_name",
+			"all_buyers",
+			"bSizer3",
+			"Fit",
+			"InsertSellRecord",
+			"m_textCtrl12",
+			"m_textCtrl11"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -726,7 +779,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 9,
 			"sheets":
 			[
 				{
@@ -734,15 +787,15 @@
 					"file": "depot.py",
 					"settings":
 					{
-						"buffer_size": 5019,
+						"buffer_size": 10289,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2909,
-								2917
+								7769,
+								7769
 							]
 						],
 						"settings":
@@ -751,25 +804,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1425.0,
+						"translation.y": 4217.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "db.py",
+					"file": "/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
 					"settings":
 					{
-						"buffer_size": 5445,
+						"buffer_size": 8746,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2188,
-								2200
+								6302,
+								6343
 							]
 						],
 						"settings":
@@ -778,62 +831,59 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1140.0,
+						"translation.y": 3258.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "DlgBuyerManager.py",
+					"file": "gui_util.py",
 					"settings":
 					{
-						"buffer_size": 1477,
+						"buffer_size": 2846,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1476,
-								1476
+								457,
+								470
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
 							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 741.0,
+						"translation.y": 228.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "/D/wxPython2.8 Docs and Demos/demo/GridCustTable.py",
+					"file": "DlgManagerProduct.py",
 					"settings":
 					{
-						"buffer_size": 5749,
+						"buffer_size": 3925,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3825,
-								3825
+								3661,
+								3661
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1653.0,
+						"translation.y": 1425.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -843,15 +893,69 @@
 					"file": "models.py",
 					"settings":
 					{
-						"buffer_size": 1229,
+						"buffer_size": 1344,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								533,
-								544
+								381,
+								384
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "DepotWindows.py",
+					"settings":
+					{
+						"buffer_size": 46974,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21177,
+								21191
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 8055.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "SearchResutlPanel.py",
+					"settings":
+					{
+						"buffer_size": 9567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								393,
+								393
 							]
 						],
 						"settings":
@@ -866,73 +970,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "DepotWindows.py",
-					"settings":
-					{
-						"buffer_size": 32425,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								32425,
-								32425
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 16093.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "DlgAddSell.py",
-					"settings":
-					{
-						"buffer_size": 3463,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1351,
-								1351
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 627.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 7,
-					"file": "/E/my_git/dzr_code/python/serial_tool2/deviceListCtrl.py",
+					"file": "/E/my_code/embedding_in_wx2.py",
 					"settings":
 					{
-						"buffer_size": 8746,
+						"buffer_size": 2974,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2053,
-								2015
+								429,
+								429
 							]
 						],
 						"settings":
@@ -941,7 +991,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1158.0,
+						"translation.y": 114.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -958,8 +1008,8 @@
 						"selection":
 						[
 							[
-								7019,
-								7028
+								9351,
+								9351
 							]
 						],
 						"settings":
@@ -968,51 +1018,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3704.0,
+						"translation.y": 4825.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 9,
-					"file": "DlgModifySell.py",
+					"file": "setup.py",
 					"settings":
 					{
-						"buffer_size": 2006,
+						"buffer_size": 2553,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1420,
-								1155
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 601.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/E/my_git/dzr_code/python/serial_tool2/wxTerm.py",
-					"settings":
-					{
-						"buffer_size": 10072,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8542,
-								8550
+								2007,
+								2007
 							]
 						],
 						"settings":
@@ -1021,7 +1045,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5130.0,
+						"translation.y": 1311.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1078,6 +1102,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"db",
+				"db.py"
+			],
+			[
+				"common",
+				"common.py"
+			],
 			[
 				"devi",
 				"deviceListCtrl.py.back"

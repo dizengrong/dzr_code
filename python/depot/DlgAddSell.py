@@ -20,15 +20,15 @@ from DlgHistoryDeals import MyDlgHistoryDeals
 # 	m_datePicker3：界面的出售日期控件
 # 	m_button8：界面的查询历史记录的按钮
 class MyDlgAddSell(DlgAddSell):
-	def __init__(self):
+	def __init__(self, all_buyers):
 		super(MyDlgAddSell, self).__init__(None)
 		self.all_products = db.GetAllProducts()
 		self.m_choice8.AppendItems(models.ALL_PRODUCT_TYPE.keys())
 		self.m_staticText24.SetLabel("")
-		self.__init_buyers()
+		self.__init_buyers(all_buyers)
 
-	def __init_buyers(self):
-		self.all_buyers = db.GetAllBuyers()
+	def __init_buyers(self, all_buyers):
+		self.all_buyers = all_buyers
 		self.m_choice3.Clear()
 		self.m_choice3.AppendItems(sorted([buyer.buyer_name for buyer in self.all_buyers]))
 
@@ -41,7 +41,7 @@ class MyDlgAddSell(DlgAddSell):
 	def OnMangerBuyers(self, event):
 		dlg = MyDlgBuyerManager()
 		if dlg.ShowModal() == wx.ID_OK:
-			self.__init_buyers()
+			self.__init_buyers(db.GetAllBuyers())
 		dlg.Destroy()
 
 	def OnSellNumTextChange(self, event):

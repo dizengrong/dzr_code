@@ -19,7 +19,7 @@ import wx.grid
 class MainFrame ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"库存管理系统", pos = wx.DefaultPosition, size = wx.Size( 819,479 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"库存管理系统", pos = wx.DefaultPosition, size = wx.Size( 819,479 ), style = wx.DEFAULT_FRAME_STYLE|wx.MAXIMIZE|wx.TAB_TRAVERSAL )
 		
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
 		
@@ -115,17 +115,58 @@ class MainFrame ( wx.Frame ):
 		
 		bSizer28.Add( self.m_staticText50, 0, wx.ALL, 5 )
 		
+		self.m_button21 = wx.Button( self.m_panel21, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer28.Add( self.m_button21, 0, wx.ALL, 5 )
+		
+		sbSizer11 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel21, wx.ID_ANY, u"时间条件" ), wx.VERTICAL )
+		
+		fgSizer11 = wx.FlexGridSizer( 0, 2, 0, 0 )
+		fgSizer11.SetFlexibleDirection( wx.BOTH )
+		fgSizer11.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		
+		self.m_staticText31 = wx.StaticText( self.m_panel21, wx.ID_ANY, u"开始：", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText31.Wrap( -1 )
+		fgSizer11.Add( self.m_staticText31, 0, wx.ALL, 5 )
+		
+		self.m_datePicker11 = wx.DatePickerCtrl( self.m_panel21, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT|wx.DP_DROPDOWN )
+		fgSizer11.Add( self.m_datePicker11, 0, wx.ALL, 5 )
+		
+		self.m_staticText41 = wx.StaticText( self.m_panel21, wx.ID_ANY, u"结束：", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText41.Wrap( -1 )
+		fgSizer11.Add( self.m_staticText41, 0, wx.ALL, 5 )
+		
+		self.m_datePicker21 = wx.DatePickerCtrl( self.m_panel21, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT|wx.DP_DROPDOWN )
+		fgSizer11.Add( self.m_datePicker21, 0, wx.ALL, 5 )
+		
+		
+		sbSizer11.Add( fgSizer11, 1, wx.EXPAND, 5 )
+		
+		
+		bSizer28.Add( sbSizer11, 0, wx.EXPAND, 5 )
+		
 		self.m_choicebook2 = wx.Choicebook( self.m_panel21, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.CHB_DEFAULT )
 		self.m_panel24 = wx.Panel( self.m_choicebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer30 = wx.BoxSizer( wx.VERTICAL )
 		
 		bSizer33 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		self.m_checkBox5 = wx.CheckBox( self.m_panel24, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_checkBox5 = wx.CheckBox( self.m_panel24, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, wx.CHK_2STATE )
 		bSizer33.Add( self.m_checkBox5, 0, wx.ALL, 5 )
 		
 		
 		bSizer30.Add( bSizer33, 0, wx.EXPAND, 5 )
+		
+		self.m_scrolledWindow2 = wx.ScrolledWindow( self.m_panel24, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
+		self.m_scrolledWindow2.SetScrollRate( 5, 5 )
+		fgSizer7 = wx.FlexGridSizer( 0, 1, 0, 0 )
+		fgSizer7.SetFlexibleDirection( wx.BOTH )
+		fgSizer7.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		
+		
+		self.m_scrolledWindow2.SetSizer( fgSizer7 )
+		self.m_scrolledWindow2.Layout()
+		fgSizer7.Fit( self.m_scrolledWindow2 )
+		bSizer30.Add( self.m_scrolledWindow2, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
 		self.m_panel24.SetSizer( bSizer30 )
@@ -137,11 +178,23 @@ class MainFrame ( wx.Frame ):
 		
 		bSizer331 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		self.m_checkBox51 = wx.CheckBox( self.m_panel25, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_checkBox51 = wx.CheckBox( self.m_panel25, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, wx.CHK_2STATE )
 		bSizer331.Add( self.m_checkBox51, 0, wx.ALL, 5 )
 		
 		
 		bSizer301.Add( bSizer331, 0, wx.EXPAND, 5 )
+		
+		self.m_scrolledWindow21 = wx.ScrolledWindow( self.m_panel25, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
+		self.m_scrolledWindow21.SetScrollRate( 5, 5 )
+		fgSizer71 = wx.FlexGridSizer( 0, 1, 0, 0 )
+		fgSizer71.SetFlexibleDirection( wx.BOTH )
+		fgSizer71.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		
+		
+		self.m_scrolledWindow21.SetSizer( fgSizer71 )
+		self.m_scrolledWindow21.Layout()
+		fgSizer71.Fit( self.m_scrolledWindow21 )
+		bSizer301.Add( self.m_scrolledWindow21, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
 		self.m_panel25.SetSizer( bSizer301 )
@@ -153,21 +206,30 @@ class MainFrame ( wx.Frame ):
 		
 		bSizer332 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		self.m_checkBox52 = wx.CheckBox( self.m_panel26, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_checkBox52 = wx.CheckBox( self.m_panel26, wx.ID_ANY, u"全部选中", wx.DefaultPosition, wx.DefaultSize, wx.CHK_2STATE )
 		bSizer332.Add( self.m_checkBox52, 0, wx.ALL, 5 )
 		
 		
 		bSizer302.Add( bSizer332, 0, wx.EXPAND, 5 )
+		
+		self.m_scrolledWindow22 = wx.ScrolledWindow( self.m_panel26, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
+		self.m_scrolledWindow22.SetScrollRate( 5, 5 )
+		fgSizer72 = wx.FlexGridSizer( 0, 1, 0, 0 )
+		fgSizer72.SetFlexibleDirection( wx.BOTH )
+		fgSizer72.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		
+		
+		self.m_scrolledWindow22.SetSizer( fgSizer72 )
+		self.m_scrolledWindow22.Layout()
+		fgSizer72.Fit( self.m_scrolledWindow22 )
+		bSizer302.Add( self.m_scrolledWindow22, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
 		self.m_panel26.SetSizer( bSizer302 )
 		self.m_panel26.Layout()
 		bSizer302.Fit( self.m_panel26 )
 		self.m_choicebook2.AddPage( self.m_panel26, u"木板", False )
-		bSizer28.Add( self.m_choicebook2, 0, wx.EXPAND |wx.ALL, 5 )
-		
-		self.m_button21 = wx.Button( self.m_panel21, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer28.Add( self.m_button21, 0, wx.ALL, 5 )
+		bSizer28.Add( self.m_choicebook2, 1, wx.EXPAND |wx.ALL, 5 )
 		
 		
 		self.m_panel21.SetSizer( bSizer28 )
@@ -192,6 +254,54 @@ class MainFrame ( wx.Frame ):
 		
 		self.m_button22 = wx.Button( self.m_panel22, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer29.Add( self.m_button22, 0, wx.ALL, 5 )
+		
+		sbSizer111 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel22, wx.ID_ANY, u"时间条件" ), wx.VERTICAL )
+		
+		fgSizer111 = wx.FlexGridSizer( 0, 2, 0, 0 )
+		fgSizer111.SetFlexibleDirection( wx.BOTH )
+		fgSizer111.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		
+		self.m_staticText311 = wx.StaticText( self.m_panel22, wx.ID_ANY, u"开始：", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText311.Wrap( -1 )
+		fgSizer111.Add( self.m_staticText311, 0, wx.ALL, 5 )
+		
+		self.m_datePicker111 = wx.DatePickerCtrl( self.m_panel22, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT|wx.DP_DROPDOWN )
+		fgSizer111.Add( self.m_datePicker111, 0, wx.ALL, 5 )
+		
+		self.m_staticText411 = wx.StaticText( self.m_panel22, wx.ID_ANY, u"结束：", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText411.Wrap( -1 )
+		fgSizer111.Add( self.m_staticText411, 0, wx.ALL, 5 )
+		
+		self.m_datePicker211 = wx.DatePickerCtrl( self.m_panel22, wx.ID_ANY, wx.DefaultDateTime, wx.DefaultPosition, wx.DefaultSize, wx.DP_DEFAULT|wx.DP_DROPDOWN )
+		fgSizer111.Add( self.m_datePicker211, 0, wx.ALL, 5 )
+		
+		
+		sbSizer111.Add( fgSizer111, 1, wx.EXPAND, 5 )
+		
+		
+		bSizer29.Add( sbSizer111, 0, wx.EXPAND, 5 )
+		
+		bSizer303 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.m_scrolledWindow23 = wx.ScrolledWindow( self.m_panel22, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
+		self.m_scrolledWindow23.SetScrollRate( 5, 5 )
+		fgSizer73 = wx.FlexGridSizer( 0, 1, 0, 0 )
+		fgSizer73.SetFlexibleDirection( wx.BOTH )
+		fgSizer73.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		
+		m_radioBox1Choices = [ u"买家1" ]
+		self.m_radioBox1 = wx.RadioBox( self.m_scrolledWindow23, wx.ID_ANY, u"买家", wx.DefaultPosition, wx.DefaultSize, m_radioBox1Choices, 100, wx.RA_SPECIFY_ROWS )
+		self.m_radioBox1.SetSelection( 0 )
+		fgSizer73.Add( self.m_radioBox1, 1, wx.ALL|wx.EXPAND, 5 )
+		
+		
+		self.m_scrolledWindow23.SetSizer( fgSizer73 )
+		self.m_scrolledWindow23.Layout()
+		fgSizer73.Fit( self.m_scrolledWindow23 )
+		bSizer303.Add( self.m_scrolledWindow23, 1, wx.ALL|wx.EXPAND, 5 )
+		
+		
+		bSizer29.Add( bSizer303, 1, wx.EXPAND, 5 )
 		
 		
 		self.m_panel22.SetSizer( bSizer29 )
@@ -246,17 +356,9 @@ class MainFrame ( wx.Frame ):
 		self.m_panel5.SetSizer( bSizer41 )
 		self.m_panel5.Layout()
 		bSizer41.Fit( self.m_panel5 )
-		self.m_auinotebook1.AddPage( self.m_panel5, u"数据", True, wx.NullBitmap )
+		self.m_auinotebook1.AddPage( self.m_panel5, u"数据", False, wx.NullBitmap )
 		self.m_panel6 = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.m_auinotebook1.AddPage( self.m_panel6, u"报表", False, wx.NullBitmap )
-		self.m_panel9 = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		bSizer8 = wx.BoxSizer( wx.HORIZONTAL )
-		
-		
-		self.m_panel9.SetSizer( bSizer8 )
-		self.m_panel9.Layout()
-		bSizer8.Fit( self.m_panel9 )
-		self.m_auinotebook1.AddPage( self.m_panel9, u"查询1", False, wx.NullBitmap )
 		
 		bSizer3.Add( self.m_auinotebook1, 1, wx.EXPAND |wx.ALL, 0 )
 		
@@ -280,13 +382,15 @@ class MainFrame ( wx.Frame ):
 		self.Bind( wx.EVT_MENU, self.OnManagerBuyers, id = self.m_menuItem4.GetId() )
 		self.Bind( wx.EVT_MENU, self.OnAbout, id = self.m_menuItem2.GetId() )
 		self.m_button2.Bind( wx.EVT_BUTTON, self.OnSearch )
-		self.m_choicebook2.Bind( wx.EVT_CHOICEBOOK_PAGE_CHANGED, self.OnChoiceCategoryChanged )
-		self.m_checkBox5.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAll )
-		self.m_checkBox51.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAll )
-		self.m_checkBox52.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAll )
 		self.m_button21.Bind( wx.EVT_BUTTON, self.OnSearch )
+		self.m_choicebook2.Bind( wx.EVT_CHOICEBOOK_PAGE_CHANGED, self.OnChoiceCategoryChanged )
+		self.m_checkBox5.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAllProductTypes )
+		self.m_checkBox51.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAllProductTypes )
+		self.m_checkBox52.Bind( wx.EVT_CHECKBOX, self.OnCheckBoxSelectAllProductTypes )
 		self.m_button22.Bind( wx.EVT_BUTTON, self.OnSearch )
+		self.m_auinotebook1.Bind( wx.aui.EVT_AUINOTEBOOK_PAGE_CLOSE, self.OnNoteBookClose )
 		self.m_grid1.Bind( wx.grid.EVT_GRID_CELL_RIGHT_CLICK, self.OnCellRightClick )
+		self.m_grid1.Bind( wx.grid.EVT_GRID_LABEL_LEFT_CLICK, self.OnGridLabelLeftClick )
 	
 	def __del__( self ):
 		pass
@@ -308,17 +412,23 @@ class MainFrame ( wx.Frame ):
 	def OnSearch( self, event ):
 		event.Skip()
 	
+	
 	def OnChoiceCategoryChanged( self, event ):
 		event.Skip()
 	
-	def OnCheckBoxSelectAll( self, event ):
+	def OnCheckBoxSelectAllProductTypes( self, event ):
 		event.Skip()
 	
 	
 	
 	
+	def OnNoteBookClose( self, event ):
+		event.Skip()
 	
 	def OnCellRightClick( self, event ):
+		event.Skip()
+	
+	def OnGridLabelLeftClick( self, event ):
 		event.Skip()
 	
 	def m_splitter1OnIdle( self, event ):
@@ -337,7 +447,7 @@ class SearchResutlPanel ( wx.Panel ):
 		
 		bSizer51 = wx.BoxSizer( wx.VERTICAL )
 		
-		self.m_notebook2 = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.NB_BOTTOM|wx.NB_FIXEDWIDTH )
+		self.m_notebook2 = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.NB_FIXEDWIDTH )
 		self.m_panel27 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer10 = wx.BoxSizer( wx.VERTICAL )
 		
@@ -353,6 +463,23 @@ class SearchResutlPanel ( wx.Panel ):
 		bSizer10.Add( sbSizer7, 0, wx.ALL|wx.EXPAND, 5 )
 		
 		sbSizer6 = wx.StaticBoxSizer( wx.StaticBox( self.m_panel27, wx.ID_ANY, u"查询结果" ), wx.VERTICAL )
+		
+		self.m_staticText11 = wx.StaticText( self.m_panel27, wx.ID_ANY, u"汇总信息：xxxx", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText11.Wrap( -1 )
+		self.m_staticText11.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		
+		sbSizer6.Add( self.m_staticText11, 0, wx.ALL|wx.EXPAND, 5 )
+		
+		bSizer11 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		self.m_button9 = wx.Button( self.m_panel27, wx.ID_ANY, u"生成报表", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer11.Add( self.m_button9, 0, wx.ALL, 5 )
+		
+		self.m_button10 = wx.Button( self.m_panel27, wx.ID_ANY, u"导出到Excel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer11.Add( self.m_button10, 0, wx.ALL, 5 )
+		
+		
+		sbSizer6.Add( bSizer11, 0, wx.ALL|wx.EXPAND, 5 )
 		
 		self.m_grid2 = wx.grid.Grid( self.m_panel27, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 		
@@ -379,27 +506,10 @@ class SearchResutlPanel ( wx.Panel ):
 		
 		# Cell Defaults
 		self.m_grid2.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		sbSizer6.Add( self.m_grid2, 4, wx.ALL, 5 )
-		
-		self.m_staticText11 = wx.StaticText( self.m_panel27, wx.ID_ANY, u"汇总信息：xxxx", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText11.Wrap( -1 )
-		self.m_staticText11.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
-		
-		sbSizer6.Add( self.m_staticText11, 1, wx.ALL|wx.EXPAND, 5 )
-		
-		bSizer11 = wx.BoxSizer( wx.HORIZONTAL )
-		
-		self.m_button9 = wx.Button( self.m_panel27, wx.ID_ANY, u"生成报表", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer11.Add( self.m_button9, 0, wx.ALL, 5 )
-		
-		self.m_button10 = wx.Button( self.m_panel27, wx.ID_ANY, u"导出到Excel", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer11.Add( self.m_button10, 0, wx.ALL, 5 )
+		sbSizer6.Add( self.m_grid2, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
-		sbSizer6.Add( bSizer11, 0, wx.ALL|wx.EXPAND, 5 )
-		
-		
-		bSizer10.Add( sbSizer6, 0, wx.ALL|wx.EXPAND, 5 )
+		bSizer10.Add( sbSizer6, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
 		self.m_panel27.SetSizer( bSizer10 )
