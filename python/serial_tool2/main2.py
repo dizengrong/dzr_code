@@ -14,6 +14,7 @@ from session_manager import *
 import my_machine, traceback, session_manager
 from HtmlMessageDialog import *
 import tempfile
+from pyterm.Terminal import Terminal
 
 # 端口设置字段
 ENUM_SETTING_DESC       = 0
@@ -65,7 +66,7 @@ class MyttyFrame(Mytty.Mytty):
 		version = u"（版本：%s    剩余使用天数：%d）" % (license_mag.GetVersion(), license_mag.GetLeftDays())
 		self.SetLabel(self.GetLabel() + version)
 
-		self.icon = wx.Icon("my.ico", wx.BITMAP_TYPE_ICO)
+		self.icon = wx.Icon("my.png", wx.BITMAP_TYPE_ICO)
 		self.SetIcon(self.icon)
 		self.is_clear_cmd = False
 		self.init_inline_datas()
@@ -338,6 +339,7 @@ class MyttyFrame(Mytty.Mytty):
 		if session.Open():
 			session_manager.session_manag.AddSession(session)
 			tabPanel = wx.Panel( self.m_auinotebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+			# tabPanel = Terminal( self.m_auinotebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 			self.m_auinotebook2.AddPage( tabPanel, session.GetSessionName(), True, wx.NullBitmap )
 			self.SetConnectionInfo(session)
 
@@ -348,7 +350,7 @@ class MyttyFrame(Mytty.Mytty):
 			tabPanel.Layout()
 			self.m_textCtrl71.Enable(True)
 			util.ShowMessageDialog(self, u"连接成功", u"提示")
-			session.Write('\r\n')
+			session.Write('\n')
 		else:
 			util.ShowMessageDialog(self, u"连接：%s 打开失败" % session.GetSessionInfo(), u"错误")
 
@@ -360,7 +362,7 @@ class MyttyFrame(Mytty.Mytty):
 	def SendTplCmdThread(self, cmd_list, send_interval):
 		session = self.GetCurActivatedSession()
 		for cmd in cmd_list:
-			cmd = cmd + '\r\n'
+			cmd = cmd + '\n'
 			# print "send cmd: [%s]end" % (cmd)
 			cmd = cmd.encode('ascii')
 			try:
@@ -689,7 +691,7 @@ class MySendProgressDialog(SendProgressDialog.SendProgressDialog):
 
 	def BeginSendProgress(self):
 		cmd = self.cmd_list[self.current_count]
-		cmd = cmd + '\r\n'
+		cmd = cmd + '\n'
 		cmd = cmd.encode('ascii')
 		try:
 			self.session.Write(cmd)

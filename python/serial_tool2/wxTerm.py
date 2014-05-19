@@ -91,7 +91,7 @@ class wxTerm(wx.TextCtrl):
 			output = ""
 			try:
 				# print "read from device"
-				output = self.session.Read(512)
+				output = self.session.Read(2048)
 			except Exception, e:
 				print "read process exception: %s" % (e)
 			
@@ -135,13 +135,13 @@ class wxTerm(wx.TextCtrl):
 		for i in range(self.termRows):
 			for j in range(self.termCols):
 				text += ' '
-			text += '\r\n'
+			text += '\n'
 			
-		text = text.rstrip('\r\n')
+		text = text.rstrip('\n')
 		self.SetValue(text)
 		
 	def OnTermEmulatorScrollUpScreen(self):
-		blankLine = "\r\n"
+		blankLine = "\n"
 		
 		for i in range(self.termEmulator.GetCols()):
 			blankLine += ' '
@@ -217,39 +217,39 @@ class wxTerm(wx.TextCtrl):
 			self.SetInsertionPoint(lineStart)
 			
 			for col in range(screenCols):
-				style, fgcolor, bgcolor = self.termEmulator.GetRendition(row, col)
+				# style, fgcolor, bgcolor = self.termEmulator.GetRendition(row, col)
 				
-				if not disableTextColoring and (curStyle != style 
-												or curFgColor != fgcolor \
-												or curBgColor != bgcolor):
+				# if not disableTextColoring and (curStyle != style 
+				# 								or curFgColor != fgcolor \
+				# 								or curBgColor != bgcolor):
 					
-					if text != "":
-						self.WriteText(text)
-						text = ""
+				# 	if text != "":
+				# 		self.WriteText(text)
+				# 		text = ""
 					
-					if curStyle != style:
-						curStyle = style
-						#print "Setting style", curStyle
-						if style == 0:
-							self.SetForegroundColour((0, 0, 0))
-							self.SetBackgroundColour((255, 255, 255))
-						elif style & self.termEmulator.RENDITION_STYLE_INVERSE:
-							self.SetForegroundColour((255, 255, 255))
-							self.SetBackgroundColour((0, 0, 0))
-						else:
-							# skip other styles since TextCtrl doesn't support
-							# multiple fonts(bold, italic and etc)
-							pass
+				# 	if curStyle != style:
+				# 		curStyle = style
+				# 		#print "Setting style", curStyle
+				# 		if style == 0:
+				# 			self.SetForegroundColour((0, 0, 0))
+				# 			self.SetBackgroundColour((255, 255, 255))
+				# 		elif style & self.termEmulator.RENDITION_STYLE_INVERSE:
+				# 			self.SetForegroundColour((255, 255, 255))
+				# 			self.SetBackgroundColour((0, 0, 0))
+				# 		else:
+				# 			# skip other styles since TextCtrl doesn't support
+				# 			# multiple fonts(bold, italic and etc)
+				# 			pass
 						
-					if curFgColor != fgcolor:
-						curFgColor = fgcolor
-						#print "Setting foreground", curFgColor
-						self.SetTerminalRenditionForeground(curFgColor)
+				# 	if curFgColor != fgcolor:
+				# 		curFgColor = fgcolor
+				# 		#print "Setting foreground", curFgColor
+				# 		self.SetTerminalRenditionForeground(curFgColor)
 						
-					if curBgColor != bgcolor:
-						curBgColor = bgcolor
-						#print "Setting background", curBgColor
-						self.SetTerminalRenditionBackground(curBgColor)
+				# 	if curBgColor != bgcolor:
+				# 		curBgColor = bgcolor
+				# 		#print "Setting background", curBgColor
+				# 		self.SetTerminalRenditionBackground(curBgColor)
 				
 				text += screen[row][col]
 			self.WriteText(text)

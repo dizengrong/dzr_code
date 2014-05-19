@@ -100,8 +100,6 @@ class TermEmulatorDemo(wx.Frame):
         self.termRows = 24
         self.termCols = 80
         
-        self.FillScreen()
-        
         self.linesScrolledUp = 0
         self.scrolledUpLinesLen = 0
         
@@ -123,19 +121,6 @@ class TermEmulatorDemo(wx.Frame):
         
         self.Show(True)
         
-    def FillScreen(self):
-        """
-        Fills the screen with blank lines so that we can update terminal
-        dirty lines quickly.
-        """
-        text = ""
-        for i in range(self.termRows):
-            for j in range(self.termCols):
-                text += ' '
-            text += '\n'
-            
-        text = text.rstrip('\n')
-        self.txtCtrlTerminal.SetValue(text)
         
     def UpdateUI(self):
         self.tc1.Enable(not self.isRunning)
@@ -199,7 +184,6 @@ class TermEmulatorDemo(wx.Frame):
         fcntl.ioctl(self.processIO, termios.TIOCSWINSZ,
                     struct.pack("hhhh", self.termRows, self.termCols, 0, 0))
         
-        self.FillScreen()
         self.UpdateDirtyLines(range(self.termRows))
         
     def __ProcessIsAlive(self):
