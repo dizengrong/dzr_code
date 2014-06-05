@@ -29,9 +29,9 @@ def print_tab_row(row, col_max_lens, is_center = False):
 	cols = len(col_max_lens)
 	for i in xrange(0, cols):
 		if is_center:
-			print(u"| %s" % (u"{:^%s}" % (col_max_lens[i] + 1)).format(row[i])),
+			print(u"| %s" % (u"{0:^%s}" % (col_max_lens[i] + 1)).format(row[i])),
 		else:
-			print(u"| %s" % (u"{:<%s}" % (col_max_lens[i] + 1)).format(row[i])),
+			print(u"| %s" % (u"{0:<%s}" % (col_max_lens[i] + 1)).format(row[i])),
 	print("|")
 
 def print_tab_header(headers, col_max_lens):
@@ -45,5 +45,5 @@ def print_tab_delimiter(delimiter, col_max_lens):
 	cols = len(col_max_lens)
 	for i in xrange(0, cols):
 		print("+"),
-		print(u"%s" % (u"{:%s^%s}" % (delimiter, col_max_lens[i] + 1)).format("")),
+		print(u"%s" % (u"{0:%s^%s}" % (delimiter, col_max_lens[i] + 1)).format("")),
 	print("+")
