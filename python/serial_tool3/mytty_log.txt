@@ -1,0 +1,50 @@
+2013-10-30 08:06:26,882 - ERROR: send telnet command: aaab failed, exception: 
+2013-10-30 08:06:27,184 - ERROR: send telnet command:  failed, exception: 
+2013-10-30 08:07:37,427 - ERROR: send telnet command: timestamp: 1380091867.45 failed, exception: 
+2013-10-30 08:07:37,727 - ERROR: send telnet command:  failed, exception: 
+2013-10-30 08:07:38,029 - ERROR: send telnet command: _extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', )); failed, exception: 
+2013-10-30 08:09:29,332 - ERROR: send telnet command: timestamp: 1380091867.45 failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:09:29,632 - ERROR: send telnet command:  failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:09:29,933 - ERROR: send telnet command: _extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', )); failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:18:41,743 - ERROR: send telnet command: (timestamp: 1380091867.45) failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:18:42,046 - ERROR: send telnet command: () failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:18:42,345 - ERROR: send telnet command: (_extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', ));) failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:20:14,006 - ERROR: send telnet command: (_extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', ));) failed, exception: [Errno 10053] 
+2013-10-30 08:20:36,019 - ERROR: send telnet command: (timestamp: 1380091867.45) failed, exception: [Errno 10053] 
+2013-10-30 08:20:36,319 - ERROR: send telnet command: () failed, exception: [Errno 10053] 
+2013-10-30 08:20:36,619 - ERROR: send telnet command: (_extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', ));) failed, exception: [Errno 10053] 
+2013-10-30 08:20:47,348 - ERROR: send telnet command: (timestamp: 1380091867.45) failed, exception: [Errno 10053] 
+2013-10-30 08:20:47,648 - ERROR: send telnet command: () failed, exception: [Errno 10053] 
+2013-10-30 08:20:47,948 - ERROR: send telnet command: (_extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', ));) failed, exception: [Errno 10053] 
+2013-10-30 08:21:01,131 - ERROR: send telnet command: (timestamp: 1380091867.45) failed, exception: [Errno 10053] 
+2013-10-30 08:21:01,433 - ERROR: send telnet command: () failed, exception: [Errno 10053] 
+2013-10-30 08:21:01,733 - ERROR: send telnet command: (_extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', ));) failed, exception: [Errno 10053] 
+2013-10-30 08:21:04,428 - ERROR: send telnet command: (aaa) failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:21:04,730 - ERROR: send telnet command: () failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:21:19,740 - ERROR: send telnet command: (_extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', ));) failed, exception: [Errno 10053] 
+2013-10-30 08:21:29,295 - ERROR: send telnet command: (aa) failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:21:29,595 - ERROR: send telnet command: () failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:21:39,648 - ERROR: send telnet command: (aaaa) failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-30 08:21:39,947 - ERROR: send telnet command: () failed, exception: 'ascii' codec can't decode byte 0xff in position 0: ordinal not in range(128)
+2013-10-31 07:20:19,339 - ERROR: send command: (_extend=_buf.extend;_to_str=to_str;_escape=to_escaped; _extend(('''abd''', ));) failed, exception: [Errno 10053] 
+2013-11-06 07:49:34,944 - ERROR: send command: (timestamp: 1380091867.45
+) failed, exception: global name 'session' is not defined
+2013-11-06 07:51:07,200 - ERROR: send command: (timestamp: 1380091867.45
+) failed, exception: global name 'session' is not defined
+2013-11-06 07:52:27,351 - ERROR: send command: (timestamp: 1380091867.45
+) failed, exception: 'MySendProgressDialog' object has no attribute 'session'
+2013-11-20 07:23:42,332 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpkzzuxb
+2014-02-10 20:54:18,483 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpkui4ww
+2014-02-10 22:22:09,322 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmps57ygg
+2014-02-10 22:24:11,644 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmptencxd
+2014-02-10 22:26:04,441 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpr_uwyc
+2014-02-11 20:07:13,734 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpdmgjrt
+2014-02-11 22:05:35,342 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmp25sgd6
+2014-02-13 21:29:17,887 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpau5vl7
+2014-02-25 08:06:46,112 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpeqxl5f
+2014-02-25 20:02:21,793 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpaf1cvs
+2014-02-26 07:55:34,000 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpzcfhti
+2014-03-04 20:58:37,072 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpiisyzg
+2014-03-17 07:50:27,344 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmp32rwpb
+2014-03-17 08:00:06,855 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpxb_zra
+2014-03-17 08:12:20,624 - INFO: unzip templates.zip to directory: c:\users\dzr\appdata\local\temp\tmpoifq7m

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*- 
-import models, wx
+import models, wx, datetime
 
-ENUM_SELL_UID           = 0		# 售出的uid
+ENUM_SELL_UID           = 0		# 售出记录uid
 ENUM_SELL_PRODUCT_CLASS = 1		# 产品分类
 ENUM_SELL_PRODUCT_TYPE  = 2		# 产品型号
 ENUM_SELL_BUYER         = 3		# 买家
@@ -12,6 +12,34 @@ ENUM_SELL_DEAL_PRICE    = 7 	# 实际成交总价
 ENUM_SELL_PAID          = 8 	# 已收款
 ENUM_SELL_UNPAY         = 9 	# 剩余欠款
 ENUM_SELL_DEAL_DATE     = 10 	# 成交日期
+
+col2sellfield = {
+ENUM_SELL_UID:'uid',
+ENUM_SELL_PRODUCT_CLASS:'product_class',
+ENUM_SELL_PRODUCT_TYPE:'product_type',
+ENUM_SELL_BUYER:'buyer_name',
+ENUM_SELL_UNIT_PRICE:'deal_unit_price',
+ENUM_SELL_AMOUNT:'amount',
+ENUM_SELL_TOTAL_PRICE:'total_price',
+ENUM_SELL_DEAL_PRICE:'deal_price',
+ENUM_SELL_PAID:'paid',
+ENUM_SELL_UNPAY:'unpaid',
+ENUM_SELL_DEAL_DATE	:'deal_date'
+}
+
+# 根据数据表格的所在列获取经过格式化的对应字段的值
+def GetSellFieldByCol(sell_rec, col):
+	val = getattr(sell_rec, col2sellfield[col])
+	if col == ENUM_SELL_BUYER:
+		return val
+	elif col == ENUM_SELL_PRODUCT_TYPE:
+		return val
+	elif col == ENUM_SELL_PRODUCT_CLASS:
+		return val
+	elif col == ENUM_SELL_DEAL_DATE:
+		return datetime.datetime.strptime(val, "%Y-%m-%d")
+	else:
+		return float(val)
 
 
 def InitSellRecordTab(grid):

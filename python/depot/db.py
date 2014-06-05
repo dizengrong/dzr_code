@@ -22,6 +22,8 @@ SQL_UPDATE_SELL = "update sell_record set product_class = %s, product_type = '%s
 SQL_QUERY_SELLS_BY_NAME = SQL_SELECT_SELLS + " and buyer.buyer_name = '%s' order by sell_record.uid"
 # 查询所有的产品信息
 SQL_ALL_PRODUCT = "select class, type, length, width, height, per_weight, price from product order by class, type"
+# 查询某个分类的产品有哪些型号
+SQL_QUERY_PRODUCT_TYPES = "select type from product where class = %s"
 # 插入产品数据
 SQL_INSERT_PRODUCT = "insert into product (class, type, length, width, height, per_weight, price) VALUES "\
 					 "(%s, '%s', %s, %s, %s, %s, %s)"
@@ -91,7 +93,7 @@ def QuerySellsByProductType(begin_date, end_date, category, type_list):
 	db_cur = db_conn.cursor()
 	tmp = ", ".join(["'" + t + "'" for t in type_list])
 	sql    = SQL_SELECT_SELLS + " and deal_date between '%s' and '%s'" % (begin_date, end_date) + \
-			 " and product_class = %s and product_type in (%s)" % tmp
+			 " and product_class = %s and product_type in (%s)" % (category, tmp)
 	db_cur.execute(sql)
 	all_sells = {}
 	for row in db_cur:
@@ -261,5 +263,11 @@ def UpdateProduct(product_rec):
 	db_cur.execute(sql)
 	db_conn.commit()
 
-
-
+def QueryProductType(product_class):
+	db_cur = db_conn.cursor()
+	sql    = SQL_QUERY_PRODUCT_TYPES % (product_class)
+	db_cur.execute(sql)
+	types = []
+	for row in db_cur:
+		types.append(row)
+	return types
