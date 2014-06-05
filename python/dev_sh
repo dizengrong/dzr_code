@@ -5,13 +5,13 @@
 # 3.使用easy_install或pip安装python的json库
 
 # 部署客户端版本：
-python client_deploy.py --deploy "svn://s1.cqsvn.com:8004/cehua/dpcqRelease" "/data/dpcq/web/static" 12.23.18 dizengrong 435ad654bf4868f
+python client_deploy.py --deploy "/data/dpcq/web/client_release" "/data/dpcq/web/static" 2014.02.21.11 0002 dizengrong 435ad654bf4868f
 
 #删除客户端版本：
-python client_deploy.py --delete_deploy "/data/dpcq/web/static" 12.24.11
+python client_deploy.py --delete_deploy "/data/dpcq/web/static" 2014.02.21.11
 
 # 差异文件列表生成:
-python svn_util.py --changed_list /data/dpcq/web/static/ 1223 12.23.18
+python svn_util.py --changed_list /data/dpcq/web/static/ 2014.01.08.11 2014.01.08.12
 
 # 创建分支
 svn copy -m "comment" svn_url branch_svn_url/{branch_name} --non-interactive --no-auth-cache  --username=$SVN_USER --password=$SVN_PASSWORD
@@ -32,3 +32,16 @@ screen bash /data/sh/dpcq/daily_public.sh auto branch/B_beta1.0.2 branch/B_beta1
 ############################## 服务端 ############################## 
 
 
+s1前后端发布流程：
+
+打前端分支（三个目录，引擎目录，dpcq工程目录，resources目录）
+svn://s1.svn.com/mobile/trunk/cocos2d-x
+svn://s1.svn.com/mobile/trunk/dpcq
+svn://s1.svn.com/mobile/trunk/resources （注意resources目录是从svn://s1.cqsvn.com:8004/cehua/dpcqDebug中copy对应的目录文件，然后commit）
+
+打后端分支
+svn://s1.svn.com/server/s1
+打完分支后，做差异化包
+把svn://s1.svn.com/mobile/trunk/resources copy到 svn://s1.svn.com/server/client_release commit
+
+在服务器上打差异化包

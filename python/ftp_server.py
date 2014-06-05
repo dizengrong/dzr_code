@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
+# 文档参考: https://code.google.com/p/pyftpdlib/wiki/Tutorial
 
 from pyftpdlib.authorizers import DummyAuthorizer
 from pyftpdlib.handlers import FTPHandler
@@ -7,7 +8,7 @@ from pyftpdlib.servers import FTPServer
 
 def main():
 	authorizer = DummyAuthorizer()
-	authorizer.add_user("dzR", "111111", "/data/dpcq/web/static/")
+	authorizer.add_user("dzR", "111111", "/data/dpcq/web/static/", perm='elradfmw')
 	# authorizer.add_anonymous("E:\\my_code\\dzr_code\\python")
 
 	handler = FTPHandler
